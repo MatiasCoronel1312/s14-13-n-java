@@ -1,0 +1,9 @@
+export const ToyotaCorolla = "./ToyotaCorolla.png.avif";
+export const DodgeChallenger = "./DodgeChallenger.png.avif";
+export const ChevroletTahoe = "./ChevroletTahoe.png.avif";
+export const NissanVersa = "./NissanVersa.png.avif";
+export const FordTransit = "./FordTransit.png.avif";
+export const ChevroletExpress = "./ChevroletExpress.png.avif";
+export const FordMustangConvertible = "./FordMustangConvertible.png.avif";
+export const AudiA5 = "./AudiA5.png.avif";
+export const ToyotaPrius = "./ToyotaPrius.png.avif";
