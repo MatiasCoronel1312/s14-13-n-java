@@ -1,3 +1,4 @@
+
 import "./App.css";
 
 import TimeLine from "./components/timeline/TimeLine";
@@ -6,12 +7,14 @@ import TarifasSection from "./components/TarifasSection/TarifasSection";
 import CoberturasSection from "./components/CoberturasSection/CoberturasSection";
 
 function App() {
+
   return (
     <>
       <MainRouter />
       <TimeLine />
       <TarifasSection />
       <CoberturasSection />
+
     </>
   );
 }
