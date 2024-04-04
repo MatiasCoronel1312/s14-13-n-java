@@ -1,5 +1,4 @@
-import { CgEye } from "react-icons/cg";
-import CustomCheckBox from "../CustomCheckBox/CustomCheckBox";
+import CoberturasBanner from "../CoberturasBanner/CoberturasBanner";
 export default function CoberturasSection() {
   return (
     <section className="w-[1200px] min-h-[707px] h-[907px] bg-background mx-auto  px-2">
@@ -16,31 +15,14 @@ export default function CoberturasSection() {
         <p className=" text-xl font-light ">Mas seguridad en tu viaje</p>
       </div>
       <div className="flex flex-col w-full  gap-16">
-        <section className="flex justify-between px-6 bg-[#FFF6EC] py-8 border-l-transparent border-2 border-black rounded-r-xl">
-          <div className="flex items-center gap-4">
-            <CgEye size={28} className="text-[#854900]" />
-            <p className="text-3xl font-light">
-              Protección Especial con Franquicia
-            </p>
-          </div>
-          <div className="flex items-center gap-4">
-            <p className="text-2xl  font-extralight">US$ 0,03 / dia</p>
-            <CustomCheckBox />
-          </div>
-        </section>
-        {/*  */}
-        <section className="flex justify-between px-6 bg-[#FFF6EC] py-8 border-l-transparent border-2 border-black rounded-r-xl">
-          <div className="flex items-center gap-4">
-            <CgEye size={28} className="text-[#854900]" />
-            <p className="text-3xl font-light">
-              Protección Especial con Franquicia
-            </p>
-          </div>
-          <div className="flex items-center gap-4">
-            <p className="text-2xl font-extralight ">US$ 20,00 / dia</p>
-            <CustomCheckBox />
-          </div>
-        </section>
+        <CoberturasBanner
+          title={" Protección Especial con Franquicia"}
+          price={0.03}
+        />
+        <CoberturasBanner
+          title={" Protección Especial con Franquicia"}
+          price={20.0}
+        />
       </div>
     </section>
   );

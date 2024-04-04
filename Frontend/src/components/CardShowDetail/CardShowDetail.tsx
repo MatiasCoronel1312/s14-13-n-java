@@ -2,6 +2,8 @@ import { useState } from "react";
 import BackViewCard from "../BackViewCard/BackViewCard";
 import { FrontViewCard } from "../FrontViewCard/FrontViewCard";
 import { TCarro } from "../../assets/carsInfo";
+
+import "./style.css";
 interface Props {
   showCars: TCarro[];
 }

@@ -8,12 +8,15 @@ interface Props {
 
 export default function BackViewCard({ showCars, indexCar, flipCard }: Props) {
   return (
-    <div className="w-[375px] h-[500px] border border-gray-500 bg-white rounded-xl flex flex-col items-center  py-6 shadow-card relative">
+    <div className="w-[375px] h-[500px] border border-gray-300 bg-white rounded-xl flex flex-col items-center  py-6 shadow-card relative">
       <p className="text-2xl font-light mb-2">{showCars[indexCar].modelo}</p>
 
       <div className="grid grid-cols-2 gap-2 w-full px-3 ">
         {showCars[indexCar].features.map((feature) => (
-          <div className="w-[160px] h-18 bg-[#f2f2f2] flex items-center gap-2 pr-1 pl-4 rounded-xl">
+          <div
+            key={feature}
+            className="w-[160px] h-18 bg-[#f2f2f2] flex items-center gap-2 pr-1 pl-4 rounded-xl"
+          >
             <p>SVG</p>
             <p
               className=" w-[100px] h-14 flex text-sm text-gray-700 text-center justify-center items-center"
