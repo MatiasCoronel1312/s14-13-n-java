@@ -18,7 +18,7 @@ export function FrontViewCard({
   flipCard,
 }: Props) {
   return (
-    <div className="w-[375px] h-[500px] border border-gray-500 rounded-xl flex flex-col items-center  py-6 shadow-card relative">
+    <div className="w-[375px] h-[500px] border border-gray-300 rounded-xl flex flex-col items-center  py-6 shadow-card relative">
       <p className="text-2xl font-light">{showCars[indexCar].categoría}</p>
 
       <section className="flex flex-col items-center gap-3 py-2">

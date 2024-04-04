@@ -1,13 +1,11 @@
 import CardToPay from "../CardToPay/CardToPay";
 import carros from "../../assets/carsInfo";
 
-import "./style.css";
-
 import CardShowDetail from "../CardShowDetail/CardShowDetail";
 
 const TarifasSection = () => {
   return (
-    <section className="w-[1200px] min-h-[707px] h-[907px] bg-background mx-auto p-6">
+    <section className="w-[1200px] min-h-[707px] h1-[907px] bg-background mx-auto p-6">
       <p className="text-2xl font-light">
         Elige la tarifa que mejor se adapte a tus necesidades
       </p>
