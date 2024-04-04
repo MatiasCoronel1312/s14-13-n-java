@@ -1,9 +1,0 @@
-export const ToyotaCorolla = "./ToyotaCorolla.png";
-export const DodgeChallenger = "./DodgeChallenger.png";
-export const ChevroletTahoe = "./ChevroletTahoe.png";
-export const NissanVersa = "./NissanVersa.png";
-export const FordTransit = "./FordTransit.png";
-export const ChevroletExpress = "./ChevroletExpress.png";
-export const FordMustangConvertible = "./FordMustangConvertible.png";
-export const AudiA5 = "./AudiA5.png";
-export const ToyotaPrius = "./ToyotaPrius.png";
