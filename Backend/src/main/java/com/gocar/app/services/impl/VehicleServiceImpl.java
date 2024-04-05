@@ -1,13 +1,12 @@
-package com.gocar.app.services;
+package com.gocar.app.services.impl;
 
 import com.gocar.app.dtos.vehicle.VehicleDTO;
 import com.gocar.app.enums.Category;
 import com.gocar.app.models.Vehicle;
 import com.gocar.app.repositories.VehicleRepository;
+import com.gocar.app.services.VehicleService;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.stereotype.Service;
@@ -31,6 +30,7 @@ public class VehicleServiceImpl implements VehicleService {
                     .model(v.getModel())
                     .modelYear(v.getModelYear())
                     .engineSize(v.getEngineSize())
+                    .passengers(v.getPassengers())
                     .image(v.getImage())
                     .price(v.getPrice())
                     .stock(v.getStock())
@@ -67,6 +67,7 @@ public class VehicleServiceImpl implements VehicleService {
                     .model(v.getModel())
                     .modelYear(v.getModelYear())
                     .engineSize(v.getEngineSize())
+                    .passengers(v.getPassengers())
                     .image(v.getImage())
                     .price(v.getPrice())
                     .stock(v.getStock())
@@ -88,6 +89,7 @@ public class VehicleServiceImpl implements VehicleService {
                     .model(vehicleDTO.model())
                     .modelYear(vehicleDTO.modelYear())
                     .engineSize(vehicleDTO.engineSize())
+                    .passengers(vehicleDTO.passengers())
                     .image(vehicleDTO.image())
                     .price(vehicleDTO.price())
                     .stock(vehicleDTO.stock())
@@ -112,6 +114,7 @@ public class VehicleServiceImpl implements VehicleService {
             vehicleDataBase.setModel(vehicleDTO.model());
             vehicleDataBase.setModelYear(vehicleDTO.modelYear());
             vehicleDataBase.setEngineSize(vehicleDTO.engineSize());
+            vehicleDataBase.setPassengers(vehicleDTO.passengers());
             vehicleDataBase.setImage(vehicleDTO.image());
             vehicleDataBase.setPrice(vehicleDTO.price());
             vehicleDataBase.setStock(vehicleDTO.stock());

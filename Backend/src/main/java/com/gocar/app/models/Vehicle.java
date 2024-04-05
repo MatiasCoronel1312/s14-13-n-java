@@ -21,27 +21,29 @@ public class Vehicle {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    private Long id;
     @NotBlank
-    String brand;
+    private String brand;
     @NotBlank
-    String model;
+    private String model;
     @NotNull
-    Integer modelYear;
+    private Integer modelYear;
     @NotNull
-    Double engineSize;
+    private Double engineSize;
+    @NotNull
+    private Integer passengers;
     @NotBlank
-    String image;
+    private String image;
     @NotNull
-    Double price;
+    private Double price;
     @NotNull
-    Integer stock;
+    private Integer stock;
     @NotNull
     @Enumerated(EnumType.STRING)
-    List<Feature> features;
+    private List<Feature> features;
     @NotNull
     @Enumerated(EnumType.STRING)
-    Category category;
-    Boolean deleted = Boolean.FALSE;
+    private Category category;
+    private Boolean deleted = Boolean.FALSE;
 
 }

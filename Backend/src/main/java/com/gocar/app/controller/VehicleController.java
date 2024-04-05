@@ -2,7 +2,7 @@ package com.gocar.app.controller;
 
 import com.gocar.app.dtos.vehicle.VehicleDTO;
 import com.gocar.app.enums.Category;
-import com.gocar.app.services.VehicleServiceImpl;
+import com.gocar.app.services.impl.VehicleServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

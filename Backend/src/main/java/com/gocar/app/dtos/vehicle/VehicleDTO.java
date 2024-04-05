@@ -19,6 +19,8 @@ public record VehicleDTO(
         Integer modelYear,
         @NotNull
         Double engineSize,
+        @NotNull
+        Integer passengers,
         @NotBlank
         String image,
         @NotNull
@@ -38,6 +40,7 @@ public record VehicleDTO(
                 vehicle.getModel(),
                 vehicle.getModelYear(),
                 vehicle.getEngineSize(),
+                vehicle.getPassengers(),
                 vehicle.getImage(),
                 vehicle.getPrice(),
                 vehicle.getStock(),
