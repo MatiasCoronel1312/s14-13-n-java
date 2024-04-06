@@ -13,7 +13,7 @@ import { FaCheck } from "react-icons/fa6";
     setStage(num)
   }
   return (
-    <div className="container">
+    <div className="flex justify-center pt-5">
       <div className="border-[1px] border-black w-[900px] h-[134px] flex flex-col items-center justify-around">
         <div className="flex justify-around items-center h-[34px] w-[736px]">
           <div onClick={()=>{stageUno(1)}} className={`${circulos} ${stage>=1&&circulo_activo}`}>
