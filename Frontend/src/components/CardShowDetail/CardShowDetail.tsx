@@ -6,8 +6,9 @@ import { TCarro } from "../../assets/carsInfo";
 import "./style.css";
 interface Props {
   showCars: TCarro[];
+  isCategory?: boolean;
 }
-export default function CardShowDetail({ showCars }: Props) {
+export default function CardShowDetail({ showCars, isCategory }: Props) {
   const [indexCar, setInderCar] = useState(0);
   const [showFront, setShowFront] = useState(false);
   const addIndex = () => {
@@ -24,7 +25,7 @@ export default function CardShowDetail({ showCars }: Props) {
     setShowFront(!showFront);
   };
   return (
-    <div className={`card ${showFront ? "flipped" : ""}`}>
+    <div className={`card  ${showFront ? "flipped" : ""}`}>
       <div className="card-inner">
         <div className="card-front">
           <FrontViewCard
@@ -34,6 +35,7 @@ export default function CardShowDetail({ showCars }: Props) {
             indexCar={indexCar}
             setInderCar={setInderCar}
             flipCard={flipCard}
+            isCategory={isCategory}
           />
         </div>
         <div className="card-back">
@@ -41,6 +43,7 @@ export default function CardShowDetail({ showCars }: Props) {
             flipCard={flipCard}
             showCars={showCars}
             indexCar={indexCar}
+            isCategory={isCategory}
           />
         </div>
       </div>

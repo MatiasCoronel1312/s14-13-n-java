@@ -1,7 +1,8 @@
 import "./App.css";
+import SelectForCategory from "./components/SelectForCategory/SelectForCategory";
 
-import TimeLine from "./components/timeline/TimeLine";
 import MainRouter from "./router/mainRouter";
+import TimeLine from "./components/timeline/TimeLine";
 import TarifasSection from "./components/TarifasSection/TarifasSection";
 import CoberturasSection from "./components/CoberturasSection/CoberturasSection";
 
@@ -12,6 +13,7 @@ function App() {
       <TimeLine />
       <TarifasSection />
       <CoberturasSection />
+      <SelectForCategory />
     </>
   );
 }

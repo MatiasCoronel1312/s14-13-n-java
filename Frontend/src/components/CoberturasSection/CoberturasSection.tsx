@@ -1,7 +1,7 @@
 import CoberturasBanner from "../CoberturasBanner/CoberturasBanner";
 export default function CoberturasSection() {
   return (
-    <section className="w-[1200px] min-h-[707px] h-[907px] bg-background mx-auto  px-2">
+    <section className="w-[1200px] min-h-[680px]  bg-background mx-auto  px-2">
       <div className="flex items-center justify-between">
         <p className="text-2xl font-light">
           Elige la tarifa que mejor se adapte a tus necesidades
