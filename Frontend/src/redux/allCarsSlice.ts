@@ -24,18 +24,18 @@ export type TCarro = {
   stock: number;
 };
 
-const estadoInicial: TCarro = {
+const estadoInicial = {
     cars: [
-        {
-            id: 0,
-            modelo: '',
-            features: [],
-            imagen: '',
-            pasajeros: 0,
-            precio: 0,
-            categoría: TCategoría,
-            stock: 0,
-          }
+        // {
+        //     id: 0,
+        //     modelo: '',
+        //     features: [],
+        //     imagen: '',
+        //     pasajeros: 0,
+        //     precio: 0,
+        //     categoría: '',
+        //     stock: 0,
+        //   }
         
     ]
 }
