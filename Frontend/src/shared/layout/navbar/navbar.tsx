@@ -10,7 +10,7 @@ const navbar = () => {
         <Link to='' className='text-background'>OFERTAS</Link>
         <Link to='' className='text-background'>DUDAS</Link>
       </ul>
-      <button className='text-primary border-2 border-primary w-[136px] h-[44px] rounded-ss-[5px] rounded-ee-[5px]'>Log in</button>
+      <button className='text-primary border-2 border-primary w-[136px] h-[44px] rounded-[5px] cursor-pointer hover:bg-primary hover:text-text'>Log in</button>
     </div>
   )
 }

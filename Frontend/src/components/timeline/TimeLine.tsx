@@ -2,14 +2,14 @@ import { useState } from "react";
 import { FaCheck } from "react-icons/fa6";
 
  const TimeLine = () => {
-  const [stage, setStage] = useState<number>(1)
+  const [stage, setStage] = useState<number>(1);
   const circulos:string = 'rounded-full border-[4px] border-[#8F8F8F] w-[34px] transition-all duration-1000 ease-in-out h-[34px] flex justify-center items-center cursor-pointer';
   const lineas:string = ' border-[3px] border-[#8F8F8F] w-[200px] h-0 transition-all duration-1000 ease-in-out';
   const circulo_interno:string = 'rounded-full border-[3px] bg-[#F8C381] w-[27px] h-[27px] transition-all duration-1000 ease-in-out';
   const circulo_activo:string = 'rounded-full border-[4px] border-secondary Gradient-T ';
   const linea_activa:string = ' border-secondary';
   const title:string = 'text-center text-[20px] w-[25%] cursor-pointer transition-all duration-1000 ease-in-out';
-  const stageUno = (num:number=0) =>{
+  const stageUno = (num:number=0):void =>{
     setStage(num)
   }
   return (
