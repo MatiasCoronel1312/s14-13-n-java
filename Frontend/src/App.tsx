@@ -5,15 +5,17 @@ import MainRouter from "./router/mainRouter";
 import TimeLine from "./components/timeline/TimeLine";
 import TarifasSection from "./components/TarifasSection/TarifasSection";
 import CoberturasSection from "./components/CoberturasSection/CoberturasSection";
+import SummaryBooking from "./components/SummaryBooking/SummaryBooking";
 
 function App() {
   return (
     <>
       <MainRouter />
-      <TimeLine />
+      {/* <TimeLine />
       <TarifasSection />
       <CoberturasSection />
-      <SelectForCategory />
+      <SelectForCategory /> */}
+      
     </>
   );
 }
