@@ -1,10 +1,10 @@
-import SummaryBooking from "../components/SummaryBooking/SummaryBooking"
-
+import Carrusel from './../components/CarCarousel/Carrusel';
 
 const Home = () => {
   return (
     <div>
-       <SummaryBooking/>
+      
+      <Carrusel />
     </div>
   )
 }
