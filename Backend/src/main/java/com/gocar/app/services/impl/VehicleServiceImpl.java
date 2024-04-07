@@ -95,6 +95,9 @@ public class VehicleServiceImpl implements VehicleService {
                     .image(vehicleDTO.image())
                     .price(vehicleDTO.price())
                     .stock(vehicleDTO.stock())
+//                     aqui deberia crearse otro dto para hacer el save del vehiculo, debido
+//                    a que el que ya estaba creado ya no retorna una lista de
+//                    feature si no una lista de string, para poder matchear con lo que quiere el front
 //                    .features(vehicleDTO.features())
                     .category(vehicleDTO.category())
                     .deleted(Boolean.FALSE)
@@ -120,7 +123,10 @@ public class VehicleServiceImpl implements VehicleService {
             vehicleDataBase.setImage(vehicleDTO.image());
             vehicleDataBase.setPrice(vehicleDTO.price());
             vehicleDataBase.setStock(vehicleDTO.stock());
-//            vehicleDataBase.setFeatures(vehicleDTO.features());
+//          aqui deberia crearse otro dto para hacer el save del vehiculo, debido
+//          a que el que ya estaba creado ya no retorna una lista de
+//          feature si no una lista de string, para poder matchear con lo que quiere el front
+//          vehicleDataBase.setFeatures(vehicleDTO.features());
             vehicleDataBase.setCategory(vehicleDTO.category());
             vehicleDataBase.setDeleted(Boolean.FALSE);
 
