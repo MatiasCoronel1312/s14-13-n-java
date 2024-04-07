@@ -19,13 +19,28 @@ import lombok.Setter;
 @EqualsAndHashCode(of = "id")
 @Getter
 @Setter
+@ToString
+@Builder
+
 
 public class Reservation {
 	
 	 @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    private Long id;
+	 private Long id;
+	 @NotBlank
 	 private Long idCAr;
+	 
+	 private Long idUser;
+	 private Double iva;
+	 private Double subtotal;
+	 private Double total;
+	 private Long idReservationDates;
+	 private Insurance idInsurance;
+	 
+	 
+	 
+	 
 	 public Long getId() {
 		return id;
 	}
@@ -80,12 +95,7 @@ public class Reservation {
 	public void setSoftDelete(Boolean softDelete) {
 		this.softDelete = softDelete;
 	}
-	private Long idUser;
-	 private Double iva;
-	 private Double subtotal;
-	 private Double total;
-	 private Long idReservationDates;
-	 private Insurance idInsurance;
+	
 	
 	    private Boolean softDelete  = Boolean.FALSE;
 	public void setSoftDelete(boolean b) {
@@ -93,6 +103,10 @@ public class Reservation {
 		
 	
 	
+	}
+	public void setDeleted(Boolean true1) {
+		// TODO Auto-generated method stub
+		
 	}
 	 
 	 
