@@ -3,3 +3,4 @@ interface Car {
     title: string;
     description: string;
 }
+export default Car;
