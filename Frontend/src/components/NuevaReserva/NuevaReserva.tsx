@@ -4,9 +4,8 @@
 // }
 
 import { SetStateAction, useState } from "react";
-import Calendar from "react-calendar";
 
-export const NuevaReserva = () => {
+ const NuevaReserva: React.FC<{}> = ():void => {
   const isSelectedAgency = false;
 
   const selectedAgency = () => {
@@ -46,10 +45,10 @@ export const NuevaReserva = () => {
           <div className="ps-2 w-1/3 flex rounded-md">
             <input className=" " type="text" placeholder="Fecha" />
             <input className=" " type="text" placeholder="Hora" />
-            <Calendar onChange={onChange} value={date} />
           </div>
         </div>
       </>
     );
   };
 };
+export default NuevaReserva
