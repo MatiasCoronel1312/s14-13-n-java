@@ -1,11 +1,7 @@
 import { useEffect, useState } from "react";
+import Car from "./carrusel.interface";
 export default function Carrusel() {
-  interface Slide {
-    image: string;
-    title: string;
-    description: string;
-  }
-  const images: Slide[] = [
+  const images: Car[] = [
     {
       image: "src/assets/ImagenesCarros/AudiA5.png",
       title: "Audi A5",
@@ -34,19 +30,19 @@ export default function Carrusel() {
     if (selectedIndex <= 0) {
       setSelectedIndex(images.length - 1);
     } else {
-      setSelectedIndex((stado) => stado - 1);
+      setSelectedIndex((state) => state - 1);
     }
   };
   const next = () => {
     if (selectedIndex < images.length - 1) {
-      setSelectedIndex((stado) => stado + 1);
+      setSelectedIndex((state) => state + 1);
     } else {
       setSelectedIndex(0);
     }
   };
 
   // Nueva función para el autoplay
-  const [isAutoplay, setIsAutoplay] = useState(true); // Estado para activar/desactivar autoplay
+  const [isAutoplay, setIsAutoplay] = useState(true); // Estate para activar/desactivar autoplay
   const autoplayInterval = 2000; // Tiempo entre cambios de imagen (en milisegundos)
 
   useEffect(() => {
@@ -149,8 +145,6 @@ export default function Carrusel() {
             Mirá todos los Autos
           </button>
         </div>
-        {/* </div> */}
-        {/* </div> */}
       </section>
     </>
   );
