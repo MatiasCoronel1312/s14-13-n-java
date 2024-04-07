@@ -1,34 +1,21 @@
-// interface ReservaProps {
-//   agenciaRetirada: string;
-//   fecha: string | Date;
-// }
-
-import { SetStateAction, useState } from "react";
-import Calendar from "react-calendar";
+import { useForm } from "react-hook-form";
 
 export const NuevaReserva = () => {
-  const isSelectedAgency = false;
+  const { register, handleSubmit } = useForm();
 
-  const selectedAgency = () => {
-    if (isSelectedAgency) {
-    } else {
-    }
-  };
-  const [date, setDate] = useState(new Date());
+  const onSubmit = handleSubmit((data) => console.log(data));
 
-  const onChange = (_date: SetStateAction<Date>) => {
-    setDate(_date);
-
-    return (
-      <>
-        {selectedAgency()}
-        <div className="Gradient-V w-full max-h-[129] p-6 m-3 rounded-l flex justify-between align-middle">
-          <p className="text-white text-base">Nueva Reserva</p>
+  return (
+    <>
+      <div className="Gradient-V w-full h-[129] p-6 my-6 rounded-xl ">
+        <form className="flex justify-between " onSubmit={onSubmit}>
+          <p className="text-white text-base self-center">Nueva Reserva</p>
           <input
-            className="w-2/3 rounded-md py-4 "
+            className="w-[60%] rounded-md py-4 font-sans text-text"
             type="text"
             placeholder="  Ingresá la agencia de retirada (ej. Bariloche, Buenos Aires) 
-        "
+            "
+            {...register("agencia")}
           />
           <svg
             width="19"
@@ -36,20 +23,37 @@ export const NuevaReserva = () => {
             viewBox="0 0 19 26"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="absolute top-3 left-3"
+            className="relative top-[1rem] left-[-3rem]"
           >
             <path
               d="M8.52368 25.4754C1.33445 14.7789 0 13.6811 0 9.75C0 4.36521 4.25328 0 9.5 0C14.7467 0 19 4.36521 19 9.75C19 13.6811 17.6655 14.7789 10.4763 25.4754C10.0045 26.1749 8.99541 26.1748 8.52368 25.4754ZM9.5 13.8125C11.6861 13.8125 13.4583 11.9937 13.4583 9.75C13.4583 7.50633 11.6861 5.6875 9.5 5.6875C7.31386 5.6875 5.54167 7.50633 5.54167 9.75C5.54167 11.9937 7.31386 13.8125 9.5 13.8125Z"
               fill="#707070"
             />
           </svg>
-          <div className="ps-2 w-1/3 flex rounded-md">
-            <input className=" " type="text" placeholder="Fecha" />
-            <input className=" " type="text" placeholder="Hora" />
-            <Calendar onChange={onChange} value={date} />
+          <div className="  flex rounded-md">
+            <input
+              className="w-[50%]  rounded-l-md"
+              type="date"
+              placeholder="Fecha"
+              {...register("fecha")}
+            />
+     
+            <input
+                className="w-[50%] border-l-2 border-solid rounded-r-md"
+                type="time"
+                placeholder="Hora"
+                {...register("hora")}
+                />
+
+            <button
+              className="bg-text text-white p-2 ms-2 rounded-tl-md rounded-br-md"
+              type="submit"
+            >
+              enviar
+            </button>
           </div>
-        </div>
-      </>
-    );
-  };
+        </form>
+      </div>
+    </>
+  );
 };
