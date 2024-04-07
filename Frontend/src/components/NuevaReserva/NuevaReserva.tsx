@@ -62,19 +62,18 @@ export const NuevaReserva = () => {
                 {...register("horaRetiro")}
               />
             </div>
-          </div>
-          <div className="flex gap-2">
-            <Link
-              to={"/categoriasDeVehiculos/seleciona"}
-              className="bg-black h-[62px] w-[153px] me-4 self-center text-white p-2 ms-2 rounded-md"
-              type="submit"
-            >
-              Seguir
-            </Link>
-            <input
-              className="w-[596px] h-[70px] rounded-md py-4 font-sans text-text"
-              type="text"
-              placeholder="  Ingresá la agencia de entrega (ej. Bariloche, Buenos Aires) 
+            </div>
+            <div  className="flex gap-2">
+              <button 
+                className="bg-black h-[62px] w-[153px] me-4 self-center text-white p-2 ms-2 rounded-md"
+                type="submit"
+              >
+                Seguir
+              </button>
+              <input
+                className="w-[596px] h-[70px] rounded-md py-4 font-sans text-text"
+                type="text"
+                placeholder="  Ingresá la agencia de entrega (ej. Bariloche, Buenos Aires) 
               "
               {...register("agenciaEntrega")}
             />
