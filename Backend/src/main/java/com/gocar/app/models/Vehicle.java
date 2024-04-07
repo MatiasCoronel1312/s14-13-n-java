@@ -1,7 +1,6 @@
 package com.gocar.app.models;
 
 import com.gocar.app.enums.Category;
-import com.gocar.app.enums.Feature;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -39,7 +38,12 @@ public class Vehicle {
     @NotNull
     private Integer stock;
     @NotNull
-    @Enumerated(EnumType.STRING)
+    @ManyToMany
+    @JoinTable(
+            name = "vehicle_features",
+            joinColumns = @JoinColumn(name = "vehicle_id"),
+            inverseJoinColumns = @JoinColumn(name = "feature_id")
+    )
     private List<Feature> features;
     @NotNull
     @Enumerated(EnumType.STRING)
