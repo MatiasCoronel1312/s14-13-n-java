@@ -1,10 +1,15 @@
 package com.gocar.app.models;
 
-import jakarta.persistence.*;
-
-import jakarta.validation.constraints.NotBlank;
-import lombok.*;
-
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name ="reservation")
@@ -13,33 +18,19 @@ import lombok.*;
 @EqualsAndHashCode(of = "id")
 @Getter
 @Setter
-@ToString
-@Builder
 
 public class Reservation {
 	
 	 @Id
-	 @GeneratedValue(strategy = GenerationType.IDENTITY)
-	 private Long id;
-	 @ManyToOne
-	 @JoinColumn(name = "vehicle_id")
-	 private Vehicle vehicle;
-	@ManyToOne
-	@JoinColumn(name = "user_id")
-	 private User User;
-
+	    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	    private Long id;
+	 private Long idCAr;
+	 private Long idUser;
 	 private Double iva;
 	 private Double subtotal;
 	 private Double total;
 	 private Long idReservationDates;
-	 @OneToOne
-	 @JoinColumn
-
-	 private Insurance Insurance;
-	 private Boolean softDelete  = Boolean.FALSE;
-
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "reservation_dates_id", referencedColumnName = "id")
-	private ReservationDates reservationDates;
+	 private Insurance idInsurance;
+	 
 
 }

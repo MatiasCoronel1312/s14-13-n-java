@@ -2,8 +2,6 @@ package com.gocar.app.controller;
 
 import com.gocar.app.dtos.exception.ErrorResponseDto;
 import com.gocar.app.exceptions.EmailOrPasswordIncorrectException;
-import jakarta.persistence.EntityNotFoundException;
-import org.hibernate.service.spi.ServiceException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -26,17 +24,6 @@ public class RestResponseEntityExceptionHandler {
         return new ResponseEntity<>(new ErrorResponseDto("Email or password", ex.getMessage()),
                 HttpStatus.BAD_REQUEST);
     }
-
-    @ExceptionHandler(EntityNotFoundException.class)
-    public ResponseEntity<Object> handlerEntityNotFoundException(EntityNotFoundException e){
-        return new ResponseEntity<>(e.getMessage(),HttpStatus.NOT_FOUND);
-    }
-
-    @ExceptionHandler(ServiceException.class)
-    public ResponseEntity<Object> handlerServiceException(ServiceException e){
-        return new ResponseEntity<>(e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
-    }
-
     @ExceptionHandler(SQLIntegrityConstraintViolationException.class)
     public ResponseEntity<Object> SQLIntegrityConstraintViolationException(SQLIntegrityConstraintViolationException ex, WebRequest request) {
         String originalMsg = ex.getMessage();
