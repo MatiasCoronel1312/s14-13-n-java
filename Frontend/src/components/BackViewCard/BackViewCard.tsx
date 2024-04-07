@@ -4,11 +4,21 @@ interface Props {
   showCars: TCarro[];
   indexCar: number;
   flipCard: () => void;
+  isCategory?: boolean;
 }
 
-export default function BackViewCard({ showCars, indexCar, flipCard }: Props) {
+export default function BackViewCard({
+  showCars,
+  indexCar,
+  flipCard,
+  isCategory,
+}: Props) {
   return (
-    <div className="w-[375px] h-[500px] border border-gray-300 bg-white rounded-xl flex flex-col items-center  py-6 shadow-card relative">
+    <div
+      className={`w-[375px] ${
+        isCategory ? "h-[573px]" : "h-[500px]"
+      } border border-gray-300 bg-white rounded-xl flex flex-col items-center  py-6 shadow-card relative`}
+    >
       <p className="text-2xl font-light mb-2">{showCars[indexCar].modelo}</p>
 
       <div className="grid grid-cols-2 gap-2 w-full px-3 ">

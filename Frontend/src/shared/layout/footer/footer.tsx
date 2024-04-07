@@ -7,7 +7,7 @@ import { FaLinkedin } from 'react-icons/fa6'
 // import { FaEnvelope } from 'react-icons/fa6'
 const Footer = () => {
   return (
-    <footer className="h-[550px] max-w-[1440px] bg-[#707070] flex justify-center items-center">
+    <footer className="h-[550px] lg:w-[90%] bg-[#707070] flex justify-center items-center">
       <div className='w-[1176px] h-[348px] flex flex-col text-[14px]'>
         <div className='flex justify-between w-full h-[328px]'>
           <div className='w-[180px] h-[40px]'>
