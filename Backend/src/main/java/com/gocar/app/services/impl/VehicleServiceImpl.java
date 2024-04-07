@@ -2,6 +2,7 @@ package com.gocar.app.services.impl;
 
 import com.gocar.app.dtos.vehicle.VehicleDTO;
 import com.gocar.app.enums.Category;
+import com.gocar.app.models.Feature;
 import com.gocar.app.models.Vehicle;
 import com.gocar.app.repositories.VehicleRepository;
 import com.gocar.app.services.VehicleService;
@@ -26,6 +27,7 @@ public class VehicleServiceImpl implements VehicleService {
         try{
             List<Vehicle> vehiculeList = vehicleRepository.findAll();
             vehicleDTOList = vehiculeList.stream().map(v -> VehicleDTO.builder() // v = vehicle
+                    .id(v.getId())
                     .brand(v.getBrand())
                     .model(v.getModel())
                     .modelYear(v.getModelYear())
@@ -34,7 +36,7 @@ public class VehicleServiceImpl implements VehicleService {
                     .image(v.getImage())
                     .price(v.getPrice())
                     .stock(v.getStock())
-                    .features(v.getFeatures())
+                    .features(v.getFeatures().stream().map(Feature::getName).toList())
                     .category(v.getCategory())
                     .build()
             ).toList();
@@ -71,7 +73,7 @@ public class VehicleServiceImpl implements VehicleService {
                     .image(v.getImage())
                     .price(v.getPrice())
                     .stock(v.getStock())
-                    .features(v.getFeatures())
+                    .features(v.getFeatures().stream().map(Feature::getName).toList())
                     .category(v.getCategory())
                     .build()
             ).toList();
@@ -93,7 +95,7 @@ public class VehicleServiceImpl implements VehicleService {
                     .image(vehicleDTO.image())
                     .price(vehicleDTO.price())
                     .stock(vehicleDTO.stock())
-                    .features(vehicleDTO.features())
+//                    .features(vehicleDTO.features())
                     .category(vehicleDTO.category())
                     .deleted(Boolean.FALSE)
                     .build();
@@ -118,7 +120,7 @@ public class VehicleServiceImpl implements VehicleService {
             vehicleDataBase.setImage(vehicleDTO.image());
             vehicleDataBase.setPrice(vehicleDTO.price());
             vehicleDataBase.setStock(vehicleDTO.stock());
-            vehicleDataBase.setFeatures(vehicleDTO.features());
+//            vehicleDataBase.setFeatures(vehicleDTO.features());
             vehicleDataBase.setCategory(vehicleDTO.category());
             vehicleDataBase.setDeleted(Boolean.FALSE);
 
