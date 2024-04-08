@@ -17,8 +17,9 @@ import lombok.Setter;
 @EqualsAndHashCode(of = "id")
 @Getter
 @Setter
-
 public class Insurance {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
 	private Double price;
