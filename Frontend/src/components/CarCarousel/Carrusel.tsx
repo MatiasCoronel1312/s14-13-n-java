@@ -59,13 +59,13 @@ export default function Carrusel() {
 
   return (
     <>
-      <section className="h-full max-w-full">
+      <section className="h-full lg:w-[85%] md:w-[90%]">
         <div className="mb-8">
           <h1 className="text-center font-sans font-bold text-text text-2xl">
             Conocé nuestra flota
           </h1>
         </div>
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center w-full">
           <div className="flex flex-row align-bottom">
             <div className="flex flex-shrink-0 flex-col self-center">
               <img

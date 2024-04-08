@@ -8,6 +8,12 @@
 .Gradient-V {
   background-image: linear-gradient(180deg, #ff8c00, #b81c00);
 }
+.Gradient-H {
+  background-image: linear-gradient(135deg, #ff8c00, #b81c00);
+}
+.Gradient-H_hover:hover {
+  background-image: linear-gradient(135deg, #ff8c00, #b81c00);
+}
 .border-gradient {
   border: solid 3px;
   border-color: gradient(135deg, #ff8c00, #b81c00)

@@ -1,19 +1,18 @@
+
 import NuevaReserva from '../components/NuevaReserva/NuevaReserva';
+import TurismoHome from '../components/turismo/TurismoHome';
 import Carrusel from './../components/CarCarousel/Carrusel';
-import { NuevaReserva } from './../components/NuevaReserva/NuevaReserva';
+
 
 const Home = () => {
   return (
-<<<<<<< HEAD
-    <div>
-      <NuevaReserva/>
-=======
-    <div >
->>>>>>> 73eb5292a0e23232a19db681c67f29b17194f2a7
+
+    <div className='w-full flex flex-col items-center'>
       <Carrusel />
       <NuevaReserva/>
+      <TurismoHome/>
     </div>
   )
 }
 
-export default Home
+export default Home;
