@@ -7,7 +7,7 @@ const Home = () => {
       <p className="text-3xl font-bold underline bg-red-200">hola mundo desde home 
       <FaUserLarge/>
       </p>
-      <TurismoHome />
+      <TurismoHome/>
     </div>
   )
 }

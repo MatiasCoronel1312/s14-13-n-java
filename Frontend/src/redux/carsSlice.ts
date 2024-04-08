@@ -23,32 +23,23 @@ export type TCarro = {
   categoría: TCategoría;
   stock: number;
 };
-
-const estadoInicial = {
-    cars: [
-        // {
-        //     id: 0,
-        //     modelo: '',
-        //     features: [],
-        //     imagen: '',
-        //     pasajeros: 0,
-        //     precio: 0,
-        //     categoría: '',
-        //     stock: 0,
-        //   }
-        
-    ]
+interface CarsState {
+    cars: TCarro[]
 }
 
-const allCarsSlice = createSlice({
+const estadoInicial:CarsState = {
+    cars: []
+}
+
+const carsSlice = createSlice({
     name: 'cars',
     initialState: estadoInicial,
     reducers: {
-        getCars: (state, actions: PayloadAction)=>{
+        getCars: (state, actions: PayloadAction<TCarro[]>)=>{
             state.cars = actions.payload
-        }
-    }
-})
+        },
+    },
+});
 
-export const { getCars } = allCarsSlice.actions;
-export default allCarsSlice.reducer;
+export const { getCars } = carsSlice.actions;
+export default carsSlice.reducer;
