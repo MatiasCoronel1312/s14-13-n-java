@@ -53,7 +53,7 @@ const TurismoHome = () => {
             setIndexSite={setIndexSite} 
           />
         </div>
-        <ButtonTourism title="Consulta todos los destinos" path="" />
+        <ButtonTourism title="Consulta todos los destinos" path="/tipsTuristicos" />
       </div>
     )
   }
