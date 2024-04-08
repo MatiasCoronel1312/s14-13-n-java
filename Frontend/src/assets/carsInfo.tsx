@@ -10,7 +10,16 @@ type TFeatures =
   | "Dir. Asistida Eléctrica"
   | "2 maleta(s) pequena(s)";
 
-type TCategoría = "4x4" | "Deportivo" | "Standard" | "Premium" | "Van";
+type TCategoría =
+  | "SEDAN"
+  | " SEDAN_PREMIUM"
+  | "HYBRID"
+  | "SUV"
+  | "SPORT"
+  | "ECONOMIC"
+  | "MINIVAN"
+  | "VAN"
+  | "TRUCK";
 export type TCarro = {
   id: number;
   modelo: string;
@@ -57,7 +66,7 @@ carros.push({
   imagen: "ToyotaCorolla.png",
   pasajeros: 5,
   precio: 62,
-  categoría: "Standard",
+  categoría: " SEDAN_PREMIUM",
   stock: 5,
 });
 
@@ -79,8 +88,29 @@ carros.push({
   imagen: "DodgeChallenger.png",
   pasajeros: 4,
   precio: 82,
-  categoría: "Standard",
-  stock: 5,
+  categoría: "ECONOMIC",
+  stock: 0,
+});
+carros.push({
+  id: 3,
+  modelo: "Chevrolet Tahoe",
+  features: [
+    "4 puertas",
+    "Levantavidrios eléctricos",
+    "ABS",
+    "2 maleta(s) grande(s)",
+    "5 personas",
+    "Aire acondicionado",
+    "Cierre centralizado",
+    "Automático",
+    "Dir. Asistida Eléctrica",
+    "2 maleta(s) pequena(s)",
+  ],
+  imagen: "ChevroletTahoe.png",
+  pasajeros: 7,
+  precio: 159,
+  categoría: "ECONOMIC",
+  stock: 3,
 });
 
 carros.push({
@@ -101,7 +131,29 @@ carros.push({
   imagen: "ChevroletTahoe.png",
   pasajeros: 7,
   precio: 159,
-  categoría: "Premium",
+  categoría: "HYBRID",
+  stock: 0,
+});
+
+carros.push({
+  id: 4,
+  modelo: "Nissan Versa",
+  features: [
+    "4 puertas",
+    "Levantavidrios eléctricos",
+    "ABS",
+    "2 maleta(s) grande(s)",
+    "5 personas",
+    "Aire acondicionado",
+    "Cierre centralizado",
+    "Automático",
+    "Dir. Asistida Eléctrica",
+    "2 maleta(s) pequena(s)",
+  ],
+  imagen: "NissanVersa.png",
+  pasajeros: 5,
+  precio: 70,
+  categoría: "HYBRID",
   stock: 5,
 });
 
@@ -123,7 +175,7 @@ carros.push({
   imagen: "NissanVersa.png",
   pasajeros: 5,
   precio: 70,
-  categoría: "Standard",
+  categoría: "MINIVAN",
   stock: 5,
 });
 
@@ -145,7 +197,7 @@ carros.push({
   imagen: "FordTransit.png",
   pasajeros: 15,
   precio: 210,
-  categoría: "Van",
+  categoría: "SEDAN",
   stock: 5,
 });
 carros.push({
@@ -166,8 +218,8 @@ carros.push({
   imagen: "ChevroletExpress.png",
   pasajeros: 2,
   precio: 130,
-  categoría: "Van",
-  stock: 5,
+  categoría: "SPORT",
+  stock: 0,
 });
 
 carros.push({
@@ -188,7 +240,7 @@ carros.push({
   imagen: "FordMustangConvertible.png",
   pasajeros: 4,
   precio: 310,
-  categoría: "Premium",
+  categoría: "SUV",
   stock: 5,
 });
 carros.push({
@@ -209,7 +261,7 @@ carros.push({
   imagen: "AudiA5.png",
   pasajeros: 5,
   precio: 140,
-  categoría: "Premium",
+  categoría: "TRUCK",
   stock: 5,
 });
 
@@ -231,7 +283,7 @@ carros.push({
   imagen: "ToyotaPrius.png",
   pasajeros: 5,
   precio: 80,
-  categoría: "Standard",
+  categoría: "VAN",
   stock: 5,
 });
 

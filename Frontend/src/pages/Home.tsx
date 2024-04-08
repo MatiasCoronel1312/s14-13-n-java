@@ -1,15 +1,18 @@
-import { FaUserLarge } from "react-icons/fa6"
-import TurismoHome from "../components/turismo/TurismoHome"
+
+import NuevaReserva from '../components/NuevaReserva/NuevaReserva';
+import TurismoHome from '../components/turismo/TurismoHome';
+import Carrusel from './../components/CarCarousel/Carrusel';
+
 
 const Home = () => {
   return (
-    <div>
-      <p className="text-3xl font-bold underline bg-red-200">hola mundo desde home 
-      <FaUserLarge/>
-      </p>
+
+    <div className='w-full flex flex-col items-center'>
+      <Carrusel />
+      <NuevaReserva/>
       <TurismoHome/>
     </div>
   )
 }
 
-export default Home
+export default Home;

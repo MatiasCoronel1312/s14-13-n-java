@@ -1,18 +1,13 @@
-import "./App.css";
 
-import TimeLine from "./components/timeline/TimeLine";
+import "./App.css";
 import MainRouter from "./router/mainRouter";
-import TarifasSection from "./components/TarifasSection/TarifasSection";
-import CoberturasSection from "./components/CoberturasSection/CoberturasSection";
 
 function App() {
+
   return (
-    <>
+    <div className='bg-[#ffffff]'>
       <MainRouter />
-      <TimeLine />
-      <TarifasSection />
-      <CoberturasSection />
-    </>
+    </div>
   );
 }
 
