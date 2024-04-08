@@ -20,9 +20,7 @@ const Footer = () => {
               <Link className='py-0.5' to="/redDeAgencias">RED DE AGENCIAS</Link>
               <Link className='py-0.5' to="/tipsTuristicos">TIPS TURISTICOS</Link>
               <Link className='py-0.5' to="/dudas">DUDAS</Link>
-
             </ul> 
-
           </div>
           <div className='w-[60px] h-[190px] flex flex-col justify-around '>
             <h2 className='text-white font-semibold'>SOCIALS</h2>
