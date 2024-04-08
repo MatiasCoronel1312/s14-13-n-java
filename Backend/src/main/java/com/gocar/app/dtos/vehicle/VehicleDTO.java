@@ -1,7 +1,7 @@
 package com.gocar.app.dtos.vehicle;
 
 import com.gocar.app.enums.Category;
-import com.gocar.app.enums.Feature;
+import com.gocar.app.models.Feature;
 import com.gocar.app.models.Vehicle;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -11,6 +11,8 @@ import java.util.List;
 
 @Builder
 public record VehicleDTO(
+        @NotNull
+        Long id,
         @NotBlank
         String brand,
         @NotBlank
@@ -28,14 +30,14 @@ public record VehicleDTO(
         @NotNull
         Integer stock,
         @NotNull
-        List<Feature> features,
+        List<String> features,
         @NotNull
         Category category
 ) {
 
 
     public VehicleDTO(Vehicle vehicle){
-        this(
+         this(  vehicle.getId(),
                 vehicle.getBrand(),
                 vehicle.getModel(),
                 vehicle.getModelYear(),
@@ -44,7 +46,7 @@ public record VehicleDTO(
                 vehicle.getImage(),
                 vehicle.getPrice(),
                 vehicle.getStock(),
-                vehicle.getFeatures(),
+                vehicle.getFeatures().stream().map(Feature::getName).toList(),
                 vehicle.getCategory()
         );
     }
