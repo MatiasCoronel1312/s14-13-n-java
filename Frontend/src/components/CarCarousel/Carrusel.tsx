@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import Car from "./carrusel.interface";
+import { useNavigate } from "react-router-dom";
 export default function Carrusel() {
+  const navigator = useNavigate();
   const images: Car[] = [
     {
       image: "src/assets/ImagenesCarros/AudiA5.png",
@@ -139,6 +141,7 @@ export default function Carrusel() {
         </div>
         <div className="flex justify-center align-bottom">
           <button
+          onClick={()=>{navigator('/categoriasDeVehiculos')}}
             type="button"
             className="border-orange-600 border-2 text-orange-600 py-4 px-10 rounded-md mt-8"
           >
