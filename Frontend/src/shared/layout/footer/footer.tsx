@@ -16,10 +16,10 @@ const Footer = () => {
           <div className='w-[117px] h-[195px] flex flex-col justify-between'>
             <h2 className='text-white font-semibold'>SITEMAP</h2>
             <ul className='text-background flex flex-col justify-around w-full h-[148px] '>
-              <Link to="/categoriasDeVehiculos">CATEGORIAS DE VEHICULOS</Link>
-              <Link to="/redDeAgencias">RED DE AGENCIAS</Link>
-              <Link to="/tipsTuristicos">TIPS TURISTICOS</Link>
-              <Link to="/dudas">DUDAS</Link>
+              <Link className='py-0.5' to="/categoriasDeVehiculos">CATEGORIAS DE VEHICULOS</Link>
+              <Link className='py-0.5' to="/redDeAgencias">RED DE AGENCIAS</Link>
+              <Link className='py-0.5' to="/tipsTuristicos">TIPS TURISTICOS</Link>
+              <Link className='py-0.5' to="/dudas">DUDAS</Link>
 
             </ul> 
 
