@@ -18,7 +18,9 @@ export const NuevaReserva = () => {
 
   return (
     <>
+
       <div className="Gradient-V w-[1180px] min-h-[129px] p-6 my-6 rounded-xl ">
+
         <form className="flex  justify-between flex-wrap gap-4" onSubmit={onSubmit}>
           <div className="flex gap-2">
             <p className="text-white text-[24px] self-center">Nueva Reserva</p>
@@ -29,6 +31,8 @@ export const NuevaReserva = () => {
             "
               {...register("agenciaRetiro")}
             />
+
+
             <svg
               width="19"
               height="26"
@@ -106,3 +110,4 @@ export const NuevaReserva = () => {
     </>
   );
 };
+export default NuevaReserva

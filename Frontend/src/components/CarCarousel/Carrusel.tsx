@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import Car from "./carrusel.interface";
+
 export default function Carrusel() {
+
   const images: Car[] = [
     {
       image: "src/assets/ImagenesCarros/AudiA5.png",
@@ -59,13 +61,15 @@ export default function Carrusel() {
 
   return (
     <>
+
       <section className="h-full max-w-full">
+
         <div className="mb-8">
           <h1 className="text-center font-sans font-bold text-text text-2xl">
             Conocé nuestra flota
           </h1>
         </div>
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center w-full">
           <div className="flex flex-row align-bottom">
             <div className="flex flex-shrink-0 flex-col self-center">
               <img
@@ -139,6 +143,7 @@ export default function Carrusel() {
         </div>
         <div className="flex justify-center align-bottom">
           <button
+          onClick={()=>{navigator('/categoriasDeVehiculos')}}
             type="button"
             className="border-orange-600 border-2 text-orange-600 py-4 px-10 rounded-md mt-8"
           >
