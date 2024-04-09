@@ -129,6 +129,8 @@ public class VehicleServiceImpl implements VehicleService {
 //          vehicleDataBase.setFeatures(vehicleDTO.features());
             vehicleDataBase.setCategory(vehicleDTO.category());
             vehicleDataBase.setDeleted(Boolean.FALSE);
+
+
             Vehicle vehicleUpdated = vehicleRepository.save(vehicleDataBase);
             return new VehicleDTO(vehicleUpdated);
         } catch (EntityNotFoundException e) {
@@ -146,8 +148,10 @@ public class VehicleServiceImpl implements VehicleService {
         return Boolean.TRUE;
     }
 
+
     @Override
     public Vehicle findVehicleById(Long id) {
         return vehicleRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("There is no vehicle with that id in the database"));
     }
+
 }

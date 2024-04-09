@@ -1,8 +1,10 @@
 package com.gocar.app.models;
 
 import jakarta.persistence.*;
+
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
+
 
 @Entity
 @Table(name ="reservation")
@@ -13,6 +15,7 @@ import lombok.*;
 @Setter
 @ToString
 @Builder
+
 public class Reservation {
 	
 	 @Id
@@ -24,14 +27,17 @@ public class Reservation {
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	 private User User;
+
 	 private Double iva;
 	 private Double subtotal;
 	 private Double total;
 	 private Long idReservationDates;
 	 @OneToOne
 	 @JoinColumn
+
 	 private Insurance Insurance;
 	 private Boolean softDelete  = Boolean.FALSE;
+
 
 
 
