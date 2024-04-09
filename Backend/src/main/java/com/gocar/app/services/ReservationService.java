@@ -1,15 +1,21 @@
 package com.gocar.app.services;
-import java.util.List;
 
+import com.gocar.app.dtos.reservation.ReservationResponseDTO;
 import org.hibernate.service.spi.ServiceException;
-import com.gocar.app.dtos.auth.ReservationDTO;
+
+import com.gocar.app.dtos.reservation.ReservationDTO;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface ReservationService {
 	
-	 List<ReservationDTO> findAll() throws ServiceException;
-	 ReservationDTO findById(Long id);
-	 ReservationDTO save(ReservationDTO reservationDTO);
-	 ReservationDTO update(Long id, ReservationDTO reservationDTO);
-	 boolean delete(Long id);
+
+    Page<ReservationResponseDTO> findAll(Pageable pageable) throws ServiceException;
+
+    ReservationResponseDTO findById(Long id);
+	   
+	ReservationResponseDTO save(ReservationDTO reservationDTO);
+	ReservationResponseDTO update(Long id, ReservationDTO reservationDTO);
+	    boolean delete(Long id);
 
 }

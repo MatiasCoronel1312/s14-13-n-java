@@ -13,9 +13,9 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.awt.print.Pageable;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -54,7 +54,7 @@ public class VehicleServiceImpl implements VehicleService {
 
     @Override
     public Page<VehicleResponseDTO> findAll(Pageable pageable) {
-        return null;
+        return vehicleRepository.findAll(pageable)
     }
 
     @Override
@@ -160,7 +160,6 @@ public class VehicleServiceImpl implements VehicleService {
             vehicleDataBase.setFeatures(featureList);
             vehicleDataBase.setCategory(vehicleDTO.category());
             vehicleDataBase.setDeleted(Boolean.FALSE);
-
             Vehicle vehicleUpdated = vehicleRepository.save(vehicleDataBase);
             return new VehicleResponseDTO(vehicleUpdated);
         } catch (EntityNotFoundException e) {
@@ -176,6 +175,11 @@ public class VehicleServiceImpl implements VehicleService {
                 .orElseThrow(() -> new EntityNotFoundException("There is no vehicle with that id in the database"));
         vehicleDataBase.setDeleted(Boolean.TRUE);
         return Boolean.TRUE;
+    }
+
+    @Override
+    public Vehicle findVehicleById(Long id) {
+        return vehicleRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("There is no vehicle with that id in the database"));
     }
 }
 

@@ -1,12 +1,16 @@
 package com.gocar.app.services.impl;
 
-import java.util.List;
-
+import com.gocar.app.dtos.reservation.ReservationResponseDTO;
+import com.gocar.app.models.Insurance;
+import com.gocar.app.models.User;
+import com.gocar.app.models.Vehicle;
 import org.hibernate.service.spi.ServiceException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import com.gocar.app.dtos.auth.ReservationDTO;
-import com.gocar.app.models.Insurance;
+import com.gocar.app.dtos.reservation.ReservationDTO;
 import com.gocar.app.models.Reservation;
 import com.gocar.app.repositories.ReservationRepository;
 import com.gocar.app.services.ReservationService;
@@ -23,39 +27,22 @@ public class ReservationServiceImpl  implements ReservationService{
 	
 
 	  private final ReservationRepository reservationRepository;
+	  private final UserServiceImpl userService;
+	  private final VehicleServiceImpl vehicleService;
+	  private final InsuranceServiceImpl insuranceService;
 
-	    @Override
-	    public List<ReservationDTO> findAll() throws ServiceException {
-	        List<ReservationDTO> reservationDTOList;
-	        try{	          List<Reservation> reservationList = reservationRepository.findAll();
-	            reservationDTOList = reservationList.stream().map(r -> ReservationDTO.builder() // r = reservation	                    .brand(v.getBrand())
-	                    .idCar(r.getidCar())
-	                    .id(r.getid())
-	                    .idUser(r.getidUser())
-	                    .iva(r.getiva())
-	                    .subtotal(r.getsubtotal())
-	                    .total(r.gettotal())
-	                    .idReservationDates(r.getidReservationDates())
-	                    .idInsurance(r.getidInsurance())
-	                    .build()
-	                    ).toList(); 
-	                   
-	        }catch (Exception e){
-	            throw new ServiceException("Error occurred while fetching all reservation", e);
-	        }
-	        return reservationDTOList;
-	    
-	   	 
-	   	 
-	 
+
+	@Override
+	    public Page<ReservationResponseDTO> findAll(Pageable pageable) throws ServiceException {
+	   	 	return  reservationRepository.findAll(pageable).map(ReservationResponseDTO:: new);
 	    }
 
 	    @Override
-	    public ReservationDTO findById(Long id) {
+	    public ReservationResponseDTO findById(Long id) {
 	        try{
 	            Reservation reservationEntity = reservationRepository.findById(id)
 	                    .orElseThrow(() -> new EntityNotFoundException("There is no reservation with that id in the database"));
-	            return new ReservationDTO(reservationEntity);
+	            return new ReservationResponseDTO(reservationEntity);
 	        }catch (EntityNotFoundException e){
 	            throw e;
 	        }catch (Exception e){
@@ -66,44 +53,41 @@ public class ReservationServiceImpl  implements ReservationService{
 	
 
 	    @Override
-	    public ReservationDTO save(ReservationDTO reservationDTO) {
+	    public ReservationResponseDTO save(ReservationDTO reservationDTO) {
+			String userEmail = (String)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			User user = userService.findByEmail(userEmail);
+			Vehicle vehicle = vehicleService.findVehicleById(reservationDTO.vehicleId());
+			Insurance insurance = insuranceService.findById(reservationDTO.insuranceId());
 	        try{
 	            Reservation reservationEntity = Reservation.builder()
-	                    .idCar(reservationDTO.idCar())
-	                    .idUser(reservationDTO.idUser())
-	                    .iva(reservationDTO.iva())
-	                    .subtotal(reservationDTO.subtotal())
+	                    .vehicle(vehicle)
+	                    .User(user)
+	                    .iva(reservationDTO.total() * 0.12)
+	                    .subtotal(reservationDTO.total() - (reservationDTO.total() * 0.12))
 	                    .total(reservationDTO.total())
 	                    .idReservationDates(reservationDTO.idReservationDates())
-	                    .idInsurance(reservationDTO.insurance())
-	                    .idInsurance(reservationDTO.idInsurance())                  
-	                    .deleted(Boolean.FALSE)
+	                    .Insurance(insurance)
+	                    .softDelete(Boolean.FALSE)
 	                    .build();
 	            Reservation entitySaved = reservationRepository.save(reservationEntity);
-	            return new ReservationDTO(entitySaved);
+	            return new ReservationResponseDTO(entitySaved);
 	        }catch (Exception e){
 	            throw new ServiceException("Error occurred while saving reservation", e);
 	        }
 	    }
 
 	    @Override
-	    public ReservationDTO update(Long id, ReservationDTO reservationDTO) {
+	    public ReservationResponseDTO update(Long id, ReservationDTO reservationDTO) {
 	        try {
 	            Reservation reservationDataBase = reservationRepository.findById(id).
 	                    orElseThrow(()-> new EntityNotFoundException("There is no reservation with that id in the database"));
 
-	            reservationDataBase.setidCar(reservationDTO.idCar());
-	            reservationDataBase.setidUser(reservationDTO.idUser());
-	            reservationDataBase.setiva(reservationDTO.iva());
-	            reservationDataBase.setsubtotal(reservationDTO.subtotal());
-	            reservationDataBase.total(reservationDTO.total());
-	            reservationDataBase.setidReservationDates(reservationDTO.idReservationDates());
-	            reservationDataBase.setidInsurance(reservationDTO.idInsurance());
-	         
-	         
-
+	            reservationDataBase.setIva(reservationDTO.total() * 0.12);
+	            reservationDataBase.setSubtotal(reservationDTO.total() - (reservationDTO.total() * 0.12));
+	            reservationDataBase.setTotal(reservationDTO.total());
+	            reservationDataBase.setIdReservationDates(reservationDTO.idReservationDates());
 	            Reservation reservationUpdated = reservationRepository.save(reservationDataBase);
-	            return new ReservationDTO(reservationUpdated);
+	            return new ReservationResponseDTO(reservationUpdated);
 	        } catch (EntityNotFoundException e) {
 	            throw e;
 	        } catch (Exception e) {
@@ -115,7 +99,7 @@ public class ReservationServiceImpl  implements ReservationService{
 	    public boolean delete(Long id) {
 	        Reservation reservationDataBase = reservationRepository.findById(id)
 	                .orElseThrow(() -> new EntityNotFoundException("There is no reservation with that id in the database"));
-	        reservationDataBase.setDeleted(Boolean.TRUE);
+	        reservationDataBase.setSoftDelete(Boolean.TRUE);
 	        return Boolean.TRUE;
 	    }
 
