@@ -1,5 +1,7 @@
+import { useNavigate } from "react-router-dom";
 import { TCarro } from "../../assets/carsInfo";
 import ButtonMain from "../ButtonMain/ButtonMain";
+//import carro from "AudiA5.png"
 
 interface Props {
   lessIndex: () => void;
@@ -20,8 +22,16 @@ export function FrontViewCard({
   flipCard,
   isCategory,
 }: Props) {
+  const navigate = useNavigate();
   const detailsCar = showCars[indexCar];
   const hasStock = detailsCar.stock > 0;
+  const isMoreCar = showCars.length > 1;
+  const goToSelectCar = () => {
+    navigate("/selecciona-pago", {
+      state: { carro: [detailsCar] },
+    });
+  };
+
   return (
     <div
       className={` ${
@@ -32,40 +42,44 @@ export function FrontViewCard({
 
       <section className="flex flex-col items-center gap-3 py-2">
         <figure className="w-[285px] h-[200px] relative bg-gray-400 p-6 ">
-          <div className="absolute flex z-20 w-[285px] top-20 left-0 justify-between px-3 text-gray-600 font-bold text-xl">
-            <p className="hover:cursor-pointer " onClick={lessIndex}>
-              {"<"}
-            </p>
-            <p className="hover:cursor-pointer " onClick={addIndex}>
-              {">"}
-            </p>
-          </div>
+          {isMoreCar && (
+            <div className="absolute flex z-20 w-[285px] top-20 left-0 justify-between px-3 text-gray-600 font-bold text-xl">
+              <p className="hover:cursor-pointer " onClick={lessIndex}>
+                {"<"}
+              </p>
+              <p className="hover:cursor-pointer " onClick={addIndex}>
+                {">"}
+              </p>
+            </div>
+          )}
           <img
             className="relative -top-5 z-10 "
-            src={`./public/imagenesCarros/${detailsCar.imagen}`}
+            src={`../../../public/imagenesCarros/${detailsCar.imagen}`}
             alt=""
           />
-          <div className="flex w-full justify-center relative -top-8 items-center">
-            {showCars.map((car, index) => {
-              const isSelected = indexCar === index;
-              return (
-                <div key={index}>
-                  {isSelected ? (
-                    <p
-                      className={`h-3 w-6 rounded-full bg-gradient-to-l transition-all duration-[800ms]  ease-in  from-[#B81C00] to-[#FF8C00] `}
-                    ></p>
-                  ) : (
-                    <p
-                      onClick={() => setInderCar(index)}
-                      key={car.id}
-                      className={`h-3 mx-1 relative z-50 hover:cursor-pointer rounded-full "w-3  bg-gray-200/45"
+          {isMoreCar && (
+            <div className="flex w-full justify-center relative -top-8 items-center">
+              {showCars.map((car, index) => {
+                const isSelected = indexCar === index;
+                return (
+                  <div key={index}>
+                    {isSelected ? (
+                      <p
+                        className={`h-3 w-6 rounded-full bg-gradient-to-l transition-all duration-[800ms]  ease-in  from-[#B81C00] to-[#FF8C00] `}
+                      ></p>
+                    ) : (
+                      <p
+                        onClick={() => setInderCar(index)}
+                        key={car.id}
+                        className={`h-3 mx-1 relative z-50 hover:cursor-pointer rounded-full "w-3  bg-gray-200/45"
                      ${isSelected ? "" : "w-3  bg-gray-200/45"} `}
-                    ></p>
-                  )}
-                </div>
-              );
-            })}
-          </div>
+                      ></p>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          )}
         </figure>
         <p className="text-2xl font-light text-primary">{detailsCar.modelo}</p>
         <p className="px-10 text-pretty text-[12px]">
@@ -81,7 +95,9 @@ export function FrontViewCard({
 
         {isCategory &&
           (hasStock ? (
-            <ButtonMain title={"Seleccionar Grupo"} path={""} />
+            <div onClick={goToSelectCar}>
+              <ButtonMain title={"Seleccionar Grupo"} />
+            </div>
           ) : (
             <div className="w-[211px] h-[64px] bg-[#8F8F8F] flex items-center justify-center rounded-xl">
               <p className=" text-xl font-extralight">Sin Stock</p>

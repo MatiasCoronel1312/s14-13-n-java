@@ -1,16 +1,15 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 
 interface Props {
   title: string;
-  path: string;
 }
-export default function ButtonMain({ title, path }: Props) {
+export default function ButtonMain({ title }: Props) {
   const [isHover, setIsHover] = useState(
     "bg-gradient-to-l  from-[#B81C00] to-[#FF8C00]"
   );
+
   return (
-    <Link to={path}>
+    <div>
       <div
         onMouseEnter={() => setIsHover("bg-[#FF8C00]")}
         onMouseLeave={() =>
@@ -20,6 +19,6 @@ export default function ButtonMain({ title, path }: Props) {
       >
         <p className="text-white text-xl font-extralight">{title}</p>
       </div>
-    </Link>
+    </div>
   );
 }

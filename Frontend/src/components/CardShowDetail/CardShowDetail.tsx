@@ -11,6 +11,7 @@ interface Props {
 export default function CardShowDetail({ showCars, isCategory }: Props) {
   const [indexCar, setInderCar] = useState(0);
   const [showFront, setShowFront] = useState(false);
+
   const addIndex = () => {
     if (indexCar < showCars.length - 1) {
       setInderCar((state) => (state += 1));

@@ -1,9 +1,10 @@
 import ButtonMain from "../ButtonMain/ButtonMain";
 interface Props {
   title: string;
-  path: string;
+
+  price: number;
 }
-export default function CardToPay({ title, path }: Props) {
+export default function CardToPay({ title, price }: Props) {
   return (
     <div className="w-[375px] min-h-[600px]   p-6 flex flex-col justify-between items-center border border-spacing-2 border-black rounded-3xl shadow-card">
       <h3 className="text-2xl font-extralight">{title}</h3>
@@ -18,9 +19,9 @@ export default function CardToPay({ title, path }: Props) {
       </div>
       <div className="flex flex-col items-center ">
         <p className="font-extralight text-sm mb-2">Desde</p>
-        <p className="text-2xl  font-ligth shadow-text">US$ 55,00 / dia</p>
+        <p className="text-2xl  font-ligth shadow-text">US$ {price},00 / dia</p>
       </div>
-      <ButtonMain title={"Seleccionar Oferta"} path={path} />
+      <ButtonMain title={"Seleccionar Oferta"} />
     </div>
   );
 }
