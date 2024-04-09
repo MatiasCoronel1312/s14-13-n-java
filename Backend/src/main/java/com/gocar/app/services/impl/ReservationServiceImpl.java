@@ -1,7 +1,6 @@
 package com.gocar.app.services.impl;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.stereotype.Service;
@@ -38,7 +37,7 @@ public class ReservationServiceImpl  implements ReservationService{
 	                    .total(r.gettotal())
 	                    .idReservationDates(r.getidReservationDates())
 	                    .idInsurance(r.getidInsurance())
-	                    .build())
+	                    .build()
 	                    ).toList(); 
 	                   
 	        }catch (Exception e){

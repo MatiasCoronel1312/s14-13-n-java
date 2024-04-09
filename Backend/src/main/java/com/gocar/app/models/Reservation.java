@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name ="reservation")
+@Table(name ="reservations")
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
@@ -16,16 +16,13 @@ import lombok.Setter;
 @Setter
 @ToString
 @Builder
-
-
 public class Reservation {
 	
 	 @Id
-	    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	 private Long id;
 	 @NotBlank
 	 private Long idCAr;
-	 
 	 private Long idUser;
 	 private Double iva;
 	 private Double subtotal;
@@ -34,78 +31,6 @@ public class Reservation {
 	 @OneToOne
 	 @JoinColumn
 	 private Insurance idInsurance;
-	 
-	 
-	 
-	 
-	 public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
-	public Long getIdCAr() {
-		return idCAr;
-	}
-	public void setIdCAr(Long idCAr) {
-		this.idCAr = idCAr;
-	}
-	public Long getIdUser() {
-		return idUser;
-	}
-	public void setIdUser(Long idUser) {
-		this.idUser = idUser;
-	}
-	public Double getIva() {
-		return iva;
-	}
-	public void setIva(Double iva) {
-		this.iva = iva;
-	}
-	public Double getSubtotal() {
-		return subtotal;
-	}
-	public void setSubtotal(Double subtotal) {
-		this.subtotal = subtotal;
-	}
-	public Double getTotal() {
-		return total;
-	}
-	public void setTotal(Double total) {
-		this.total = total;
-	}
-	public Long getIdReservationDates() {
-		return idReservationDates;
-	}
-	public void setIdReservationDates(Long idReservationDates) {
-		this.idReservationDates = idReservationDates;
-	}
-	public Insurance getIdInsurance() {
-		return idInsurance;
-	}
-	public void setIdInsurance(Insurance idInsurance) {
-		this.idInsurance = idInsurance;
-	}
-	public Boolean getSoftDelete() {
-		return softDelete;
-	}
-	public void setSoftDelete(Boolean softDelete) {
-		this.softDelete = softDelete;
-	}
-	
-	
-	    private Boolean softDelete  = Boolean.FALSE;
-	public void setSoftDelete(boolean b) {
-		// TODO Auto-generated method stub
-		
-	
-	
-	}
-	public void setDeleted(Boolean true1) {
-		// TODO Auto-generated method stub
-		
-	}
-	 
-	 
+	 private Boolean softDelete  = Boolean.FALSE;
 
 }

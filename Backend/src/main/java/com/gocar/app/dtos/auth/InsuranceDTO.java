@@ -3,21 +3,14 @@ package com.gocar.app.dtos.auth;
 import com.gocar.app.models.Insurance;
 import com.gocar.app.models.Reservation;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 
 
 	
 	@Builder
 	public record InsuranceDTO (
-
-
-	
-	
-	
-	
-
-
-	  @NotNull
     Long id,
     @NotBlank
     Long idCar,
@@ -32,7 +25,7 @@ import lombok.Builder;
     @NotNull
     Long idReservationDates,
     @NotNull
-    Insurance idInsurance,
+    Insurance idInsurance
    
 ) {
 

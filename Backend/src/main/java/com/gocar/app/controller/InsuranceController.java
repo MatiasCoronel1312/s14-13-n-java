@@ -37,7 +37,7 @@ public class InsuranceController {
     }
 
     @PostMapping(value = "save", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<InsuranceDTO> save (@RequestBody InsuranceDTO InsuranceDTO){
+    public ResponseEntity<InsuranceDTO> save (@RequestBody InsuranceDTO insuranceDTO){
         return ResponseEntity.status(HttpStatus.OK).body(insuranceService.save(insuranceDTO));
     }
 
