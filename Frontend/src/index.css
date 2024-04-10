@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.Gradient-T {
+  background-image: linear-gradient(135deg, #ff8c00, #b81c00);
+}
+.Gradient-V {
+  background-image: linear-gradient(180deg, #ff8c00, #b81c00);
+}
+.border-gradient {
+  border: solid 3px;
+  border-color: gradient(135deg, #ff8c00, #b81c00)
+}
+
+.container {
+max-width: 500px;
+margin: 0 auto;
+}
+
+.react-calendar {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 16px;
+}
+
+.react-calendar__month-view {
+  margin-bottom: 16px;
+}
+
+.react-calendar__day {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 8px;
+  text-align: center;
+}
+
+.react-calendar__day--selected {
+  background-color: #000;
+  color: #fff;
+}

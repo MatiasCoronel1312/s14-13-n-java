@@ -3,7 +3,9 @@ package com.gocar.app.services;
 import com.gocar.app.dtos.vehicle.VehicleRequestDTO;
 import com.gocar.app.dtos.vehicle.VehicleResponseDTO;
 import com.gocar.app.enums.Category;
+
 import com.gocar.app.models.Vehicle;
+
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,6 +22,8 @@ public interface VehicleService {
     VehicleResponseDTO save(VehicleRequestDTO vehicleDTO);
     VehicleResponseDTO update(Long id, VehicleRequestDTO vehicleDTO);
     boolean delete(Long id);
+
     Vehicle findVehicleById(Long id);
+
 
 }

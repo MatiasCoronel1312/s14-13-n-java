@@ -90,6 +90,7 @@
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
 			<version>2.3.0</version>
 		</dependency>
+
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
@@ -97,6 +98,7 @@
             <scope>compile</scope>
         </dependency>
     </dependencies>
+
 
 	<build>
 		<plugins>

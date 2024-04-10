@@ -135,6 +135,7 @@ public class VehicleServiceImpl implements VehicleService {
 
         try {
 
+
             List<Feature> featureList = vehicleDTO.features().stream()
                     .map(featureRepository::findByName)
                     .filter(Objects::nonNull)
@@ -158,6 +159,7 @@ public class VehicleServiceImpl implements VehicleService {
 
             return new VehicleResponseDTO(vehicleUpdated);
 
+
         } catch (EntityNotFoundException e) {
             throw e;
         } catch (Exception e) {
@@ -173,10 +175,12 @@ public class VehicleServiceImpl implements VehicleService {
         return Boolean.TRUE;
     }
 
+
     @Override
     public Vehicle findVehicleById(Long id) {
         return vehicleRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("There is no vehicle with that id in the database"));
     }
+
 }
 
 
