@@ -18,7 +18,8 @@ import org.springframework.stereotype.Service;
 
 
 import java.util.List;
-import java.util.stream.Stream;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -102,19 +103,12 @@ public class VehicleServiceImpl implements VehicleService {
 
     @Override
     public VehicleResponseDTO save(VehicleRequestDTO vehicleDTO) {
-        List<Feature> featureList;
         try{
-            Stream<String> featureNames = vehicleDTO.features().stream();
-            Stream<Feature> featureStream = featureNames.map(fn -> {
-                Feature feature = featureRepository.findByName(fn);
-                if(feature == null){
-                    feature = new Feature();
-                    feature.setName(fn);
-                    featureRepository.save(feature);
-                }
-                return feature;
-            });
-            featureList = featureStream.toList();
+
+            List<Feature> featureList = vehicleDTO.features().stream()
+                    .map(featureRepository::findByName)
+                    .filter(Objects::nonNull)
+                    .collect(Collectors.toList());
 
             Vehicle vehicleEntity = Vehicle.builder()
                     .brand(vehicleDTO.brand())
@@ -140,13 +134,11 @@ public class VehicleServiceImpl implements VehicleService {
     public VehicleResponseDTO update(Long id, VehicleRequestDTO vehicleDTO) {
 
         try {
-            List<Feature> featureList = vehicleDTO.features().stream().map(fn -> { //fn = feature name
-                Feature feature = featureRepository.findByName(fn);
-                if(feature == null){
-                    throw new EntityNotFoundException("Feature doesn't exist");
-                }
-                return feature;
-            }).toList();
+
+            List<Feature> featureList = vehicleDTO.features().stream()
+                    .map(featureRepository::findByName)
+                    .filter(Objects::nonNull)
+                    .collect(Collectors.toList());
 
             Vehicle vehicleDB = vehicleRepository.findById(id)
                     .orElseThrow(() -> new EntityNotFoundException("There is no vehicle with that id in the database"));
