@@ -10,7 +10,7 @@ import lombok.Builder;
 import java.util.List;
 
 @Builder
-public record VehicleDTO(
+public record VehicleResponseDTO(
         @NotNull
         Long id,
         @NotBlank
@@ -36,7 +36,7 @@ public record VehicleDTO(
 ) {
 
 
-    public VehicleDTO(Vehicle vehicle){
+    public VehicleResponseDTO(Vehicle vehicle){
          this(  vehicle.getId(),
                 vehicle.getBrand(),
                 vehicle.getModel(),
