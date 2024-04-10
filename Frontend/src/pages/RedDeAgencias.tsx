@@ -1,9 +1,11 @@
+import NuevaReserva from "../components/NuevaReserva/NuevaReserva"
 
 const RedDeAgencias = () => {
   return (
     
     <div className='w-full bg-background flex justify-center'>
-      <div className="h-[80px] lg:w-[85%] md:w-[90%]  ">
+      <div className="flex items-center flex-col">
+        <NuevaReserva/>
        <div>RedDeAgencias</div>
       </div>  
     </div> 
