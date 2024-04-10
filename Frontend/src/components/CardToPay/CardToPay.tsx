@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ButtonMain from "../ButtonMain/ButtonMain";
 interface Props {
   title: string;
@@ -22,6 +22,17 @@ export default function CardToPay({
     handleScrollToBack(1000);
     SetSelectACard(title);
   };
+  let realPrices = "";
+
+  if (price.toString().includes(".")) {
+    const entero = price.toString().split(".");
+    const decimal = entero[1].length == 1 ? `${entero[1]}0` : `${entero[1]}`;
+
+    realPrices = ` ${entero[0]}.${decimal}`;
+  } else {
+    realPrices = ` ${price}.00`;
+  }
+
   return (
     <div
       className={`w-[375px] min-h-[600px] ${
@@ -40,7 +51,9 @@ export default function CardToPay({
       </div>
       <div className="flex flex-col items-center ">
         <p className="font-extralight text-sm mb-2">Desde</p>
-        <p className="text-2xl  font-ligth shadow-text">US$ {price},00 / dia</p>
+        <p className="text-2xl  font-ligth shadow-text">
+          US$ {realPrices} / dia
+        </p>
       </div>
       {!planSelected ? (
         <div onClick={selectCard}>

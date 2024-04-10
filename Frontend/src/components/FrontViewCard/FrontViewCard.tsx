@@ -60,7 +60,7 @@ export function FrontViewCard({
           )}
           <img
             className="relative -top-5 z-10 "
-            src={`../../../public/imagenesCarros/${detailsCar.imagen}`}
+            src={`/public/imagenesCarros/${detailsCar.imagen}`}
             alt=""
           />
           {isMoreCar && (
