@@ -18,7 +18,7 @@ export const NuevaReserva = () => {
 
   return (
     <>
-      <div className="Gradient-V lg:w-[85%] md:w-[90%] min-h-[129px] p-6 my-6 rounded-xl ">
+      <div className="Gradient-V w-[1180px] min-h-[129px] p-6 my-6 rounded-xl ">
         <form
           className="flex  justify-between flex-wrap gap-4"
           onSubmit={onSubmit}
