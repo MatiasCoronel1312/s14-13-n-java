@@ -60,7 +60,8 @@ export function FrontViewCard({
           )}
           <img
             className="relative -top-5 z-10 "
-            src={`../../../public/imagenesCarros/${detailsCar.imagen}`}
+            // public/imagenesCarros/FordMustangConvertible.png
+            src={`/public/imagenesCarros/${detailsCar.imagen}`}
             alt=""
           />
           {isMoreCar && (
@@ -102,7 +103,7 @@ export function FrontViewCard({
         {isCategory &&
           (hasStock ? (
             <div onClick={goToSelectCar}>
-              <ButtonMain title={"Seleccionar Grupo"} />
+              <ButtonMain title={"Seleccionar Auto"} />
             </div>
           ) : (
             <div className="w-[211px] h-[64px] bg-[#8F8F8F] flex items-center justify-center rounded-xl">

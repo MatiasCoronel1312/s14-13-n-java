@@ -2,14 +2,21 @@ import CardToPay from "../CardToPay/CardToPay";
 
 import CardShowDetail from "../CardShowDetail/CardShowDetail";
 import { TCarro } from "../../assets/carsInfo";
-import { useState } from "react";
+
 interface Props {
   showCarSelected: TCarro[];
   handleScrollToBack: (a: number) => void;
+  selectACard: string;
+  SetSelectACard: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const TarifasSection = ({ showCarSelected, handleScrollToBack }: Props) => {
-  const [selectACard, SetSelectACard] = useState("");
+const TarifasSection = ({
+  showCarSelected,
+  handleScrollToBack,
+  selectACard,
+  SetSelectACard,
+}: Props) => {
+  //const [selectACard, SetSelectACard] = useState("");
   return (
     <section className="w-[1200px] min-h-[707px]  bg-background mx-auto p-6">
       <p className="text-2xl font-light">

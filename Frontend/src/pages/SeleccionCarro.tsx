@@ -6,10 +6,12 @@ import TimeLine from "../components/timeline/TimeLine";
 
 //import Home from "./Home";
 import ButtonMain from "../components/ButtonMain/ButtonMain";
+import { useState } from "react";
 
 const SeleccionDeCarro = () => {
   const params = useLocation();
   const navigate = useNavigate();
+  const [selectACard, SetSelectACard] = useState("");
 
   const carroSeleccionado = params?.state?.carro;
 
@@ -34,6 +36,8 @@ const SeleccionDeCarro = () => {
           <AlertNoCard />
         ) : (
           <TarifasSection
+            selectACard={selectACard}
+            SetSelectACard={SetSelectACard}
             handleScrollToBack={handleScrollToBack}
             showCarSelected={carroSeleccionado}
           />
@@ -41,11 +45,20 @@ const SeleccionDeCarro = () => {
 
         <CoberturasSection />
         <SummaryBooking />
+
         <div
-          onClick={goToPagoPage}
+          onClick={() => {
+            if (selectACard.length > 5) {
+              goToPagoPage();
+            }
+          }}
           className="flex w-full justify-center items-center  mb-10"
         >
-          <ButtonMain title="Continuar a Pago" />
+          {selectACard.length > 5 ? (
+            <ButtonMain title="Continuar a Pago" />
+          ) : (
+            <p>Selecciona Metodo de Pago.</p>
+          )}
         </div>
       </div>
     </div>
