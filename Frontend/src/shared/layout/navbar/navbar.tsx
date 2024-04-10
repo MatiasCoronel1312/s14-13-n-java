@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import GoCar from "../../../assets/icons/GoCar.png";
 const navbar = () => {
   return (
+
     <header className="w-full bg-[#707070] flex justify-center">
       <div className="h-[80px] lg:w-[85%] md:w-[90%] flex items-center justify-between ">
         <Link to="/">
@@ -33,5 +34,6 @@ const navbar = () => {
     </header>
   );
 };
+
 
 export default navbar;

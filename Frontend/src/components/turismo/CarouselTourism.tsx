@@ -1,3 +1,4 @@
+
 import CardDestinoTurismo from "./CardDestinoTurismo";
 
 type SitioTuristico = { id: number; imagen: string; descripcion: string };

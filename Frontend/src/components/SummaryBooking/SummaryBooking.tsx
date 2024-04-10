@@ -1,6 +1,7 @@
 import { FiEdit } from "react-icons/fi";
 
 const SummaryBooking = () => {
+
   return (
     <div className="Gradient-T p-5 w-[1200px] h-[500px] rounded-[15px] mb-10">
       <h1 className="text-center text-[20px] text-white ">
@@ -60,6 +61,7 @@ const SummaryBooking = () => {
         <div className="flex flex-col bg-white w-[580px] h-[405px] rounded-r-[10px] justify-between ms-3">
           <h1 className=" text-center">PAGAR EN EL MOSTRADOR</h1>
           <div className="flex flex-row justify-between">
+
             <div className="flex flex-col">
               <p>Diarias</p>
               <p>2x U$S 50,00</p>
@@ -70,21 +72,25 @@ const SummaryBooking = () => {
             </div>
 
             <div className="flex flex-col">
+
               <p>Total</p>
               <p>U$S 100,00</p>
               <p>&nbsp;</p>
               <p>U$S 0,06</p>
               <p>U$S 6,00</p>
               <p>U$S 21,00</p>
+
             </div>
           </div>
           <div className="flex flex-col items-center align-middle text-center bg-[#8F8F8F] w-full h-[140px] rounded-br-[10px]">
             <p className="text-center place-self-center flex">Valor Total</p>
             <p className=" text-[48px] text-white font-sans">U$S 127,06</p>
           </div>
+
         </div>
       </div>
     </div>
   );
 };
 export default SummaryBooking;
+

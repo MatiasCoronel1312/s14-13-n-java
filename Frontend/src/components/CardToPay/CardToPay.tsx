@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import ButtonMain from "../ButtonMain/ButtonMain";
 interface Props {
@@ -41,6 +42,7 @@ export default function CardToPay({
     >
       <h3 className="text-xl font-extralight">{title}</h3>
 
+
       <div className="flex flex-col h-[180px] justify-between gap-2">
         <p className="bg-[#FFF6EC] flex justify-center items-center w-[315px] h-[60px] shadow-card text-xl font-light">
           Kilometraje Libre
@@ -51,6 +53,7 @@ export default function CardToPay({
       </div>
       <div className="flex flex-col items-center ">
         <p className="font-extralight text-sm mb-2">Desde</p>
+
         <p className="text-2xl  font-ligth shadow-text">
           US$ {realPrices} / dia
         </p>
@@ -62,6 +65,7 @@ export default function CardToPay({
       ) : (
         <div className=" w-[293px] h-[64px]"></div>
       )}
+
     </div>
   );
 }
