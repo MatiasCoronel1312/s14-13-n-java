@@ -26,9 +26,15 @@ export function FrontViewCard({
   const detailsCar = showCars[indexCar];
   const hasStock = detailsCar.stock > 0;
   const isMoreCar = showCars.length > 1;
+
   const goToSelectCar = () => {
     navigate("/selecciona-pago", {
       state: { carro: [detailsCar] },
+    });
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
     });
   };
 
@@ -41,7 +47,7 @@ export function FrontViewCard({
       <p className="text-2xl font-light">{detailsCar.categoría}</p>
 
       <section className="flex flex-col items-center gap-3 py-2">
-        <figure className="w-[285px] h-[200px] relative bg-gray-400 p-6 ">
+        <figure className="w-[285px] h-[200px] relative bg-[#ABAAAA] p-6 ">
           {isMoreCar && (
             <div className="absolute flex z-20 w-[285px] top-20 left-0 justify-between px-3 text-gray-600 font-bold text-xl">
               <p className="hover:cursor-pointer " onClick={lessIndex}>

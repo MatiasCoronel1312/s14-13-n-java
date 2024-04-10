@@ -1,34 +1,50 @@
+import { useEffect, useState } from "react";
 import { FaCheck } from "react-icons/fa6";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 interface Props {
   posicion?: number;
 }
-
-const pointDots = [
+interface PointDots {
+  id: number;
+  detail: string;
+  path: string;
+  pathHabile: string[];
+}
+const pointDots: PointDots[] = [
   {
     id: 1,
     detail: "Local, fecha y hora de reserva",
     path: "-",
+    pathHabile: [""],
   },
   {
     id: 2,
     detail: "Categorías de vehículos",
     path: "/categoriasDeVehiculos/seleciona",
+    pathHabile: ["/selecciona-pago", "/finalizar-pago"],
   },
   {
     id: 3,
     detail: "Cargos y adicionales",
-    path: "-",
+    path: "/selecciona-pago",
+    pathHabile: ["/finalizar-pago"],
   },
   {
     id: 4,
     detail: "Datos de registro",
     path: "-",
+    pathHabile: [""],
   },
 ];
 const TimeLine = ({ posicion = 1 }: Props) => {
+  const location = useLocation();
+  const [addDotsTimeLine, setaAddDotsTimeLine] = useState("");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setaAddDotsTimeLine(location.pathname);
+  }, []);
 
   const circulos: string =
     "rounded-full border-[4px] border-[#8F8F8F] w-[34px] transition-all duration-1000 ease-in-out h-[34px] flex justify-center items-center ";
@@ -42,8 +58,7 @@ const TimeLine = ({ posicion = 1 }: Props) => {
   const title: string =
     "text-center text-[20px] w-[25%] cursor-pointer transition-all duration-1000 ease-in-out";
   const stageUno = (path: string): void => {
-    //setStage(num);
-    path.length > 4 && navigate(path);
+    navigate(path);
   };
 
   return (
@@ -53,6 +68,8 @@ const TimeLine = ({ posicion = 1 }: Props) => {
           <div className="flex">
             {pointDots.map((dot) => {
               const isSelected = posicion >= dot.id;
+              const dotsToPress = dot.pathHabile.includes(addDotsTimeLine);
+
               return (
                 <section key={dot.id} className="flex  items-center ">
                   {dot.id != 1 && (
@@ -65,10 +82,12 @@ const TimeLine = ({ posicion = 1 }: Props) => {
                   <div className="   flex flex-col justify-center">
                     <div
                       onClick={() => {
-                        stageUno(dot.path);
+                        if (dotsToPress) {
+                          stageUno(dot.path);
+                        }
                       }}
                       className={` ${
-                        dot.path.length > 5 ? "cursor-pointer" : ""
+                        dotsToPress ? "cursor-pointer" : ""
                       }  ${circulos} ${isSelected && circulo_activo}`}
                     >
                       {isSelected ? (

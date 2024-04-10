@@ -20,7 +20,6 @@ export default function BackViewCard({
       } border border-gray-300 bg-white rounded-xl flex flex-col items-center  py-6 shadow-card relative`}
     >
       <p className="text-2xl font-light mb-2">{showCars[indexCar].modelo}</p>
-
       <div className="grid grid-cols-2 gap-2 w-full px-3 ">
         {showCars[indexCar].features.map((feature) => (
           <div
@@ -37,7 +36,6 @@ export default function BackViewCard({
           </div>
         ))}
       </div>
-
       <p
         onClick={flipCard}
         className="text-sm font-light text-primary absolute bottom-2 hover:cursor-pointer "

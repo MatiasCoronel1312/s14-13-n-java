@@ -2,11 +2,14 @@ import CardToPay from "../CardToPay/CardToPay";
 
 import CardShowDetail from "../CardShowDetail/CardShowDetail";
 import { TCarro } from "../../assets/carsInfo";
+import { useState } from "react";
 interface Props {
   showCarSelected: TCarro[];
+  handleScrollToBack: (a: number) => void;
 }
 
-const TarifasSection = ({ showCarSelected }: Props) => {
+const TarifasSection = ({ showCarSelected, handleScrollToBack }: Props) => {
+  const [selectACard, SetSelectACard] = useState("");
   return (
     <section className="w-[1200px] min-h-[707px]  bg-background mx-auto p-6">
       <p className="text-2xl font-light">
@@ -18,10 +21,16 @@ const TarifasSection = ({ showCarSelected }: Props) => {
       <div className="flex gap-4">
         <div className="  flex gap-3">
           <CardToPay
+            selectACard={selectACard}
+            SetSelectACard={SetSelectACard}
+            handleScrollToBack={handleScrollToBack}
             price={showCarSelected[0].precio + showCarSelected[0].precio * 0.05}
             title={"PAGAR EN MOSTRADOR"}
           />
           <CardToPay
+            selectACard={selectACard}
+            SetSelectACard={SetSelectACard}
+            handleScrollToBack={handleScrollToBack}
             price={showCarSelected[0].precio + showCarSelected[0].precio * 0.15}
             title={"PAGAR CON MERCADOPAGO  "}
           />

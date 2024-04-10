@@ -1,4 +1,5 @@
 import CategoriaDeVehiculos from "../pages/CategoriaDeVehiculos";
+import DatosDePagos from "../pages/DatosDePagos";
 import Dudas from "../pages/Dudas";
 import Home from "../pages/Home";
 import RedDeAgencias from "../pages/RedDeAgencias";
@@ -36,4 +37,11 @@ export const menuRoutes = [
     path: "/selecciona-pago",
     Element: SeleccionDeCarro,
   },
+  {
+    id: "finalizarPago",
+    path: "/finalizar-pago",
+    Element: DatosDePagos,
+  },
 ];
+
+// DatosDePagos
