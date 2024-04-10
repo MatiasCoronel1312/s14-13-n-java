@@ -61,7 +61,7 @@ export function FrontViewCard({
           <img
             className="relative -top-5 z-10 "
             // public/imagenesCarros/FordMustangConvertible.png
-            src={`/public/imagenesCarros/${detailsCar.imagen}`}
+            src={`/imagenesCarros/${detailsCar.imagen}`}
             alt=""
           />
           {isMoreCar && (
