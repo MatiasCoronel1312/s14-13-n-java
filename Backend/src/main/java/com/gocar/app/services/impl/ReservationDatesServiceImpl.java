@@ -21,53 +21,25 @@ import org.springframework.stereotype.Service;
 public class ReservationDatesServiceImpl implements ReservationDatesService {
 
     private final ReservationDatesRepository reservationDatesRepository;
-    private final AgencyService agencyService;
+    private final AgencyServiceImpl agencyService;
 
-    @Override
-    public ReservationResponseDTO save(ReservationDTO reservationDTO) {
-        String userEmail = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User user = userService.findByEmail(userEmail);
-        Vehicle vehicle = vehicleService.findVehicleById(reservationDTO.vehicleId());
-        Insurance insurance = insuranceService.findById(reservationDTO.insuranceId());
-        try{
-            Reservation reservationEntity = Reservation.builder()
-                    .vehicle(vehicle)
-                    .User(user)
-                    .iva(reservationDTO.total() * 0.12)
-                    .subtotal(reservationDTO.total() - (reservationDTO.total() * 0.12))
-                    .total(reservationDTO.total())
-                    .idReservationDates(reservationDTO.idReservationDates())
-                    .Insurance(insurance)
-                    .softDelete(Boolean.FALSE)
-                    .build();
-            Reservation entitySaved = reservationRepository.save(reservationEntity);
-            return new ReservationResponseDTO(entitySaved);
-        }catch (Exception e){
-            throw new ServiceException("Error occurred while saving reservation", e);
-        }
-    }
 
 
 
     @Override
     public ReservationDatesResponseDto save(ReservationDatesRequestDto reservationDatesRequestDto) {
-            Agency retirementPlace = agencyService.findById(reservationDatesRequestDto.retirementPlace());
-            try {
-                ReservationDates reservationDates = ReservationDates.builder()
-                        .retirementPlace(retirementPlace)
+            AgencyResponseDto retirementPlace = agencyService.findById(reservationDatesRequestDto.retirementPlaceId());
+        try {
+                ReservationDates reservationDatesEntity = ReservationDates.builder()
                         .retirementDate(reservationDatesRequestDto.retirementDate())
+                        .returnDate(reservationDatesRequestDto.returnDate())
+                        .retirementPlace(retirementPlace)
                         .returnPlaceId(reservationDatesRequestDto.returnPlace())
                         .reservationId(reservationDatesRequestDto.reservation())
-                        .returnDate(reservationDatesRequestDto.returnDate())
-                        .build();
 
-                    .retirementPlace(retirementPlace)
-                    .retirementDate(reservationDatesRequestDto.retirementDate())
-                    .returnPlaceId(reservationDatesRequestDto.returnPlace())
-                    .reservationId(reservationDatesRequestDto.reservation())
-                    .returnDate(reservationDatesRequestDto.returnDate())
+
                     .build();
-            ReservationDates entitySaved = reservationDatesRepository.save(reservationDates);
+            ReservationDates entitySaved = reservationDatesRepository.save(reservationDatesEntity);
             return new ReservationDatesResponseDto(entitySaved);
         } catch (Exception e) {
             throw new ServiceException("Error occurred while saving ReservationDates", e);
