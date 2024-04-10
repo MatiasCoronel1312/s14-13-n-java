@@ -1,23 +1,25 @@
-import {
-  AudiA5,
-  ChevroletExpress,
-  ChevroletTahoe,
-  DodgeChallenger,
-  FordMustangConvertible,
-  FordTransit,
-  NissanVersa,
-  ToyotaCorolla,
-  ToyotaPrius,
-} from "./ImagenesCarros";
-
 type TFeatures =
-  | "Gasoline Vehicle"
-  | "Bluetooth"
-  | "Cruise Control"
-  | "AM/FM Stereo Radio"
-  | "Automatic";
+  | "4 puertas"
+  | "Levantavidrios eléctricos"
+  | "ABS"
+  | "2 maleta(s) grande(s)"
+  | "5 personas"
+  | "Aire acondicionado"
+  | "Cierre centralizado"
+  | "Automático"
+  | "Dir. Asistida Eléctrica"
+  | "2 maleta(s) pequena(s)";
 
-type TCategoría = "4x4" | "Deportivo" | "Standard" | "Premium" | "Van";
+type TCategoría =
+  | "SEDAN"
+  | " SEDAN_PREMIUM"
+  | "HYBRID"
+  | "SUV"
+  | "SPORT"
+  | "ECONOMIC"
+  | "MINIVAN"
+  | "VAN"
+  | "TRUCK";
 export type TCarro = {
   id: number;
   modelo: string;
@@ -49,98 +51,253 @@ carros.push({
 carros.push({
   id: 1,
   modelo: "Toyota Corolla",
-  features: ["Automatic", "AM/FM Stereo Radio", "Bluetooth", "Cruise Control"],
-  imagen: ToyotaCorolla,
+  features: [
+    "4 puertas",
+    "Levantavidrios eléctricos",
+    "ABS",
+    "2 maleta(s) grande(s)",
+    "5 personas",
+    "Aire acondicionado",
+    "Cierre centralizado",
+    "Automático",
+    "Dir. Asistida Eléctrica",
+    "2 maleta(s) pequena(s)",
+  ],
+  imagen: "ToyotaCorolla.png",
   pasajeros: 5,
   precio: 62,
-  categoría: "Standard",
+  categoría: " SEDAN_PREMIUM",
   stock: 5,
 });
 
 carros.push({
   id: 2,
   modelo: "Dodge Challenger",
-  features: ["Automatic", "AM/FM Stereo Radio", "Bluetooth", "Cruise Control"],
-  imagen: DodgeChallenger,
+  features: [
+    "4 puertas",
+    "Levantavidrios eléctricos",
+    "ABS",
+    "2 maleta(s) grande(s)",
+    "5 personas",
+    "Aire acondicionado",
+    "Cierre centralizado",
+    "Automático",
+    "Dir. Asistida Eléctrica",
+    "2 maleta(s) pequena(s)",
+  ],
+  imagen: "DodgeChallenger.png",
   pasajeros: 4,
   precio: 82,
-  categoría: "Standard",
-  stock: 5,
+  categoría: "ECONOMIC",
+  stock: 0,
+});
+carros.push({
+  id: 3,
+  modelo: "Chevrolet Tahoe",
+  features: [
+    "4 puertas",
+    "Levantavidrios eléctricos",
+    "ABS",
+    "2 maleta(s) grande(s)",
+    "5 personas",
+    "Aire acondicionado",
+    "Cierre centralizado",
+    "Automático",
+    "Dir. Asistida Eléctrica",
+    "2 maleta(s) pequena(s)",
+  ],
+  imagen: "ChevroletTahoe.png",
+  pasajeros: 7,
+  precio: 159,
+  categoría: "ECONOMIC",
+  stock: 3,
 });
 
 carros.push({
   id: 3,
   modelo: "Chevrolet Tahoe",
-  features: ["Automatic", "AM/FM Stereo Radio", "Bluetooth", "Cruise Control"],
-  imagen: ChevroletTahoe,
+  features: [
+    "4 puertas",
+    "Levantavidrios eléctricos",
+    "ABS",
+    "2 maleta(s) grande(s)",
+    "5 personas",
+    "Aire acondicionado",
+    "Cierre centralizado",
+    "Automático",
+    "Dir. Asistida Eléctrica",
+    "2 maleta(s) pequena(s)",
+  ],
+  imagen: "ChevroletTahoe.png",
   pasajeros: 7,
   precio: 159,
-  categoría: "Premium",
+  categoría: "HYBRID",
+  stock: 0,
+});
+
+carros.push({
+  id: 4,
+  modelo: "Nissan Versa",
+  features: [
+    "4 puertas",
+    "Levantavidrios eléctricos",
+    "ABS",
+    "2 maleta(s) grande(s)",
+    "5 personas",
+    "Aire acondicionado",
+    "Cierre centralizado",
+    "Automático",
+    "Dir. Asistida Eléctrica",
+    "2 maleta(s) pequena(s)",
+  ],
+  imagen: "NissanVersa.png",
+  pasajeros: 5,
+  precio: 70,
+  categoría: "HYBRID",
   stock: 5,
 });
 
 carros.push({
   id: 4,
   modelo: "Nissan Versa",
-  features: ["Automatic", "AM/FM Stereo Radio", "Bluetooth", "Cruise Control"],
-  imagen: NissanVersa,
+  features: [
+    "4 puertas",
+    "Levantavidrios eléctricos",
+    "ABS",
+    "2 maleta(s) grande(s)",
+    "5 personas",
+    "Aire acondicionado",
+    "Cierre centralizado",
+    "Automático",
+    "Dir. Asistida Eléctrica",
+    "2 maleta(s) pequena(s)",
+  ],
+  imagen: "NissanVersa.png",
   pasajeros: 5,
   precio: 70,
-  categoría: "Standard",
+  categoría: "MINIVAN",
   stock: 5,
 });
 
 carros.push({
   id: 5,
   modelo: "Ford Transit",
-  features: ["Automatic", "AM/FM Stereo Radio", "Bluetooth", "Cruise Control"],
-  imagen: FordTransit,
+  features: [
+    "4 puertas",
+    "Levantavidrios eléctricos",
+    "ABS",
+    "2 maleta(s) grande(s)",
+    "5 personas",
+    "Aire acondicionado",
+    "Cierre centralizado",
+    "Automático",
+    "Dir. Asistida Eléctrica",
+    "2 maleta(s) pequena(s)",
+  ],
+  imagen: "FordTransit.png",
   pasajeros: 15,
   precio: 210,
-  categoría: "Van",
+  categoría: "SEDAN",
   stock: 5,
 });
 carros.push({
   id: 6,
   modelo: "Chevrolet Express",
-  features: ["Automatic", "AM/FM Stereo Radio", "Bluetooth", "Cruise Control"],
-  imagen: ChevroletExpress,
+  features: [
+    "4 puertas",
+    "Levantavidrios eléctricos",
+    "ABS",
+    "2 maleta(s) grande(s)",
+    "5 personas",
+    "Aire acondicionado",
+    "Cierre centralizado",
+    "Automático",
+    "Dir. Asistida Eléctrica",
+    "2 maleta(s) pequena(s)",
+  ],
+  imagen: "ChevroletExpress.png",
   pasajeros: 2,
   precio: 130,
-  categoría: "Van",
-  stock: 5,
+  categoría: "SPORT",
+  stock: 0,
 });
 
 carros.push({
   id: 7,
   modelo: "Ford Mustang Convertible",
-  features: ["Automatic", "AM/FM Stereo Radio", "Bluetooth", "Cruise Control"],
-  imagen: FordMustangConvertible,
+  features: [
+    "4 puertas",
+    "Levantavidrios eléctricos",
+    "ABS",
+    "2 maleta(s) grande(s)",
+    "5 personas",
+    "Aire acondicionado",
+    "Cierre centralizado",
+    "Automático",
+    "Dir. Asistida Eléctrica",
+    "2 maleta(s) pequena(s)",
+  ],
+  imagen: "FordMustangConvertible.png",
   pasajeros: 4,
   precio: 310,
-  categoría: "Premium",
+  categoría: "SUV",
   stock: 5,
 });
 carros.push({
   id: 8,
   modelo: "Audi A5",
-  features: ["Automatic", "AM/FM Stereo Radio", "Bluetooth", "Cruise Control"],
-  imagen: AudiA5,
+  features: [
+    "4 puertas",
+    "Levantavidrios eléctricos",
+    "ABS",
+    "2 maleta(s) grande(s)",
+    "5 personas",
+    "Aire acondicionado",
+    "Cierre centralizado",
+    "Automático",
+    "Dir. Asistida Eléctrica",
+    "2 maleta(s) pequena(s)",
+  ],
+  imagen: "AudiA5.png",
   pasajeros: 5,
   precio: 140,
-  categoría: "Premium",
+  categoría: "TRUCK",
   stock: 5,
 });
 
 carros.push({
   id: 9,
   modelo: "Toyota Prius",
-  features: ["Automatic", "AM/FM Stereo Radio", "Bluetooth", "Cruise Control"],
-  imagen: ToyotaPrius,
+  features: [
+    "4 puertas",
+    "Levantavidrios eléctricos",
+    "ABS",
+    "2 maleta(s) grande(s)",
+    "5 personas",
+    "Aire acondicionado",
+    "Cierre centralizado",
+    "Automático",
+    "Dir. Asistida Eléctrica",
+    "2 maleta(s) pequena(s)",
+  ],
+  imagen: "ToyotaPrius.png",
   pasajeros: 5,
   precio: 80,
-  categoría: "Standard",
+  categoría: "VAN",
   stock: 5,
 });
 
 export default carros;
+
+export const iconFeacture = {
+  "4 puertas": "",
+  "Levantavidrios eléctricos": "",
+  ABS: "",
+  "2 maleta(s) grande(s)": "",
+  "5 personas": "",
+  "Aire acondicionado": "",
+  "Cierre centralizado": "",
+  Automático: "",
+  "Dir. Asistida Eléctrica": "",
+  "2 maleta(s) pequena(s)": "",
+};
