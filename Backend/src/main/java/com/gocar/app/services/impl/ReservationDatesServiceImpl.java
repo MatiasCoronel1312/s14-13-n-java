@@ -28,15 +28,14 @@ public class ReservationDatesServiceImpl implements ReservationDatesService {
 
     @Override
     public ReservationDatesResponseDto save(ReservationDatesRequestDto reservationDatesRequestDto) {
-            AgencyResponseDto retirementPlace = agencyService.findById(reservationDatesRequestDto.retirementPlaceId());
         try {
                 ReservationDates reservationDatesEntity = ReservationDates.builder()
+                        .retirementPlace(reservationDatesRequestDto.retirementPlace()
                         .retirementDate(reservationDatesRequestDto.retirementDate())
+                        .returnPlace(reservationDatesRequestDto.returnPlace())
                         .returnDate(reservationDatesRequestDto.returnDate())
-                        .retirementPlace(retirementPlace)
-                        .returnPlaceId(reservationDatesRequestDto.returnPlace())
-                        .reservationId(reservationDatesRequestDto.reservation())
-
+                        .reservation(reservationDatesRequestDto.reservation())
+                        .returnDate(reservationDatesRequestDto.returnDate())
 
                     .build();
             ReservationDates entitySaved = reservationDatesRepository.save(reservationDatesEntity);
