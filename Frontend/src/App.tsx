@@ -1,14 +1,14 @@
-import './App.css'
-import TimeLine from './components/timeline/TimeLine';
+
+import "./App.css";
 import MainRouter from "./router/mainRouter";
 
 function App() {
-  
+
   return (
-    <>
-      <MainRouter/>
-      <TimeLine/>
-    </>
+
+    <div className='bg-[#ffffff]'>
+      <MainRouter />
+    </div>
   );
 }
 
