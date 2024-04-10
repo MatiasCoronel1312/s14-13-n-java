@@ -56,7 +56,7 @@ const TimeLine = ({ posicion = 1 }: Props) => {
     "rounded-full border-[4px] border-secondary Gradient-T ";
   // const linea_activa: string = " border-secondary";
   const title: string =
-    "text-center text-[20px] w-[25%] cursor-pointer transition-all duration-1000 ease-in-out";
+    "text-center text-[20px] w-[25%] transition-all duration-1000 ease-in-out";
   const stageUno = (path: string): void => {
     navigate(path);
   };
@@ -104,13 +104,18 @@ const TimeLine = ({ posicion = 1 }: Props) => {
           <div className="flex gap-5">
             {pointDots.map((dot) => {
               const isSelected = posicion == dot.id;
+              const dotsToPress = dot.pathHabile.includes(addDotsTimeLine);
               return (
                 <div key={dot.id} className="flex  justify-between w-full ">
                   <div
                     onClick={() => {
-                      stageUno(dot.path);
+                      if (dotsToPress) {
+                        stageUno(dot.path);
+                      }
                     }}
-                    className={`  w-full ${title} ${
+                    className={` ${
+                      dotsToPress ? "cursor-pointer hover:text-[#c27100]" : ""
+                    }  w-full ${title} ${
                       isSelected ? "text-[#C26A00]" : "text-text"
                     }`}
                   >

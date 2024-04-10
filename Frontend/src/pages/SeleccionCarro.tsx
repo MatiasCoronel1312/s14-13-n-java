@@ -4,7 +4,7 @@ import SummaryBooking from "../components/SummaryBooking/SummaryBooking";
 import TarifasSection from "../components/TarifasSection/TarifasSection";
 import TimeLine from "../components/timeline/TimeLine";
 
-import Home from "./Home";
+//import Home from "./Home";
 import ButtonMain from "../components/ButtonMain/ButtonMain";
 
 const SeleccionDeCarro = () => {

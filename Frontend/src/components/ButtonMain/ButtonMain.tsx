@@ -15,7 +15,7 @@ export default function ButtonMain({ title }: Props) {
         onMouseLeave={() =>
           setIsHover("bg-gradient-to-l  from-[#B81C00] to-[#FF8C00]")
         }
-        className={`${isHover} gap-2 ease-in-out w-[293px] h-[64px] flex justify-center items-center  active:bg-[#F8C381] border-black   rounded-tl-md rounded-br-md `}
+        className={`  cursor-pointer ${isHover} gap-2 ease-in-out w-[293px] h-[64px] flex justify-center items-center  active:bg-[#F8C381] border-black   rounded-tl-md rounded-br-md `}
       >
         <IconRow />
         <p className="text-white text-xl font-extralight">{title}</p>
