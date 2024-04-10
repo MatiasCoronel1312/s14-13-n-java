@@ -4,21 +4,21 @@ type Treserve = {
   user: {
     id: number,
     nameUser: string
-  };
+  },
   dateInfo:{
     fechaEntrega: string,
   fechaDevolucion: string,
   horaEntrega: string,
   horaDevolucion: string,
   lugar: number,
-}
+},
   car: {
     idCar:number
 },  
 };
 
 const estadoInicial:Treserve = {
-    reserve: {}
+    
 }
 
 const carsSlice = createSlice({
