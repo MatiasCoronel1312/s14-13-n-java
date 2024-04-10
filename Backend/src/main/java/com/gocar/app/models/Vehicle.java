@@ -27,7 +27,7 @@ public class Vehicle {
     private String image;
     private Double price;
     private Integer stock;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "vehicle_features",
             joinColumns = @JoinColumn(name = "vehicle_id"),

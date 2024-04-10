@@ -13,9 +13,10 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.awt.print.Pageable;
+
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -54,7 +55,11 @@ public class VehicleServiceImpl implements VehicleService {
 
     @Override
     public Page<VehicleResponseDTO> findAll(Pageable pageable) {
-        return vehicleRepository.findAll(pageable)
+        try{
+            return vehicleRepository.findAll(pageable).map(VehicleResponseDTO::new);
+        }catch (Exception e){
+            throw new ServiceException("Error occurred while fetching all vehicles", e);
+        }
     }
 
     @Override
@@ -76,6 +81,7 @@ public class VehicleServiceImpl implements VehicleService {
         try{
             List<Vehicle> vehicleListDataBase = vehicleRepository.findVehicleByCategory(category);
             vehicleDTOList = vehicleListDataBase.stream().map(v -> VehicleResponseDTO.builder() // v = vehicle
+                    .id(v.getId())
                     .brand(v.getBrand())
                     .model(v.getModel())
                     .modelYear(v.getModelYear())
@@ -132,36 +138,34 @@ public class VehicleServiceImpl implements VehicleService {
 
     @Override
     public VehicleResponseDTO update(Long id, VehicleRequestDTO vehicleDTO) {
-        List<Feature> featureList;
-        try {
-            Vehicle vehicleDataBase = vehicleRepository.findById(id).
-                    orElseThrow(()-> new EntityNotFoundException("There is no vehicle with that id in the database"));
 
-            Stream<String> featureNames = vehicleDTO.features().stream();
-            Stream<Feature> featureStream = featureNames.map(fn -> {
+        try {
+            List<Feature> featureList = vehicleDTO.features().stream().map(fn -> { //fn = feature name
                 Feature feature = featureRepository.findByName(fn);
                 if(feature == null){
-                    feature = new Feature();
-                    feature.setName(fn);
-                    featureRepository.save(feature);
+                    throw new EntityNotFoundException("Feature doesn't exist");
                 }
                 return feature;
-            });
-            featureList = featureStream.toList();
+            }).toList();
 
-            vehicleDataBase.setBrand(vehicleDTO.brand());
-            vehicleDataBase.setModel(vehicleDTO.model());
-            vehicleDataBase.setModelYear(vehicleDTO.modelYear());
-            vehicleDataBase.setEngineSize(vehicleDTO.engineSize());
-            vehicleDataBase.setPassengers(vehicleDTO.passengers());
-            vehicleDataBase.setImage(vehicleDTO.image());
-            vehicleDataBase.setPrice(vehicleDTO.price());
-            vehicleDataBase.setStock(vehicleDTO.stock());
-            vehicleDataBase.setFeatures(featureList);
-            vehicleDataBase.setCategory(vehicleDTO.category());
-            vehicleDataBase.setDeleted(Boolean.FALSE);
-            Vehicle vehicleUpdated = vehicleRepository.save(vehicleDataBase);
+            Vehicle vehicleDB = vehicleRepository.findById(id)
+                    .orElseThrow(() -> new EntityNotFoundException("There is no vehicle with that id in the database"));
+
+            vehicleDB.setBrand(vehicleDTO.brand());
+            vehicleDB.setModel(vehicleDTO.model());
+            vehicleDB.setModelYear(vehicleDTO.modelYear());
+            vehicleDB.setEngineSize(vehicleDTO.engineSize());
+            vehicleDB.setImage(vehicleDTO.image());
+            vehicleDB.setPrice(vehicleDTO.price());
+            vehicleDB.setPassengers(vehicleDTO.passengers());
+            vehicleDB.setStock(vehicleDTO.stock());
+            vehicleDB.setFeatures(featureList);
+            vehicleDB.setCategory(vehicleDTO.category());
+
+            Vehicle vehicleUpdated = vehicleRepository.save(vehicleDB);
+
             return new VehicleResponseDTO(vehicleUpdated);
+
         } catch (EntityNotFoundException e) {
             throw e;
         } catch (Exception e) {

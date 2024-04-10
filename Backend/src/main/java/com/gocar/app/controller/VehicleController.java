@@ -5,6 +5,8 @@ import com.gocar.app.dtos.vehicle.VehicleResponseDTO;
 import com.gocar.app.enums.Category;
 import com.gocar.app.services.impl.VehicleServiceImpl;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,8 +25,13 @@ public class VehicleController {
         return ResponseEntity.status(HttpStatus.OK).body(vehicleService.findAll());
     }
 
-    @GetMapping(value = "all/{category}", produces = "application/json")
-    public ResponseEntity<List<VehicleResponseDTO>> getAllByCategory(@PathVariable Category category){
+    @GetMapping(value = "paged", produces = "application/json")
+    public ResponseEntity<Page<VehicleResponseDTO>> getPage(Pageable pageable){
+        return ResponseEntity.status(HttpStatus.OK).body(vehicleService.findAll(pageable));
+    }
+
+    @GetMapping(value = "byCategory", produces = "application/json")
+    public ResponseEntity<List<VehicleResponseDTO>> getAllByCategory(@RequestParam Category category){
         return ResponseEntity.status(HttpStatus.OK).body(vehicleService.findByCategory(category));
     }
 

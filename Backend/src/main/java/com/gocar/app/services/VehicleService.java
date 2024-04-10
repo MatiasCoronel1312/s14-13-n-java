@@ -6,8 +6,9 @@ import com.gocar.app.enums.Category;
 import com.gocar.app.models.Vehicle;
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
-import java.awt.print.Pageable;
+
 import java.util.List;
 
 public interface VehicleService {
@@ -19,7 +20,6 @@ public interface VehicleService {
     VehicleResponseDTO save(VehicleRequestDTO vehicleDTO);
     VehicleResponseDTO update(Long id, VehicleRequestDTO vehicleDTO);
     boolean delete(Long id);
-
     Vehicle findVehicleById(Long id);
 
 }
