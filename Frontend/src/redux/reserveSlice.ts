@@ -18,7 +18,22 @@ type Treserve = {
 };
 
 const estadoInicial:Treserve = {
-    
+    reserve: {
+        user: {
+            id: '',
+            nameUser: '',
+          },
+          dateInfo:{
+            fechaEntrega: '',
+          fechaDevolucion: '',
+          horaEntrega: '',
+          horaDevolucion: '',
+          lugar: '',
+        },
+          car: {
+            idCar:
+        },  
+    }
 }
 
 const carsSlice = createSlice({
