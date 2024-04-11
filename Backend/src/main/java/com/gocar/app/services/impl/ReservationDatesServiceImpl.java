@@ -17,6 +17,8 @@ import org.hibernate.service.spi.ServiceException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class ReservationDatesServiceImpl implements ReservationDatesService {
@@ -76,5 +78,13 @@ public class ReservationDatesServiceImpl implements ReservationDatesService {
 
         ReservationDates updatedReservationDates = reservationDatesRepository.save(reservationDates);
         return new ReservationDatesResponseDto(updatedReservationDates);
+    }
+
+    @Override
+    public List<ReservationDatesResponseDto> findAll() {
+        return reservationDatesRepository.findAll()
+                .stream()
+                .map(ReservationDatesResponseDto::new)
+                .toList();
     }
 }

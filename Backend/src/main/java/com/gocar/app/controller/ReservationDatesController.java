@@ -40,4 +40,9 @@ public class ReservationDatesController {
         ReservationDatesResponseDto updatedReservationDates = reservationDatesService.update(reservationDatesRequestDto);
         return ResponseEntity.ok(updatedReservationDates);
     }
+
+    @GetMapping
+    public ResponseEntity<?> findAll() {
+        return ResponseEntity.ok(reservationDatesService.findAll());
+    }
 }
