@@ -1,18 +1,14 @@
+import NuevaReserva from "../components/NuevaReserva/NuevaReserva";
 
-import NuevaReserva from '../components/NuevaReserva/NuevaReserva';
-import TurismoHome from '../components/turismo/TurismoHome';
-import Carrusel from './../components/CarCarousel/Carrusel';
-
+import Carrusel from "./../components/CarCarousel/Carrusel";
 
 const Home = () => {
   return (
-
-    <div >
+    <div>
       <Carrusel />
-      <NuevaReserva/>
-
+      <NuevaReserva />
     </div>
-  )
-}
+  );
+};
 
 export default Home;
