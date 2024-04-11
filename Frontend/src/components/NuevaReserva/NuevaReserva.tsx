@@ -1,11 +1,10 @@
 import { useForm } from "react-hook-form";
-import { Formulario } from "./Formulario.interface";
 import { Link } from "react-router-dom";
 export const NuevaReserva = () => {
   const { register, handleSubmit } = useForm();
 
   const onSubmit = handleSubmit((data) => {
-    const formulario: Formulario = {
+    const formulario: any = {
       agenciaRetiro: data.agenciaRetiro,
       fechaRetiro: data.fechaRetiro,
       horaRetiro: data.horaRetiro,
