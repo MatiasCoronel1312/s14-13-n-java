@@ -61,7 +61,9 @@ export default function Carrusel() {
 
   return (
     <>
-      <section className="h-full lg:w-[85%] md:w-[90%]">
+
+      <section className="h-full max-w-full">
+
         <div className="mb-8">
           <h1 className="text-center font-sans font-bold text-text text-2xl">
             Conocé nuestra flota
@@ -141,7 +143,9 @@ export default function Carrusel() {
         </div>
         <div className="flex justify-center align-bottom">
           <button
-          onClick={()=>{navigator('/categoriasDeVehiculos')}}
+            onClick={() => {
+              navigator("/categoriasDeVehiculos/all");
+            }}
             type="button"
             className="border-orange-600 border-2 text-orange-600 py-4 px-10 rounded-md mt-8"
           >
