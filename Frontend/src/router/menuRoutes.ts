@@ -3,6 +3,7 @@ import Dudas from "../pages/Dudas";
 import Home from "../pages/Home";
 import RedDeAgencias from "../pages/RedDeAgencias";
 import TipsTuristicos from "../pages/TipsTuristicos";
+import { Login } from "../shared/layout/login/Login";
 
 export const menuRoutes = [
     {
@@ -29,4 +30,12 @@ export const menuRoutes = [
       id: "categoriasDeVehiculos",
       path: "/categoriasDeVehiculos",
       Element: CategoriaDeVehiculos,
-    }]
+    },
+
+    {
+      id: "login",
+      path: "/login",
+      Element: Login,
+    }
+  
+  ]
