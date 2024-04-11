@@ -11,6 +11,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.gocar.app.dtos.reservation.ReservationDTO;
+
 import com.gocar.app.models.Reservation;
 import com.gocar.app.repositories.ReservationRepository;
 import com.gocar.app.services.ReservationService;
@@ -27,6 +28,7 @@ public class ReservationServiceImpl  implements ReservationService{
 	
 
 	  private final ReservationRepository reservationRepository;
+
 	  private final UserServiceImpl userService;
 	  private final VehicleServiceImpl vehicleService;
 	  private final InsuranceServiceImpl insuranceService;
@@ -43,6 +45,8 @@ public class ReservationServiceImpl  implements ReservationService{
 	            Reservation reservationEntity = reservationRepository.findById(id)
 	                    .orElseThrow(() -> new EntityNotFoundException("There is no reservation with that id in the database"));
 	            return new ReservationResponseDTO(reservationEntity);
+
+
 	        }catch (EntityNotFoundException e){
 	            throw e;
 	        }catch (Exception e){
@@ -53,6 +57,7 @@ public class ReservationServiceImpl  implements ReservationService{
 	
 
 	    @Override
+
 	    public ReservationResponseDTO save(ReservationDTO reservationDTO) {
 			String userEmail = (String)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			User user = userService.findByEmail(userEmail);
@@ -71,16 +76,21 @@ public class ReservationServiceImpl  implements ReservationService{
 	                    .build();
 	            Reservation entitySaved = reservationRepository.save(reservationEntity);
 	            return new ReservationResponseDTO(entitySaved);
+
+
 	        }catch (Exception e){
 	            throw new ServiceException("Error occurred while saving reservation", e);
 	        }
 	    }
 
 	    @Override
+
 	    public ReservationResponseDTO update(Long id, ReservationDTO reservationDTO) {
+
 	        try {
 	            Reservation reservationDataBase = reservationRepository.findById(id).
 	                    orElseThrow(()-> new EntityNotFoundException("There is no reservation with that id in the database"));
+
 
 	            reservationDataBase.setIva(reservationDTO.total() * 0.12);
 	            reservationDataBase.setSubtotal(reservationDTO.total() - (reservationDTO.total() * 0.12));
@@ -88,6 +98,7 @@ public class ReservationServiceImpl  implements ReservationService{
 	            reservationDataBase.setIdReservationDates(reservationDTO.idReservationDates());
 	            Reservation reservationUpdated = reservationRepository.save(reservationDataBase);
 	            return new ReservationResponseDTO(reservationUpdated);
+
 	        } catch (EntityNotFoundException e) {
 	            throw e;
 	        } catch (Exception e) {
@@ -99,7 +110,9 @@ public class ReservationServiceImpl  implements ReservationService{
 	    public boolean delete(Long id) {
 	        Reservation reservationDataBase = reservationRepository.findById(id)
 	                .orElseThrow(() -> new EntityNotFoundException("There is no reservation with that id in the database"));
+
 	        reservationDataBase.setSoftDelete(Boolean.TRUE);
+
 	        return Boolean.TRUE;
 	    }
 

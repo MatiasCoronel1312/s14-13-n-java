@@ -13,7 +13,9 @@ import lombok.*;
 @EqualsAndHashCode(of = "id")
 @Getter
 @Setter
+
 @Builder
+
 public class Insurance {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
