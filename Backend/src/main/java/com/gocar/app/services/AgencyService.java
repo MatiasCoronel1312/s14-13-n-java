@@ -10,6 +10,7 @@ import java.util.List;
 
 public interface AgencyService {
     AgencyResponseDto save(AgencyRequestDto agencyRequestDto);
+    Agency findById2(Long id);
     AgencyResponseDto findById(Long id);
     void deleteById(Long id);
     AgencyResponseDto update(AgencyRequestDto agencyRequestDto);

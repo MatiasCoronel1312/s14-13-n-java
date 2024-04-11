@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7629239f-a663-4973-baef-9ff8a0ab455c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Backend/src/main/java/com/gocar/app/models/Agency.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/src/main/java/com/gocar/app/models/ReservationDates.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/gocar/app/config/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/gocar/app/config/security/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/gocar/app/models/Reservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/gocar/app/models/Reservation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/gocar/app/dtos/agency/AgencyRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/gocar/app/dtos/agency/AgencyRequestDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/gocar/app/dtos/agency/AgencyResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/gocar/app/dtos/agency/AgencyResponseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/com/gocar/app/models/Agency.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/com/gocar/app/models/Agency.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,6 +81,11 @@
       <workItem from="1712674512253" duration="803000" />
       <workItem from="1712691466834" duration="905000" />
       <workItem from="1712709868826" duration="10000" />
+      <workItem from="1712721057497" duration="60000" />
+      <workItem from="1712722810026" duration="4000" />
+      <workItem from="1712723652621" duration="365000" />
+      <workItem from="1712797887653" duration="50000" />
+      <workItem from="1712797973975" duration="267000" />
     </task>
     <servers />
   </component>

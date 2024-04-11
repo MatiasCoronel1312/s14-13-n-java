@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/agencies")
+@RequestMapping("api/agencies")
 public class AgencyController {
 
     private final AgencyService agencyService;

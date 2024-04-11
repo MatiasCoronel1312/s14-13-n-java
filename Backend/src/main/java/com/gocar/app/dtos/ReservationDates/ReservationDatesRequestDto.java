@@ -9,14 +9,14 @@ public record ReservationDatesRequestDto(
         @NotNull
         Long id,
         @NotNull
-        Long retirementPlace,
+        Long agencyId,
         @NotNull
         @FutureOrPresent
         LocalDate retirementDate,
         @NotNull
         Long returnPlace,
         @NotNull
-        Long reservation,
+        Long reservationId,
         @NotNull
         @FutureOrPresent
         LocalDate returnDate

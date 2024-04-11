@@ -1,39 +1,43 @@
 package com.gocar.app.controller;
 
 
+import com.gocar.app.dtos.ReservationDates.ReservationDatesRequestDto;
+import com.gocar.app.dtos.ReservationDates.ReservationDatesResponseDto;
 import com.gocar.app.models.ReservationDates;
 import com.gocar.app.services.ReservationDatesService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/reservations")
+@RequiredArgsConstructor
+@RequestMapping("api/reservationDates")
 public class ReservationDatesController {
 
     private final ReservationDatesService reservationDatesService;
 
-    @Autowired
-    public ReservationDatesController(ReservationDatesService reservationDatesService) {
-        this.reservationDatesService = reservationDatesService;
-    }
-
     @PostMapping
-    public ReservationDates createReservation(@RequestBody ReservationDates reservationDates) {
-        return reservationDatesService.save(reservationDates);
+    public ResponseEntity<ReservationDatesResponseDto> save(@RequestBody ReservationDatesRequestDto reservationDatesRequestDto) {
+        ReservationDatesResponseDto savedReservationDates = reservationDatesService.save(reservationDatesRequestDto);
+        return ResponseEntity.ok(savedReservationDates);
     }
 
     @GetMapping("/{id}")
-    public ReservationDates getReservation(@PathVariable Long id) {
-        return reservationDatesService.findById(id);
-    }
-
-    @PutMapping
-    public ReservationDates updateReservation(@RequestBody ReservationDates reservationDates) {
-        return reservationDatesService.update(reservationDates);
+    public ResponseEntity<ReservationDatesResponseDto> findById(@PathVariable Long id) {
+        ReservationDatesResponseDto reservationDates = reservationDatesService.findById(id);
+        return ResponseEntity.ok(reservationDates);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteReservation(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteById(@PathVariable Long id) {
         reservationDatesService.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping
+    public ResponseEntity<ReservationDatesResponseDto> update(@RequestBody ReservationDatesRequestDto reservationDatesRequestDto) {
+        ReservationDatesResponseDto updatedReservationDates = reservationDatesService.update(reservationDatesRequestDto);
+        return ResponseEntity.ok(updatedReservationDates);
     }
 }

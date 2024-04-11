@@ -17,9 +17,16 @@ public record AgencyResponseDto(
         String name,
         @NotBlank
         @Size(max = 200)
-        String address
+        String country,
+        @NotBlank
+        @Size(max = 200)
+        String address,
+        @NotBlank
+        String phone
+
+
 ){
         public AgencyResponseDto(Agency entitySaved) {
-                this(entitySaved.getId(), entitySaved.getName(), entitySaved.getAddress());
+                this(entitySaved.getId(), entitySaved.getName(), entitySaved.getCountry(), entitySaved.getAddress(), entitySaved.getPhone());
         }
 }

@@ -11,6 +11,7 @@ import com.gocar.app.repositories.AgencyRepository;
 import com.gocar.app.repositories.ReservationDatesRepository;
 import com.gocar.app.services.AgencyService;
 import com.gocar.app.services.ReservationDatesService;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -22,21 +23,22 @@ public class ReservationDatesServiceImpl implements ReservationDatesService {
 
     private final ReservationDatesRepository reservationDatesRepository;
     private final AgencyServiceImpl agencyService;
+    private final ReservationServiceImpl reservationService;
 
 
 
 
     @Override
     public ReservationDatesResponseDto save(ReservationDatesRequestDto reservationDatesRequestDto) {
+        Agency agency = agencyService.findById2(reservationDatesRequestDto.agencyId());
+        Reservation reservation = reservationService.findById2(reservationDatesRequestDto.reservationId());
         try {
                 ReservationDates reservationDatesEntity = ReservationDates.builder()
-                        .retirementPlace(reservationDatesRequestDto.retirementPlace()
+                        .retirementPlace(agency)
                         .retirementDate(reservationDatesRequestDto.retirementDate())
-                        .returnPlace(reservationDatesRequestDto.returnPlace())
+                        .returnPlace(agency)
+                        .reservation(reservation)
                         .returnDate(reservationDatesRequestDto.returnDate())
-                        .reservation(reservationDatesRequestDto.reservation())
-                        .returnDate(reservationDatesRequestDto.returnDate())
-
                     .build();
             ReservationDates entitySaved = reservationDatesRepository.save(reservationDatesEntity);
             return new ReservationDatesResponseDto(entitySaved);
@@ -48,8 +50,9 @@ public class ReservationDatesServiceImpl implements ReservationDatesService {
 
     @Override
     public ReservationDatesResponseDto findById(Long id) {
-        ReservationDates reservationDates = reservationDatesRepository.findById(id).orElse(null);
-        return reservationDates != null ? new ReservationDatesResponseDto(reservationDates) : null;
+        ReservationDates reservationDates = reservationDatesRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("ReservationDates with id " + id + " not found"));
+        return new ReservationDatesResponseDto(reservationDates);
     }
 
     @Override
@@ -59,7 +62,18 @@ public class ReservationDatesServiceImpl implements ReservationDatesService {
 
     @Override
     public ReservationDatesResponseDto update(ReservationDatesRequestDto reservationDatesRequestDto) {
-        ReservationDates reservationDates = new ReservationDates(reservationDatesRequestDto);
+        ReservationDates reservationDates = reservationDatesRepository.findById(reservationDatesRequestDto.id())
+                .orElseThrow(() -> new EntityNotFoundException("ReservationDates with id " + reservationDatesRequestDto.id() + " not found"));
+
+        Agency agency = agencyService.findById2(reservationDatesRequestDto.agencyId());
+        Reservation reservation = reservationService.findById2(reservationDatesRequestDto.reservationId());
+
+        reservationDates.setRetirementPlace(agency);
+        reservationDates.setRetirementDate(reservationDatesRequestDto.retirementDate());
+        reservationDates.setReturnPlace(agency);
+        reservationDates.setReservation(reservation);
+        reservationDates.setReturnDate(reservationDatesRequestDto.returnDate());
+
         ReservationDates updatedReservationDates = reservationDatesRepository.save(reservationDates);
         return new ReservationDatesResponseDto(updatedReservationDates);
     }

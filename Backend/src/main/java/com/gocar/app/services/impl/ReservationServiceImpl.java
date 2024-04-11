@@ -50,9 +50,13 @@ public class ReservationServiceImpl  implements ReservationService{
 	        }
 	    }
 
-	
+	@Override
+	public Reservation findById2(Long id) {
+		return reservationRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("There is no reservation with that id in the database"));
+	}
 
-	    @Override
+
+	@Override
 	    public ReservationResponseDTO save(ReservationDTO reservationDTO) {
 			String userEmail = (String)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			User user = userService.findByEmail(userEmail);

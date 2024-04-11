@@ -7,6 +7,7 @@ import com.gocar.app.models.Agency;
 import com.gocar.app.models.Insurance;
 import com.gocar.app.repositories.AgencyRepository;
 import com.gocar.app.services.AgencyService;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.stereotype.Service;
@@ -25,7 +26,9 @@ public class AgencyServiceImpl implements AgencyService {
         try{
             Agency agencyEntity = Agency.builder()
                     .name(agencyRequestDto.name())
+                    .country(agencyRequestDto.country())
                     .address(agencyRequestDto.address())
+                    .phone(agencyRequestDto.phone())
                     .build();
             Agency entitySaved = agencyRepository.save(agencyEntity);
             return new AgencyResponseDto(entitySaved);
@@ -34,11 +37,16 @@ public class AgencyServiceImpl implements AgencyService {
         }
     }
 
-    @Override
     public AgencyResponseDto findById(Long id) {
-        return agencyRepository.findById(id)
-                .map(AgencyResponseDto::new)
-                .orElse(null);
+        Agency agency = agencyRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Agency with id " + id + " not found"));
+        return new AgencyResponseDto(agency);
+    }
+
+
+    @Override
+    public Agency findById2(Long id) {
+        return agencyRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("There is no reservation with that id in the database"));
     }
 
     @Override
@@ -51,7 +59,9 @@ public class AgencyServiceImpl implements AgencyService {
         try{
             Agency agencyEntity = Agency.builder()
                     .name(agencyRequestDto.name())
+                    .country(agencyRequestDto.country())
                     .address(agencyRequestDto.address())
+                    .phone(agencyRequestDto.phone())
                     .build();
             Agency entitySaved = agencyRepository.save(agencyEntity);
             return new AgencyResponseDto(entitySaved);
