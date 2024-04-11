@@ -36,7 +36,4 @@ public class Reservation {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "reservation_dates_id", referencedColumnName = "id")
 	private ReservationDates reservationDates;
-
-
-
 }

@@ -26,7 +26,7 @@ public class ReservationDates {
     @OneToOne
     private Agency returnPlace;
 
-    @OneToOne(mappedBy = "reservationDates")
+    @OneToOne(mappedBy = "reservationDates", cascade = CascadeType.ALL)
     private Reservation reservation;
 
     private LocalDate returnDate;
