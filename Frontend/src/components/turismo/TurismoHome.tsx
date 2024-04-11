@@ -1,4 +1,3 @@
-import { useState } from "react"
 import CarouselTourism from "./CarouselTourism"
 import ButtonTourism from "./ButtonTourism"
 
@@ -7,17 +6,22 @@ type SitioTuristico = {id: number, imagen: string, descripcion: string}
 const showSites: SitioTuristico[] = [
   {
     id: 1,
-    imagen: "Mendoza.png",
-    descripcion: "¿Qué hacer en Mendoza?"
-  },
-  {
-    id: 2,
-    imagen: "Córdoba.png",
+    imagen: "src/assets/fotosDestinosDeViajes/Cordoba844x492px.jpg",
     descripcion: "¿Qué hacer en Cordoba?"
   },
   {
+    id: 2,
+    imagen: "src/assets/fotosDestinosDeViajes/MENDOZA-844x492-1.jpg",
+    descripcion: "¿Qué hacer en Mendoza?"
+  },
+  {
     id: 3,
-    imagen: "Santa Fe.png",
+    imagen: "src/assets/fotosDestinosDeViajes/PURMAMARCA-844x492px.jpg",
+    descripcion: "¿Qué hacer en Jujuy?"
+  },
+  {
+    id: 4,
+    imagen: "src/assets/fotosDestinosDeViajes/ROSARIO-844x492px.jpg",
     descripcion: "¿Qué hacer en Santa Fe?"
   }
 ]
@@ -59,7 +63,9 @@ const TurismoHome = () => {
         <ButtonTourism title="Consulta todos los destinos" path="/tipsTuristicos" />
 
       </div>
+      <ButtonTourism title="Consulta todos los destinos" path="/tipsTuristicos" />
+    </div>
     )
-  }
+}
   
-  export default TurismoHome
+export default TurismoHome
