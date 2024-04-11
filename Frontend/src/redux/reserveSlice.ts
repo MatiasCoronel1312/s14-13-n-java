@@ -1,35 +1,45 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 type Treserve = {
-  user: {
-    id: number,
-    nameUser: string
-  },
-  dateInfo:{
-    fechaEntrega: string,
-  fechaDevolucion: string,
-  horaEntrega: string,
-  horaDevolucion: string,
-  lugar: number,
-},
-  car: {
-    idCar:number
-},  
+
+  userId?: number,
+  nameUser?: string,
+  fechaEntrega?: string,
+  fechaDevolucion?: string,
+  horaEntrega?: string,
+  horaDevolucion?: string,
+  lugar?: string,
+  carId?:number
+
 };
 
-const estadoInicial:Treserve = {
-    
+interface reserve {
+  dataReserve: Treserve
+} 
+
+const estadoInicial:reserve = {
+    dataReserve: {
+      
+      userId: undefined ,
+      nameUser: undefined,      
+      fechaEntrega: undefined,
+      fechaDevolucion: undefined,
+      horaEntrega: undefined,
+      horaDevolucion: undefined,
+      lugar: undefined,
+      carId:undefined,
+    } 
 }
 
-const carsSlice = createSlice({
-    name: 'reserve',
+const reserveSlice = createSlice({
+    name: 'dataReserve',
     initialState: estadoInicial,
     reducers: {
-        postCars: (state, actions: PayloadAction<Treserve>)=>{    
-            [...state.reserve,  actions.payload ]
+        postReserve: (state, actions)=>{    
+          state.dataReserve = { ...state.dataReserve, ...actions.payload }
         },
     },
 });
 
-export const { postCars } = carsSlice.actions;
-export default carsSlice.reducer;
+export const { postReserve } = reserveSlice.actions;
+export default reserveSlice.reducer;
