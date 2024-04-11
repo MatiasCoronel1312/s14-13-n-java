@@ -1,12 +1,47 @@
+
+import { useEffect, useState } from "react";
 import ButtonMain from "../ButtonMain/ButtonMain";
 interface Props {
   title: string;
-  path: string;
+
+  price: number;
+  handleScrollToBack: (a: number) => void;
+  selectACard: string;
+  SetSelectACard: (a: string) => void;
 }
-export default function CardToPay({ title, path }: Props) {
+export default function CardToPay({
+  title,
+  price,
+  handleScrollToBack,
+  selectACard,
+  SetSelectACard,
+}: Props) {
+  const [isSelected, setIsSelected] = useState(false);
+  const planSelected = selectACard == title;
+  const selectCard = () => {
+    setIsSelected(true);
+    handleScrollToBack(1200);
+    SetSelectACard(title);
+  };
+  let realPrices = "";
+
+  if (price.toString().includes(".")) {
+    const entero = price.toString().split(".");
+    const decimal = entero[1].length == 1 ? `${entero[1]}0` : `${entero[1]}`;
+
+    realPrices = ` ${entero[0]}.${decimal}`;
+  } else {
+    realPrices = ` ${price}.00`;
+  }
+
   return (
-    <div className="w-[375px] min-h-[600px]   p-6 flex flex-col justify-between items-center border border-spacing-2 border-black rounded-3xl shadow-card">
-      <h3 className="text-2xl font-extralight">{title}</h3>
+    <div
+      className={`w-[375px] min-h-[600px] ${
+        isSelected && planSelected ? "opacity-45" : "bg-white"
+      }   p-6 flex flex-col justify-between items-center border border-spacing-2 border-black rounded-3xl shadow-card`}
+    >
+      <h3 className="text-xl font-extralight">{title}</h3>
+
 
       <div className="flex flex-col h-[180px] justify-between gap-2">
         <p className="bg-[#FFF6EC] flex justify-center items-center w-[315px] h-[60px] shadow-card text-xl font-light">
@@ -18,9 +53,19 @@ export default function CardToPay({ title, path }: Props) {
       </div>
       <div className="flex flex-col items-center ">
         <p className="font-extralight text-sm mb-2">Desde</p>
-        <p className="text-2xl  font-ligth shadow-text">US$ 55,00 / dia</p>
+
+        <p className="text-2xl  font-ligth shadow-text">
+          US$ {realPrices} / dia
+        </p>
       </div>
-      <ButtonMain title={"Seleccionar Oferta"} path={path} />
+      {!planSelected ? (
+        <div onClick={selectCard}>
+          <ButtonMain title={"Seleccionar Oferta"} />
+        </div>
+      ) : (
+        <div className=" w-[293px] h-[64px]"></div>
+      )}
+
     </div>
   );
 }

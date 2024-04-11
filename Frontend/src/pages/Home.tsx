@@ -1,12 +1,18 @@
-import Carrusel from './../components/CarCarousel/Carrusel';
+
+import NuevaReserva from "../components/NuevaReserva/NuevaReserva";
+
+import Carrusel from "./../components/CarCarousel/Carrusel";
+
 
 const Home = () => {
   return (
     <div>
-      
-      <Carrusel />
-    </div>
-  )
-}
 
-export default Home
+      <Carrusel />
+      <NuevaReserva />
+
+    </div>
+  );
+};
+
+export default Home;
