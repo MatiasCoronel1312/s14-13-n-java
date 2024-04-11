@@ -1,10 +1,21 @@
 
 import { useForm } from "react-hook-form";
 import { Formulario } from "./Formulario.interface";
-import { Link } from "react-router-dom";
+import { useAppDispatch, useAppSeletor } from "../../redux/store";
+import { useEffect } from "react";
+
 export const NuevaReserva = () => {
   const { register, handleSubmit } = useForm();
 
+  //const dispatch = useAppDispatch(); //dispatch para mas adelante para guardar los datos de la reserva
+
+ const dataReserve = useAppSeletor(state=>state.dataReserve.dataReserve)//useSelector para recibir los datos de la agencia en el caso de haber seleccionado en la lista de agencias
+ useEffect(() => {
+  if(dataReserve.lugar){
+    console.log(dataReserve.lugar)
+  }
+ }, [dataReserve])
+ 
   const onSubmit = handleSubmit((data) => {
     const formulario: Formulario = {
       agenciaRetiro: data.agenciaRetiro,
@@ -15,8 +26,10 @@ export const NuevaReserva = () => {
       horaEntrega: data.horaEntrega,
     };
     console.log(formulario);
-  });
 
+    
+  });
+  
   return (
     <>
       <div className="Gradient-V w-[1180px] min-h-[129px] p-6 my-6 rounded-xl ">
