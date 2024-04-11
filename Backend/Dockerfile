@@ -12,6 +12,6 @@ RUN mvn -f /Backend/pom.xml clean package -P prod
 #
 FROM openjdk:17
 MAINTAINER Brian
-COPY --from=build /Backend/target/gocar-0.0.1-SNAPSHOT.jar  /usr/local/lib/gocar.jar
+COPY --from=build /Backend/target/gocar-0.0.1-SNAPSHOT.jar  /usr/local/lib/gocar-app.jar
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "/usr/local/lib/gocar.jar"]
+ENTRYPOINT ["java", "-jar", "/usr/local/lib/gocar-app.jar"]
