@@ -67,7 +67,7 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
           <p>Olvidaste tu contraseña?</p>
         </div>
         <p>
-          Aun no tienes una cuenta? <Link to="/">Registrarme</Link>
+          Aun no tienes una cuenta? <Link to="/registro">Registrarme</Link>
         </p>
         <button
           className="px-12 py-5 rounded-lg Gradient-T text-background"
