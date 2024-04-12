@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import NuevaReserva from "../components/NuevaReserva/NuevaReserva";
+import NuevaReservaPrueba from "../components/NuevaReserva/NuevaReservaPrueba";
 import { FaPlane } from "react-icons/fa6";
 import { useAppDispatch, useAppSeletor } from "../redux/store";
 import { getAgencias } from "../redux/agenciasSlice";
@@ -152,7 +152,7 @@ const RedDeAgencias = () => {
   return (
     <div className='w-full bg-background flex justify-center'>
       <div className="flex items-center flex-col lg:w-[85%] md:w-[90%] ">
-        <NuevaReserva/>
+        <NuevaReservaPrueba/>
        <div className="text-accent text-[32px] text-center font-semibold my-5">Red de Agencias</div>
        <div className="text-text text-[22px] text-left w-full font-semibold mb-3">Encontrá la agencia más cercana:</div>
        <div className="w-full rounded-[10px] my-10">
