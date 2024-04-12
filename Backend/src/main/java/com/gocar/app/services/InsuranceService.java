@@ -1,5 +1,5 @@
 package com.gocar.app.services;
-import java.util.List;
+
 
 import com.gocar.app.models.Insurance;
 import org.hibernate.service.spi.ServiceException;
@@ -12,5 +12,6 @@ public interface InsuranceService {
    
     InsuranceDTO save(InsuranceDTO insuranceDTO);
     Insurance findById(Long id);
+
 
 }

@@ -1,5 +1,6 @@
 package com.gocar.app.services;
 
+
 import com.gocar.app.dtos.reservation.ReservationResponseDTO;
 import com.gocar.app.models.Reservation;
 import org.hibernate.service.spi.ServiceException;
@@ -19,6 +20,7 @@ public interface ReservationService {
 	   
 	ReservationResponseDTO save(ReservationDTO reservationDTO);
 	ReservationResponseDTO update(Long id, ReservationDTO reservationDTO);
+
 	    boolean delete(Long id);
 
 }
