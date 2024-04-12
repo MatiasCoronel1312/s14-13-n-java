@@ -40,14 +40,14 @@ export function FrontViewCard({
 
   return (
     <div
-      className={` ${
-        hasStock ? "bg-white " : "bg-[#FFF6EC] "
-      }  w-[375px] min-h-[500px] border border-gray-300 rounded-xl flex flex-col items-center  py-6 shadow-card relative`}
+      className={` ${hasStock ? "bg-white " : "bg-[#f2e3d2] "}  w-[375px] ${
+        isCategory ? "h-[556px]" : "h-[500px]"
+      } border border-gray-300 rounded-xl flex flex-col items-center  py-6 shadow-card relative`}
     >
       <p className="text-2xl font-light">{detailsCar.categoría}</p>
 
       <section className="flex flex-col items-center gap-3 py-2">
-        <figure className="w-[285px] h-[200px] relative bg-[#ABAAAA] p-6 ">
+        <figure className="w-[285px] h-[200px] relative bg-[#f7f5f577]   shadow-sm p-6 ">
           {isMoreCar && (
             <div className="absolute flex z-20 w-[285px] top-20 left-0 justify-between px-3 text-gray-600 font-bold text-xl">
               <p className="hover:cursor-pointer " onClick={lessIndex}>

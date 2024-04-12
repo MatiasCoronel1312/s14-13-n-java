@@ -1,8 +1,9 @@
 import { useForm } from "react-hook-form";
 import { Formulario } from "./Formulario.interface";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 export const NuevaReserva = () => {
   const { register, handleSubmit } = useForm();
+  const navigate = useNavigate();
 
   const onSubmit = handleSubmit((data) => {
     const formulario: Formulario = {
@@ -13,7 +14,12 @@ export const NuevaReserva = () => {
       fechaEntrega: data.fechaEntrega,
       horaEntrega: data.horaEntrega,
     };
+
     console.log(formulario);
+    // before add formulario data in redux state
+    navigate("../categoriasDeVehiculos/all", {
+      state: { isReserva: true },
+    });
   });
 
   return (
@@ -23,11 +29,14 @@ export const NuevaReserva = () => {
           className="flex  justify-between flex-wrap gap-4"
           onSubmit={onSubmit}
         >
-          <div className="flex gap-2">
-            <p className="text-white text-[24px] self-center">Nueva Reserva</p>
+          <p className="text-white w-68  text-[24px] self-center">
+            Nueva Reserva
+          </p>
+          <div className="flex gap-2 -6">
             <input
               className="w-[596px] h-[70px] rounded-md py-4 font-sans text-text"
               type="text"
+              required
               placeholder="  Ingresá la agencia de retirada (ej. Bariloche, Buenos Aires) 
             "
               {...register("agenciaRetiro")}
@@ -55,6 +64,7 @@ export const NuevaReserva = () => {
               />
 
               <input
+                required
                 className="w-[142px] h-[70px] text-text rounded-r-md"
                 type="time"
                 placeholder="Hora de Retiro"
@@ -62,15 +72,15 @@ export const NuevaReserva = () => {
               />
             </div>
           </div>
+          <button
+            className="bg-black h-[62px] w-[153px] me-4 self-center text-white p-2 ms-2 rounded-md"
+            type="submit"
+          >
+            Seguir
+          </button>
           <div className="flex gap-2">
-            <Link
-              to={"/categoriasDeVehiculos/seleciona"}
-              className="bg-black h-[62px] w-[153px] me-4 self-center text-white p-2 ms-2 rounded-md"
-              type="submit"
-            >
-              Seguir
-            </Link>
             <input
+              required
               className="w-[596px] h-[70px] rounded-md py-4 font-sans text-text"
               type="text"
               placeholder="  Ingresá la agencia de entrega (ej. Bariloche, Buenos Aires) 
@@ -92,6 +102,7 @@ export const NuevaReserva = () => {
             </svg>
             <div className=" flex ">
               <input
+                required
                 className="w-[162px] h-[70px] rounded-l-md border-r-2"
                 type="date"
                 placeholder="Fecha de entrega"
@@ -99,6 +110,7 @@ export const NuevaReserva = () => {
               />
 
               <input
+                required
                 className="w-[142px] h-[70px] text-text rounded-r-md"
                 type="time"
                 placeholder="Hora de entrega"
