@@ -36,7 +36,9 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
       onSubmit={handleSubmit}
     >
       {errorMessage && <p className="error-message">{errorMessage}</p>}
-      <h3 className=" my-[30px]">Inicio de sesión</h3>
+      <h3 className=" my-[30px] text-background text-[32px]">
+        Inicio de sesión
+      </h3>
       <div className="flex flex-col items-center justify-center w-full gap-10 bg-background py-9">
         <div className="flex flex-col w-[450px] gap-2">
           <label className="text-sm font-bold uppercase" htmlFor="email">
