@@ -6,4 +6,8 @@ public record ErrorResponseDto(String field, String error) {
     public ErrorResponseDto(FieldError error) {
         this(error.getField(), error.getDefaultMessage());
     }
+
+    public ErrorResponseDto(String errorMessage) {
+        this(null, errorMessage);
+    }
 }

@@ -38,7 +38,8 @@ public class Reservation {
 	 private Insurance Insurance;
 	 private Boolean softDelete  = Boolean.FALSE;
 
-
-
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "reservation_dates_id", referencedColumnName = "id")
+	private ReservationDates reservationDates;
 
 }
