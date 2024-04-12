@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import Car from "./carrusel.interface";
 import { useNavigate } from "react-router-dom";
+
 export default function Carrusel() {
+
   const navigator = useNavigate();
+  
   const images: Car[] = [
     {
       image: "src/assets/ImagenesCarros/AudiA5.png",
