@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import allCarsReducer from "./carsSlice";
+import allAgenciasReducer from "./agenciasSlice";
+import dataReserveReducer from "./reserveSlice";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
 export const store = configureStore({
     reducer: {
-            allCars: allCarsReducer,
+            allAgencias: allAgenciasReducer,
+            dataReserve: dataReserveReducer,
     },
 });
 export const useAppDispatch:()=>typeof store.dispatch=useDispatch;
