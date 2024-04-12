@@ -1,4 +1,3 @@
-import { useState } from "react"
 import CarouselTourism from "./CarouselTourism"
 import ButtonTourism from "./ButtonTourism"
 
@@ -7,17 +6,22 @@ type SitioTuristico = {id: number, imagen: string, descripcion: string}
 const showSites: SitioTuristico[] = [
   {
     id: 1,
-    imagen: "Mendoza.png",
-    descripcion: "¿Qué hacer en Mendoza?"
-  },
-  {
-    id: 2,
-    imagen: "Córdoba.png",
+    imagen: "src/assets/fotosDestinosDeViajes/Cordoba844x492px.jpg",
     descripcion: "¿Qué hacer en Cordoba?"
   },
   {
+    id: 2,
+    imagen: "src/assets/fotosDestinosDeViajes/MENDOZA-844x492-1.jpg",
+    descripcion: "¿Qué hacer en Mendoza?"
+  },
+  {
     id: 3,
-    imagen: "Santa Fe.png",
+    imagen: "src/assets/fotosDestinosDeViajes/PURMAMARCA-844x492px.jpg",
+    descripcion: "¿Qué hacer en Jujuy?"
+  },
+  {
+    id: 4,
+    imagen: "src/assets/fotosDestinosDeViajes/ROSARIO-844x492px.jpg",
     descripcion: "¿Qué hacer en Santa Fe?"
   }
 ]
@@ -28,34 +32,16 @@ const showSites: SitioTuristico[] = [
 
 const TurismoHome = () => {
 
-  const [indexSite, setIndexSite] = useState(0);
-  const addIndex = () => {
-      if (indexSite < showSites.length - 1) {
-          setIndexSite((state) => (state += 1));
-      }
-  };
-  const lessIndex = () => {
-      if (indexSite > 0) {
-          setIndexSite((state) => (state -= 1));
-      }
-  };
-
-    return (
-      <div className='lg:w-[85%] md:w-[90%] h-[500px] bg-white border p-6 flex flex-col items-center'>
-        <h2 className="text-3xl text-[#B81C00]">Destinos para descubrir e inspirarte</h2>
-        <p className="mt-2 mb-4">Más que alquilarte un auto, nosotros cuidamos de tu camino, consultá nuestros tips y viajá sin preocupaciones para tu próximo destino.</p>
-        <div className="mb-4">
-          <CarouselTourism 
-            showSites={showSites} 
-            addIndex={addIndex}
-            lessIndex={lessIndex}
-            indexSite={indexSite}
-            setIndexSite={setIndexSite} 
-          />
-        </div>
-        <ButtonTourism title="Consulta todos los destinos" path="/tipsTuristicos" />
+  return (
+    <div className='lg:w-[85%] md:w-[90%] bg-white border p-6 flex flex-col items-center'>
+      <h2 className="text-3xl text-[#B81C00] text-center">Destinos para descubrir e inspirarte</h2>
+      <p className="mt-2 mb-4">Más que alquilarte un auto, nosotros cuidamos de tu camino, consultá nuestros tips y viajá sin preocupaciones para tu próximo destino.</p>
+      <div className="mb-4 w-full">
+        <CarouselTourism showSites={showSites} />
       </div>
+      <ButtonTourism title="Consulta todos los destinos" path="/tipsTuristicos" />
+    </div>
     )
-  }
+}
   
-  export default TurismoHome
+export default TurismoHome
