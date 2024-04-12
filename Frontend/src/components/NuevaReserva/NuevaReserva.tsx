@@ -31,6 +31,7 @@ export const NuevaReserva = () => {
     navigate("/categoriasDeVehiculos/seleciona");
   
     
+    
   });
   
   return (
