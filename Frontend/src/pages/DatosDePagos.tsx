@@ -1,5 +1,4 @@
 import { useLocation } from "react-router-dom";
-import Home from "./Home";
 import TimeLine from "../components/timeline/TimeLine";
 
 import SummaryBooking from "../components/SummaryBooking/SummaryBooking";
@@ -14,7 +13,9 @@ const DatosDePagos = () => {
   return (
     <div className="w-full bg-background flex justify-center">
       <div className="h-auto lg:w-[85%] md:w-[90%]  ">
-        <TimeLine posicion={4} />
+        <div className="h-[210px] mt-6  flex justify-center items-center">
+          <TimeLine posicion={4} />
+        </div>
         <IsNoLogin />
 
         <SummaryBooking />

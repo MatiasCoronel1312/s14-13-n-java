@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { TCarro } from "../../assets/carsInfo";
 import ButtonMain from "../ButtonMain/ButtonMain";
-//import carro from "AudiA5.png"
+import { useAppDispatch } from "../../redux/store";
+import { postCars } from "../../redux/carsSlice";
 
 interface Props {
   lessIndex: () => void;
@@ -26,11 +27,14 @@ export function FrontViewCard({
   const detailsCar = showCars[indexCar];
   const hasStock = detailsCar.stock > 0;
   const isMoreCar = showCars.length > 1;
+  const dispatch = useAppDispatch();
 
   const goToSelectCar = () => {
     navigate("/selecciona-pago", {
       state: { carro: [detailsCar] },
     });
+    // carro to redux
+    dispatch(postCars([detailsCar]));
 
     window.scrollTo({
       top: 0,
@@ -78,8 +82,8 @@ export function FrontViewCard({
                       <p
                         onClick={() => setInderCar(index)}
                         key={car.id}
-                        className={`h-3 mx-1 relative z-50 hover:cursor-pointer rounded-full "w-3  bg-gray-200/45"
-                     ${isSelected ? "" : "w-3  bg-gray-200/45"} `}
+                        className={`h-3 mx-1 relative z-50 hover:cursor-pointer rounded-full "w-3  transition-all duration-[800ms]  ease-in"
+                     ${isSelected ? "" : "w-3  bg-gray-500"} `}
                       ></p>
                     )}
                   </div>

@@ -3,11 +3,15 @@ import TimeLine from "../components/timeline/TimeLine";
 import NuevaReserva from "../components/NuevaReserva/NuevaReserva";
 
 import { useLocation } from "react-router-dom";
+import { useAppSeletor } from "../redux/store";
 
 const CategoriaDeVehiculos = () => {
   const location = useLocation();
+  const dataReserve = useAppSeletor((state) => state.dataReserve.dataReserve);
+
   // add check if is from reserva or not in the redux state
-  const isFromReserva = location?.state?.isReserva;
+  const isFromReserva =
+    location?.state?.isReserva || dataReserve.fechaRetiro !== undefined;
 
   return (
     <div className="w-full bg-background flex justify-center">

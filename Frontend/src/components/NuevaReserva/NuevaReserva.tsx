@@ -1,9 +1,22 @@
 import { useForm } from "react-hook-form";
 import { Formulario } from "./Formulario.interface";
 import { useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppSeletor } from "../../redux/store";
+import { useEffect } from "react";
+import { postReserve } from "../../redux/reserveSlice";
+
 export const NuevaReserva = () => {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
+
+  const dispatch = useAppDispatch(); //dispatch para mas adelante para guardar los datos de la reserva
+
+  const dataReserve = useAppSeletor((state) => state.dataReserve.dataReserve); //useSelector para recibir los datos de la agencia en el caso de haber seleccionado en la lista de agencias
+  useEffect(() => {
+    if (dataReserve.lugar) {
+      console.log(dataReserve.lugar);
+    }
+  }, [dataReserve]);
 
   const onSubmit = handleSubmit((data) => {
     const formulario: Formulario = {
@@ -15,7 +28,7 @@ export const NuevaReserva = () => {
       horaEntrega: data.horaEntrega,
     };
 
-    console.log(formulario);
+    dispatch(postReserve(formulario));
     // before add formulario data in redux state
     navigate("../categoriasDeVehiculos/all", {
       state: { isReserva: true },
@@ -29,10 +42,8 @@ export const NuevaReserva = () => {
           className="flex  justify-between flex-wrap gap-4"
           onSubmit={onSubmit}
         >
-          <p className="text-white w-68  text-[24px] self-center">
-            Nueva Reserva
-          </p>
-          <div className="flex gap-2 -6">
+          <p className="text-white text-[24px] self-center">Nueva Reserva</p>
+          <div className="flex gap-2">
             <input
               className="w-[596px] h-[70px] rounded-md py-4 font-sans text-text"
               type="text"
@@ -123,4 +134,5 @@ export const NuevaReserva = () => {
     </>
   );
 };
+
 export default NuevaReserva;
