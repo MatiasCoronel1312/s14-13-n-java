@@ -46,7 +46,7 @@ export const NuevaReserva = () => {
               type="text"
               placeholder="  Ingresá la agencia de retirada (ej. Bariloche, Buenos Aires) 
             "
-            value={selectedAgenciaRetiro?selectedAgenciaRetiro: ''}
+            
             {...register("agenciaRetiro")}
             />
 
