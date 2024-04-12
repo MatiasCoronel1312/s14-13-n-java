@@ -14,12 +14,11 @@ public record ReservationResponseDTO(
         Double iva,
         Double Subtotal,
         Double total,
-        Long idReservationDates,
         Insurance Insurance) {
 
     public  ReservationResponseDTO (Reservation reservation){
-        this(reservation.getId(), reservation.getVehicle(), new UserResponseDto(reservation.getUser()), reservation.getIva(), reservation.getSubtotal() , reservation.getTotal(),
-                reservation.getIdReservationDates(), reservation.getInsurance());
+        this(reservation.getId(), reservation.getVehicle(), new UserResponseDto(reservation.getUser()), reservation.getIva(), reservation.getSubtotal() , reservation.getTotal()
+                , reservation.getInsurance());
 
     }
 

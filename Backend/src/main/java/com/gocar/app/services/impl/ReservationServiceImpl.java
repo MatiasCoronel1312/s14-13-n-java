@@ -73,8 +73,7 @@ public class ReservationServiceImpl  implements ReservationService{
 	                    .iva(reservationDTO.total() * 0.12)
 	                    .subtotal(reservationDTO.total() - (reservationDTO.total() * 0.12))
 	                    .total(reservationDTO.total())
-	                    .idReservationDates(reservationDTO.idReservationDates())
-	                    .Insurance(insurance)
+	                    .insurance(insurance)
 	                    .softDelete(Boolean.FALSE)
 	                    .build();
 	            Reservation entitySaved = reservationRepository.save(reservationEntity);
@@ -98,7 +97,6 @@ public class ReservationServiceImpl  implements ReservationService{
 	            reservationDataBase.setIva(reservationDTO.total() * 0.12);
 	            reservationDataBase.setSubtotal(reservationDTO.total() - (reservationDTO.total() * 0.12));
 	            reservationDataBase.setTotal(reservationDTO.total());
-	            reservationDataBase.setIdReservationDates(reservationDTO.idReservationDates());
 	            Reservation reservationUpdated = reservationRepository.save(reservationDataBase);
 	            return new ReservationResponseDTO(reservationUpdated);
 
