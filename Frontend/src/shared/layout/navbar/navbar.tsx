@@ -10,27 +10,26 @@ const navbar = () => {
         <ul className="flex justify-between w-[60%]">
           <Link
             to="/categoriasDeVehiculos/all"
-            className="text-center text-background"
+
+            className="text-background text-center"
           >
             CATEGORIAS DE VEHICULOS
           </Link>
-          <Link to="/redDeAgencias" className="text-center text-background">
+          <Link to="/redDeAgencias" className="text-background text-center">
             RED DE AGENCIAS
           </Link>
-          <Link to="/tipsTuristicos" className="text-center text-background">
+          <Link to="/tipsTuristicos" className="text-background text-center">
             TIPS TURISTICOS
           </Link>
-          <Link to="/dudas" className="text-center text-background">
+          <Link to="/dudas" className="text-background text-center">
             DUDAS
           </Link>
         </ul>
-        <button className="flex Gradient-H w-[136px] h-[44px] rounded-[5px] cursor-pointer hover:bg-primary ">
-          <Link
-            to="/login"
-            className="text-primary text-[20px] py-[5px] z-10 bg-[#707070] m-auto w-[134px] Gradient-H_hover transition-all duration-300 ease-in-out h-[42px] rounded-[5px] cursor-pointer hover:text-text"
-          >
+        <button className="flex  Gradient-H w-[136px] h-[44px] rounded-[5px] cursor-pointer hover:bg-primary ">
+          <div className="text-primary text-[20px] py-[5px] z-10 bg-[#707070] m-auto w-[134px] Gradient-H_hover transition-all duration-300 ease-in-out h-[42px] rounded-[5px] cursor-pointer hover:text-text">
             Log in
-          </Link>
+          </div>
+
         </button>
       </div>
     </header>

@@ -35,11 +35,13 @@ export const menuRoutes = [
     Element: CategoriaDeVehiculos,
   },
   {
+
     id: "login",
     path: "/login",
     Element: Login,
   },
   {
+
     id: "seleccionCarro",
     path: "/selecciona-pago",
     Element: SeleccionDeCarro,
@@ -49,11 +51,13 @@ export const menuRoutes = [
     path: "/finalizar-pago",
     Element: DatosDePagos,
   },
+
   {
     id: "Registro",
     path: "/registro",
     Element: Registro,
   }
+
 ];
 
 // DatosDePagos
