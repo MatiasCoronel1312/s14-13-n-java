@@ -5,6 +5,8 @@ import NuevaReserva from "../components/NuevaReserva/NuevaReserva";
 import { useLocation } from "react-router-dom";
 import { useAppSeletor } from "../redux/store";
 
+//https://gocarapp.onrender.com/api/vehicles/all
+
 const CategoriaDeVehiculos = () => {
   const location = useLocation();
   const dataReserve = useAppSeletor((state) => state.dataReserve.dataReserve);

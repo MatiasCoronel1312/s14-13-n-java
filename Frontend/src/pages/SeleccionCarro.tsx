@@ -9,14 +9,20 @@ import { useState } from "react";
 import { useAppSeletor } from "../redux/store";
 
 import { useNavigate } from "react-router-dom";
+import Home from "./Home";
 
 const SeleccionDeCarro = () => {
   const navigate = useNavigate();
   const [selectACard, SetSelectACard] = useState("");
-  const dataReserve = useAppSeletor((state) => state.carro.cars);
+  const dataCarro = useAppSeletor((state) => state.carro.cars);
+  const dataReserve = useAppSeletor(
+    (state) => state.dataReserve.dataReserve
+  ).fechaEntrega;
 
-  const carroSeleccionado = dataReserve;
-
+  if (dataReserve === undefined) {
+    return <Home />;
+  }
+  const carroSeleccionado = dataCarro;
   const goToPagoPage = () => {
     navigate("/finalizar-pago");
     handleScrollToBack(0);

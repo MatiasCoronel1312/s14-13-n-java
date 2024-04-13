@@ -1,15 +1,17 @@
-import { useLocation } from "react-router-dom";
 import TimeLine from "../components/timeline/TimeLine";
 
 import SummaryBooking from "../components/SummaryBooking/SummaryBooking";
+import { useAppSeletor } from "../redux/store";
+import Home from "./Home";
 
 const DatosDePagos = () => {
-  const params = useLocation();
-  //const carroSeleccionado = params?.state?.carro;
+  const dataReserve = useAppSeletor(
+    (state) => state.dataReserve.dataReserve
+  ).fechaEntrega;
 
-  // if (carroSeleccionado == undefined) {
-  //   return <Home />;
-  // }
+  if (dataReserve === undefined) {
+    return <Home />;
+  }
   return (
     <div className="w-full bg-background flex justify-center">
       <div className="h-auto lg:w-[85%] md:w-[90%]  ">
