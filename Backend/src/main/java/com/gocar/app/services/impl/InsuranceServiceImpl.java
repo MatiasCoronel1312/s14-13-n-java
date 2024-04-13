@@ -1,6 +1,4 @@
 package com.gocar.app.services.impl;
-import java.util.List;
-
 
 
 import org.hibernate.service.spi.ServiceException;
@@ -8,13 +6,11 @@ import org.springframework.stereotype.Service;
 
 
 import com.gocar.app.dtos.insurance.InsuranceDTO;
-import com.gocar.app.dtos.reservation.ReservationDTO;
 import com.gocar.app.models.Insurance;
 import com.gocar.app.repositories.InsuranceRepository;
 import com.gocar.app.services.InsuranceService;
 
 
-import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 

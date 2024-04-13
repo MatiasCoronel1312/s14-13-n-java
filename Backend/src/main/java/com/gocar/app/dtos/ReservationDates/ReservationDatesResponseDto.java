@@ -5,25 +5,23 @@ import com.gocar.app.models.ReservationDates;
 import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public record ReservationDatesResponseDto(
-        @NotNull
+
         Long id,
         Agency retirementPlace,
-        @NotNull
-        LocalDate retirementDate,
+
+        LocalDateTime retirementDate,
         Agency returnPlace,
-        @NotNull
-        Long reservation,
-        @NotNull
-        LocalDate returnDate
+
+        LocalDateTime returnDate
 ) {
     public ReservationDatesResponseDto(ReservationDates entitySaved) {
         this(entitySaved.getId(),
                 entitySaved.getRetirementPlace(),
                 entitySaved.getRetirementDate(),
                 entitySaved.getReturnPlace(),
-                entitySaved.getReservation().getId(),
                 entitySaved.getReturnDate());
     }
 }
