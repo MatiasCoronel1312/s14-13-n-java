@@ -1,8 +1,10 @@
 import { useForm } from "react-hook-form";
+
 import { Formulario } from "./Formulario.interface";
 
 import { useAppDispatch, useAppSeletor } from "../../redux/store";
 import { useEffect } from "react";
+
 
 import { Link } from "react-router-dom";
 export const NuevaReserva = () => {
@@ -21,6 +23,7 @@ export const NuevaReserva = () => {
 
   const onSubmit = handleSubmit((data) => {
     const formulario: Formulario = {
+
       agenciaRetiro: data.agenciaRetiro,
       fechaRetiro: data.fechaRetiro,
       horaRetiro: data.horaRetiro,
@@ -36,6 +39,7 @@ export const NuevaReserva = () => {
   return (
     <>
       <div className="Gradient-V w-[1180px] min-h-[129px] p-6 my-6 rounded-xl ">
+
 
 
         <form className="flex  justify-between flex-wrap gap-4" onSubmit={onSubmit}>
@@ -64,7 +68,7 @@ export const NuevaReserva = () => {
                 fill="#707070"
               />
             </svg>
-            <div className=" flex">
+            <div className="flex ">
               <input
                 className="w-[162px] rounded-l-md border-r-2"
                 type="date"
@@ -108,7 +112,9 @@ export const NuevaReserva = () => {
                 fill="#707070"
               />
             </svg>
+
             <div className=" flex ">
+
               <input
                 className="w-[162px] h-[70px] rounded-l-md border-r-2"
                 type="date"

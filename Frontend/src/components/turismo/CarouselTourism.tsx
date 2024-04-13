@@ -1,7 +1,9 @@
 
+
 import { useState } from "react"
 import CardDestinoTurismo from "./CardDestinoTurismo"
 import { FaCircleArrowLeft, FaCircleArrowRight } from 'react-icons/fa6'
+
 
 
 type SitioTuristico = { id: number; imagen: string; descripcion: string };
