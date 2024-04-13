@@ -9,7 +9,6 @@ import { FaLinkedin } from "react-icons/fa6";
 const Footer = () => {
   return (
     <footer className="h-[550px] w-full bg-[#707070] flex justify-center items-center">
-<<<<<<< HEAD
       <div className='lg:w-[85%] md:w-[90%] h-[348px] flex flex-col text-[14px]'>
         <div className='flex justify-between w-full h-[328px]'>
           <div className='w-[180px] h-[40px]'>
@@ -31,30 +30,6 @@ const Footer = () => {
               <li><FaInstagram/></li>
               <li><FaXTwitter/></li>
               <li><FaLinkedin/></li>
-=======
-      <div className="lg:w-[85%] md:w-[90%] h-[348px] flex flex-col text-[14px]">
-        <div className="flex justify-between w-full h-[328px]">
-          <div className="w-[180px] h-[40px]">
-            <Link to="/">
-              <img src={GoCar} alt="logo GoCar" />
-            </Link>
-          </div>
-          <div className="w-[117px] h-[195px] flex flex-col justify-between">
-            <h2 className="text-white font-semibold">SITEMAP</h2>
-            <ul className="text-background flex flex-col justify-around w-full h-[148px] ">
-              <Link className="py-0.5" to="/categoriasDeVehiculos/all">
-                CATEGORIAS DE VEHICULOS
-              </Link>
-              <Link className="py-0.5" to="/redDeAgencias">
-                RED DE AGENCIAS
-              </Link>
-              <Link className="py-0.5" to="/tipsTuristicos">
-                TIPS TURISTICOS
-              </Link>
-              <Link className="py-0.5" to="/dudas">
-                DUDAS
-              </Link>
->>>>>>> 1a4bcde1068d542507627c21c413cc6b7ade52c4
             </ul>
           </div>
           <div className="w-[60px] h-[190px] flex flex-col justify-around ">
