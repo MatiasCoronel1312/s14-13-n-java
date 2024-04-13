@@ -1,10 +1,13 @@
 import { useForm } from "react-hook-form";
 import { Formulario } from "./Formulario.interface";
+
 import { useAppDispatch, useAppSeletor } from "../../redux/store";
 import { useEffect } from "react";
+
 import { Link } from "react-router-dom";
 export const NuevaReserva = () => {
   const { register, handleSubmit } = useForm();
+
 
   const dispatch = useAppDispatch(); //dispatch para mas adelante para guardar los datos de la reserva
 
@@ -15,6 +18,7 @@ export const NuevaReserva = () => {
   }
  }, [dataReserve])
  
+
   const onSubmit = handleSubmit((data) => {
     const formulario: Formulario = {
       agenciaRetiro: data.agenciaRetiro,
@@ -33,7 +37,9 @@ export const NuevaReserva = () => {
     <>
       <div className="Gradient-V w-[1180px] min-h-[129px] p-6 my-6 rounded-xl ">
 
+
         <form className="flex  justify-between flex-wrap gap-4" onSubmit={onSubmit}>
+
 
           <div className="flex gap-2">
             <p className="text-white text-[24px] self-center">Nueva Reserva</p>
@@ -44,7 +50,6 @@ export const NuevaReserva = () => {
             "
               {...register("agenciaRetiro")}
             />
-
 
             <svg
               width="19"
