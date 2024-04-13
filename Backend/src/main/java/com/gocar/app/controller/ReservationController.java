@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
-import com.gocar.app.dtos.reservation.ReservationDTO;
+import com.gocar.app.dtos.reservation.ReservationRequestDTO;
 import com.gocar.app.services.impl.ReservationServiceImpl;
 
 
@@ -41,16 +41,16 @@ public class ReservationController {
 
 	    @PostMapping(value = "save", consumes = "application/json", produces = "application/json")
 
-	    public ResponseEntity<ReservationResponseDTO> save (@RequestBody ReservationDTO ReservationDTO){
+	    public ResponseEntity<ReservationResponseDTO> save (@RequestBody ReservationRequestDTO ReservationRequestDTO){
 
-	        return ResponseEntity.status(HttpStatus.OK).body(reservationService.save(ReservationDTO));
+	        return ResponseEntity.status(HttpStatus.OK).body(reservationService.save(ReservationRequestDTO));
 	    }
 
 	    @PutMapping(value = "{id}", consumes = "application/json", produces = "application/json")
 
-	    public ResponseEntity<ReservationResponseDTO> update(@PathVariable Long id, @RequestBody ReservationDTO reservationDTO){
+	    public ResponseEntity<ReservationResponseDTO> update(@PathVariable Long id, @RequestBody ReservationRequestDTO reservationRequestDTO){
 
-	        return ResponseEntity.status(HttpStatus.OK).body(reservationService.update(id,reservationDTO));
+	        return ResponseEntity.status(HttpStatus.OK).body(reservationService.update(id, reservationRequestDTO));
 	    }
 
 	    @DeleteMapping(value = "{id}")

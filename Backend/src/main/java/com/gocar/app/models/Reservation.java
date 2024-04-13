@@ -17,7 +17,7 @@ import lombok.*;
 @Builder
 
 public class Reservation {
-	
+
 	 @Id
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	 private Long id;
@@ -28,9 +28,10 @@ public class Reservation {
 	 @JoinColumn(name = "user_id")
 	 private User User;
 	 private Double iva;
+	 private Double administrativeFee;
 	 private Double subtotal;
 	 private Double total;
-	 @OneToOne
+	 @ManyToOne
 	 @JoinColumn(name= "insurance_id")
 	 private Insurance insurance;
 	 private Boolean softDelete  = Boolean.FALSE;
