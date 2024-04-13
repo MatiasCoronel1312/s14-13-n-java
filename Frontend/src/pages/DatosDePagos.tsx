@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import Home from "./Home";
+
 import TimeLine from "../components/timeline/TimeLine";
 
 import SummaryBooking from "../components/SummaryBooking/SummaryBooking";
