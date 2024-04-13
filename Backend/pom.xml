@@ -96,6 +96,12 @@
             <version>RELEASE</version>
             <scope>compile</scope>
         </dependency>
+		<!-- https://mvnrepository.com/artifact/com.mercadopago/dx-java -->
+		<dependency>
+			<groupId>com.mercadopago</groupId>
+			<artifactId>dx-java</artifactId>
+			<version>1.5.2</version>
+		</dependency>
     </dependencies>
 	<profiles>
 		<profile>
