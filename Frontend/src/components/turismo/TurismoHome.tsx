@@ -32,12 +32,24 @@ const showSites: SitioTuristico[] = [
 
 const TurismoHome = () => {
 
-  return (
-    <div className='lg:w-[85%] md:w-[90%] bg-white border p-6 flex flex-col items-center'>
-      <h2 className="text-3xl text-[#B81C00] text-center">Destinos para descubrir e inspirarte</h2>
-      <p className="mt-2 mb-4">Más que alquilarte un auto, nosotros cuidamos de tu camino, consultá nuestros tips y viajá sin preocupaciones para tu próximo destino.</p>
-      <div className="mb-4 w-full">
-        <CarouselTourism showSites={showSites} />
+    return (
+
+      <div className='lg:w-[85%] md:w-[90%] h-[500px] bg-white border p-6 flex flex-col items-center'>
+
+        <h2 className="text-3xl text-[#B81C00]">Destinos para descubrir e inspirarte</h2>
+        <p className="mt-2 mb-4">Más que alquilarte un auto, nosotros cuidamos de tu camino, consultá nuestros tips y viajá sin preocupaciones para tu próximo destino.</p>
+        <div className="mb-4">
+          <CarouselTourism 
+            showSites={showSites} 
+            addIndex={addIndex}
+            lessIndex={lessIndex}
+            indexSite={indexSite}
+            setIndexSite={setIndexSite} 
+          />
+        </div>
+
+        <ButtonTourism title="Consulta todos los destinos" path="/tipsTuristicos" />
+
       </div>
       <ButtonTourism title="Consulta todos los destinos" path="/tipsTuristicos" />
     </div>

@@ -1,17 +1,14 @@
+
 import { useForm } from "react-hook-form";
 
 import { Formulario } from "./Formulario.interface";
-
 import { useAppDispatch, useAppSeletor } from "../../redux/store";
 import { useEffect } from "react";
 
-
-import { Link } from "react-router-dom";
 export const NuevaReserva = () => {
   const { register, handleSubmit } = useForm();
 
-
-  const dispatch = useAppDispatch(); //dispatch para mas adelante para guardar los datos de la reserva
+  //const dispatch = useAppDispatch(); //dispatch para mas adelante para guardar los datos de la reserva
 
  const dataReserve = useAppSeletor(state=>state.dataReserve.dataReserve)//useSelector para recibir los datos de la agencia en el caso de haber seleccionado en la lista de agencias
  useEffect(() => {
@@ -20,7 +17,6 @@ export const NuevaReserva = () => {
   }
  }, [dataReserve])
  
-
   const onSubmit = handleSubmit((data) => {
     const formulario: Formulario = {
 
@@ -83,19 +79,18 @@ export const NuevaReserva = () => {
                 {...register("horaRetiro")}
               />
             </div>
-          </div>
-          <div className="flex gap-2">
-            <Link
-              to={"/categoriasDeVehiculos/seleciona"}
-              className="bg-black h-[62px] w-[153px] me-4 self-center text-white p-2 ms-2 rounded-md"
-              type="submit"
-            >
-              Seguir
-            </Link>
-            <input
-              className="w-[596px] h-[70px] rounded-md py-4 font-sans text-text"
-              type="text"
-              placeholder="  Ingresá la agencia de entrega (ej. Bariloche, Buenos Aires) 
+            </div>
+            <div  className="flex gap-2">
+              <button 
+                className="bg-black h-[62px] w-[153px] me-4 self-center text-white p-2 ms-2 rounded-md"
+                type="submit"
+              >
+                Seguir
+              </button>
+              <input
+                className="w-[596px] h-[70px] rounded-md py-4 font-sans text-text"
+                type="text"
+                placeholder="  Ingresá la agencia de entrega (ej. Bariloche, Buenos Aires) 
               "
               {...register("agenciaEntrega")}
             />
@@ -136,3 +131,4 @@ export const NuevaReserva = () => {
   );
 };
 export default NuevaReserva;
+

@@ -1,91 +1,64 @@
-
-
 import { useState } from "react"
 import CardDestinoTurismo from "./CardDestinoTurismo"
 import { FaCircleArrowLeft, FaCircleArrowRight } from 'react-icons/fa6'
 
-
-
 type SitioTuristico = { id: number; imagen: string; descripcion: string };
 
 interface Props {
-
-  showSites: SitioTuristico[];
-  addIndex: () => void;
-  lessIndex: () => void;
-  indexSite: number;
-  setIndexSite: (p: number) => void;
+    showSites: SitioTuristico[];
 }
 
-const CarouselTourism = ({
-  showSites,
-  addIndex,
-  lessIndex,
-  indexSite,
-  setIndexSite,
-}: Props) => {
-  return (
-    <div className="flex justify-between items-center w-[1000px] h-[230px] bg-gray-400 p-4">
-      <p
-        className="hover:cursor-pointer w-[25px] text-center"
-        onClick={lessIndex}
-      >
-        {"<"}
-      </p>
-      <div className="flex flex-col w-full">
-        <div className="flex justify-between">
-          <CardDestinoTurismo
-            imagen={showSites[indexSite].imagen}
-            descripcion={showSites[indexSite].descripcion}
-          />
-          <CardDestinoTurismo
-            imagen={showSites[indexSite].imagen}
-            descripcion={showSites[indexSite].descripcion}
-          />
-          <CardDestinoTurismo
-            imagen={showSites[indexSite].imagen}
-            descripcion={showSites[indexSite].descripcion}
-          />
-          <CardDestinoTurismo
-            imagen={showSites[indexSite].imagen}
-            descripcion={showSites[indexSite].descripcion}
-          />
-        </div>
-        <div className="flex w-full justify-between mt-2">
-          {showSites.map((site, index) => {
-            const isSelected = indexSite === index;
-            return (
-              <div key={index}>
-                {isSelected ? (
-                  <p
-                    className={`h-3 w-6 rounded-full bg-gradient-to-l transition-all duration-[800ms]  ease-in  from-[#B81C00] to-[#FF8C00] `}
-                  ></p>
-                ) : (
-                  <p
-                    onClick={() => setIndexSite(index)}
-                    key={site.id}
-                    className={`h-3 relative z-50 hover:cursor-pointer rounded-full "w-3  bg-gray-200/45"
-                                        ${
-                                          isSelected
-                                            ? ""
-                                            : "w-3  bg-gray-200/45"
-                                        } `}
-                  ></p>
-                )}
-              </div>
-            );
-          })}
+const CarouselTourism = ({showSites}: Props) => {
 
+    const [indexSite, setIndexSite] = useState(0);
+
+    const addIndex = () => {
+        if (indexSite < showSites.length - 1) {
+            setIndexSite((state) => (state += 1));
+        } else {
+            setIndexSite(0);
+        }
+    };
+    const lessIndex = () => {
+        if (indexSite > 0) {
+            setIndexSite((state) => (state -= 1));
+        } if (indexSite == 0) {
+            setIndexSite(showSites.length - 1);
+        }
+    };
+
+    const addIndexSite = (more: number) => {
+        if (indexSite <= showSites.length - 1) {
+            return (indexSite + more) % showSites.length;
+        } else {
+            return 0;
+        }
+    };
+
+    const imagen1 = showSites[addIndexSite(1)];
+    const imagen2 = showSites[addIndexSite(2)];
+    const imagen3 = showSites[addIndexSite(3)];
+
+    return(
+        <div className="flex justify-between items-center w-full h-[230px] bg-white p-4">
+            <FaCircleArrowLeft className="size-[24px] hover:cursor-pointer text-[#B81C00] mr-4" onClick={lessIndex} />
+            <div className="flex flex-col w-full">
+                <div className="flex justify-around">
+                    <CardDestinoTurismo imagen={showSites[indexSite].imagen} descripcion={showSites[indexSite].descripcion} />
+                    <div className="hidden md:block">
+                    <CardDestinoTurismo imagen={imagen1.imagen} descripcion={imagen1.descripcion} />
+                    </div>
+                    <div className="hidden lg:block">
+                    <CardDestinoTurismo imagen={imagen2.imagen} descripcion={imagen2.descripcion} />
+                    </div>
+                    <div className="hidden xl:block">
+                    <CardDestinoTurismo imagen={imagen3.imagen} descripcion={imagen3.descripcion} />
+                    </div>
+                </div>
+            </div>
+            <FaCircleArrowRight className="size-[24px] hover:cursor-pointer text-[#B81C00] ml-4" onClick={addIndex} />
         </div>
-      </div>
-      <p
-        className="hover:cursor-pointer w-[25px] text-center"
-        onClick={addIndex}
-      >
-        {">"}
-      </p>
-    </div>
-  );
+    );
 };
 
 export default CarouselTourism;
