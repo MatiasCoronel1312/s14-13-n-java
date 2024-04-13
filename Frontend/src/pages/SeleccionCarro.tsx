@@ -14,7 +14,7 @@ import Home from "./Home";
 const SeleccionDeCarro = () => {
   const navigate = useNavigate();
   const [selectACard, SetSelectACard] = useState("");
-  const dataCarro = useAppSeletor((state) => state.carro.cars);
+  const carroSeleccionado = useAppSeletor((state) => state.carro.cars);
   const dataReserve = useAppSeletor(
     (state) => state.dataReserve.dataReserve
   ).fechaEntrega;
@@ -22,11 +22,15 @@ const SeleccionDeCarro = () => {
   if (dataReserve === undefined) {
     return <Home />;
   }
-  const carroSeleccionado = dataCarro;
+
+  const dataCobertura = useAppSeletor((state) => state.coberturas);
+
   const goToPagoPage = () => {
     navigate("/finalizar-pago");
     handleScrollToBack(0);
   };
+
+  console.log("dataCobertura", dataCobertura);
 
   const handleScrollToBack = (scroll: number) => {
     window.scrollTo({
@@ -63,7 +67,12 @@ const SeleccionDeCarro = () => {
           {selectACard.length > 5 ? (
             <ButtonMain title="Continuar a Pago" />
           ) : (
-            <p>Selecciona Metodo de Pago.</p>
+            <div
+              onClick={() => handleScrollToBack(0)}
+              className="w-[293px] h-[64px] flex justify-center items-center bg-gray-300 cursor-pointer hover:shadow-xl hover:bg-slate-600 hover:text-white transition-all"
+            >
+              <p>Selecciona Metodo de Pago.</p>
+            </div>
           )}
         </div>
       </div>

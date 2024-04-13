@@ -1,5 +1,19 @@
+import { useState } from "react";
 import CoberturasBanner from "../CoberturasBanner/CoberturasBanner";
+
+const allCoberturas = [
+  {
+    title: "Protección Especial con Franquicia",
+    price: 0.03,
+  },
+  {
+    title: "Protección Premium",
+    price: 20.0,
+  },
+];
 export default function CoberturasSection() {
+  const [coberturaSelected, setCoberturaSelected] = useState("");
+
   return (
     <section className="w-[1200px] min-h-[580px]  bg-background mx-auto  px-2">
       <div className="flex items-center justify-between">
@@ -16,14 +30,15 @@ export default function CoberturasSection() {
       </div>
 
       <div className="flex flex-col w-full  gap-16">
-        <CoberturasBanner
-          title={" Protección Especial con Franquicia"}
-          price={0.03}
-        />
-        <CoberturasBanner
-          title={" Protección Especial con Franquicia"}
-          price={20.0}
-        />
+        {allCoberturas.map((cobertura) => (
+          <CoberturasBanner
+            key={cobertura.title}
+            title={cobertura.title}
+            price={cobertura.price}
+            setCoberturaSelected={setCoberturaSelected}
+            coberturaSelected={coberturaSelected}
+          />
+        ))}
       </div>
     </section>
   );
