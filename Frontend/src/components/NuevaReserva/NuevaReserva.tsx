@@ -20,8 +20,8 @@ export const NuevaReserva = () => {
 
  const dataReserve = useAppSeletor(state=>state.dataReserve.dataReserve)//useSelector para recibir los datos de la agencia en el caso de haber seleccionado en la lista de agencias
  useEffect(() => {
-  if(dataReserve.lugar){
-    console.log(dataReserve.lugar)
+  if(dataReserve.lugarRetiro){
+    console.log(dataReserve.lugarRetiro)
   }
  }, [dataReserve])
  
