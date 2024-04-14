@@ -1,11 +1,14 @@
-import { Link, useLocation } from "react-router-dom";
+
+import { Link } from "react-router-dom";
 
 import TimeLine from "../components/timeline/TimeLine";
-
 import SummaryBooking from "../components/SummaryBooking/SummaryBooking";
 
+
+
+
 const DatosDePagos = () => {
-  const params = useLocation();
+  // const params = useLocation();
   //const carroSeleccionado = params?.state?.carro;
 
   // if (carroSeleccionado == undefined) {
@@ -17,7 +20,7 @@ const DatosDePagos = () => {
         <TimeLine posicion={4} />
         <IsNoLogin />
 
-        <SummaryBooking />
+         <SummaryBooking/>
       </div>
     </div>
   );
