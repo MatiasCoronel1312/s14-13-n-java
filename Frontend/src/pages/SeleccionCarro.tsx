@@ -63,7 +63,7 @@ const SeleccionDeCarro = () => {
               goToPagoPage();
             }
           }}
-          className="flex w-full justify-center items-center  mb-10"
+          className="flex w-full justify-center items-center  my-10"
         >
           {selectACard.length > 5 ? (
             <ButtonMain title="Continuar a Pago" />

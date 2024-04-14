@@ -1,11 +1,14 @@
+import TimeLine from "../components/timeline/TimeLine";
+
+import SummaryBooking from "../components/SummaryBooking/SummaryBooking";
+import { useAppSeletor } from "../redux/store";
+import Home from "./Home";
 import { Link } from "react-router-dom";
 
-import TimeLine from "../components/timeline/TimeLine";
-import SummaryBooking from "../components/SummaryBooking/SummaryBooking";
-
 const DatosDePagos = () => {
-  // const params = useLocation();
-  //const carroSeleccionado = params?.state?.carro;
+  const dataReserve = useAppSeletor(
+    (state) => state.dataReserve.dataReserve
+  ).fechaEntrega;
 
   if (dataReserve === undefined) {
     return <Home />;
