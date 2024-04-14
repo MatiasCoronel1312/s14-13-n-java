@@ -5,7 +5,7 @@ import TimeLine from "../components/timeline/TimeLine";
 
 //import Home from "./Home";
 import ButtonMain from "../components/ButtonMain/ButtonMain";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAppSeletor } from "../redux/store";
 
 import { useNavigate } from "react-router-dom";
@@ -14,23 +14,24 @@ import Home from "./Home";
 const SeleccionDeCarro = () => {
   const navigate = useNavigate();
   const [selectACard, SetSelectACard] = useState("");
-  const carroSeleccionado = useAppSeletor((state) => state.carro.cars);
-  const dataReserve = useAppSeletor(
-    (state) => state.dataReserve.dataReserve
-  ).fechaEntrega;
+  const dataReduces = useAppSeletor((state) => state);
+  const carroSeleccionado = dataReduces.carro.cars;
+  const dataReserve = dataReduces.dataReserve.dataReserve.fechaEntrega;
+  const dataMetodo = dataReduces.coberturas.cargos.metodoPago.title;
 
   if (dataReserve === undefined) {
     return <Home />;
   }
-
-  const dataCobertura = useAppSeletor((state) => state.coberturas);
+  useEffect(() => {
+    if (dataMetodo !== "") {
+      SetSelectACard(dataMetodo);
+    }
+  }, []);
 
   const goToPagoPage = () => {
     navigate("/finalizar-pago");
     handleScrollToBack(0);
   };
-
-  console.log("dataCobertura", dataCobertura);
 
   const handleScrollToBack = (scroll: number) => {
     window.scrollTo({

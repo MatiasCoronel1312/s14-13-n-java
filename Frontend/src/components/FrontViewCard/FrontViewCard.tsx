@@ -63,14 +63,18 @@ export function FrontViewCard({
         </div>
       )}
       <div
-        className={` ${hasStock ? "bg-white " : "bg-[#f2e3d2] "}  w-[375px] ${
+        className={` ${hasStock ? "bg-white " : "bg-[#FFF6EC] "}  w-[375px] ${
           isCategory ? "h-[556px]" : "h-[500px]"
         } border border-gray-300 rounded-xl flex flex-col items-center  py-6 shadow-card relative`}
       >
         <p className="text-2xl font-light">{detailsCar.categoría}</p>
 
         <section className="flex flex-col items-center gap-3 py-2">
-          <figure className="w-[285px] h-[200px] relative bg-[#f7f5f577]   shadow-sm p-6 ">
+          <figure
+            className={`w-[285px] h-[200px] relative ${
+              hasStock ? "bg-[#f7f5f577]" : "bg-[#FADEBD]"
+            }    shadow-sm p-6 `}
+          >
             {isMoreCar && (
               <div className="absolute flex z-20 w-[285px] top-20 left-0 justify-between px-3 text-gray-600 font-bold text-xl">
                 <p className="hover:cursor-pointer " onClick={lessIndex}>
@@ -102,7 +106,7 @@ export function FrontViewCard({
                           onClick={() => setInderCar(index)}
                           key={car.id}
                           className={`h-3 mx-1 relative z-50 hover:cursor-pointer rounded-full "w-3  transition-all duration-[800ms]  ease-in"
-                     ${isSelected ? "" : "w-3  bg-gray-500"} `}
+                     ${isSelected ? "" : "w-3  bg-[#D7D9DC]"} `}
                         ></p>
                       )}
                     </div>
@@ -118,7 +122,7 @@ export function FrontViewCard({
             *Su reserva garantiza uno de los modelos de autos a continuación,
             sujeto a disponibilidad de la agencia.
           </p>
-          <div className="flex flex-col justify-center items-center py-3 bg-[#FADEBD] w-[285px] rounded-3xl   ">
+          <div className="flex flex-col justify-center items-center py-3 bg-[#FADEBD] w-[285px] rounded-[10px]   ">
             <p className="font-extralight text-sm ">Desde</p>
             <h3 className="text-2xl font-extralight shadow-textd">
               US$ {detailsCar.precio} / dia
@@ -131,7 +135,7 @@ export function FrontViewCard({
                 <ButtonMain title={"Seleccionar Auto"} />
               </div>
             ) : (
-              <div className="w-[211px] h-[64px] bg-[#8F8F8F] flex items-center justify-center rounded-xl">
+              <div className="w-[211px] h-[64px] bg-[#8F8F8F] flex items-center justify-center rounded-[10px]">
                 <p className=" text-xl font-extralight">Sin Stock</p>
               </div>
             ))}

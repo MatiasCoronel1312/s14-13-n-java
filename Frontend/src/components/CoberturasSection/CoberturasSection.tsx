@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CoberturasBanner from "../CoberturasBanner/CoberturasBanner";
+import { useAppSeletor } from "../../redux/store";
 
 const allCoberturas = [
   {
@@ -13,6 +14,14 @@ const allCoberturas = [
 ];
 export default function CoberturasSection() {
   const [coberturaSelected, setCoberturaSelected] = useState("");
+  const dataSegueridad = useAppSeletor(
+    (state) => state.coberturas.cargos.seguridad.title
+  );
+  useEffect(() => {
+    if (dataSegueridad !== "") {
+      setCoberturaSelected(dataSegueridad);
+    }
+  }, []);
 
   return (
     <section className="w-[1200px] min-h-[580px]  bg-background mx-auto  px-2">
