@@ -1,15 +1,20 @@
-import NuevaReserva from "../components/NuevaReserva/NuevaReserva";
-import TurismoHome from '../components/turismo/TurismoHome';
-import Carrusel from './../components/CarCarousel/Carrusel';
+
+import NuevaReservaPrueba from "../components/NuevaReserva/NuevaReservaPrueba";
+import TurismoHome from "../components/turismo/TurismoHome";
+import Carrusel from "./../components/CarCarousel/Carrusel";
+
 
 const Home = () => {
+ 
+  
   return (
 
-
-    <div className='w-full flex flex-col items-center '>
-      <Carrusel />
-      <NuevaReserva />
-      <TurismoHome/>
+    <div className='w-full flex justify-center '>
+      <div className="lg:w-[85%] md:w-[90%] h-full flex flex-col item-center">
+        <Carrusel />
+        <NuevaReservaPrueba />
+        <TurismoHome/>
+      </div> 
     </div>
   );
 };

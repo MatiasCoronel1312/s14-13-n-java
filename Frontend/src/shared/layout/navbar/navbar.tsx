@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import GoCar from "../../../assets/icons/GoCar.png";
 const navbar = () => {
-  
+
   return (
+
     <header className="w-full bg-[#707070] flex justify-center">
       <div className="w-[1440px] flex justify-center">
         <div className="h-[80px] lg:w-[85%] md:w-[90%] flex items-center justify-between ">
@@ -12,6 +13,7 @@ const navbar = () => {
         <ul className="flex justify-between w-[60%]">
           <Link
             to="/categoriasDeVehiculos/all"
+
             className="text-background text-center"
           >
             CATEGORIAS DE VEHICULOS
@@ -26,16 +28,18 @@ const navbar = () => {
             DUDAS
           </Link>
         </ul>
-        <button className="flex  Gradient-H w-[136px] h-[44px] rounded-[5px] cursor-pointer hover:bg-primary ">
+        <Link to ='/Login' className="flex  Gradient-H w-[136px] h-[44px] rounded-[5px] text-center cursor-pointer hover:bg-primary ">
           <div className="text-primary text-[20px] py-[5px] z-10 bg-[#707070] m-auto w-[134px] Gradient-H_hover transition-all duration-300 ease-in-out h-[42px] rounded-[5px] cursor-pointer hover:text-text">
             Log in
           </div>
-        </button>
+
+        </Link>
       </div>
       </div>
       
     </header>
   );
 };
+
 
 export default navbar;

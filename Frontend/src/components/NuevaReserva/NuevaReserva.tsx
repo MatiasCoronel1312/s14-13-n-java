@@ -1,25 +1,33 @@
+
 import { useForm } from "react-hook-form";
+
 import { Formulario } from "./Formulario.interface";
 import { useAppDispatch, useAppSeletor } from "../../redux/store";
-import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+
+
+
+
+
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
+
 export const NuevaReserva = () => {
   const { register, handleSubmit } = useForm();
-  const [selectedAgenciaRetiro, setSelectedAgenciaRetiro] = useState<string>()
+  const navigator = useNavigate();
 
-  const dispatch = useAppDispatch(); //dispatch para mas adelante para guardar los datos de la reserva
-  const navigate = useNavigate();
+ const dispatch = useAppDispatch(); //dispatch para mas adelante para guardar los datos de la reserva
+
  const dataReserve = useAppSeletor(state=>state.dataReserve.dataReserve)//useSelector para recibir los datos de la agencia en el caso de haber seleccionado en la lista de agencias
  useEffect(() => {
   if(dataReserve.lugar){
     console.log(dataReserve.lugar)
-    setSelectedAgenciaRetiro(dataReserve.lugar);
-
   }
  }, [dataReserve])
  
   const onSubmit = handleSubmit((data) => {
     const formulario: Formulario = {
+
       agenciaRetiro: data.agenciaRetiro,
       fechaRetiro: data.fechaRetiro,
       horaRetiro: data.horaRetiro,
@@ -28,17 +36,18 @@ export const NuevaReserva = () => {
       horaEntrega: data.horaEntrega,
     };
     console.log(formulario);
-    navigate("/categoriasDeVehiculos/seleciona");
-  
-    
-    
+
+    navigator('/categoriasDeVehiculos/all')
   });
   
   return (
     <>
       <div className="Gradient-V w-[1180px] min-h-[129px] p-6 my-6 rounded-xl ">
 
+
+
         <form className="flex  justify-between flex-wrap gap-4" onSubmit={onSubmit}>
+
 
           <div className="flex gap-2">
             <p className="text-white text-[24px] self-center">Nueva Reserva</p>
@@ -50,7 +59,6 @@ export const NuevaReserva = () => {
             
             {...register("agenciaRetiro")}
             />
-
 
             <svg
               width="19"
@@ -65,7 +73,7 @@ export const NuevaReserva = () => {
                 fill="#707070"
               />
             </svg>
-            <div className=" flex">
+            <div className="flex ">
               <input
                 className="w-[162px] rounded-l-md border-r-2"
                 type="date"
@@ -80,19 +88,18 @@ export const NuevaReserva = () => {
                 {...register("horaRetiro")}
               />
             </div>
-          </div>
-          <div className="flex gap-2">
-            <Link
-              to={"/categoriasDeVehiculos/seleciona"}
-              className="bg-black h-[62px] w-[153px] me-4 self-center text-white p-2 ms-2 rounded-md"
-              type="submit"
-            >
-              Seguir
-            </Link>
-            <input
-              className="w-[596px] h-[70px] rounded-md py-4 font-sans text-text"
-              type="text"
-              placeholder="  Ingresá la agencia de entrega (ej. Bariloche, Buenos Aires) 
+            </div>
+            <div  className="flex gap-2">
+              <button 
+                className="bg-black h-[62px] w-[153px] me-4 self-center text-white p-2 ms-2 rounded-md"
+                type="submit"
+              >
+                Seguir
+              </button>
+              <input
+                className="w-[596px] h-[70px] rounded-md py-4 font-sans text-text"
+                type="text"
+                placeholder="  Ingresá la agencia de entrega (ej. Bariloche, Buenos Aires) 
               "
               {...register("agenciaEntrega")}
             />
@@ -109,7 +116,9 @@ export const NuevaReserva = () => {
                 fill="#707070"
               />
             </svg>
+
             <div className=" flex ">
+
               <input
                 className="w-[162px] h-[70px] rounded-l-md border-r-2"
                 type="date"
@@ -131,3 +140,4 @@ export const NuevaReserva = () => {
   );
 };
 export default NuevaReserva;
+

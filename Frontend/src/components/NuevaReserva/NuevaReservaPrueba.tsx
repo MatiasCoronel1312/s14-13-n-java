@@ -23,8 +23,8 @@ export const NuevaReserva = () => {
     const allAgencias = useAppSeletor(state=>state.allAgencias.agencias)
     
     useEffect(() => {
-    if(dataReserve.lugar){
-      handleChange(setAgenciaRetiro,'agenciasRetiro',dataReserve.lugar)
+    if(dataReserve.lugarRetiro){
+      handleChange(setAgenciaRetiro,'agenciasRetiro',dataReserve.lugarRetiro)
     }
     }, [dataReserve])
  
@@ -60,9 +60,10 @@ export const NuevaReserva = () => {
     const handleSubmit = () => {
 
       dispatch(postReserve({
-        lugar: agenciaRetiro,
+        lugarEntrega: agenciaEntrega,
+        lugarRetiro: agenciaRetiro,
         fechaEntrega: fechaRetiro,
-        fechaDevolucion: fechaEntrega,
+        returnDate: fechaEntrega,
         horaEntrega: horaRetiro,
         horaDevolucion: horaEntrega,
       }))
@@ -113,7 +114,7 @@ export const NuevaReserva = () => {
               <input
                 className="w-1/2 h-full text-text rounded-r-md border-l-2 border-text px-2"
                 type="time"
-                placeholder="Hora de Retiro"
+                placeholder="Hora de Retiro "
                 name="horaRetiro"
                 id="horaRetiro"
                 onFocus={()=>{handleOnBlur()}}

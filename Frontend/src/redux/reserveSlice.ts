@@ -8,7 +8,8 @@ type Treserve = {
   fechaDevolucion?: string,
   horaEntrega?: string,
   horaDevolucion?: string,
-  lugar?: string,
+  lugarRetiro?: string,
+  lugarEntrega?: string,
   carId?:number
 };
 interface reserve {
