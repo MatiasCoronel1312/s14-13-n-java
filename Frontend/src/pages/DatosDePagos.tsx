@@ -1,8 +1,9 @@
 import { useLocation } from "react-router-dom";
-import Home from "./Home";
 import TimeLine from "../components/timeline/TimeLine";
-
 import SummaryBooking from "../components/SummaryBooking/SummaryBooking";
+
+
+
 
 const DatosDePagos = () => {
   const params = useLocation();
@@ -17,7 +18,7 @@ const DatosDePagos = () => {
         <TimeLine posicion={4} />
         <IsNoLogin />
 
-        <SummaryBooking />
+         <SummaryBooking/>
       </div>
     </div>
   );
