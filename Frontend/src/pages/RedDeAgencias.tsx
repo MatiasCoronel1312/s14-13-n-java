@@ -152,7 +152,7 @@ const RedDeAgencias = () => {
   return (
     <div className='w-full bg-background flex justify-center'>
       <div className="flex items-center flex-col lg:w-[85%] md:w-[90%] ">
-        <NuevaReservaPrueba/>
+        <NuevaReservaPrueba />
        <div className="text-accent text-[32px] text-center font-semibold my-5">Red de Agencias</div>
        <div className="text-text text-[22px] text-left w-full font-semibold mb-3">Encontrá la agencia más cercana:</div>
        <div className="w-full rounded-[10px] my-10">

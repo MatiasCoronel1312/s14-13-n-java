@@ -17,14 +17,8 @@ interface reserve {
 
 const estadoInicial:reserve = {
     dataReserve: {
-      userId: undefined ,
-      nameUser: undefined,      
-      fechaEntrega: undefined,
-      fechaDevolucion: undefined,
-      horaEntrega: undefined,
-      horaDevolucion: undefined,
-      lugar: undefined,
-      carId:undefined,
+   
+      
     } 
 }
 

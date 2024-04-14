@@ -1,8 +1,9 @@
 
 import { useAppDispatch, useAppSeletor } from "../../redux/store";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaLocationDot } from "react-icons/fa6";
+import { postReserve } from "../../redux/reserveSlice";
 
 export const NuevaReserva = () => {
   
@@ -14,8 +15,8 @@ export const NuevaReserva = () => {
     const [agenciaEntrega, setAgenciaEntrega] = useState<string>('');
     const [fechaEntrega, setFechaEntrega] = useState<string>('');
     const [horaEntrega, setHoraEntrega] = useState<string>('');
-    
-    const [dataEntrega, setDataEntrega] = useState(true);
+    const dataEntrega = useRef(false)
+    const [onFocus, setOnFocus] = useState(false)
     const navigator = useNavigate();
     const dispatch = useAppDispatch(); //dispatch para mas adelante para guardar los datos de la reserva
     const dataReserve = useAppSeletor(state=>state.dataReserve.dataReserve)//useSelector para recibir los datos de la agencia en el caso de haber seleccionado en la lista de agencias
@@ -39,17 +40,40 @@ export const NuevaReserva = () => {
       }else if(element){
           setState(element.value);
         }
+      }
+      const handleOnBlur = () =>{
+      if(agenciaRetiro !== '' && horaRetiro !== '' && fechaRetiro !== ''){
+        dataEntrega.current = true
+        setOnFocus(true)
+        console.log('true',agenciaRetiro, horaRetiro, fechaRetiro, dataEntrega.current);
+      }else{  
+        dataEntrega.current = false
+        console.log('false',agenciaRetiro, horaRetiro, fechaRetiro, dataEntrega.current);
+      }
     }
-    const opcionesFiltradas = allAgencias.filter(agencia =>
+    const opcionesFiltradasRetiro = allAgencias.filter(agencia =>
         agencia.name.toLowerCase().includes(agenciaRetiro?agenciaRetiro.toLowerCase():'')
       );
-    
+    const opcionesFiltradasEntrega = allAgencias.filter(agencia =>
+        agencia.name.toLowerCase().includes(agenciaEntrega?agenciaEntrega.toLowerCase():'')
+      );
+    const handleSubmit = () => {
+
+      dispatch(postReserve({
+        lugar: agenciaRetiro,
+        fechaEntrega: fechaRetiro,
+        fechaDevolucion: fechaEntrega,
+        horaEntrega: horaRetiro,
+        horaDevolucion: horaEntrega,
+      }))
+      navigator("/categoriasDeVehiculos/seleciona")
+    }
   
   return (
     <div className="w-full">
-      <div className=" Gradient-V min-h-[129px] max-h-[244px] p-5 my-6 rounded-xl flex flex-col mx-auto ">
+      <div className=" Gradient-V min-h-[129px] max-h-[244px] p-5 my-6 rounded-xl flex flex-col justify-center mx-auto ">
           <div className="flex justify-between h-[45%] mb-4">
-            <p className="w-[16%] text-white text-[20px] font-semibold self-center ">Nueva Reserva</p>
+            <p className="w-[16%] text-white text-[20px] font-semibold self-center text-center">Nueva Reserva</p>
             <div className="w-[50%] h-[70px] relative">
                 <div className="w-full h-[70px] relative">
                     <input
@@ -58,8 +82,8 @@ export const NuevaReserva = () => {
                       name="agenciaRetiro"
                       id="agenciaRetiro"
                       value={agenciaRetiro}
-                      onBlur={()=>{handleFocus(setOnFocusRetiro,onFocusRetiro)}}
-                      onFocus={()=>{handleFocus(setOnFocusRetiro,onFocusRetiro)}}
+                      onBlur={()=>{handleFocus(setOnFocusRetiro,onFocusRetiro),handleOnBlur}}
+                      onFocus={()=>{handleFocus(setOnFocusRetiro,onFocusRetiro),handleOnBlur}}
                       onChange={()=>{handleChange(setAgenciaRetiro,'agenciaRetiro')}}
                       placeholder={'Ingresá la agencia de retirada (ej. Bariloche, Buenos Aires)'}
                     />
@@ -67,7 +91,7 @@ export const NuevaReserva = () => {
                 </div>
                   {
                   onFocusRetiro&&<ul className="absolute top-[68px] bg-background rounded-lg border-2 border-text z-10">
-                  {agenciaRetiro&&agenciaRetiro.length>2&& opcionesFiltradas.map((opcion, index) => (
+                  {agenciaRetiro&&agenciaRetiro.length>2&& opcionesFiltradasRetiro.map((opcion, index) => (
                     <li onClick={()=>{handleChange(setAgenciaRetiro,'agenciasRetiro',opcion.name)}} className="cursor-pointer p-2" key={index}>{opcion.name}</li>
                   ))}
                 </ul>
@@ -81,8 +105,9 @@ export const NuevaReserva = () => {
                 name="fechaRetiro"
                 placeholder="Fecha de Retiro"
                 id="fechaRetiro"
-                value={fechaEntrega}
-                onChange={()=>{handleChange(setFechaRetiro,'fechaRetiro')}}
+                value={fechaRetiro}
+                onFocus={()=>{handleOnBlur()}}
+                onChange={()=>{handleChange(setFechaRetiro,'fechaRetiro'),handleOnBlur}}
               />
 
               <input
@@ -91,15 +116,16 @@ export const NuevaReserva = () => {
                 placeholder="Hora de Retiro"
                 name="horaRetiro"
                 id="horaRetiro"
+                onFocus={()=>{handleOnBlur()}}
                 value={horaRetiro}
-                onChange={()=>{handleChange(setHoraRetiro,'horaRetiro')}}
+                onChange={()=>{handleChange(setHoraRetiro,'horaRetiro'),handleOnBlur}}
                 
               />
             </div>
           </div>
-          {dataEntrega&&<div className="flex justify-between h-[45%]">
+          {onFocus&&<div className="flex justify-between h-[45%]">
             <button
-              onClick={()=>{navigator("/categoriasDeVehiculos/seleciona")}}
+              onClick={()=>{handleSubmit()}}
               className="bg-text h-[62px]  self-center w-[16%] text-white text-[20px] font-semibold rounded-md "
               type="submit"
             >
@@ -122,7 +148,7 @@ export const NuevaReserva = () => {
                 </div>
                   {
                   onFocusEntrega&&<ul className="absolute top-[68px] bg-background rounded-lg border-2 border-text">
-                  {agenciaEntrega&&agenciaEntrega.length>2&& opcionesFiltradas.map((opcion, index) => (
+                  {agenciaEntrega&&agenciaEntrega.length>2&& opcionesFiltradasEntrega.map((opcion, index) => (
                     <li onClick={()=>{handleChange(setAgenciaEntrega,'agenciasEntrega',opcion.name)}} className="cursor-pointer p-2" key={index}>{opcion.name}</li>
                   ))}
                 </ul>
