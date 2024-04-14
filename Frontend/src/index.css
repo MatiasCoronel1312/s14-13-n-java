@@ -8,7 +8,6 @@
 .Gradient-V {
   background-image: linear-gradient(180deg, #ff8c00, #b81c00);
 }
-
 .Gradient-H {
   background-image: linear-gradient(90deg, #ff8c00, #b81c00);
 }
@@ -16,11 +15,9 @@
   background-image: linear-gradient(90deg, #ff8c00, #b81c00);
 }
 
-
-
 .container {
-max-width: 500px;
-margin: 0 auto;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 .react-calendar {

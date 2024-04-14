@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 
 import Car from "./carrusel.interface";
+import { useNavigate } from "react-router-dom";
 
 export default function Carrusel() {
 
+  const navigator = useNavigate();
+  
   const images: Car[] = [
 
     {
@@ -69,11 +72,7 @@ export default function Carrusel() {
 
   return (
     <>
-
-
       <section className="h-full max-w-full">
-
-
         <div className="mb-8">
           <h1 className="text-center font-sans font-bold text-text text-2xl">
             Conocé nuestra flota
