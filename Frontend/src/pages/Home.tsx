@@ -7,7 +7,6 @@ import Carrusel from "./../components/CarCarousel/Carrusel";
 
 const Home = () => {
   return (
-    <div>
 
     <div className='w-full flex flex-col items-center '>
       <Carrusel />

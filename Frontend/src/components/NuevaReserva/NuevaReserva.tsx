@@ -4,11 +4,14 @@ import { useForm } from "react-hook-form";
 import { Formulario } from "./Formulario.interface";
 import { useAppDispatch, useAppSeletor } from "../../redux/store";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 export const NuevaReserva = () => {
   const { register, handleSubmit } = useForm();
+  const navigator = useNavigate();
 
-  //const dispatch = useAppDispatch(); //dispatch para mas adelante para guardar los datos de la reserva
+ const dispatch = useAppDispatch(); //dispatch para mas adelante para guardar los datos de la reserva
 
  const dataReserve = useAppSeletor(state=>state.dataReserve.dataReserve)//useSelector para recibir los datos de la agencia en el caso de haber seleccionado en la lista de agencias
  useEffect(() => {
@@ -28,8 +31,7 @@ export const NuevaReserva = () => {
       horaEntrega: data.horaEntrega,
     };
     console.log(formulario);
-
-    
+    navigator('/categoriasDeVehiculos/all')
   });
   
   return (
