@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 interface IFormData {
   nombre: string;
@@ -14,6 +14,7 @@ interface IFormData {
 }
 
 export default function Registro() {
+  const navigator = useNavigate();
   const [formData, setFormData] = useState<IFormData>({
     nombre: "",
     apellido: "",
@@ -38,6 +39,7 @@ export default function Registro() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    navigator("/finalizar-pago");
     console.log(formData);
   };
 

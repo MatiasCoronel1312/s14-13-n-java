@@ -1,9 +1,8 @@
 import CarouselTourism from "./CarouselTourism"
 import ButtonTourism from "./ButtonTourism"
 
-type SitioTuristico = {id: number, imagen: string, descripcion: string}
 
-const showSites: SitioTuristico[] = [
+const showSites = [
   {
     id: 1,
     imagen: "src/assets/fotosDestinosDeViajes/Cordoba844x492px.jpg",
@@ -41,18 +40,12 @@ const TurismoHome = () => {
         <div className="mb-4">
           <CarouselTourism 
             showSites={showSites} 
-            addIndex={addIndex}
-            lessIndex={lessIndex}
-            indexSite={indexSite}
-            setIndexSite={setIndexSite} 
           />
         </div>
 
         <ButtonTourism title="Consulta todos los destinos" path="/tipsTuristicos" />
 
-      </div>
-      <ButtonTourism title="Consulta todos los destinos" path="/tipsTuristicos" />
-    </div>
+  </div>
     )
 }
   
