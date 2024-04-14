@@ -27,7 +27,8 @@ const TarifasSection = ({
   selectACard,
   SetSelectACard,
 }: Props) => {
-  let carPrice = showCarSelected[0].precio;
+  //const [selectACard, SetSelectACard] = useState("");
+
   return (
     <section className="w-[1200px] min-h-[707px]  bg-background mx-auto p-6">
       <p className="text-2xl font-light">
@@ -38,16 +39,20 @@ const TarifasSection = ({
       </p>
       <div className="flex gap-4">
         <div className="  flex gap-3">
-          {cardsMetodosPagos.map((card) => (
-            <CardToPay
-              key={card.title}
-              selectACard={selectACard}
-              SetSelectACard={SetSelectACard}
-              handleScrollToBack={handleScrollToBack}
-              carPrice={(carPrice += carPrice * card.price)}
-              card={card}
-            />
-          ))}
+          <CardToPay
+            selectACard={selectACard}
+            SetSelectACard={SetSelectACard}
+            handleScrollToBack={handleScrollToBack}
+            price={showCarSelected[0].precio + showCarSelected[0].precio * 0.05}
+            title={"PAGAR EN MOSTRADOR"}
+          />
+          <CardToPay
+            selectACard={selectACard}
+            SetSelectACard={SetSelectACard}
+            handleScrollToBack={handleScrollToBack}
+            price={showCarSelected[0].precio + showCarSelected[0].precio * 0.15}
+            title={"PAGAR CON MERCADOPAGO  "}
+          />
         </div>
         <div className="flex flex-col gap-4 pt-2">
           <p className="text-xl font-light">Grupo Seleccionado</p>

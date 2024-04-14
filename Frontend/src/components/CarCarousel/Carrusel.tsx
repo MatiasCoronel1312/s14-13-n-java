@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+
 import Car from "./carrusel.interface";
 import { useNavigate } from "react-router-dom";
 
@@ -7,6 +8,7 @@ export default function Carrusel() {
   const navigator = useNavigate();
   
   const images: Car[] = [
+
     {
       image: "src/assets/ImagenesCarros/AudiA5.png",
       title: "Audi A5",
@@ -35,19 +37,25 @@ export default function Carrusel() {
     if (selectedIndex <= 0) {
       setSelectedIndex(images.length - 1);
     } else {
+
       setSelectedIndex((state) => state - 1);
+
     }
   };
   const next = () => {
     if (selectedIndex < images.length - 1) {
+
       setSelectedIndex((state) => state + 1);
+
     } else {
       setSelectedIndex(0);
     }
   };
 
   // Nueva función para el autoplay
+
   const [isAutoplay, setIsAutoplay] = useState(true); // Estate para activar/desactivar autoplay
+
   const autoplayInterval = 2000; // Tiempo entre cambios de imagen (en milisegundos)
 
   useEffect(() => {
@@ -64,15 +72,15 @@ export default function Carrusel() {
 
   return (
     <>
-
       <section className="h-full max-w-full">
-
         <div className="mb-8">
           <h1 className="text-center font-sans font-bold text-text text-2xl">
             Conocé nuestra flota
           </h1>
         </div>
+
         <div className="flex flex-col items-center w-full">
+
           <div className="flex flex-row align-bottom">
             <div className="flex flex-shrink-0 flex-col self-center">
               <img
@@ -146,15 +154,18 @@ export default function Carrusel() {
         </div>
         <div className="flex justify-center align-bottom">
           <button
+
             onClick={() => {
               navigator("/categoriasDeVehiculos/all");
             }}
+
             type="button"
             className="border-orange-600 border-2 text-orange-600 py-4 px-10 rounded-md mt-8"
           >
             Mirá todos los Autos
           </button>
         </div>
+
       </section>
     </>
   );

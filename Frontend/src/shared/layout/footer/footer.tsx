@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import GoCar from "../../../assets/icons/GoCar.png";
 import { FaFacebook } from "react-icons/fa6";
@@ -71,11 +72,14 @@ const Footer = () => {
                   className="absolute right-1 bottom-1"
                 />
                 {/* <FaEnvelope className='text-primary text-[28px]'/> */}
+
               </div>
             </div>
           </div>
         </div>
+
         <div className="flex justify-around bottom-0 h-[20px] w-full text-background text-[14px]">
+
           <div>
             <p>contact@gocar.com</p>
           </div>
@@ -88,7 +92,9 @@ const Footer = () => {
         </div>
       </div>
     </footer>
+
   );
 };
 
 export default Footer;
+

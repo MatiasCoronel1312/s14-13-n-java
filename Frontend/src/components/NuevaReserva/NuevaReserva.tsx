@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+
 import { Formulario } from "./Formulario.interface";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSeletor } from "../../redux/store";
@@ -7,7 +8,6 @@ import { postReserve } from "../../redux/reserveSlice";
 
 export const NuevaReserva = () => {
   const { register, handleSubmit } = useForm();
-  const navigate = useNavigate();
 
   const dispatch = useAppDispatch(); //dispatch para mas adelante para guardar los datos de la reserva
 
@@ -66,7 +66,7 @@ export const NuevaReserva = () => {
                 fill="#707070"
               />
             </svg>
-            <div className=" flex">
+            <div className="flex ">
               <input
                 className="w-[162px] rounded-l-md border-r-2"
                 type="date"
@@ -111,6 +111,7 @@ export const NuevaReserva = () => {
                 fill="#707070"
               />
             </svg>
+
             <div className=" flex ">
               <input
                 required
