@@ -1,28 +1,25 @@
-
 import { useForm } from "react-hook-form";
 
 import { Formulario } from "./Formulario.interface";
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSeletor } from "../../redux/store";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-
+import { postReserve } from "../../redux/reserveSlice";
 
 export const NuevaReserva = () => {
   const { register, handleSubmit } = useForm();
-  const navigator = useNavigate();
 
- const dispatch = useAppDispatch(); //dispatch para mas adelante para guardar los datos de la reserva
+  const dispatch = useAppDispatch(); //dispatch para mas adelante para guardar los datos de la reserva
 
- const dataReserve = useAppSeletor(state=>state.dataReserve.dataReserve)//useSelector para recibir los datos de la agencia en el caso de haber seleccionado en la lista de agencias
- useEffect(() => {
-  if(dataReserve.lugar){
-    console.log(dataReserve.lugar)
-  }
- }, [dataReserve])
- 
+  const dataReserve = useAppSeletor((state) => state.dataReserve.dataReserve); //useSelector para recibir los datos de la agencia en el caso de haber seleccionado en la lista de agencias
+  useEffect(() => {
+    if (dataReserve.lugar) {
+      console.log(dataReserve.lugar);
+    }
+  }, [dataReserve]);
+
   const onSubmit = handleSubmit((data) => {
     const formulario: Formulario = {
-
       agenciaRetiro: data.agenciaRetiro,
       fechaRetiro: data.fechaRetiro,
       horaRetiro: data.horaRetiro,
@@ -30,24 +27,27 @@ export const NuevaReserva = () => {
       fechaEntrega: data.fechaEntrega,
       horaEntrega: data.horaEntrega,
     };
-    console.log(formulario);
-    navigator('/categoriasDeVehiculos/all')
+
+    dispatch(postReserve(formulario));
+    // before add formulario data in redux state
+    navigate("../categoriasDeVehiculos/all", {
+      state: { isReserva: true },
+    });
   });
-  
+
   return (
     <>
       <div className="Gradient-V w-[1180px] min-h-[129px] p-6 my-6 rounded-xl ">
-
-
-
-        <form className="flex  justify-between flex-wrap gap-4" onSubmit={onSubmit}>
-
-
+        <form
+          className="flex  justify-between flex-wrap gap-4"
+          onSubmit={onSubmit}
+        >
+          <p className="text-white text-[24px] self-center">Nueva Reserva</p>
           <div className="flex gap-2">
-            <p className="text-white text-[24px] self-center">Nueva Reserva</p>
             <input
               className="w-[596px] h-[70px] rounded-md py-4 font-sans text-text"
               type="text"
+              required
               placeholder="  Ingresá la agencia de retirada (ej. Bariloche, Buenos Aires) 
             "
               {...register("agenciaRetiro")}
@@ -75,24 +75,26 @@ export const NuevaReserva = () => {
               />
 
               <input
+                required
                 className="w-[142px] h-[70px] text-text rounded-r-md"
                 type="time"
                 placeholder="Hora de Retiro"
                 {...register("horaRetiro")}
               />
             </div>
-            </div>
-            <div  className="flex gap-2">
-              <button 
-                className="bg-black h-[62px] w-[153px] me-4 self-center text-white p-2 ms-2 rounded-md"
-                type="submit"
-              >
-                Seguir
-              </button>
-              <input
-                className="w-[596px] h-[70px] rounded-md py-4 font-sans text-text"
-                type="text"
-                placeholder="  Ingresá la agencia de entrega (ej. Bariloche, Buenos Aires) 
+          </div>
+          <button
+            className="bg-black h-[62px] w-[153px] me-4 self-center text-white p-2 ms-2 rounded-md"
+            type="submit"
+          >
+            Seguir
+          </button>
+          <div className="flex gap-2">
+            <input
+              required
+              className="w-[596px] h-[70px] rounded-md py-4 font-sans text-text"
+              type="text"
+              placeholder="  Ingresá la agencia de entrega (ej. Bariloche, Buenos Aires) 
               "
               {...register("agenciaEntrega")}
             />
@@ -111,8 +113,8 @@ export const NuevaReserva = () => {
             </svg>
 
             <div className=" flex ">
-
               <input
+                required
                 className="w-[162px] h-[70px] rounded-l-md border-r-2"
                 type="date"
                 placeholder="Fecha de entrega"
@@ -120,6 +122,7 @@ export const NuevaReserva = () => {
               />
 
               <input
+                required
                 className="w-[142px] h-[70px] text-text rounded-r-md"
                 type="time"
                 placeholder="Hora de entrega"
@@ -132,5 +135,5 @@ export const NuevaReserva = () => {
     </>
   );
 };
-export default NuevaReserva;
 
+export default NuevaReserva;

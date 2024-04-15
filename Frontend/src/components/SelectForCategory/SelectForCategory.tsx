@@ -5,9 +5,9 @@ const carCategory = Array.from(new Set(carros.map((car) => car.categoría)));
 
 const SelectForCategory = () => {
   return (
-    <section className="w-[1200px] min-h-[707px] h-full bg-background  mx-auto  px-2">
+    <section className="w-[1200px] min-h-[707px] h-full bg-background  mx-auto  ml-[2px] ">
       <div className="flex items-centerd justify-betdween">
-        <div className="grid grid-cols-3 grid-rows-3 w-full min-h-[1800px]  mb-8 ">
+        <div className="grid grid-cols-3 grid-rows-3 w-full min-h-[1800px]  mb-8  ">
           {carCategory.map((categoría) => (
             // <p key={categoría}>{categoría}</p>
             <div className="my-6" key={categoría}>
