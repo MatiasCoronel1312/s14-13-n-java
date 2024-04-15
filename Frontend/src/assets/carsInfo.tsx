@@ -24,7 +24,7 @@ export type TCarro = {
   id: number;
   modelo: string;
   features: TFeatures[];
-  imagen: string;
+  images: string;
   pasajeros: number;
   precio: number;
   categoría: TCategoría;
