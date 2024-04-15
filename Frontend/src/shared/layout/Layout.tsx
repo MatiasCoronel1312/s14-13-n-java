@@ -4,9 +4,7 @@ import { Outlet } from 'react-router-dom';
 
 const Layout = () => {
   return (
-<<<<<<< HEAD
-    <div className='flex flex-col justify-center items-center bg-background h-full max-w-[1440px] mx-auto'>
-=======
+
 
     <div className='flex flex-col justify-center items-center bg-background h-full max-w-[1440px] mx-auto'>
 

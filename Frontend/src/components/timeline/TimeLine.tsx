@@ -62,17 +62,6 @@ const TimeLine = ({ posicion = 1 }: Props) => {
   };
 
   return (
-<<<<<<< HEAD
-    <div className="flex justify-center pt-5">
-      <div className="border-[1px] border-black w-[900px] h-[134px] flex flex-col items-center justify-around">
-        <div className="flex justify-around items-center h-[34px] w-[736px]">
-          <div onClick={()=>{stageUno(1)}} className={`${circulos} ${stage>=1&&circulo_activo}`}>
-          {stage>=1&&<FaCheck className="text-[#F8C381]"/>}
-          </div>
-          <div className={`${lineas} ${stage>=1&&linea_activa}`}></div>
-          <div onClick={()=>{stageUno(2)}} className={`${circulos} ${stage>=1&&circulo_activo}`}>
-            {stage<=1?<div className={circulo_interno}></div>:<FaCheck className="text-[#F8C381] transition-all duration-1000 ease-in-out"/>}
-=======
     <section>
       <div className="flex justify-center pt-5">
         <div className="border-[1px] border-black w-[900px] h-[134px] flex flex-col  gap-4  items-center justify-center">
@@ -80,7 +69,6 @@ const TimeLine = ({ posicion = 1 }: Props) => {
             {pointDots.map((dot) => {
               const isSelected = posicion >= dot.id;
               const dotsToPress = dot.pathHabile.includes(addDotsTimeLine);
->>>>>>> 1a4bcde1068d542507627c21c413cc6b7ade52c4
 
               return (
                 <section key={dot.id} className="flex  items-center ">

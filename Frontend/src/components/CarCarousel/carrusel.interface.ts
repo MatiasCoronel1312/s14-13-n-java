@@ -1,12 +1,22 @@
-interface Car {
-    image: string;
-    title: string;
-    description: string;
-<<<<<<< HEAD
+export interface CarView {
+  image: string;
+  model: string;
+  brand: string;
 }
-export default Car;
-=======
 
+
+interface Car {
+  id: number;
+  brand: string;
+  model: string;
+  modelYear: number;
+  engineSize: number;
+  passengers: number;
+  image: string;
+  price: number;
+  stock: number;
+  features: string[];
+  category: string;
 }
 export default Car;
 

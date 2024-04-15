@@ -1,4 +1,3 @@
-import { useLocation, useNavigate } from "react-router-dom";
 import CoberturasSection from "../components/CoberturasSection/CoberturasSection";
 import SummaryBooking from "../components/SummaryBooking/SummaryBooking";
 import TarifasSection from "../components/TarifasSection/TarifasSection";
@@ -6,14 +5,28 @@ import TimeLine from "../components/timeline/TimeLine";
 
 //import Home from "./Home";
 import ButtonMain from "../components/ButtonMain/ButtonMain";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useAppSeletor } from "../redux/store";
+
+import { useNavigate } from "react-router-dom";
+import Home from "./Home";
 
 const SeleccionDeCarro = () => {
-  const params = useLocation();
   const navigate = useNavigate();
   const [selectACard, SetSelectACard] = useState("");
+  const dataReduces = useAppSeletor((state) => state);
+  const carroSeleccionado = dataReduces.carro.cars;
+  const dataReserve = dataReduces.dataReserve.dataReserve.fechaEntrega;
+  const dataMetodo = dataReduces.coberturas.cargos.metodoPago.title;
 
-  const carroSeleccionado = params?.state?.carro;
+  if (dataReserve === undefined) {
+    return <Home />;
+  }
+  useEffect(() => {
+    if (dataMetodo !== "") {
+      SetSelectACard(dataMetodo);
+    }
+  }, []);
 
   const goToPagoPage = () => {
     navigate("/finalizar-pago");
@@ -30,18 +43,16 @@ const SeleccionDeCarro = () => {
   return (
     <div className="w-full bg-background flex justify-center">
       <div className="h-auto lg:w-[85%] md:w-[90%]  ">
-        <TimeLine posicion={3} />
+        <div className="h-[210px] mt-6  flex justify-center items-center">
+          <TimeLine posicion={3} />
+        </div>
 
-        {carroSeleccionado == undefined ? (
-          <AlertNoCard />
-        ) : (
-          <TarifasSection
-            selectACard={selectACard}
-            SetSelectACard={SetSelectACard}
-            handleScrollToBack={handleScrollToBack}
-            showCarSelected={carroSeleccionado}
-          />
-        )}
+        <TarifasSection
+          selectACard={selectACard}
+          SetSelectACard={SetSelectACard}
+          handleScrollToBack={handleScrollToBack}
+          showCarSelected={carroSeleccionado}
+        />
 
         <CoberturasSection />
         <SummaryBooking />
@@ -52,12 +63,17 @@ const SeleccionDeCarro = () => {
               goToPagoPage();
             }
           }}
-          className="flex w-full justify-center items-center  mb-10"
+          className="flex w-full justify-center items-center  my-10"
         >
           {selectACard.length > 5 ? (
             <ButtonMain title="Continuar a Pago" />
           ) : (
-            <p>Selecciona Metodo de Pago.</p>
+            <div
+              onClick={() => handleScrollToBack(0)}
+              className="w-[293px] h-[64px] flex justify-center items-center bg-gray-300 cursor-pointer hover:shadow-xl hover:bg-slate-600 hover:text-white transition-all"
+            >
+              <p>Selecciona Metodo de Pago.</p>
+            </div>
           )}
         </div>
       </div>
@@ -66,11 +82,3 @@ const SeleccionDeCarro = () => {
 };
 
 export default SeleccionDeCarro;
-
-function AlertNoCard() {
-  return (
-    <div className="w-full h-[400px] flex justify-center items-center">
-      <p> se llamaria ala api con el id del carro</p>
-    </div>
-  );
-}
