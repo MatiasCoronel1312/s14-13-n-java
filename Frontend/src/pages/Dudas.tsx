@@ -1,7 +1,9 @@
-import { useCollapse } from "react-collapsed";
-import { FaAngleUp, FaAngleDown } from "react-icons/fa6";
 
-type Duda = { id: number; question: string; answer: string };
+import { useCollapse } from "react-collapsed"
+import { FaAngleUp, FaAngleDown } from 'react-icons/fa6'
+import NuevaReservaPrueba from "../components/NuevaReserva/NuevaReservaPrueba";
+type Duda = {id:number, question: string, answer: string}
+
 
 const dudas: Duda[] = [
   {
@@ -69,6 +71,7 @@ const Dudas = () => {
   return (
     <div className="w-full h-full bg-background flex justify-center">
       <div className=" lg:w-[85%] md:w-[90%] h-full">
+        <NuevaReservaPrueba/>
         <div className="w-full h-full rounded Gradient-H my-8 pb-3">
           <h1 className="text-[#F5F5F5] text-center text-xl py-2">
             Dudas / Faq

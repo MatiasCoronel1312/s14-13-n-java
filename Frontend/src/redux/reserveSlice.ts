@@ -10,13 +10,29 @@ type Treserve = {
   lugar?: string;
   carId?: number;
 
-  horaRetiro?: string;
 
-  fechaRetiro?: string;
+  userId?: number,
+  nameUser?: string ,
+  fechaEntrega?: string,
+  fechaDevolucion?: string,
+  horaEntrega?: string,
+  horaDevolucion?: string,
+  lugarRetiro?: string,
+  lugarEntrega?: string,
+  carId?:number
+
 };
-
 interface reserve {
-  dataReserve: Treserve;
+
+  dataReserve: Treserve
+} 
+
+const estadoInicial:reserve = {
+    dataReserve: {
+   
+      
+    } 
+
 }
 
 const estadoInicial: reserve = {

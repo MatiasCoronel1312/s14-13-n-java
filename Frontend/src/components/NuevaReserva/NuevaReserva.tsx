@@ -1,5 +1,4 @@
 import { useForm } from "react-hook-form";
-
 import { Formulario } from "./Formulario.interface";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSeletor } from "../../redux/store";
@@ -18,6 +17,15 @@ export const NuevaReserva = () => {
     }
   }, [dataReserve]);
 
+
+ const dataReserve = useAppSeletor(state=>state.dataReserve.dataReserve)//useSelector para recibir los datos de la agencia en el caso de haber seleccionado en la lista de agencias
+ useEffect(() => {
+  if(dataReserve.lugarRetiro){
+    console.log(dataReserve.lugarRetiro)
+  }
+ }, [dataReserve])
+ 
+
   const onSubmit = handleSubmit((data) => {
     const formulario: Formulario = {
       agenciaRetiro: data.agenciaRetiro,
@@ -28,11 +36,13 @@ export const NuevaReserva = () => {
       horaEntrega: data.horaEntrega,
     };
 
+
     dispatch(postReserve(formulario));
     // before add formulario data in redux state
     navigate("../categoriasDeVehiculos/all", {
       state: { isReserva: true },
     });
+
   });
 
   return (
@@ -50,7 +60,8 @@ export const NuevaReserva = () => {
               required
               placeholder="  Ingresá la agencia de retirada (ej. Bariloche, Buenos Aires) 
             "
-              {...register("agenciaRetiro")}
+            
+            {...register("agenciaRetiro")}
             />
 
             <svg

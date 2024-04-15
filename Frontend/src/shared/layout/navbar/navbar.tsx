@@ -5,7 +5,8 @@ const navbar = () => {
   return (
 
     <header className="w-full bg-[#707070] flex justify-center">
-      <div className="h-[80px] lg:w-[85%] md:w-[90%] flex items-center justify-between ">
+      <div className="w-[1440px] flex justify-center">
+        <div className="h-[80px] lg:w-[85%] md:w-[90%] flex items-center justify-between ">
         <Link to="/">
           <img src={GoCar} alt="GoCar logo" className="w-[134px] h-[30px]" />
         </Link>
@@ -34,6 +35,8 @@ const navbar = () => {
 
         </Link>
       </div>
+      </div>
+      
     </header>
   );
 };

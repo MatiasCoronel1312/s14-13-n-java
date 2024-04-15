@@ -2,6 +2,7 @@ import carros from "../../assets/carsInfo";
 import CardShowDetail from "../CardShowDetail/CardShowDetail";
 
 const carCategory = Array.from(new Set(carros.map((car) => car.categoría)));
+console.log();
 
 const SelectForCategory = () => {
   return (
