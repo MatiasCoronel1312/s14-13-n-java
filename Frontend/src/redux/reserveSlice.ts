@@ -29,6 +29,7 @@ const estadoInicial: reserve = {
     horaEntrega: undefined,
     horaRetiro: undefined,
     carId: undefined,
+
   },
 };
 
