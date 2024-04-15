@@ -14,7 +14,7 @@ function App() {
   useEffect(() => {
   axios.get(apiUrl+'/api/agencies')
     .then(res=>{
-      dispatch(getAgencias(res.data))
+      dispatch(getAgencias(res.data))      
     }) 
     .catch(function (er) { 
         console.log(er);
