@@ -1,4 +1,5 @@
-
+import { useForm } from "react-hook-form";
+import { Formulario } from "./Formulario.interface";
 import { useAppDispatch, useAppSeletor } from "../../redux/store";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -102,9 +103,10 @@ export const NuevaReserva = () => {
             <div className=" flex lg:w-[30%] h-[70px] ">
               <input
                 className="w-1/2 h-full rounded-l-md px-2"
+
                 type="date"
-                name="fechaRetiro"
                 placeholder="Fecha de Retiro"
+
                 id="fechaRetiro"
                 value={fechaRetiro}
                 onFocus={()=>{handleOnBlur()}}
@@ -121,17 +123,21 @@ export const NuevaReserva = () => {
                 value={horaRetiro}
                 onChange={()=>{handleChange(setHoraRetiro,'horaRetiro'),handleOnBlur}}
                 
+
               />
             </div>
           </div>
           {onFocus&&<div className="flex justify-between h-[45%]">
             <button
+
               onClick={()=>{handleSubmit()}}
               className="bg-text h-[62px]  self-center w-[16%] text-white text-[20px] font-semibold rounded-md "
+
               type="submit"
             >
               Seguir
             </button>
+
             <div className="w-[50%] h-[70px] relative">
                 <div className="w-full h-[70px] relative">
                     <input
@@ -176,6 +182,7 @@ export const NuevaReserva = () => {
                 value={horaEntrega}
                 onChange={()=>{handleChange(setHoraEntrega,'horaEntrega')}}
                 
+
               />
             </div>
 

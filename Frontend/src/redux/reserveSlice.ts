@@ -1,6 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 type Treserve = {
+  userId?: number;
+  nameUser?: string;
+  fechaEntrega?: string;
+  fechaDevolucion?: string;
+  horaEntrega?: string;
+  horaDevolucion?: string;
+  lugar?: string;
+  carId?: number;
+
 
   userId?: number,
   nameUser?: string ,
@@ -11,8 +20,10 @@ type Treserve = {
   lugarRetiro?: string,
   lugarEntrega?: string,
   carId?:number
+
 };
 interface reserve {
+
   dataReserve: Treserve
 } 
 
@@ -21,16 +32,32 @@ const estadoInicial:reserve = {
    
       
     } 
+
 }
 
+const estadoInicial: reserve = {
+  dataReserve: {
+    userId: undefined,
+    nameUser: undefined,
+    fechaEntrega: undefined,
+    fechaDevolucion: undefined,
+    horaEntrega: undefined,
+    horaDevolucion: undefined,
+    lugar: undefined,
+    carId: undefined,
+    horaRetiro: undefined,
+    fechaRetiro: undefined,
+  },
+};
+
 const reserveSlice = createSlice({
-    name: 'dataReserve',
-    initialState: estadoInicial,
-    reducers: {
-        postReserve: (state, actions)=>{    
-          state.dataReserve = { ...state.dataReserve, ...actions.payload }
-        },
+  name: "dataReserve",
+  initialState: estadoInicial,
+  reducers: {
+    postReserve: (state, actions) => {
+      state.dataReserve = { ...state.dataReserve, ...actions.payload };
     },
+  },
 });
 
 export const { postReserve } = reserveSlice.actions;

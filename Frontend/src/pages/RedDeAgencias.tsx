@@ -1,31 +1,33 @@
-
 import NuevaReservaPrueba from "../components/NuevaReserva/NuevaReservaPrueba";
 import { FaPlane } from "react-icons/fa6";
 import { useAppDispatch, useAppSeletor } from "../redux/store";
 import { postReserve } from "../redux/reserveSlice";
 
 const RedDeAgencias = () => {
- const dispatch = useAppDispatch();
- const allAgencias = useAppSeletor(state=>state.allAgencias.agencias)
+  const dispatch = useAppDispatch();
+  const allAgencias = useAppSeletor((state) => state.allAgencias.agencias);
+
 
 
   const handleReserve = (name:string) =>{
     dispatch(postReserve({lugarRetiro: name}))
-    window.scrollTo({
-      top:0,
-      behavior:'smooth'
-    })
-  }
 
-  const airplane = (name:string) => {
-    if(name.includes('Aeropuerto')){
-      return <FaPlane className="h-[35px] w-[35px]"/>
-    }else{
-      return <></>
-    } 
-  }
- 
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  const airplane = (name: string) => {
+    if (name.includes("Aeropuerto")) {
+      return <FaPlane className="h-[35px] w-[35px]" />;
+    } else {
+      return <></>;
+    }
+  };
+
   return (
+
     <div className='w-full bg-background flex  justify-center'>
       <div className="lg:w-[85%] md:w-[90%] h-full flex flex-col item-center">
           <NuevaReservaPrueba />
