@@ -17,7 +17,7 @@ export default function Carrusel() {
 
     fetchData();
   }, []);
-  
+
   const images: CarView[] = cars;
 
   const [selectedIndex, setSelectedIndex] = useState(1);
@@ -30,33 +30,20 @@ export default function Carrusel() {
     if (selectedIndex <= 0) {
       setSelectedIndex(images.length - 1);
     } else {
-<<<<<<< HEAD
       setSelectedIndex((state) => state - 1);
-=======
-
-      setSelectedIndex((state) => state - 1);
-
->>>>>>> 1a4bcde1068d542507627c21c413cc6b7ade52c4
     }
   };
   const next = () => {
     if (selectedIndex < images.length - 1) {
-<<<<<<< HEAD
       setSelectedIndex((state) => state + 1);
-=======
-
-      setSelectedIndex((state) => state + 1);
-
->>>>>>> 1a4bcde1068d542507627c21c413cc6b7ade52c4
     } else {
       setSelectedIndex(0);
     }
   };
 
+  const [isAutoplay, setIsAutoplay] = useState(true);
 
-  const [isAutoplay, setIsAutoplay] = useState(true); 
-
-  const autoplayInterval = 2000; 
+  const autoplayInterval = 2000;
 
   useEffect(() => {
     let autoplayId: number;
@@ -68,7 +55,7 @@ export default function Carrusel() {
     }
 
     return () => clearInterval(autoplayId);
-  }, [isAutoplay, next]); 
+  }, [isAutoplay, next]);
 
   return (
     <>

@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-import { useForm } from "react-hook-form";
-import { Formulario } from "./Formulario.interface";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSeletor } from "../../redux/store";
 import { useEffect } from "react";
@@ -10,25 +7,17 @@ import { useForm } from "react-hook-form";
 import { Formulario } from "./Formulario.interface";
 import { Link } from "react-router-dom";
 export const NuevaReserva = () => {
+  const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
 
   const dispatch = useAppDispatch(); //dispatch para mas adelante para guardar los datos de la reserva
 
   const dataReserve = useAppSeletor((state) => state.dataReserve.dataReserve); //useSelector para recibir los datos de la agencia en el caso de haber seleccionado en la lista de agencias
   useEffect(() => {
-    if (dataReserve.lugar) {
-      console.log(dataReserve.lugar);
+    if (dataReserve.lugarRetiro) {
+      console.log(dataReserve.lugarRetiro);
     }
   }, [dataReserve]);
-
-
- const dataReserve = useAppSeletor(state=>state.dataReserve.dataReserve)//useSelector para recibir los datos de la agencia en el caso de haber seleccionado en la lista de agencias
- useEffect(() => {
-  if(dataReserve.lugarRetiro){
-    console.log(dataReserve.lugarRetiro)
-  }
- }, [dataReserve])
- 
 
   const onSubmit = handleSubmit((data) => {
     const formulario: Formulario = {
@@ -40,13 +29,11 @@ export const NuevaReserva = () => {
       horaEntrega: data.horaEntrega,
     };
 
-
     dispatch(postReserve(formulario));
     // before add formulario data in redux state
     navigate("../categoriasDeVehiculos/all", {
       state: { isReserva: true },
     });
-
   });
 
   return (
@@ -64,8 +51,7 @@ export const NuevaReserva = () => {
               required
               placeholder="  Ingresá la agencia de retirada (ej. Bariloche, Buenos Aires) 
             "
-            
-            {...register("agenciaRetiro")}
+              {...register("agenciaRetiro")}
             />
 
             <svg

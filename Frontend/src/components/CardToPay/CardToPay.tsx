@@ -1,9 +1,8 @@
-
 import { useEffect, useState } from "react";
 import ButtonMain from "../ButtonMain/ButtonMain";
 import { postTarifaMetodoPago } from "../../redux/coberturasSlice";
 import { useAppDispatch } from "../../redux/store";
-import { useState } from "react";
+
 interface Props {
   card: {
     title: string;
