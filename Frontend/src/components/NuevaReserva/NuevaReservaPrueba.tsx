@@ -1,7 +1,6 @@
-import { useForm } from "react-hook-form";
-import { Formulario } from "./Formulario.interface";
+
 import { useAppDispatch, useAppSeletor } from "../../redux/store";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaLocationDot } from "react-icons/fa6";
 import { postReserve } from "../../redux/reserveSlice";
@@ -16,7 +15,6 @@ export const NuevaReserva = () => {
     const [agenciaEntrega, setAgenciaEntrega] = useState<string>('');
     const [fechaEntrega, setFechaEntrega] = useState<string>('');
     const [horaEntrega, setHoraEntrega] = useState<string>('');
-    const dataEntrega = useRef(false)
     const [onFocus, setOnFocus] = useState(false)
     const navigator = useNavigate();
     const dispatch = useAppDispatch(); //dispatch para mas adelante para guardar los datos de la reserva
@@ -44,12 +42,9 @@ export const NuevaReserva = () => {
       }
       const handleOnBlur = () =>{
       if(agenciaRetiro !== '' && horaRetiro !== '' && fechaRetiro !== ''){
-        dataEntrega.current = true
         setOnFocus(true)
-        console.log('true',agenciaRetiro, horaRetiro, fechaRetiro, dataEntrega.current);
       }else{  
-        dataEntrega.current = false
-        console.log('false',agenciaRetiro, horaRetiro, fechaRetiro, dataEntrega.current);
+        setOnFocus(false)
       }
     }
     const opcionesFiltradasRetiro = allAgencias.filter(agencia =>
@@ -63,18 +58,18 @@ export const NuevaReserva = () => {
       dispatch(postReserve({
         lugarEntrega: agenciaEntrega,
         lugarRetiro: agenciaRetiro,
-        fechaEntrega: fechaRetiro,
-        returnDate: fechaEntrega,
+        fechaEntrega: fechaEntrega,
+        fechaRetiro: fechaRetiro,
         horaEntrega: horaRetiro,
-        horaDevolucion: horaEntrega,
+        horaRetiro: horaEntrega,
       }))
       navigator("/categoriasDeVehiculos/seleciona")
     }
   
   return (
     <div className="w-full">
-      <div className=" Gradient-V min-h-[129px] max-h-[244px] p-5 my-6 rounded-xl flex flex-col justify-center mx-auto ">
-          <div className="flex justify-between h-[45%] mb-4">
+      <div className=" Gradient-V min-h-[120px] max-h-[244px] p-4 my-6 rounded-xl flex flex-col justify-center mx-auto transition-all duration-1000 ease-in-out ">
+          <div className="flex justify-between h-[45%] ">
             <p className="w-[16%] text-white text-[20px] font-semibold self-center text-center">Nueva Reserva</p>
             <div className="w-[50%] h-[70px] relative">
                 <div className="w-full h-[70px] relative">
@@ -92,9 +87,9 @@ export const NuevaReserva = () => {
                     <FaLocationDot className="absolute bottom-[1.5rem] right-[1rem] w-[19px] h-[26px] text-text"/>
                 </div>
                   {
-                  onFocusRetiro&&<ul className="absolute top-[68px] bg-background rounded-lg border-2 border-text z-10">
+                  onFocusRetiro&&<ul className="absolute top-[68px] bg-background rounded-lg border-[1px] border-text z-10 w-full">
                   {agenciaRetiro&&agenciaRetiro.length>2&& opcionesFiltradasRetiro.map((opcion, index) => (
-                    <li onClick={()=>{handleChange(setAgenciaRetiro,'agenciasRetiro',opcion.name)}} className="cursor-pointer p-2" key={index}>{opcion.name}</li>
+                    <li onClick={()=>{handleChange(setAgenciaRetiro,'agenciasRetiro',opcion.name)}} className="cursor-pointer px-2 py-4 hover:bg-[#F9D8B2] rounded-lg transition-all duration-300 ease-in-out " key={index}>{opcion.name}</li>
                   ))}
                 </ul>
                 }
@@ -127,7 +122,7 @@ export const NuevaReserva = () => {
               />
             </div>
           </div>
-          {onFocus&&<div className="flex justify-between h-[45%]">
+          {onFocus&&<div className="flex justify-between h-[45%] mt-4 ">
             <button
 
               onClick={()=>{handleSubmit()}}
