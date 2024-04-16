@@ -4,12 +4,12 @@ type Treserve = {
 
   userId?: number,
   nameUser?: string ,
-  fechaEntrega?: string,
-  fechaDevolucion?: string,
-  horaEntrega?: string,
-  horaDevolucion?: string,
-  lugarDevolucion?: string,
+  lugarRetiro?: string,
   lugarEntrega?: string,
+  fechaRetiro?: string,
+  fechaEntrega?: string,
+  horaRetiro?: string,
+  horaEntrega?: string,
   carId?:number
 
 };
@@ -22,12 +22,12 @@ const estadoInicial: reserve = {
   dataReserve: {
     userId: undefined,
     nameUser: undefined,
-    fechaEntrega: undefined,
-    fechaDevolucion: undefined,
-    horaEntrega: undefined,
-    horaDevolucion: undefined,
     lugarEntrega: undefined,
-    lugarDevolucion: undefined,
+    lugarRetiro: undefined,
+    fechaEntrega: undefined,
+    fechaRetiro: undefined,
+    horaEntrega: undefined,
+    horaRetiro: undefined,
     carId: undefined,
     
   },
