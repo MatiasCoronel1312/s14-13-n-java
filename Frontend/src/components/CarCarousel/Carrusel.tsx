@@ -17,7 +17,7 @@ export default function Carrusel() {
 
     fetchData();
   }, []);
-  
+
   const images: CarView[] = cars;
 
   const [selectedIndex, setSelectedIndex] = useState(1);
@@ -41,10 +41,9 @@ export default function Carrusel() {
     }
   };
 
+  const [isAutoplay, setIsAutoplay] = useState(true);
 
-  const [isAutoplay, setIsAutoplay] = useState(true); 
-
-  const autoplayInterval = 2000; 
+  const autoplayInterval = 2000;
 
   useEffect(() => {
     let autoplayId: number;
@@ -56,7 +55,7 @@ export default function Carrusel() {
     }
 
     return () => clearInterval(autoplayId);
-  }, [isAutoplay, next]); 
+  }, [isAutoplay, next]);
 
   return (
     <>
