@@ -4,7 +4,7 @@ import Dudas from "../pages/Dudas";
 import Home from "../pages/Home";
 import RedDeAgencias from "../pages/RedDeAgencias";
 import SeleccionDeCarro from "../pages/SeleccionCarro";
-// import TipsTuristicos from "../pages/TipsTuristicos";
+import TipsTuristicos from "../pages/TipsTuristicos";
 import { Login } from "../shared/layout/login/Login";
 import Registro from "../pages/Registro";
 
@@ -19,11 +19,11 @@ export const menuRoutes = [
     path: "/redDeAgencias",
     Element: RedDeAgencias,
   },
-  // {
-  //   id: "tipsTuristicos",
-  //   path: "/tipsTuristicos",
-  //   Element: TipsTuristicos,
-  // },
+  {
+    id: "tipsTuristicos",
+    path: "/tipsTuristicos",
+    Element: TipsTuristicos,
+  },
   {
     id: "dudas",
     path: "/dudas",

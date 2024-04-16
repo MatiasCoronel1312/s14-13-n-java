@@ -20,7 +20,7 @@ function CardTur({lugar}:DestinosCard){
                     <p>{lugar.description}</p>
                 </div>
                 <div>
-                    <button className="btn"></button>
+                    <button className="btn border-accent border-2 text-accent">Fiestas</button>
                 </div>
             </div>
         </div>
