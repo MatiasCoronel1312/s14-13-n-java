@@ -1,4 +1,5 @@
 
+import DestinationDetail from "../components/DestinationDetail/DestinationDetail";
 import NuevaReserva from "../components/NuevaReserva/NuevaReserva";
 import TurismoHome from "../components/turismo/TurismoHome";
 
@@ -12,6 +13,7 @@ const Home = () => {
       <Carrusel />
       <NuevaReserva />
       <TurismoHome/>
+      <DestinationDetail/>
     </div>
   );
 };
