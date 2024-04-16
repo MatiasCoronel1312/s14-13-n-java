@@ -17,6 +17,11 @@ function App() {
         dispatch(getAgencias(res.data));
       })
       .catch(function (er) {
+   axios.get(apiUrl+'/agencies')
+    .then(res=>{
+      dispatch(getAgencias(res.data))      
+    }) 
+    .catch(function (er) { 
         console.log(er);
       });
   }, []);

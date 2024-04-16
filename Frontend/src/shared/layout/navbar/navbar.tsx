@@ -7,6 +7,9 @@ const navbar = () => {
         <div className="h-[80px] lg:w-[85%] md:w-[90%] flex items-center justify-between ">
           <Link to="/">
             <img src={GoCar} alt="GoCar logo" className="w-[134px] h-[30px]" />
+            <p className="text-[10px] text-center text-text">
+              Alquiler de autos
+            </p>
           </Link>
           <ul className="flex justify-between w-[60%]">
             <Link

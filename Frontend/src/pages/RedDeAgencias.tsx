@@ -7,8 +7,6 @@ const RedDeAgencias = () => {
   const dispatch = useAppDispatch();
   const allAgencias = useAppSeletor((state) => state.allAgencias.agencias);
 
-
-
   const handleReserve = (name:string) =>{
     dispatch(postReserve({lugarRetiro: name}))
 
@@ -50,13 +48,13 @@ const RedDeAgencias = () => {
                     </div>
                     <div>
                       <div className="font-semibold text-[14px]">Horario:</div>
-                      <div className="text-[14px]">{agencia.hora}</div>
+                      <div className="text-[14px]">Atencion las 24hs.</div>
                     </div>
                   </div>
                   <div className="h-full flex flex-col justify-evenly w-[30%]">
                     <div>
                       <div className="font-semibold text-[14px]">Telefono:</div>
-                      <div className="text-[14px]">{agencia.tel}</div>
+                      <div className="text-[14px]">{agencia.phone}</div>
                     </div>
                     <div>
                       <button onClick={()=>{handleReserve(agencia.name)}} className="Gradient-H_hover border-2 border-accent text-accent hover:text-text hover:border-none w-3/4 h-10 rounded-lg ">Reservar</button>

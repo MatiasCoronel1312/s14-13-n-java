@@ -7,7 +7,7 @@ type TAgencia =
       country: string;
       address: string;
       tel: string;
-      hora: string;
+      phone: string;
       excep: string;
     };
 
