@@ -15,7 +15,7 @@ const DatosDePagos = () => {
   }
   return (
     <div className="w-full bg-background flex justify-center">
-      <div className="h-auto lg:w-[85%] md:w-[90%]  ">
+      <div className="h-auto lg:w-[85%] md:w-[90%]  pb-36">
         <div className="h-[210px] mt-6  flex justify-center items-center">
           <TimeLine posicion={4} />
         </div>
