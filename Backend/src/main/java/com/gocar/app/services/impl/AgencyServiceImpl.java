@@ -79,6 +79,14 @@ public class AgencyServiceImpl implements AgencyService {
                         .toList());
     }
 
+    @Override
+    public List<AgencyResponseDto> search(String name) {
+        return agencyRepository.findByNameContaining(name)
+                .stream()
+                .map(AgencyResponseDto::new)
+                .collect(Collectors.toList());
+    }
+
 
 
 }

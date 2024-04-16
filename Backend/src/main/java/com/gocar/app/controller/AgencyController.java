@@ -11,6 +11,8 @@ import org.hibernate.service.spi.ServiceException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("api/agencies")
@@ -66,5 +68,10 @@ public class AgencyController {
         } catch (ServiceException e) {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<AgencyResponseDto>> searchAgency(@RequestParam String name) {
+        return ResponseEntity.ok(agencyService.search(name));
     }
 }
