@@ -15,6 +15,6 @@ public record UserResponseDto(
 
     public UserResponseDto(User user){
         this(user.getId(), user.getName(), user.getLastName(), user.getEmail(),
-                user.getIdentification(), user.getIdentificationNumber(), user.getCountry(), user.getCountry());
+                user.getIdentification(), user.getIdentificationNumber(), user.getCountry(), user.getPhoneNumber());
     }
 }

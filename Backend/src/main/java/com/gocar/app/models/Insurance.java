@@ -1,10 +1,9 @@
 package com.gocar.app.models;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Entity
 @Table(name ="insurance")
@@ -22,5 +21,8 @@ public class Insurance {
 	private Long id;
 	private String name;
 	private Double price;
+	@OneToMany(mappedBy = "insurance")
+	@JsonIgnore
+	private List<Reservation> reservations;
 
 }

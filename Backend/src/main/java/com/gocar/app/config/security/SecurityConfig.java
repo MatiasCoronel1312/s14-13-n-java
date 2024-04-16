@@ -28,7 +28,7 @@ public class SecurityConfig{
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authRequest ->
                         authRequest
-                                .requestMatchers("api/auth/**" ,"/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html","api/vehicles/**","api/agencies/**", "api/reservationDates/**", "api/reservation/**", "api/reservations").permitAll()
+                                .requestMatchers("api/auth/**" ,"/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html","api/vehicles/**","api/agencies/**", "api/reservationDates/**", "api/reservation/**", "api/reservations","api/mercadopago/**","api/user/**").permitAll()
                                 .anyRequest().authenticated()
                 )
                 .sessionManagement(sessionManager -> sessionManager
