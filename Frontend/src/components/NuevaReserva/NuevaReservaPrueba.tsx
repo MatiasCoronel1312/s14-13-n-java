@@ -1,6 +1,6 @@
 
 import { useAppDispatch, useAppSeletor } from "../../redux/store";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaLocationDot } from "react-icons/fa6";
 import { postReserve } from "../../redux/reserveSlice";
@@ -15,7 +15,6 @@ export const NuevaReserva = () => {
     const [agenciaEntrega, setAgenciaEntrega] = useState<string>('');
     const [fechaEntrega, setFechaEntrega] = useState<string>('');
     const [horaEntrega, setHoraEntrega] = useState<string>('');
-    const dataEntrega = useRef(false)
     const [onFocus, setOnFocus] = useState(false)
     const navigator = useNavigate();
     const dispatch = useAppDispatch(); //dispatch para mas adelante para guardar los datos de la reserva
@@ -43,12 +42,9 @@ export const NuevaReserva = () => {
       }
       const handleOnBlur = () =>{
       if(agenciaRetiro !== '' && horaRetiro !== '' && fechaRetiro !== ''){
-        dataEntrega.current = true
         setOnFocus(true)
-        console.log('true',agenciaRetiro, horaRetiro, fechaRetiro, dataEntrega.current);
       }else{  
-        dataEntrega.current = false
-        console.log('false',agenciaRetiro, horaRetiro, fechaRetiro, dataEntrega.current);
+        setOnFocus(false)
       }
     }
     const opcionesFiltradasRetiro = allAgencias.filter(agencia =>
@@ -62,21 +58,21 @@ export const NuevaReserva = () => {
       dispatch(postReserve({
         lugarEntrega: agenciaEntrega,
         lugarRetiro: agenciaRetiro,
-        fechaEntrega: fechaRetiro,
-        returnDate: fechaEntrega,
+        fechaEntrega: fechaEntrega,
+        fechaRetiro: fechaRetiro,
         horaEntrega: horaRetiro,
-        horaDevolucion: horaEntrega,
+        horaRetiro: horaEntrega,
       }))
       navigator("/categoriasDeVehiculos/seleciona")
     }
   
   return (
     <div className="w-full">
-      <div className=" Gradient-V min-h-[129px] max-h-[244px] p-5 my-6 rounded-xl flex flex-col justify-center mx-auto ">
-          <div className="flex justify-between h-[45%] mb-4">
+      <div className={` Gradient-V p-4 my-6 rounded-xl flex flex-col justify-center mx-auto transition-all duration-200 ease-linear ${onFocus?'h-[200px]':'h-[115px]'}`}>
+          <div className={`flex justify-between transition-all duration-300 ease-linear ${onFocus?'h-[45%]':'h-[85%]'}`}>
             <p className="w-[16%] text-white text-[20px] font-semibold self-center text-center">Nueva Reserva</p>
-            <div className="w-[50%] h-[70px] relative">
-                <div className="w-full h-[70px] relative">
+            <div className="w-[50%] h-full relative">
+                <div className="w-full h-full relative">
                     <input
                       className="w-full h-full rounded-md p-4 font-sans text-text "
                       type="text"
@@ -91,27 +87,24 @@ export const NuevaReserva = () => {
                     <FaLocationDot className="absolute bottom-[1.5rem] right-[1rem] w-[19px] h-[26px] text-text"/>
                 </div>
                   {
-                  onFocusRetiro&&<ul className="absolute top-[68px] bg-background rounded-lg border-2 border-text z-10">
+                  onFocusRetiro&&<ul className="absolute top-[68px] bg-background rounded-lg border-[1px] border-text z-10 w-full">
                   {agenciaRetiro&&agenciaRetiro.length>2&& opcionesFiltradasRetiro.map((opcion, index) => (
-                    <li onClick={()=>{handleChange(setAgenciaRetiro,'agenciasRetiro',opcion.name)}} className="cursor-pointer p-2" key={index}>{opcion.name}</li>
+                    <li onClick={()=>{handleChange(setAgenciaRetiro,'agenciasRetiro',opcion.name)}} className="cursor-pointer px-2 py-4 hover:bg-[#F9D8B2] rounded-lg transition-all duration-300 ease-in-out " key={index}>{opcion.name}</li>
                   ))}
                 </ul>
                 }
             </div>
             
-            <div className=" flex lg:w-[30%] h-[70px] ">
+            <div className=" flex lg:w-[30%] h-[100%] ">
               <input
                 className="w-1/2 h-full rounded-l-md px-2"
-
                 type="date"
                 placeholder="Fecha de Retiro"
-
                 id="fechaRetiro"
                 value={fechaRetiro}
                 onFocus={()=>{handleOnBlur()}}
                 onChange={()=>{handleChange(setFechaRetiro,'fechaRetiro'),handleOnBlur}}
               />
-
               <input
                 className="w-1/2 h-full text-text rounded-r-md border-l-2 border-text px-2"
                 type="time"
@@ -121,24 +114,20 @@ export const NuevaReserva = () => {
                 onFocus={()=>{handleOnBlur()}}
                 value={horaRetiro}
                 onChange={()=>{handleChange(setHoraRetiro,'horaRetiro'),handleOnBlur}}
-                
-
               />
             </div>
           </div>
-          {onFocus&&<div className="flex justify-between h-[45%]">
+          {onFocus&&<div className={`flex justify-between items-center  transition-all duration-500 ease-linear mt-4 ${onFocus?'scale-y-100 h-[45%]':'scale-y-0 h-0'}`}>
             <button
-
               onClick={()=>{handleSubmit()}}
-              className="bg-text h-[62px]  self-center w-[16%] text-white text-[20px] font-semibold rounded-md "
-
+              className={`bg-text self-center w-[16%] text-white text-[20px] font-semibold rounded-md h-[70%]`}
               type="submit"
             >
               Seguir
             </button>
 
-            <div className="w-[50%] h-[70px] relative">
-                <div className="w-full h-[70px] relative">
+            <div className={`w-[50%] relative h-[90%]`}>
+                <div className="w-full h-full relative">
                     <input
                       className="w-full h-full rounded-md p-4 font-sans text-text "
                       type="text"
@@ -160,7 +149,7 @@ export const NuevaReserva = () => {
                 </ul>
                 }
             </div>
-            <div className=" flex lg:w-[30%] h-[70px] ">
+            <div className={`lg:w-[30%] relative h-[90%]`}>
               <input
                 className="w-1/2 h-full rounded-l-md px-2"
                 type="date"
@@ -168,10 +157,8 @@ export const NuevaReserva = () => {
                 id="fechaEntrega"
                 value={fechaEntrega}
                 placeholder="Fecha de Entrega"
-                onChange={()=>{handleChange(setFechaEntrega,'fechaEntrega')}}
-        
+                onChange={()=>{handleChange(setFechaEntrega,'fechaEntrega')}}       
               />
-
               <input
                 className="w-1/2 h-full text-text rounded-r-md border-l-2 border-text px-2"
                 type="time"
@@ -180,11 +167,8 @@ export const NuevaReserva = () => {
                 id="horaEntrega"
                 value={horaEntrega}
                 onChange={()=>{handleChange(setHoraEntrega,'horaEntrega')}}
-                
-
               />
             </div>
-
           </div>}
       </div>
     </div>

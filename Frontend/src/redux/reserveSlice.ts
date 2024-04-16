@@ -8,9 +8,11 @@ type Treserve = {
   lugarEntrega?: string,
   fechaRetiro?: string,
   fechaEntrega?: string,
-  horaRetiro?: string,
+  fechaRetiro?: string,
   horaEntrega?: string,
-  carId?:number
+  horaRetiro?: string,
+
+
 
 };
 interface reserve {
@@ -26,10 +28,14 @@ const estadoInicial: reserve = {
     lugarRetiro: undefined,
     fechaEntrega: undefined,
     fechaRetiro: undefined,
+
+    lugarEntrega: undefined,
+    lugarRetiro: undefined,
+
     horaEntrega: undefined,
     horaRetiro: undefined,
     carId: undefined,
-    
+
   },
 };
 
