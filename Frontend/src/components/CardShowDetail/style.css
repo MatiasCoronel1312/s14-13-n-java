@@ -3,7 +3,7 @@
 }
 
 .card-inner {
-  transition: transform 0.6s;
+  transition: transform 0.4s;
   transform-style: preserve-3d;
   transform-origin: center;
 }
@@ -22,4 +22,21 @@
 
 .card-back {
   transform: rotateY(-180deg);
+}
+
+/* Firefox prefix */
+@-moz-document url-prefix() {
+  .card-inner {
+    -moz-transition: -moz-transform 0.2s;
+    -moz-transform-style: preserve-3d;
+    -moz-transform-origin: center;
+  }
+
+  .card.flipped .card-inner {
+    -moz-transform: rotateY(180deg);
+  }
+
+  .card-back {
+    -moz-transform: rotateY(-180deg);
+  }
 }

@@ -2,6 +2,10 @@ import { useEffect, useState } from "react";
 import { FaCheck } from "react-icons/fa6";
 import { useLocation, useNavigate } from "react-router-dom";
 
+import { useAppDispatch } from "../../redux/store";
+import { postReserve } from "../../redux/reserveSlice";
+import { reseCoberturas } from "../../redux/coberturasSlice";
+
 interface Props {
   posicion?: number;
 }
@@ -15,8 +19,13 @@ const pointDots: PointDots[] = [
   {
     id: 1,
     detail: "Local, fecha y hora de reserva",
-    path: "-",
-    pathHabile: [""],
+    path: "/categoriasDeVehiculos/all",
+    pathHabile: [
+      "/selecciona-pago",
+      "/finalizar-pago",
+      "/categoriasDeVehiculos/all",
+      "/categoriasDeVehiculos/seleciona",
+    ],
   },
   {
     id: 2,
@@ -37,11 +46,33 @@ const pointDots: PointDots[] = [
     pathHabile: [""],
   },
 ];
+
+const dataReserve = {
+  userId: undefined,
+  nameUser: undefined,
+  lugarEntrega: undefined,
+  lugarRetiro: undefined,
+  fechaEntrega: undefined,
+  fechaRetiro: undefined,
+  horaEntrega: undefined,
+  horaRetiro: undefined,
+};
+const cargos = {
+  metodoPago: {
+    title: "",
+    price: 0,
+  },
+  seguridad: {
+    title: "",
+    price: 0,
+  },
+};
+
 const TimeLine = ({ posicion = 1 }: Props) => {
   const location = useLocation();
   const [addDotsTimeLine, setaAddDotsTimeLine] = useState("");
   const navigate = useNavigate();
-
+  const dispatch = useAppDispatch();
   useEffect(() => {
     setaAddDotsTimeLine(location.pathname);
   }, []);
@@ -58,7 +89,15 @@ const TimeLine = ({ posicion = 1 }: Props) => {
   const title: string =
     "text-center text-[20px] w-[25%] transition-all duration-1000 ease-in-out";
   const stageUno = (path: string): void => {
-    navigate(path);
+    console.log("path", path);
+    if (path === "/categoriasDeVehiculos/all") {
+      navigate(path);
+
+      dispatch(postReserve(dataReserve));
+    } else {
+      dispatch(reseCoberturas(cargos));
+      navigate(path);
+    }
   };
 
   return (
