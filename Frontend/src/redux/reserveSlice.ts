@@ -8,9 +8,9 @@ type Treserve = {
   lugarEntrega?: string,
   fechaRetiro?: string,
   fechaEntrega?: string,
-  fechaRetiro?: string,
   horaEntrega?: string,
   horaRetiro?: string,
+  carId?: string,
 
 
 
@@ -28,10 +28,6 @@ const estadoInicial: reserve = {
     lugarRetiro: undefined,
     fechaEntrega: undefined,
     fechaRetiro: undefined,
-
-    lugarEntrega: undefined,
-    lugarRetiro: undefined,
-
     horaEntrega: undefined,
     horaRetiro: undefined,
     carId: undefined,
