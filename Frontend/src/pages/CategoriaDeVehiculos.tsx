@@ -1,6 +1,6 @@
 import SelectForCategory from "../components/SelectForCategory/SelectForCategory";
 import TimeLine from "../components/timeline/TimeLine";
-import NuevaReserva from "../components/NuevaReserva/NuevaReserva";
+import NuevaReservaPrueba from "../components/NuevaReserva/NuevaReservaPrueba";
 
 import { useLocation } from "react-router-dom";
 import { useAppSeletor } from "../redux/store";
@@ -25,7 +25,7 @@ const CategoriaDeVehiculos = () => {
             </div>
           ) : (
             <div className=" h-[210px]">
-              <NuevaReserva />
+              <NuevaReservaPrueba />
             </div>
           )}
         </div>
