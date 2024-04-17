@@ -17,11 +17,6 @@ public class ReservationDatesController {
 
     private final ReservationDatesService reservationDatesService;
 
-    @PostMapping
-    public ResponseEntity<ReservationDatesResponseDto> save(@RequestBody ReservationDatesRequestDto reservationDatesRequestDto) {
-        ReservationDatesResponseDto savedReservationDates = reservationDatesService.save(reservationDatesRequestDto);
-        return ResponseEntity.ok(savedReservationDates);
-    }
 
     @GetMapping("/{id}")
     public ResponseEntity<ReservationDatesResponseDto> findById(@PathVariable Long id) {
@@ -35,11 +30,6 @@ public class ReservationDatesController {
         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping
-    public ResponseEntity<ReservationDatesResponseDto> update(@RequestBody ReservationDatesRequestDto reservationDatesRequestDto) {
-        ReservationDatesResponseDto updatedReservationDates = reservationDatesService.update(reservationDatesRequestDto);
-        return ResponseEntity.ok(updatedReservationDates);
-    }
 
     @GetMapping
     public ResponseEntity<?> findAll() {

@@ -6,8 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 public record ReservationDatesRequestDto(
-        @NotNull
-        Long id,
+
         @NotNull
         Long agencyId,
         @NotNull
