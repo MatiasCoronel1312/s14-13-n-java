@@ -12,5 +12,5 @@ import java.util.List;
 @Repository
 public interface AgencyRepository extends JpaRepository<Agency, Long> {
 
-    List<Agency> findByNameContaining(String name);
+    List<Agency> findByCountryContaining(String name);
 }

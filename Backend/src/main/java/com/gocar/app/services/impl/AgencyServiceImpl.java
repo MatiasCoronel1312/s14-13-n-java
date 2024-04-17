@@ -3,6 +3,7 @@ package com.gocar.app.services.impl;
 import com.gocar.app.dtos.agency.AgencyRequestDto;
 import com.gocar.app.dtos.agency.AgencyResponseDto;
 import com.gocar.app.dtos.insurance.InsuranceDTO;
+import com.gocar.app.exceptions.AgencyNotFoundException;
 import com.gocar.app.models.Agency;
 import com.gocar.app.models.Insurance;
 import com.gocar.app.repositories.AgencyRepository;
@@ -81,10 +82,17 @@ public class AgencyServiceImpl implements AgencyService {
 
     @Override
     public List<AgencyResponseDto> search(String name) {
-        return agencyRepository.findByNameContaining(name)
+
+        List<AgencyResponseDto> agencyDto =  agencyRepository.findByCountryContaining(name)
                 .stream()
                 .map(AgencyResponseDto::new)
-                .collect(Collectors.toList());
+                .toList();
+
+        if(agencyDto.isEmpty()){
+            throw new AgencyNotFoundException("There is no agency in that state");
+        }
+
+        return agencyDto;
     }
 
 

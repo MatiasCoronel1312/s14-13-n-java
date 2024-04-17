@@ -1,6 +1,7 @@
 package com.gocar.app.controller;
 
 import com.gocar.app.dtos.exception.ErrorResponseDto;
+import com.gocar.app.exceptions.AgencyNotFoundException;
 import com.gocar.app.exceptions.EmailOrPasswordIncorrectException;
 import jakarta.persistence.EntityNotFoundException;
 import org.hibernate.service.spi.ServiceException;
@@ -29,6 +30,11 @@ public class RestResponseEntityExceptionHandler {
 
     @ExceptionHandler(EntityNotFoundException.class)
     public ResponseEntity<Object> handlerEntityNotFoundException(EntityNotFoundException e){
+        return new ResponseEntity<>(e.getMessage(),HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(AgencyNotFoundException.class)
+    public ResponseEntity<Object> handlerAgencyNotFoundException(AgencyNotFoundException e){
         return new ResponseEntity<>(e.getMessage(),HttpStatus.NOT_FOUND);
     }
 
