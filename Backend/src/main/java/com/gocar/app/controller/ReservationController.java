@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import com.gocar.app.dtos.reservation.ReservationRequestDTO;
 import com.gocar.app.services.impl.ReservationServiceImpl;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("api/reservation")
@@ -57,5 +59,17 @@ public class ReservationController {
 	    public ResponseEntity<?> delete (@PathVariable Long id){
 	        return ResponseEntity.status(HttpStatus.OK).body(reservationService.delete(id));
 	    }
+
+		@GetMapping(value = "user", produces = "application/json")
+		public ResponseEntity<List<ReservationResponseDTO>> getAllByUser(
+				@RequestParam(name = "active", required = false) Boolean isActive
+		){
+			if (isActive != null) {
+				return ResponseEntity.status(HttpStatus.OK).body(reservationService.findAllByLoggedInUserAndActive(isActive));
+			} else {
+				return ResponseEntity.status(HttpStatus.OK).body(reservationService.findAllByLoggedInUser());
+			}
+		}
+
 
 }
