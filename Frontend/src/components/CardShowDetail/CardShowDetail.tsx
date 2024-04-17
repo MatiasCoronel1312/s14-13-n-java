@@ -28,7 +28,9 @@ export default function CardShowDetail({ showCars, isCategory }: Props) {
   return (
     <div className={`card  ${showFront ? "flipped" : ""}`}>
       <div className="card-inner">
-        <div className={`card-front  ${showFront ? "hidden" : ""}`}>
+        <div
+          className={`card-front transition-all   ${showFront ? "hidden" : ""}`}
+        >
           <FrontViewCard
             lessIndex={lessIndex}
             addIndex={addIndex}
