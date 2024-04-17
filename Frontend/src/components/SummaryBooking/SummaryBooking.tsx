@@ -19,13 +19,15 @@ const SummaryBooking = () => {
     dataAutoReduce.price +
     dataAutoReduce.price * dataCoberturasReduce.metodoPago.price;
 
+  const totalPorDia = totalPrecioCarro * totalDias;
+
   const totalPorProteccion = dataCoberturasReduce.seguridad.price * totalDias;
   const totalcargoAdministrativo = totalPrecioCarro * 0.12;
   const totalIva = totalPrecioCarro * 0.21;
   const totalPorMetodoPago =
     totalPrecioCarro * dataCoberturasReduce.metodoPago.price;
   const totalTodosImpuestos =
-    totalPrecioCarro +
+    totalPorDia +
     totalPorProteccion +
     totalcargoAdministrativo +
     totalIva +
@@ -47,7 +49,7 @@ const SummaryBooking = () => {
     formaDePago: dataCoberturasReduce.metodoPago.title,
     cantidadDia: totalDias,
     precioPorDia: totalPrecioCarro,
-    precioTotalPorDia: totalPrecioCarro,
+    precioTotalPorDia: totalPorDia,
     protecciones: [
       ` ${
         dataCoberturasReduce.seguridad.title.length > 5
