@@ -33,7 +33,7 @@ function App() {
   });
 
   return (
-    <div className="bg-[#ffffff]">
+    <div className='bg-[#ffffff]'>
       <MainRouter />
     </div>
   );
