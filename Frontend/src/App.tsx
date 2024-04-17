@@ -34,7 +34,6 @@ dispatch(postCars(res.data))
 
   return (
     <div className='bg-[#ffffff]'>
-      
       <MainRouter />
     </div>
   );
