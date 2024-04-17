@@ -15,4 +15,6 @@ public interface AgencyService {
     void deleteById(Long id);
     AgencyResponseDto update(AgencyRequestDto agencyRequestDto);
     List<AgencyResponseDto> findAll();
+
+    List<AgencyResponseDto> search(String name);
 }
