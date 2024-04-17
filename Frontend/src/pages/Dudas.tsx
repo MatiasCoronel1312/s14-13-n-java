@@ -2,7 +2,7 @@
 import { useCollapse } from "react-collapsed"
 import { FaAngleUp, FaAngleDown } from 'react-icons/fa6'
 import NuevaReservaPrueba from "../components/NuevaReserva/NuevaReservaPrueba";
-type Duda = {id:number, question: string, answer: string}
+type Duda = {id:number, question: string, answer: JSX.Element}
 
 
 const dudas: Duda[] = [
@@ -10,31 +10,35 @@ const dudas: Duda[] = [
     id: 1,
     question: "¿Cómo puedo reservar un auto?",
     answer:
-      "Puedes reservar un auto a través de la app GoCar, nuestro sitio web o llamando a nuestro centro de atención al cliente.",
+      <p>Puedes reservar un auto a través de la app GoCar, nuestro sitio web o llamando a nuestro centro de atención al cliente.</p>,
   },
   {
     id: 2,
     question: "¿Qué necesito para alquilar un auto?",
     answer:
-      "Puedes reservar un auto a través de la app GoCar, nuestro sitio web o llamando a nuestro centro de atención al cliente.",
+    <ul style={{listStyle: "square", paddingLeft: '18px'}}>
+      <li>Mínimo 18 años de edad.</li>
+      <li>Mínimo 2 años licencia de conductor.</li>
+      <li>Tarjeta de crédito o débito emitidas por entidades bancarias para el pago de tu reserva. No aceptamos efectivo.</li>
+    </ul>,
   },
   {
     id: 3,
     question: "¿Cómo puedo reservar un auto?",
     answer:
-      "Puedes reservar un auto a través de la app GoCar, nuestro sitio web o llamando a nuestro centro de atención al cliente.",
+    <p style={{fontStyle: 'italic'}}>Puedes reservar un auto a través de la app GoCar, nuestro sitio web o llamando a nuestro centro de atención al cliente.</p>,
   },
   {
     id: 4,
     question: "¿Cómo puedo reservar un auto?",
     answer:
-      "Puedes reservar un auto a través de la app GoCar, nuestro sitio web o llamando a nuestro centro de atención al cliente.",
+    <p>Puedes reservar un auto a través de la app GoCar, nuestro sitio web o llamando a nuestro centro de atención al cliente.</p>,
   },
 ];
 
 interface Props {
   question: string;
-  answer: string;
+  answer: JSX.Element;
 }
 
 const Question = ({ question, answer }: Props) => {
@@ -43,7 +47,7 @@ const Question = ({ question, answer }: Props) => {
     <div className="flex flex-col pb-4">
       {isExpanded ? (
         <div
-          className="bg-[#FADEBD] hover:bg-[#F9D8B2] flex justify-between cursor-pointer w-full text-center text-lg p-[18px]"
+          className="bg-[#FADEBD] hover:bg-[#FCC584] flex justify-between cursor-pointer w-full text-center text-lg p-[18px]"
           {...getToggleProps()}
         >
           <p>{question}</p>
@@ -51,7 +55,7 @@ const Question = ({ question, answer }: Props) => {
         </div>
       ) : (
         <div
-          className="bg-[#FADEBD] hover:bg-[#F9D8B2] flex justify-between cursor-pointer w-full text-center text-lg p-[18px] rounded-br-lg shadow-lg"
+          className="bg-[#FADEBD] hover:bg-[#FCC584] flex justify-between cursor-pointer w-full text-center text-lg p-[18px] rounded-br-lg shadow-lg"
           {...getToggleProps()}
         >
           <p>{question}</p>

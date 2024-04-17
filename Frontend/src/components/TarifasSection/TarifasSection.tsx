@@ -27,7 +27,7 @@ const TarifasSection = ({
   selectACard,
   SetSelectACard,
 }: Props) => {
-  let carPrice = showCarSelected[0].precio;
+  const carPrice = showCarSelected[0].price;
   return (
     <section className="w-[1200px] min-h-[707px]  bg-background mx-auto p-6">
       <p className="text-2xl font-light">
@@ -44,7 +44,7 @@ const TarifasSection = ({
               selectACard={selectACard}
               SetSelectACard={SetSelectACard}
               handleScrollToBack={handleScrollToBack}
-              carPrice={(carPrice += carPrice * card.price)}
+              carPrice={carPrice * card.price + carPrice}
               card={card}
             />
           ))}

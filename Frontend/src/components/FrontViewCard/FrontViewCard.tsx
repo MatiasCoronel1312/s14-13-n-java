@@ -67,7 +67,7 @@ export function FrontViewCard({
           isCategory ? "h-[556px]" : "h-[500px]"
         } border border-gray-300 rounded-xl flex flex-col items-center  py-6 shadow-card relative`}
       >
-        <p className="text-2xl font-light">{detailsCar.categoría}</p>
+        <p className="text-2xl font-light">{detailsCar.category}</p>
 
         <section className="flex flex-col items-center gap-3 py-2">
           <figure
@@ -88,7 +88,7 @@ export function FrontViewCard({
             <img
               className="relative -top-5 z-10 "
               // public/imagenesCarros/FordMustangConvertible.png
-              src={`/imagenesCarros/${detailsCar.imagen}`}
+              src={detailsCar.image}
               alt=""
             />
             {isMoreCar && (
@@ -115,9 +115,7 @@ export function FrontViewCard({
               </div>
             )}
           </figure>
-          <p className="text-2xl font-light text-primary">
-            {detailsCar.modelo}
-          </p>
+          <p className="text-2xl font-light text-primary">{detailsCar.brand}</p>
           <p className="px-10 text-pretty text-[12px]">
             *Su reserva garantiza uno de los modelos de autos a continuación,
             sujeto a disponibilidad de la agencia.
@@ -125,7 +123,7 @@ export function FrontViewCard({
           <div className="flex flex-col justify-center items-center py-3 bg-[#FADEBD] w-[285px] rounded-[10px]   ">
             <p className="font-extralight text-sm ">Desde</p>
             <h3 className="text-2xl font-extralight shadow-textd">
-              US$ {detailsCar.precio} / dia
+              US$ {detailsCar.price} / dia
             </h3>
           </div>
 
