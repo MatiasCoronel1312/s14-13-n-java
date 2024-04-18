@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @NoArgsConstructor
@@ -15,19 +16,18 @@ import java.time.LocalDate;
 public class ReservationDates {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "retirement_place_id")
     private Agency retirementPlace;
-
-    private LocalDate retirementDate;
-
-    @OneToOne
+    private LocalDateTime retirementDate;
+    @ManyToOne
+    @JoinColumn(name = "return_place_id")
     private Agency returnPlace;
-
     @OneToOne(mappedBy = "reservationDates", cascade = CascadeType.ALL)
     private Reservation reservation;
+    private LocalDateTime returnDate;
 
-    private LocalDate returnDate;
+
 }
