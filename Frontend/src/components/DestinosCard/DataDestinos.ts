@@ -26,7 +26,7 @@ const lugares =[
                 "highSeasonTitle": "Otoño e Invierno",
                 "celebrations": "National Iguazú Park Anniversary (October)",
                 "celebrationsTitle": "Octubre",
-                "phase": "Descubrí las majestuosas Cataratas del Iguazú, un espectáculo natural único en el mundo. No te lo pierdas!",
+                "phase": "¿Que hacer en Iguazú Falls?",
                 "tag": ["Aventura","Cultura","Naturaleza"]
             },
             {
@@ -41,7 +41,7 @@ const lugares =[
                 "highSeasonTitle": "Verano",
                 "celebrations": "National Glacier Day (August)",
                 "celebrationsTitle": "Agosto",
-                "phase": "El Calafate te invita a conocer el Perito Moreno, uno de los glaciares más impresionantes del mundo. ¡Viví una experiencia única!",
+                "phase": "¿Que hacer en El Calafate?",
                 "tag": ["Naturaleza","Turismo","Aventura"]
             },
             {
@@ -56,7 +56,7 @@ const lugares =[
                 "highSeasonTitle": "Verano e Invierno",
                 "celebrations": "End of the World Festival (September)",
                 "celebrationsTitle": "Septiembre",
-                "phase": "Ushuaia, el fin del mundo te sorprenderá con sus paisajes, su historia y su gente. ¡Anímate a descubrirla!",
+                "phase": "¿Que hacer en Ushuaia?",
                 "tag": ["Naturaleza", "Turismo", "Gastronomía"]
             },
             {
@@ -71,7 +71,7 @@ const lugares =[
                 "highSeasonTitle": "Invierno y Verano",
                 "celebrations": "National Snow Week (July)",
                 "celebrationsTitle": "Julio",
-                "phase": "Bariloche te ofrece aventura, naturaleza y paisajes deslumbrantes. ¡Esquiá en el Cerro Catedral o navegá por el Lago Nahuel Huapi!",
+                "phase": "¿Que hacer en Bariloche?",
                 "tag": ["Naturaleza", "Deportes", "Fiestas"]
             },
             {
@@ -86,7 +86,7 @@ const lugares =[
                 "highSeasonTitle": "Primavera y Otoño",
                 "celebrations": "Cosquín National Folklore Festival (January), Córdoba Film Festival (September)",
                 "celebrationsTitle": "Enero, Septiembre",
-                "phase": "Córdoba te invita a recorrer sus calles coloniales, disfrutar de sus sierras y vivir su apasionante cultura. ¡No te pierdas la oportunidad!",
+                "phase": "¿Que hacer en Ciudad de Córdoba?",
                 "tag": ["Fiestas", "Naturaleza", "Gastronomía"]
             }
 ];
