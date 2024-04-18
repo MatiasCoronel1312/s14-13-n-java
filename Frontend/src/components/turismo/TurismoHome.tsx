@@ -1,5 +1,6 @@
 import CarouselTourism from "./CarouselTourism"
 import ButtonTourism from "./ButtonTourism"
+import DataDestinos from "./../DestinosCard/DataDestinos"
 
 import DataDestinos from "./../DestinosCard/DataDestinos"
 

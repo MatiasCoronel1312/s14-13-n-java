@@ -2,7 +2,6 @@ import { useState } from "react";
 import CardDestinoTurismo from "./CardDestinoTurismo";
 import { FaCircleArrowLeft, FaCircleArrowRight } from "react-icons/fa6";
 
-import { DataDestination } from "./../DestinosCard/DataDestination.interface"
 
 interface Props {
   showSites: DataDestination[];
