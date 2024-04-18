@@ -8,10 +8,6 @@
 .Gradient-V {
   background-image: linear-gradient(180deg, #ff8c00, #b81c00);
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> a69aed6d3b8c1cc86ecf12d5de19465c549ed3be
 .Gradient-H {
   background-image: linear-gradient(90deg, #ff8c00, #b81c00);
 }
