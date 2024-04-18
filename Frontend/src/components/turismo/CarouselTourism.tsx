@@ -1,18 +1,10 @@
 import { useState } from "react";
 import CardDestinoTurismo from "./CardDestinoTurismo";
 import { FaCircleArrowLeft, FaCircleArrowRight } from "react-icons/fa6";
-<<<<<<< HEAD
 import { DataDestination } from "./../DestinosCard/DataDestination.interface"
 
 interface Props {
   showSites: DataDestination[];
-=======
-
-
-interface Props {
-  showSites: DataDestination[];
-
->>>>>>> a69aed6d3b8c1cc86ecf12d5de19465c549ed3be
 }
 
 const CarouselTourism = ({ showSites }: Props) => {
@@ -55,10 +47,6 @@ const CarouselTourism = ({ showSites }: Props) => {
       <div className="flex flex-col w-full">
         <div className="flex justify-around">
           <CardDestinoTurismo
-<<<<<<< HEAD
-=======
-
->>>>>>> a69aed6d3b8c1cc86ecf12d5de19465c549ed3be
             id={showSites[indexSite].id}
             imagen={showSites[indexSite].images[1]}
             descripcion={showSites[indexSite].phase}
@@ -68,10 +56,6 @@ const CarouselTourism = ({ showSites }: Props) => {
               id={imagen1.id}
               imagen={imagen1.images[1]}
               descripcion={imagen1.phase}
-<<<<<<< HEAD
-=======
-
->>>>>>> a69aed6d3b8c1cc86ecf12d5de19465c549ed3be
             />
           </div>
           <div className="hidden lg:block">
@@ -79,10 +63,6 @@ const CarouselTourism = ({ showSites }: Props) => {
               id={imagen2.id}
               imagen={imagen2.images[1]}
               descripcion={imagen2.phase}
-<<<<<<< HEAD
-=======
-
->>>>>>> a69aed6d3b8c1cc86ecf12d5de19465c549ed3be
             />
           </div>
           <div className="hidden xl:block">
@@ -90,10 +70,6 @@ const CarouselTourism = ({ showSites }: Props) => {
               id={imagen3.id}
               imagen={imagen3.images[1]}
               descripcion={imagen3.phase}
-<<<<<<< HEAD
-=======
-
->>>>>>> a69aed6d3b8c1cc86ecf12d5de19465c549ed3be
             />
           </div>
         </div>

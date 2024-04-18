@@ -1,9 +1,5 @@
 import CardTur from "../components/DestinosCard/CardTur";
 import lugares from "../components/DestinosCard/DataDestinos";
-<<<<<<< HEAD
-
-=======
->>>>>>> a69aed6d3b8c1cc86ecf12d5de19465c549ed3be
 
 const TipsTuristicos = () => {
   return (

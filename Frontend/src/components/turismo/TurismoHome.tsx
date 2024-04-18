@@ -1,12 +1,6 @@
 import CarouselTourism from "./CarouselTourism"
 import ButtonTourism from "./ButtonTourism"
 import DataDestinos from "./../DestinosCard/DataDestinos"
-<<<<<<< HEAD
-=======
-
-import DataDestinos from "./../DestinosCard/DataDestinos"
-
->>>>>>> a69aed6d3b8c1cc86ecf12d5de19465c549ed3be
 
 const TurismoHome = () => {
 
@@ -18,13 +12,7 @@ const TurismoHome = () => {
         <p className="mt-2 mb-4">Más que alquilarte un auto, nosotros cuidamos de tu camino, consultá nuestros tips y viajá sin preocupaciones para tu próximo destino.</p>
         <div className="mb-4">
           <CarouselTourism 
-<<<<<<< HEAD
             showSites={DataDestinos} 
-=======
-
-            showSites={DataDestinos} 
-
->>>>>>> a69aed6d3b8c1cc86ecf12d5de19465c549ed3be
           />
         </div>
 

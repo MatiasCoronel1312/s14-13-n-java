@@ -1,13 +1,6 @@
 import SelectForCategory from "../components/SelectForCategory/SelectForCategory";
 import TimeLine from "../components/timeline/TimeLine";
-<<<<<<< HEAD
 import NuevaReservaPrueba from "../components/NuevaReserva/NuevaReservaPrueba";
-=======
-
-import NuevaReservaPrueba from "../components/NuevaReserva/NuevaReservaPrueba";
-
->>>>>>> a69aed6d3b8c1cc86ecf12d5de19465c549ed3be
-
 import { useLocation } from "react-router-dom";
 import { useAppSeletor } from "../redux/store";
 
@@ -31,13 +24,7 @@ const CategoriaDeVehiculos = () => {
             </div>
           ) : (
             <div className=" h-[210px]">
-<<<<<<< HEAD
               <NuevaReservaPrueba />
-=======
-
-              <NuevaReservaPrueba />
-
->>>>>>> a69aed6d3b8c1cc86ecf12d5de19465c549ed3be
             </div>
           )}
         </div>
