@@ -1,4 +1,5 @@
 interface Props {
+  id: number,
   imagen: string, 
   descripcion: string
 }
