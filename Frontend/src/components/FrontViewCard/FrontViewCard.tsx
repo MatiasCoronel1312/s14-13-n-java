@@ -71,7 +71,7 @@ export function FrontViewCard({
 
         <section className="flex flex-col items-center gap-3 py-2">
           <figure
-            className={`w-[285px] h-[200px] relative ${
+            className={`w-[285px] h-[175px] relative ${
               hasStock ? "bg-[#f7f5f577]" : "bg-[#FADEBD]"
             }    shadow-sm p-6 `}
           >
@@ -87,12 +87,11 @@ export function FrontViewCard({
             )}
             <img
               className="relative -top-5 z-10 "
-              // public/imagenesCarros/FordMustangConvertible.png
               src={detailsCar.image}
-              alt=""
+              alt={detailsCar.model}
             />
             {isMoreCar && (
-              <div className="flex w-full justify-center relative -top-8 items-center">
+              <div className="flex w-full justify-center relative -top-11 items-center">
                 {showCars.map((car, index) => {
                   const isSelected = indexCar === index;
                   return (
@@ -115,12 +114,17 @@ export function FrontViewCard({
               </div>
             )}
           </figure>
-          <p className="text-2xl font-light text-primary">{detailsCar.brand}</p>
-          <p className="px-10 text-pretty text-[12px]">
-            *Su reserva garantiza uno de los modelos de autos a continuación,
-            sujeto a disponibilidad de la agencia.
-          </p>
-          <div className="flex flex-col justify-center items-center py-3 bg-[#FADEBD] w-[285px] rounded-[10px]   ">
+          <div className="flex flex-col items-center">
+            <p className="text-2xl font-light text-primary">
+              {detailsCar.brand}
+            </p>
+            <p className="px-10 text-pretty text-[12px] h-10">
+              *Su reserva garantiza uno de los modelos de autos a continuación,
+              sujeto a disponibilidad de la agencia.
+            </p>
+          </div>
+
+          <div className="flex flex-col justify-center items-center py-3 bg-[#FADEBD] w-[285px] h-[60px] rounded-[10px]   ">
             <p className="font-extralight text-sm ">Desde</p>
             <h3 className="text-2xl font-extralight shadow-textd">
               US$ {detailsCar.price} / dia

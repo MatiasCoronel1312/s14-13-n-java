@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 type Treserve = {
-
   userId?: number,
   lugarRetiro?: string,
   lugarEntrega?: string,
@@ -10,7 +9,6 @@ type Treserve = {
   horaEntrega?: string,
   horaRetiro?: string,
   carId?: string,
-
 };
 interface reserve {
   dataReserve: Treserve;
@@ -19,17 +17,13 @@ interface reserve {
 const estadoInicial: reserve = {
   dataReserve: {
     userId: undefined,
-
     lugarEntrega: undefined,
     lugarRetiro: undefined,
-
     fechaEntrega: undefined,
     fechaRetiro: undefined,
     horaEntrega: undefined,
     horaRetiro: undefined,
-
     carId: undefined,
-
   },
 };
 
