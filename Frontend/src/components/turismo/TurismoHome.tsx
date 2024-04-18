@@ -1,6 +1,8 @@
 import CarouselTourism from "./CarouselTourism"
 import ButtonTourism from "./ButtonTourism"
+
 import DataDestinos from "./../DestinosCard/DataDestinos"
+
 
 const TurismoHome = () => {
 
@@ -12,7 +14,9 @@ const TurismoHome = () => {
         <p className="mt-2 mb-4">Más que alquilarte un auto, nosotros cuidamos de tu camino, consultá nuestros tips y viajá sin preocupaciones para tu próximo destino.</p>
         <div className="mb-4">
           <CarouselTourism 
+
             showSites={DataDestinos} 
+
           />
         </div>
 

@@ -1,7 +1,6 @@
 import CardTur from "../components/DestinosCard/CardTur";
 import lugares from "../components/DestinosCard/DataDestinos";
 
-
 const TipsTuristicos = () => {
   return (
     <div className='w-full bg-background flex justify-center'>

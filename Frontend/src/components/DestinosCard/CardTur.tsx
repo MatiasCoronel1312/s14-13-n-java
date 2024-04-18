@@ -1,3 +1,4 @@
+
 import { useNavigate } from "react-router-dom";
 import ButtonTag from "./ButtonTag";
 import { DataDestination } from "./DataDestination.interface";
@@ -25,6 +26,7 @@ function CardTur({lugar}:Prop){
                         <ButtonTag tag={o}/>
                     ))
                     }
+
                 </div>
             </div>
         </div>
