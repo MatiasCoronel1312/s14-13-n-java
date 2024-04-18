@@ -2,8 +2,10 @@ import { useState } from "react";
 import CardDestinoTurismo from "./CardDestinoTurismo";
 import { FaCircleArrowLeft, FaCircleArrowRight } from "react-icons/fa6";
 
+
 interface Props {
-  showSites: SitioTuristico[];
+  showSites: DataDestination[];
+
 }
 
 const CarouselTourism = ({ showSites }: Props) => {
@@ -46,26 +48,33 @@ const CarouselTourism = ({ showSites }: Props) => {
       <div className="flex flex-col w-full">
         <div className="flex justify-around">
           <CardDestinoTurismo
+
             id={showSites[indexSite].id}
             imagen={showSites[indexSite].images[1]}
             descripcion={showSites[indexSite].phase}
           />
           <div className="hidden md:block">
             <CardDestinoTurismo
-              imagen={imagen1.imagen}
-              descripcion={imagen1.descripcion}
+              id={imagen1.id}
+              imagen={imagen1.images[1]}
+              descripcion={imagen1.phase}
+
             />
           </div>
           <div className="hidden lg:block">
             <CardDestinoTurismo
-              imagen={imagen2.imagen}
-              descripcion={imagen2.descripcion}
+              id={imagen2.id}
+              imagen={imagen2.images[1]}
+              descripcion={imagen2.phase}
+
             />
           </div>
           <div className="hidden xl:block">
             <CardDestinoTurismo
-              imagen={imagen3.imagen}
-              descripcion={imagen3.descripcion}
+              id={imagen3.id}
+              imagen={imagen3.images[1]}
+              descripcion={imagen3.phase}
+
             />
           </div>
         </div>
