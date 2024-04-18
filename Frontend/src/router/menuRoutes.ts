@@ -7,6 +7,7 @@ import SeleccionDeCarro from "../pages/SeleccionCarro";
 import TipsTuristicos from "../pages/TipsTuristicos";
 import { Login } from "../shared/layout/login/Login";
 import Registro from "../pages/Registro";
+import DestinationDetail from "../components/DestinationDetail/DestinationDetail";
 
 export const menuRoutes = [
   {
@@ -54,6 +55,11 @@ export const menuRoutes = [
     id: "Registro",
     path: "/registro",
     Element: Registro,
+  },
+  {
+    id: "DestinationDetail",
+    path: "/DestinationDetail/:id",
+    Element: DestinationDetail,
   },
 ];
 
