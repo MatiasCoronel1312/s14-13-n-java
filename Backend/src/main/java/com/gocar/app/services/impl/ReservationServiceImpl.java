@@ -2,6 +2,7 @@ package com.gocar.app.services.impl;
 
 import com.gocar.app.dtos.reservation.ReservationResponseDTO;
 import com.gocar.app.models.*;
+import com.gocar.app.repositories.UserRepository;
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,6 +19,8 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 import java.text.DecimalFormat;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -32,7 +35,7 @@ public class ReservationServiceImpl  implements ReservationService{
 	  private final InsuranceServiceImpl insuranceService;
 	  private final ReservationDatesServiceImpl reservationDatesService;
 	  private final AgencyServiceImpl agencyService;
-
+	  private final UserRepository userRepository;
 
 	@Override
 	    public Page<ReservationResponseDTO> findAll(Pageable pageable) throws ServiceException {
@@ -84,7 +87,7 @@ public class ReservationServiceImpl  implements ReservationService{
 			try{
 	            Reservation reservationEntity = Reservation.builder()
 	                    .vehicle(vehicle)
-	                    .User(user)
+	                    .user(user)
 						.reservationDates(reservationDates)
 	                    .iva(iva)
 	                    .subtotal(subTotal)
@@ -135,6 +138,27 @@ public class ReservationServiceImpl  implements ReservationService{
 	        return Boolean.TRUE;
 	    }
 
-	
+	@Override
+	public List<ReservationResponseDTO> findAllByLoggedInUserAndActive(boolean isActive) {
+		String userEmail = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		User loggedInUser = userService.findByEmail(userEmail);
+		boolean softDelete = !isActive; // Si está activo, no está eliminado
+		return reservationRepository.findAllByUserAndSoftDelete(loggedInUser, softDelete)
+				.stream()
+				.map(ReservationResponseDTO::new)
+				.collect(Collectors.toList());
+	}
+
+	@Override
+	public List<ReservationResponseDTO> findAllByLoggedInUser() {
+		String userEmail = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		User loggedInUser = userService.findByEmail(userEmail);
+		return reservationRepository.findAllByUser(loggedInUser)
+				.stream()
+				.map(ReservationResponseDTO::new)
+				.collect(Collectors.toList());
+	}
+
+
 
 }

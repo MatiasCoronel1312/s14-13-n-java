@@ -33,7 +33,13 @@ function App() {
   });
 
   return (
+<<<<<<< HEAD
     <div className='bg-[#ffffff]'>
+=======
+
+    <div className="bg-[#ffffff]">
+
+>>>>>>> a69aed6d3b8c1cc86ecf12d5de19465c549ed3be
       <MainRouter />
     </div>
   );

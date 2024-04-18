@@ -26,7 +26,7 @@ public class Reservation {
 	 private Vehicle vehicle;
 	 @ManyToOne
 	 @JoinColumn(name = "user_id")
-	 private User User;
+	 private User user;
 	 private Double iva;
 	 private Double administrativeFee;
 	 private Double subtotal;
