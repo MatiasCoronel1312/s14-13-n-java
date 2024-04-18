@@ -1,14 +1,23 @@
 import { useNavigate } from "react-router-dom";
 import ButtonTag from "./ButtonTag";
 import { DataDestination } from "./DataDestination.interface";
+import { useEffect } from "react";
 
 interface Prop{lugar:DataDestination}
 
 function CardTur({lugar}:Prop){
     const navigator = useNavigate();
+    useEffect(() => {
+
+        window.scrollTo({
+          top:0,
+          behavior:'smooth'
+        })
+    }, []);
+    
     const handleClick =(id:number)=>{
-        // navigator("/DestinationDetails")
-        console.log(id);
+         navigator(`/DestinationDetail/${id}`)
+        
     };
     return (
         <div onClick={()=>{handleClick(lugar.id)}} className="flex rounded-lg border-black border-2 h-[256px] w-[540px] mb-2" key={lugar.id}>
