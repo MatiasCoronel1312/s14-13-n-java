@@ -89,14 +89,12 @@ export const NuevaReserva = () => {
                   {
                   onFocusRetiro&&<ul className="absolute top-[68px] bg-background rounded-lg border-[1px] border-text z-10 w-full">
                   {agenciaRetiro&&agenciaRetiro.length>2&& opcionesFiltradasRetiro.map((opcion, index) => (
-
                     <li onClick={()=>{handleChange(setAgenciaRetiro,'agenciasRetiro',opcion.name)}} className="cursor-pointer px-2 py-4 hover:bg-[#F9D8B2] rounded-lg transition-all duration-300 ease-in-out " key={index}>
                       <p>{opcion.name}</p>
                       <div className="flex justify-start text-[12px]">
                         <p className="">{opcion.address} - {opcion.country}</p>
                       </div>
                     </li>
-
                   ))}
                 </ul>
                 }
@@ -151,14 +149,12 @@ export const NuevaReserva = () => {
                   {
                   onFocusEntrega&&<ul className="absolute top-[68px] bg-background rounded-lg border-2 border-text">
                   {agenciaEntrega&&agenciaEntrega.length>2&& opcionesFiltradasEntrega.map((opcion, index) => (
-
                     <li onClick={()=>{handleChange(setAgenciaEntrega,'agenciasEntrega',opcion.name)}} className="cursor-pointer p-2" key={index}>
                       <p>{opcion.name}</p>
                       <div className="flex justify-start text-[12px]">
                         <p className="">{opcion.address} - {opcion.country}</p>
                       </div>
                     </li>
-
                   ))}
                 </ul>
                 }
