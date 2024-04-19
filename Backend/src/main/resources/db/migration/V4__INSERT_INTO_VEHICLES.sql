@@ -1,6 +1,6 @@
 INSERT INTO vehicles (brand, model, model_year, engine_size, passengers, image, price, stock, category)
 VALUES
-    ('Toyota', 'Corolla', 2024, 1.6, 5, 'https://i.postimg.cc/3rfx50H0/Toyota-Prius.png', 62, 5, 'SEDAN_PREMIUM'),
+    ('Toyota', 'Corolla', 2024, 1.6, 5, 'https://i.postimg.cc/7hRHgdNn/Toyota-Corolla.png', 62, 5, 'SEDAN_PREMIUM'),
     ('Dodge', 'Challenger', 2024, 3.6, 4, 'https://i.postimg.cc/zfwG9dJq/Dodge-Challenger.png', 82, 0, 'ECONOMIC'),
     ('Chevrolet', 'Tahoe', 2024, 5.3, 7, 'https://i.postimg.cc/Bvfv7Wfh/Chevrolet-Tahoe.png', 159, 3, 'ECONOMIC'),
     ('Nissan', 'Versa', 2024, 1.6, 5, 'https://i.postimg.cc/5yy9Qb8t/Nissan-Versa.png', 70, 5, 'MINIVAN'),

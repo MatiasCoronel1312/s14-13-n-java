@@ -1,12 +1,13 @@
 package com.gocar.app.services.impl;
 
 import com.gocar.app.dtos.reservation.ReservationResponseDTO;
+import com.gocar.app.exceptions.NoVehicleInStockException;
+import com.gocar.app.exceptions.ReservationAlreadyInThatDatesException;
 import com.gocar.app.models.*;
 import com.gocar.app.repositories.UserRepository;
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.gocar.app.dtos.reservation.ReservationRequestDTO;
@@ -64,9 +65,9 @@ public class ReservationServiceImpl  implements ReservationService{
 
 
 	    @Override
+		@Transactional
 	    public ReservationResponseDTO save(ReservationRequestDTO reservationRequestDTO) {
-			String userEmail = (String)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-			User user = userService.findByEmail(userEmail);
+			User user = userService.findByEmail();
 			Vehicle vehicle = vehicleService.findVehicleById(reservationRequestDTO.vehicleId());
 			Insurance insurance = insuranceService.findById(reservationRequestDTO.insuranceId());
 			Agency retirementAgency = agencyService.findById2(reservationRequestDTO.retirementAgencyId());
@@ -78,12 +79,11 @@ public class ReservationServiceImpl  implements ReservationService{
 			double subTotal = total - iva;
 			double administrativeFee = total * 0.06;
 			total += administrativeFee;
-
 			iva = Double.parseDouble(df.format(iva).replace(",", "."));
 			subTotal = Double.parseDouble(df.format(subTotal).replace(",", "."));
 			administrativeFee = Double.parseDouble(df.format(administrativeFee).replace(",", "."));
 			total = Double.parseDouble(df.format(total).replace(",", "."));
-
+			reservationValidations(vehicle,reservationDates);
 			try{
 	            Reservation reservationEntity = Reservation.builder()
 	                    .vehicle(vehicle)
@@ -97,8 +97,8 @@ public class ReservationServiceImpl  implements ReservationService{
 	                    .softDelete(Boolean.FALSE)
 	                    .build();
 	            Reservation entitySaved = reservationRepository.save(reservationEntity);
+				vehicle.setStock(vehicle.getStock()-1);
 	            return new ReservationResponseDTO(entitySaved);
-
 
 	        }catch (Exception e){
 	            throw new ServiceException("Error occurred while saving reservation", e);
@@ -140,8 +140,7 @@ public class ReservationServiceImpl  implements ReservationService{
 
 	@Override
 	public List<ReservationResponseDTO> findAllByLoggedInUserAndActive(boolean isActive) {
-		String userEmail = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		User loggedInUser = userService.findByEmail(userEmail);
+		User loggedInUser = userService.findByEmail();
 		boolean softDelete = !isActive; // Si está activo, no está eliminado
 		return reservationRepository.findAllByUserAndSoftDelete(loggedInUser, softDelete)
 				.stream()
@@ -151,14 +150,27 @@ public class ReservationServiceImpl  implements ReservationService{
 
 	@Override
 	public List<ReservationResponseDTO> findAllByLoggedInUser() {
-		String userEmail = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		User loggedInUser = userService.findByEmail(userEmail);
+		User loggedInUser = userService.findByEmail();
 		return reservationRepository.findAllByUser(loggedInUser)
 				.stream()
 				.map(ReservationResponseDTO::new)
 				.collect(Collectors.toList());
 	}
 
+	@Override
+	 public void reservationValidations(Vehicle vehicle, ReservationDates reservationDates) {
+		List<Reservation> reservations = reservationRepository.findByUserAndDateRange(userService.findByEmail().getId(), reservationDates.getRetirementDate(), reservationDates.getReturnDate());
+
+		if(!reservations.isEmpty()){
+			throw new ReservationAlreadyInThatDatesException("The user already has a reservation in this date range.");
+		}
+
+		if(vehicle.getStock() <= 0){
+			throw new NoVehicleInStockException("This vehicle is not available");
+		}
+
+
+	}
 
 
 }
