@@ -152,7 +152,7 @@ const SummaryBooking = () => {
             <div className="flex flex-col px-9 text-right ">
               <p className="text-[20px]  fontFamily-sans">Total</p>
               <p className="text-[14px]  my-2 fontFamily-mono">
-                U$S {dataPago.precioTotalPorDia}
+                U$S {parseInt(dataPago.precioTotalPorDia).toFixed(2)}
               </p>
               <p className="my-2">&nbsp;</p>
               <p className="text-[14px] my-2 fontFamily-mono">
