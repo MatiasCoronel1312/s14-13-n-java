@@ -14,6 +14,8 @@ import com.gocar.app.services.InsuranceService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
+
 @Service
 @Transactional
 @RequiredArgsConstructor
@@ -40,11 +42,14 @@ public class InsuranceServiceImpl implements InsuranceService{
     }
 
     @Override
-
     public Insurance findById(Long id) {
         return insuranceRepository.findById(id).orElseThrow();
     }
 
+    @Override
+    public List<InsuranceDTO> getInsurances() {
+        return insuranceRepository.findAll().stream().map(InsuranceDTO :: new).toList();
+    }
 
 
 }
