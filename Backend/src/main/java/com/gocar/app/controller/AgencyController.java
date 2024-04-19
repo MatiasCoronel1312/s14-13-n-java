@@ -20,15 +20,6 @@ public class AgencyController {
 
     private final AgencyService agencyService;
 
-    @PostMapping
-    public ResponseEntity<?> createAgency(@RequestBody AgencyRequestDto agencyRequestDto) {
-        try {
-            AgencyResponseDto agencyResponseDto = agencyService.save(agencyRequestDto);
-            return ResponseEntity.ok(agencyResponseDto);
-        } catch (ServiceException e) {
-            return ResponseEntity.badRequest().body(new ErrorResponseDto("Error al crear la agencia"));
-        }
-    }
 
     @GetMapping
     public ResponseEntity<Iterable<AgencyResponseDto>> getAllAgencies() {
@@ -50,25 +41,6 @@ public class AgencyController {
         }
     }
 
-    @PutMapping
-    public ResponseEntity<AgencyResponseDto> updateAgency(@RequestBody AgencyRequestDto agencyRequestDto) {
-        try {
-            AgencyResponseDto agencyResponseDto = agencyService.update(agencyRequestDto);
-            return ResponseEntity.ok(agencyResponseDto);
-        } catch (ServiceException e) {
-            return ResponseEntity.notFound().build();
-        }
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteAgency(@PathVariable Long id) {
-        try {
-            agencyService.deleteById(id);
-            return ResponseEntity.noContent().build();
-        } catch (ServiceException e) {
-            return ResponseEntity.notFound().build();
-        }
-    }
 
     @GetMapping("/search")
     public ResponseEntity<List<AgencyResponseDto>> searchAgency(@RequestParam String name) {

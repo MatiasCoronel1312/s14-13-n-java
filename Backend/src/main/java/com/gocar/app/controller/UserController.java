@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/user")
 @SecurityRequirement(name = "bearer-key")
-@Tag(name = "Get Current User")
+@Tag(name = "User")
 public class UserController {
 
     private final UserService userService;
@@ -46,9 +46,7 @@ public class UserController {
     )
     @GetMapping("/profile")
     public ResponseEntity<UserResponseDto> getUserProfile() {
-        String userEmail = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-        User user = userService.findByEmail(userEmail);
+        User user = userService.findByEmail();
 
         if (user == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);

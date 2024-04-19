@@ -6,6 +6,7 @@ import com.gocar.app.services.UserService;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +25,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findByEmail(String userEmail) {
+    public User findByEmail() {
+        String userEmail = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if(userRepository.findByEmail(userEmail).isEmpty()){
             throw new EntityNotFoundException("User not found");
         }

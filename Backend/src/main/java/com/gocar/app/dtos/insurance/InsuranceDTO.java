@@ -7,9 +7,9 @@ import lombok.Builder;
 
 
 
-	public record InsuranceDTO (String name, Double price) {
-        public InsuranceDTO(Insurance entitySaved) {
-            this(entitySaved.getName(), entitySaved.getPrice());
+	public record InsuranceDTO (Long id,String name, Double price) {
+        public InsuranceDTO(Insurance insurance) {
+            this(insurance.getId(),insurance.getName(), insurance.getPrice());
         }
     }
 
