@@ -4,8 +4,13 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 import { useAppDispatch } from "../../redux/store";
 import { postReserve } from "../../redux/reserveSlice";
-import { reseCoberturas } from "../../redux/coberturasSlice";
+import { TSelectACard, reseCoberturas } from "../../redux/coberturasSlice";
+import { idText } from "typescript";
 
+interface TSresetSecured {
+  metodoPago: TSelectACard;
+  seguridad: TSelectACard;
+}
 interface Props {
   posicion?: number;
 }
@@ -57,13 +62,16 @@ const dataReserve = {
   horaEntrega: undefined,
   horaRetiro: undefined,
 };
-const cargos = {
+
+const cargos: TSresetSecured = {
   metodoPago: {
-    title: "",
+    id: 0,
+    name: "",
     price: 0,
   },
   seguridad: {
-    title: "",
+    id: 0,
+    name: "",
     price: 0,
   },
 };
