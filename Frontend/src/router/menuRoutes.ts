@@ -8,6 +8,7 @@ import TipsTuristicos from "../pages/TipsTuristicos";
 import { Login } from "../shared/layout/login/Login";
 import Registro from "../pages/Registro";
 import DestinationDetail from "../components/DestinationDetail/DestinationDetail";
+import BookingHistory from "../pages/BookingHistory";
 
 export const menuRoutes = [
   {
@@ -60,6 +61,11 @@ export const menuRoutes = [
     id: "DestinationDetail",
     path: "/DestinationDetail/:id",
     Element: DestinationDetail,
+  },
+  {
+    id: "history",
+    path: "/history",
+    Element: BookingHistory,
   },
 ];
 
