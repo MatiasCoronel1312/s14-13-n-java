@@ -1,26 +1,27 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+export interface TSelectACard {
+  id: number;
+  name: string;
+  price: number;
+}
 interface TTarifas {
   cargos: {
-    metodoPago: {
-      title: string;
-      price: number;
-    };
-    seguridad: {
-      title: string;
-      price: number;
-    };
+    metodoPago: TSelectACard;
+    seguridad: TSelectACard;
   };
 }
 
 const estadoInicial: TTarifas = {
   cargos: {
     metodoPago: {
-      title: "",
+      id: 0,
+      name: " ",
       price: 0,
     },
     seguridad: {
-      title: "",
+      id: 0,
+      name: " ",
       price: 0,
     },
   },
