@@ -16,7 +16,7 @@ const SelectForCategory = () => {
         const carCategory = Array.from(
           new Set(res.data.map((car) => car.category))
         );
-        console.log("carrosCategory", carCategory);
+
         setCarrosCategory(carCategory);
         setCarrosInfo(res.data);
       });

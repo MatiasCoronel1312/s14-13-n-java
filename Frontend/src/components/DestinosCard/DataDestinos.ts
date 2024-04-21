@@ -27,6 +27,7 @@ const lugares =[
                 "celebrations": "A medida que se acerca el verano comienzan a elevarse las temperaturas con mínimas de 15º y 20º y máximas de entre 28º y 30º. La humedad aumenta y con ellas también las precipitaciones. Éstas son las principales características del clima en misiones cataratas, pero aún más del clima en cataratas en octubre.",
                 "celebrationsTitle": "Octubre",
                 "phase": "¿Que hacer en Cataratas del Iguazú?",
+
                 "tag": ["Aventura","Fiestas","Naturaleza"]
             },
             {
@@ -42,6 +43,7 @@ const lugares =[
                 "celebrations": "Aunque algunas rutas pueden estar cerradas debido a la nieve, aún hay opciones de trekking y senderismo disponibles en los alrededores de El Calafate. Puedes consultar con agencias locales sobre las rutas seguras y adecuadas para esta época del año.",
                 "celebrationsTitle": "Agosto",
                 "phase": "¿Que hacer en El Calafate?",
+
                 "tag": ["Naturaleza","Gastronomia","Fiestas"]
             },
             {
@@ -57,6 +59,7 @@ const lugares =[
                 "celebrations": "Sin dudas la belleza de esta temporada hace que valga la pena una visita a Ushuaia, ya que es la época donde la naturaleza florece y se pueden apreciar paisajes verdaderamente mágicos. Aunque en los cerros cercanos la nieve del invierno permanece un poco más, por lo que son unos meses ideales para excursiones de trekking, senderismo y contemplar la naturaleza y sus cambios.",
                 "celebrationsTitle": "Septiembre",
                 "phase": "¿Que hacer en Ushuaia?",
+
                 "tag": ["Naturaleza", "Aventura", "Gastronomia"]
             },
             {
@@ -72,6 +75,7 @@ const lugares =[
                 "celebrations": "En envierno mes de Julio vas a poder disfrutar de la nieve.Es la estación del año sobre la cual más gente consulta, ya que por lo general al planificar nuestro viaje queremos saber si nos vamos a encontrar con nieve en la ciudad.Si bien es imposible de pronosticar exactamente cuando nieva en la ciudad de Bariloche, es mucho más posible poder encontrarnos con nevadas en esta época del año.El promedio de temperatura puede ir cerca de los 6º de máxima y 0º o temperaturas bajo cero de mínima.Durante esta temporada es cuando se produce el pico de precipitaciones.",
                 "celebrationsTitle": "Julio",
                 "phase": "¿Que hacer en Bariloche?",
+
                 "tag": ["Naturaleza", "Gastronomia", "Fiestas"]
             },
             {
@@ -87,6 +91,7 @@ const lugares =[
                 "celebrations": "En enero, los Patios de Córdoba, reconocidos por su belleza y singularidad arquitectónica, son el epicentro de celebraciones. Durante el Festival de los Patios, los residentes abren sus hogares para mostrar sus impresionantes patios decorados con una exuberante variedad de plantas y flores. En septiembre, los restaurantes de Córdoba ofrecen una variedad de platos tradicionales que reflejan la rica herencia culinaria de la región. Desde el salmorejo hasta el rabo de toro.",
                 "celebrationsTitle": "Enero, Septiembre",
                 "phase": "¿Que hacer en Córdoba?",
+
                 "tag": ["Fiestas", "Historia", "Gastronomia"]
             }
 ];
