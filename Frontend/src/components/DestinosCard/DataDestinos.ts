@@ -12,7 +12,7 @@ const lugares =[
                 "celebrations": "Carnaval de Salta, Gaucho Güemes Parade",
                 "celebrationsTitle": "Febrero, septiembre",
                 "phase": "¿Que hacer en Salta?",
-                "tag": ["Historia","Fiesta","Cultura"]
+                "tag": ["Historia","Fiestas","Gastronomia"]
             },
             {
                 "id": 1,
@@ -26,8 +26,8 @@ const lugares =[
                 "highSeasonTitle": "Otoño e Invierno",
                 "celebrations": "National Iguazú Park Anniversary (October)",
                 "celebrationsTitle": "Octubre",
-                "phase": "¿Que hacer en Iguazú Falls?",
-                "tag": ["Aventura","Cultura","Naturaleza"]
+                "phase": "Descubrí las majestuosas Cataratas del Iguazú, un espectáculo natural único en el mundo. No te lo pierdas!",
+                "tag": ["Aventura","Fiestas","Naturaleza"]
             },
             {
                 "id": 2,
@@ -41,8 +41,8 @@ const lugares =[
                 "highSeasonTitle": "Verano",
                 "celebrations": "National Glacier Day (August)",
                 "celebrationsTitle": "Agosto",
-                "phase": "¿Que hacer en El Calafate?",
-                "tag": ["Naturaleza","Turismo","Aventura"]
+                "phase": "El Calafate te invita a conocer el Perito Moreno, uno de los glaciares más impresionantes del mundo. ¡Viví una experiencia única!",
+                "tag": ["Naturaleza","Gastronomia","Fiestas"]
             },
             {
                 "id": 3,
@@ -56,8 +56,8 @@ const lugares =[
                 "highSeasonTitle": "Verano e Invierno",
                 "celebrations": "End of the World Festival (September)",
                 "celebrationsTitle": "Septiembre",
-                "phase": "¿Que hacer en Ushuaia?",
-                "tag": ["Naturaleza", "Turismo", "Gastronomía"]
+                "phase": "Ushuaia, el fin del mundo te sorprenderá con sus paisajes, su historia y su gente. ¡Anímate a descubrirla!",
+                "tag": ["Naturaleza", "Aventura", "Gastronomia"]
             },
             {
                 "id": 4,
@@ -71,8 +71,8 @@ const lugares =[
                 "highSeasonTitle": "Invierno y Verano",
                 "celebrations": "National Snow Week (July)",
                 "celebrationsTitle": "Julio",
-                "phase": "¿Que hacer en Bariloche?",
-                "tag": ["Naturaleza", "Deportes", "Fiestas"]
+                "phase": "Bariloche te ofrece aventura, naturaleza y paisajes deslumbrantes. ¡Esquiá en el Cerro Catedral o navegá por el Lago Nahuel Huapi!",
+                "tag": ["Naturaleza", "Gastronomia", "Fiestas"]
             },
             {
                 "id": 5,
@@ -86,8 +86,8 @@ const lugares =[
                 "highSeasonTitle": "Primavera y Otoño",
                 "celebrations": "Cosquín National Folklore Festival (January), Córdoba Film Festival (September)",
                 "celebrationsTitle": "Enero, Septiembre",
-                "phase": "¿Que hacer en Ciudad de Córdoba?",
-                "tag": ["Fiestas", "Naturaleza", "Gastronomía"]
+                "phase": "Córdoba te invita a recorrer sus calles coloniales, disfrutar de sus sierras y vivir su apasionante cultura. ¡No te pierdas la oportunidad!",
+                "tag": ["Fiestas", "Historia", "Gastronomia"]
             }
 ];
 
