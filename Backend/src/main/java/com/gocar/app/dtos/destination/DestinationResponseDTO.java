@@ -2,14 +2,13 @@ package com.gocar.app.dtos.destination;
 
 import com.gocar.app.models.Destination;
 import com.gocar.app.models.DestinationImage;
-import com.gocar.app.models.Feature;
 import com.gocar.app.models.Tag;
 
 import java.util.List;
 
-public record DestinantionResponseDTO(
-        Long id,
-         List<String> image,
+public record DestinationResponseDTO(
+         Long id,
+         List<String> images,
          String city,
          String title,
          String subtitle,
@@ -22,7 +21,7 @@ public record DestinantionResponseDTO(
          String phase,
          List<String> tag) {
 
-    public DestinantionResponseDTO(Destination destination){
+    public DestinationResponseDTO(Destination destination){
         this(destination.getId(), destination.getImages().stream().map(DestinationImage::getImageUrl).toList(),
                 destination.getCity(), destination.getTitle(),
                 destination.getSubtitle(), destination.getLocation(),

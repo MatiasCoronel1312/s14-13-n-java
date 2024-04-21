@@ -1,6 +1,6 @@
 package com.gocar.app.services.impl;
 
-import com.gocar.app.dtos.destination.DestinantionResponseDTO;
+import com.gocar.app.dtos.destination.DestinationResponseDTO;
 import com.gocar.app.models.Destination;
 import com.gocar.app.repositories.DestinationRepository;
 import com.gocar.app.services.DestinationService;
@@ -14,8 +14,8 @@ import java.util.List;
 public class DestinationServiceImpl implements DestinationService {
         private final DestinationRepository destinationRepository;
     @Override
-    public List<DestinantionResponseDTO> findAllDestinations() {
+    public List<DestinationResponseDTO> findAllDestinations() {
         List<Destination> destinations = destinationRepository.findAll();
-        return destinations.stream().map(DestinantionResponseDTO:: new).toList();
+        return destinations.stream().map(DestinationResponseDTO:: new).toList();
     }
 }

@@ -1,7 +1,6 @@
 package com.gocar.app.controller;
 
-import com.gocar.app.dtos.destination.DestinantionResponseDTO;
-import com.gocar.app.dtos.reservation.ReservationResponseDTO;
+import com.gocar.app.dtos.destination.DestinationResponseDTO;
 import com.gocar.app.services.impl.DestinationServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -33,7 +32,7 @@ public class DestinationController {
                     @ApiResponse(
                             responseCode = "200",
                             description = "Success. En caso de éxito, devuelve un  Json todos los datos de los destinos",
-                            content = @Content(schema = @Schema(implementation = DestinantionResponseDTO.class,
+                            content = @Content(schema = @Schema(implementation = DestinationResponseDTO.class,
                                     contentMediaType = MediaType.APPLICATION_JSON_VALUE
                             ))
                     ),
@@ -46,7 +45,7 @@ public class DestinationController {
             }
     )
     @GetMapping(value = "all")
-    public ResponseEntity<List<DestinantionResponseDTO>> findAllDestinations(){
+    public ResponseEntity<List<DestinationResponseDTO>> findAllDestinations(){
         return ResponseEntity.ok(destinationService.findAllDestinations());
     }
 }
