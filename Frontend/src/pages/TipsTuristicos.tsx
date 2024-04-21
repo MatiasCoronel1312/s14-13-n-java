@@ -25,10 +25,10 @@ const TipsTuristicos = () => {
     setFiltro(e.target.value)
   }
   return (
-    <div className='w-full bg-background flex justify-center'>
+    <div className='w-full bg-background flex justify-center font-mono'>
       <div className="h-full lg:w-[85%] md:w-[90%] ">
-        <h1 className="text-accent font-bold text-3xl text-center p-5">Tips de viajes</h1>
-        <h2 className="text-2xl text-center pb-5"> Vení a inspirarte para tu próximo destino</h2>
+        <h1 className="text-primary font-bold text-4xl text-center p-5">Tips de viajes</h1>
+        <h2 className="text-3xl text-center pb-5"> Vení a inspirarte para tu próximo destino</h2>
         <div className="w-[85%] h-full flex flex-col item-center mx-auto">
         <p>Busque por categoría o palabra clave:</p>
         <div className="flex justify-start gap-5 items-center">
