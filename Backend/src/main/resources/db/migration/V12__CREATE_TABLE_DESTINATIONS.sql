@@ -1,6 +1,5 @@
 CREATE TABLE destinations (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    image VARCHAR(600),
     city VARCHAR(600),
     title VARCHAR(600),
     subtitle VARCHAR(600),
