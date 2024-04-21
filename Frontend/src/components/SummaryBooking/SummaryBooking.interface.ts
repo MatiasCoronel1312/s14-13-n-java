@@ -6,12 +6,12 @@ interface Reserva {
 
 export interface DataPago {
   formaDePago: string;
-  cantidadDia: string;
-  precioPorDia: string;
-  precioTotalPorDia: string,
+  cantidadDia: string | number;
+  precioPorDia: string | number;
+  precioTotalPorDia: string | number;
   protecciones: string[];
-  precioPorProteccion: string;
-  cargoAdministrativo: string;
+  precioPorProteccion: string | number;
+  cargoAdministrativo: string | number;
   iva: string;
   precioTotal: string;
 }
@@ -29,5 +29,5 @@ export interface DataReserva {
   fechaEntrega: string;
   horaEntrega: string;
 }
-  
+
 export default Reserva;

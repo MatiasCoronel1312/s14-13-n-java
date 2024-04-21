@@ -5,11 +5,13 @@ import { TCarro } from "../../assets/carsInfo";
 
 const cardsMetodosPagos = [
   {
-    title: "PAGAR EN MOSTRADOR",
+    id: 1,
+    name: "PAGAR EN MOSTRADOR",
     price: 0.05,
   },
   {
-    title: "PAGAR CON MERCADOPAGO",
+    id: 2,
+    name: "PAGAR CON MERCADOPAGO",
     price: 0.15,
   },
 ];
@@ -40,7 +42,7 @@ const TarifasSection = ({
         <div className="  flex gap-3">
           {cardsMetodosPagos.map((card) => (
             <CardToPay
-              key={card.title}
+              key={card.id}
               selectACard={selectACard}
               SetSelectACard={SetSelectACard}
               handleScrollToBack={handleScrollToBack}

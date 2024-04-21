@@ -61,7 +61,7 @@ export default function Carrusel() {
     <>
       {cars.length > 0 && (
         <section className="h-full max-w-full">
-          <div className="mb-8">
+          <div className="mb-5">
             <h1 className="text-center font-sans font-bold text-text text-2xl">
               Conocé nuestra flota
             </h1>
@@ -145,7 +145,7 @@ export default function Carrusel() {
                 navigator("/categoriasDeVehiculos/all");
               }}
               type="button"
-              className="border-orange-600 border-2 text-orange-600 py-4 px-10 rounded-md mt-8"
+              className=" border-2 bg-[#333333] text-background py-4 px-10 rounded-md mt-8"
             >
               Mirá todos los Autos
             </button>
