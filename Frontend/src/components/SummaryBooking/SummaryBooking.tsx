@@ -15,8 +15,6 @@ const SummaryBooking = () => {
     dataReservaReduce.fechaEntrega!
   );
 
-  console.log("totalDias", dataReservaReduce);
-
   const totalPrecioCarro =
     dataAutoReduce.price +
     dataAutoReduce.price * dataCoberturasReduce.metodoPago.price;
