@@ -4,20 +4,20 @@ import { CgEye } from "react-icons/cg";
 import { useAppDispatch } from "../../redux/store";
 import { postTarifaSeguridad } from "../../redux/coberturasSlice";
 interface Props {
-  title: string;
+  name: string;
   price: number;
   coberturaSelected: string;
   setCoberturaSelected: (coberturaName: string) => void;
 }
 
 export default function CoberturasBanner({
-  title,
+  name,
   price,
   coberturaSelected,
   setCoberturaSelected,
 }: Props) {
   const dispatch = useAppDispatch();
-  const isChecked = coberturaSelected === title;
+  const isChecked = coberturaSelected === name;
 
   const resetSeguridad = () => {
     setTimeout(() => {
@@ -26,7 +26,7 @@ export default function CoberturasBanner({
 
     dispatch(
       postTarifaSeguridad({
-        title: "",
+        name: "",
         price: 0,
       })
     );
@@ -35,11 +35,11 @@ export default function CoberturasBanner({
   const addSeguridad = () => {
     dispatch(
       postTarifaSeguridad({
-        title: title,
-        price: price,
+        name,
+        price,
       })
     );
-    setCoberturaSelected(title);
+    setCoberturaSelected(name);
   };
 
   const handlerChecked = () => {
@@ -50,7 +50,7 @@ export default function CoberturasBanner({
     <section className="flex justify-between px-6 bg-[#FFF6EC] py-8 border-l-transparent border-2 border-black rounded-r-xl">
       <div className="flex items-center gap-4">
         <CgEye size={28} className="text-[#854900]" />
-        <p className="text-3xl font-light">{title}</p>
+        <p className="text-3xl font-light">{name}</p>
       </div>
       <div className="flex items-center gap-4">
         <p className="text-2xl font-extralight ">US$ {price} / dia</p>

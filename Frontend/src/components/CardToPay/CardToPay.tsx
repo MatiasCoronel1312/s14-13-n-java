@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ButtonMain from "../ButtonMain/ButtonMain";
 import { postTarifaMetodoPago } from "../../redux/coberturasSlice";
 import { useAppDispatch } from "../../redux/store";
 
 interface Props {
   card: {
-    title: string;
+    id: number;
+    name: string;
     price: number;
   };
 
@@ -15,22 +16,25 @@ interface Props {
   SetSelectACard: (a: string) => void;
 }
 export default function CardToPay({
-  card: { title, price },
+  card: { id, name, price },
   carPrice,
   handleScrollToBack,
   selectACard,
   SetSelectACard,
 }: Props) {
   const [isSelected, setIsSelected] = useState(false);
-  const planSelected = selectACard == title;
+  const planSelected = selectACard == name;
   const dispatch = useAppDispatch();
   const selectCard = () => {
     setIsSelected(true);
     handleScrollToBack(1200);
-    SetSelectACard(title);
+
+    SetSelectACard(name);
+
     dispatch(
       postTarifaMetodoPago({
-        title,
+        id,
+        name,
         price,
       })
     );
@@ -52,7 +56,7 @@ export default function CardToPay({
         isSelected && planSelected ? "opacity-45" : "bg-white"
       }   p-6 flex flex-col justify-between items-center border border-spacing-2 border-black rounded-3xl shadow-card`}
     >
-      <h3 className="text-xl font-extralight">{title}</h3>
+      <h3 className="text-xl font-extralight">{name}</h3>
 
       <div className="flex flex-col h-[180px] justify-between gap-2">
         <p className="bg-[#FFF6EC] flex justify-center items-center w-[315px] h-[60px] shadow-card text-xl font-light">
@@ -65,7 +69,7 @@ export default function CardToPay({
       <div className="flex flex-col items-center ">
         <p className="font-extralight text-sm mb-2">Desde</p>
 
-        <p className="text-2xl  font-ligth shadow-text">
+        <p className="text-2xl font-poppins font-ligth shadow-text">
           US$ {realPrices} / dia
         </p>
       </div>

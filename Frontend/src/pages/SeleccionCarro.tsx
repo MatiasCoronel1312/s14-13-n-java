@@ -13,11 +13,11 @@ import Home from "./Home";
 
 const SeleccionDeCarro = () => {
   const navigate = useNavigate();
-  const [selectACard, SetSelectACard] = useState("");
+  const [selectACard, SetSelectACard] = useState(" <");
   const dataReduces = useAppSeletor((state) => state);
   const carroSeleccionado = dataReduces.carro.cars;
   const dataReserve = dataReduces.dataReserve.dataReserve.fechaEntrega;
-  const dataMetodo = dataReduces.coberturas.cargos.metodoPago.title;
+  const dataMetodo = dataReduces.coberturas.cargos.metodoPago.name;
 
   if (dataReserve === undefined) {
     return <Home />;

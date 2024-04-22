@@ -34,26 +34,26 @@ const SummaryBooking = () => {
     totalPorMetodoPago;
   // data
   const dataReserva: DataReserva = {
-    agenciaRetiro: dataReservaReduce.agenciaRetiro,
+    agenciaRetiro: dataReservaReduce.agenciaRetiro ?? "",
     fechaRetiro: convertirFecha(dataReservaReduce.fechaRetiro ?? ""),
-    horaRetiro: dataReservaReduce.horaRetiro,
-    agenciaEntrega: dataReservaReduce.agenciaEntrega,
+    horaRetiro: dataReservaReduce.horaRetiro ?? "",
+    agenciaEntrega: dataReservaReduce.agenciaEntrega ?? "",
     fechaEntrega: convertirFecha(dataReservaReduce.fechaEntrega ?? ""),
-    horaEntrega: dataReservaReduce.horaEntrega,
+    horaEntrega: dataReservaReduce.horaEntrega ?? "",
   };
   const dataAuto: DataAuto = {
     grupoAuto: dataAutoReduce.category,
     autoName: dataAutoReduce.brand,
   };
   const dataPago: DataPago = {
-    formaDePago: dataCoberturasReduce.metodoPago.title,
+    formaDePago: dataCoberturasReduce.metodoPago?.name,
     cantidadDia: totalDias,
     precioPorDia: totalPrecioCarro,
     precioTotalPorDia: totalPorDia,
     protecciones: [
       ` ${
-        dataCoberturasReduce.seguridad.title.length > 5
-          ? `${dataCoberturasReduce.seguridad.title} ${totalDias} diarias x U$S ${dataCoberturasReduce.seguridad.price}/día`
+        dataCoberturasReduce.seguridad.name?.length > 5
+          ? `${dataCoberturasReduce.seguridad.name} ${totalDias} diarias x U$S ${dataCoberturasReduce.seguridad.price}/día`
           : "Sin proteccion todavia"
       }`,
     ],
@@ -137,7 +137,7 @@ const SummaryBooking = () => {
             <div className="flex flex-col px-3 ">
               <p className="text-[20px] fontFamily-sans ">Diarias</p>
               <p className="text-[14px] my-2 fontFamily-mono">
-                {dataPago.cantidadDia}x U$S {dataPago.precioPorDia}
+                {dataPago.cantidadDia} x U$S {dataPago.precioPorDia}
               </p>
               <p className="text-[14px] my-2 fontFamily-mono">Protecciones</p>
               <p className="text-[14px] my-2 fontFamily-mono">
@@ -152,7 +152,7 @@ const SummaryBooking = () => {
             <div className="flex flex-col px-9 text-right ">
               <p className="text-[20px]  fontFamily-sans">Total</p>
               <p className="text-[14px]  my-2 fontFamily-mono">
-                U$S {dataPago.precioTotalPorDia}
+                U$S {parseInt(dataPago.precioTotalPorDia as string).toFixed(2)}
               </p>
               <p className="my-2">&nbsp;</p>
               <p className="text-[14px] my-2 fontFamily-mono">
