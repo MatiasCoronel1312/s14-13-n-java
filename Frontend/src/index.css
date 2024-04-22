@@ -8,16 +8,14 @@
 .Gradient-V {
   background-image: linear-gradient(180deg, #ff8c00, #b81c00);
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> a69aed6d3b8c1cc86ecf12d5de19465c549ed3be
 .Gradient-H {
   background-image: linear-gradient(90deg, #ff8c00, #b81c00);
 }
 .Gradient-H_hover:hover {
   background-image: linear-gradient(90deg, #ff8c00, #b81c00);
 }
+
+
 
 .container {
   max-width: 500px;
@@ -44,4 +42,7 @@
 .react-calendar__day--selected {
   background-color: #000;
   color: #fff;
+}
+.text-shadow {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Desplazamiento en x, desplazamiento en y, desenfoque, color */
 }

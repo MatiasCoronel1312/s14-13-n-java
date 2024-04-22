@@ -15,7 +15,8 @@ export const NuevaReserva = () => {
     const [agenciaEntrega, setAgenciaEntrega] = useState<string>('');
     const [fechaEntrega, setFechaEntrega] = useState<string>('');
     const [horaEntrega, setHoraEntrega] = useState<string>('');
-    const [onFocus, setOnFocus] = useState(false)
+    const [onFocus, setOnFocus] = useState(false);
+    const [popup, setPopup] = useState(false);
     const navigator = useNavigate();
     const dispatch = useAppDispatch(); //dispatch para mas adelante para guardar los datos de la reserva
     const dataReserve = useAppSeletor(state=>state.dataReserve.dataReserve)//useSelector para recibir los datos de la agencia en el caso de haber seleccionado en la lista de agencias
@@ -23,7 +24,8 @@ export const NuevaReserva = () => {
     
     useEffect(() => {
     if(dataReserve.lugarRetiro){
-      handleChange(setAgenciaRetiro,'agenciasRetiro',dataReserve.lugarRetiro)
+      handleChange(setAgenciaRetiro,'agenciaRetiro',dataReserve.lugarRetiro)
+      focusInput('agenciaRetiro')
     }
     }, [dataReserve])
  
@@ -54,8 +56,8 @@ export const NuevaReserva = () => {
         agencia.name.toLowerCase().includes(agenciaEntrega?agenciaEntrega.toLowerCase():'')
       );
     const handleSubmit = () => {
-
-      dispatch(postReserve({
+      if(agenciaRetiro !== '' && horaRetiro !== '' && fechaRetiro !== '' && agenciaEntrega !== '' && horaEntrega !== '' && fechaEntrega !== ''){
+         dispatch(postReserve({
         lugarEntrega: agenciaEntrega,
         lugarRetiro: agenciaRetiro,
         fechaEntrega: fechaEntrega,
@@ -64,10 +66,42 @@ export const NuevaReserva = () => {
         horaRetiro: horaEntrega,
       }))
       navigator("/categoriasDeVehiculos/seleciona")
-    }
+      }else{  
+        let id:string = '';
+        
+        if( agenciaRetiro == '' ){
+           id ='agenciaRetiro';
+        }else if ( horaRetiro == '' ){
+           id = 'horaRetiro';
+        } else if(fechaRetiro == '' ){
+           id = 'fechaRetiro' ;
+        }else if( agenciaEntrega == '' ){
+           id = 'agenciaEntrega';
+        }else if ( horaEntrega == '' ){
+           id= 'horaEntrega';
+        }else if ( fechaEntrega == ''){
+           id = 'fechaEntrega';
+        }
+        
+        focusInput(id)
+ }      }
+     
+    
+
+    const focusInput = (id: string) => {
+      const inputElement = document.getElementById(id);
+      if (inputElement) {
+        inputElement.focus();
+        setPopup(true)
+        setTimeout(() => {
+          setPopup(false)
+        }, 2000);
+      }
+    };
   
   return (
     <div className="w-full">
+     
       <div className={` Gradient-V p-4 my-6 rounded-xl flex flex-col justify-center mx-auto transition-all duration-200 ease-linear ${onFocus?'h-[200px]':'h-[115px]'}`}>
           <div className={`flex justify-between transition-all duration-300 ease-linear ${onFocus?'h-[45%]':'h-[85%]'}`}>
             <p className="w-[16%] text-white text-[20px] font-semibold self-center text-center">Nueva Reserva</p>
@@ -85,11 +119,12 @@ export const NuevaReserva = () => {
                       placeholder={'Ingresá la agencia de retirada (ej. Bariloche, Buenos Aires)'}
                     />
                     <FaLocationDot className="absolute bottom-[1.5rem] right-[1rem] w-[19px] h-[26px] text-text"/>
+                    
                 </div>
                   {
                   onFocusRetiro&&<ul className="absolute top-[68px] bg-background rounded-lg border-[1px] border-text z-10 w-full">
                   {agenciaRetiro&&agenciaRetiro.length>2&& opcionesFiltradasRetiro.map((opcion, index) => (
-                    <li onClick={()=>{handleChange(setAgenciaRetiro,'agenciasRetiro',opcion.name)}} className="cursor-pointer px-2 py-4 hover:bg-[#F9D8B2] rounded-lg transition-all duration-300 ease-in-out " key={index}>
+                    <li onClick={()=>{handleChange(setAgenciaRetiro,'agenciaRetiro',opcion.name)}} className="cursor-pointer px-2 py-4 hover:bg-[#F9D8B2] rounded-lg transition-all duration-300 ease-in-out " key={index}>
                       <p>{opcion.name}</p>
                       <div className="flex justify-start text-[12px]">
                         <p className="">{opcion.address} - {opcion.country}</p>
@@ -147,9 +182,9 @@ export const NuevaReserva = () => {
                     <FaLocationDot className="absolute bottom-[1.5rem] right-[1rem] w-[19px] h-[26px] text-text"/>
                 </div>
                   {
-                  onFocusEntrega&&<ul className="absolute top-[68px] bg-background rounded-lg border-2 border-text">
+                  onFocusEntrega&&<ul className="absolute top-[68px] bg-background rounded-lg border-[1px] border-text z-10 w-full">
                   {agenciaEntrega&&agenciaEntrega.length>2&& opcionesFiltradasEntrega.map((opcion, index) => (
-                    <li onClick={()=>{handleChange(setAgenciaEntrega,'agenciasEntrega',opcion.name)}} className="cursor-pointer p-2" key={index}>
+                    <li onClick={()=>{handleChange(setAgenciaEntrega,'agenciaEntrega',opcion.name)}} className="cursor-pointer px-2 py-4 hover:bg-[#F9D8B2] rounded-lg transition-all duration-300 ease-in-out" key={index}>
                       <p>{opcion.name}</p>
                       <div className="flex justify-start text-[12px]">
                         <p className="">{opcion.address} - {opcion.country}</p>
@@ -182,6 +217,7 @@ export const NuevaReserva = () => {
 
           </div>}
       </div>
+      {popup&&<div className="absolute left-1/4 top-1/4 z-50 w- [50%] p-10 h- [90px] text-center text-2xl font- semibold border-[1px] border-text bg-[#F9D8B2] text-text shadow-lg">Completa los datos de tu reserva para seguir.</div>}
     </div>
   );
 };
