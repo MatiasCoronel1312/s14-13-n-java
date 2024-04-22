@@ -1,33 +1,43 @@
 import { Link } from "react-router-dom";
 import GoCar from "../../../assets/icons/GoCar.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaBars } from "react-icons/fa6";
 
 const navbar = () => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
+  useEffect(() => {
+    window.addEventListener("load", handleClick);
+  }, [])
+  
+
+  const handleClick = () => {
+    if (window.matchMedia("(max-width: 768px)").matches) {
+      setIsOpen(!isOpen);
+    }else {
+      setIsOpen(false);
+    }
+  };
+
   const menu = (
       <ul className="flex absolute md:relative flex-col bg-[#707070] md:justify-between md:w-full w-[100%] text-[12px] md:flex-row lg:text-[16px] gap-3 top-[80px] md:top-0 right-[0px]">
-          <Link
+          <Link onClick={handleClick}
             to="/categoriasDeVehiculos/all"
-            className="text-background text-center py-5 hover:bg-text md:py-0"
+            className="text-background text-center py-5 hover:bg-text md:py-0 hover:md:bg-[#707070]"
           >
             CATEGORIAS DE VEHICULOS
           </Link>
-          <Link to="/redDeAgencias" className="text-background text-center py-5 hover:bg-text md:py-0">
+          <Link onClick={handleClick} to="/redDeAgencias" className="text-background text-center py-5 hover:bg-text md:py-0 hover:md:bg-[#707070]">
             RED DE AGENCIAS
           </Link>
-          <Link to="/tipsTuristicos" className="text-background text-center py-5 hover:bg-text md:py-0">
+          <Link onClick={handleClick} to="/tipsTuristicos" className="text-background text-center py-5 hover:bg-text md:py-0 hover:md:bg-[#707070]">
             TIPS DE VIAJES
           </Link>
-          <Link to="/dudas" className="text-background text-center py-5 hover:bg-text md:py-0 my-auto">
+          <Link onClick={handleClick} to="/dudas" className="text-background text-center py-5 hover:bg-text md:py-0 my-auto hover:md:bg-[#707070]">
             DUDAS
           </Link>
       </ul>
 )
 
-const handleClick = () => {
-  setIsOpen(!isOpen)
-}
 
   return (
     <header className="w-full bg-[#707070] flex justify-center sticky top-0 z-[45]">
