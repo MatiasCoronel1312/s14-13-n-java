@@ -19,8 +19,6 @@ export default function CoberturasBanner({
   const dispatch = useAppDispatch();
   const isChecked = coberturaSelected === name;
 
-  console.log("title , price", name, price);
-
   const resetSeguridad = () => {
     setTimeout(() => {
       setCoberturaSelected("");
