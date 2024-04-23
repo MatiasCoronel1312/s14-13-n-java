@@ -57,7 +57,7 @@ const RedDeAgencias = () => {
                       <div className="text-[14px]">{agencia.phone}</div>
                     </div>
                     <div>
-                      <button onClick={()=>{handleReserve(agencia.name)}} className="Gradient-H_hover border-2 border-accent text-accent hover:text-text hover:border-none w-3/4 h-10 rounded-lg ">Reservar</button>
+                      <button onClick={()=>{handleReserve(agencia.name)}} className="Gradient-H_hover border-2 border-accent text-accent hover:text-black hover:border-none w-3/4 h-10 rounded-lg ">Seleccionar agencia</button>
                     </div>
                   </div>
                 </div>
