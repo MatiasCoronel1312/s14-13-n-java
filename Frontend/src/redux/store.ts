@@ -3,6 +3,7 @@ import allAgenciasReducer from "./agenciasSlice";
 import dataReserveReducer from "./reserveSlice";
 import carroReducer from "./carsSlice";
 import coberturasReducer from "./coberturasSlice";
+import userReducer from "./UserSlice";
 
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
@@ -12,6 +13,7 @@ export const store = configureStore({
     dataReserve: dataReserveReducer,
     carro: carroReducer,
     coberturas: coberturasReducer,
+    user: userReducer,
   },
 });
 export const useAppDispatch: () => typeof store.dispatch = useDispatch;
