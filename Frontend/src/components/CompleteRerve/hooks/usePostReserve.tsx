@@ -3,13 +3,14 @@ import axios from "axios";
 import { useAppSeletor } from "../../../redux/store";
 import { formatearFecha } from "./const";
 import { useNavigate } from "react-router-dom";
+import { diferenciaEnDias } from "../../SummaryBooking/const";
 
 function usePostReserve(isLogin: boolean) {
   const dataReduces = useAppSeletor((state) => state);
   const navigate = useNavigate();
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
-  const url = "https://gocarapp.onrender.com/api/reservation/save";
+  const url = "https://gocarapp.onrender.com/api";
 
   const dataReservaReduce = dataReduces.dataReserve.dataReserve;
   const dataAutoReduce = dataReduces.carro.cars[0];
@@ -20,13 +21,13 @@ function usePostReserve(isLogin: boolean) {
     retirementAgencyId: 0,
     insuranceId: dataCoberturasReduce.seguridad.id,
     retirementDate: formatearFecha(
-      dataReservaReduce.fechaRetiro!,
-      dataReservaReduce.horaRetiro!
+      dataReservaReduce?.fechaRetiro as string,
+      dataReservaReduce?.horaRetiro as string
     ),
     returnAgencyId: 0,
     returnDate: formatearFecha(
-      dataReservaReduce.fechaEntrega!,
-      dataReservaReduce.horaEntrega!
+      dataReservaReduce?.fechaEntrega as string,
+      dataReservaReduce?.horaEntrega as string
     ),
   };
   const pagarMercadopago =
@@ -64,27 +65,46 @@ function usePostReserve(isLogin: boolean) {
   const [showReservation, setShowReservation] = useState(false);
 
   const externalLink = () => {
-    window.open("https://mercadopago.com.ar/", "_blank");
-    window.location.reload();
+    const totalDay = diferenciaEnDias(
+      dataReservaReduce?.fechaEntrega as string,
+      dataReservaReduce?.fechaRetiro as string
+    );
+
+    const totalPrice =
+      dataAutoReduce.price + dataCoberturasReduce.seguridad.price;
+
+    const totalInpuesto = totalPrice + dataCoberturasReduce.metodoPago.price;
+
+    const urlMercadoPago = url + "/mercadopago/pay";
+    const dataMercadoPago = {
+      title: `${dataAutoReduce.model}`,
+      quantity: totalDay,
+      price: totalInpuesto,
+    };
+
+    axios.post(urlMercadoPago, dataMercadoPago).then((response) => {
+      const urlRespose = response.data.slice(9);
+      setShowReservation(false);
+      window.open(urlRespose, "_blank");
+      window.location.reload();
+    });
   };
 
   const completeReservationAction = () => {
-    console.log("dataCoberturasReduce ------", dataCoberturasReduce);
-    console.log(postData);
-    // if (!isLogin) {
-    //   navigate(links);
-    // } else {
-    //   setShowReservation(true);
-    //   setTimeout(() => {
-    //     if (isLogin && pagarMercadopago) {
-    //       externalLink();
-    //     } else if (isLogin && !pagarMercadopago) {
-    //       window.location.href = "/";
-    //     }
-    //     sendData();
-    //     setShowReservation(false);
-    //   }, 1000);
-    // }
+    if (!isLogin) {
+      navigate(links);
+    } else {
+      setShowReservation(true);
+      setTimeout(() => {
+        if (isLogin && pagarMercadopago) {
+          externalLink();
+        } else if (isLogin && !pagarMercadopago) {
+          window.location.href = "/";
+          setShowReservation(false);
+        }
+        sendData();
+      }, 1000);
+    }
   };
 
   return {
