@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import GoCar from "../../../assets/icons/GoCar.png";
 import { useEffect, useState } from "react";
 import bars from "../../../assets/bars.png";
+import LogInArea from "../../../components/LogInArea/LogInArea";
 
 const navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -62,14 +63,7 @@ const navbar = () => {
             />
           </Link>
           <div className="md:w-[60%] md:block hidden">{menu}</div>
-          <Link
-            to="/Login"
-            className="flex ml-[30%] sm:ml-[50%] md:ml-0  Gradient-H w-[96px] lg:w-[136px] h-[44px]  rounded-[5px] text-center cursor-pointer hover:bg-primary "
-          >
-            <div className="text-primary text-[20px] py-[5px] z-[46] bg-[#707070] m-auto w-[94px] lg:w-[134px] Gradient-H_hover transition-all duration-300 ease-in-out h-[42px] rounded-[5px] cursor-pointer hover:text-text">
-              Log in
-            </div>
-          </Link>
+          <LogInArea />
           <div
             onClick={handleClick}
             className="w-[54px] h-[42px] rounded-lg Gradient-H_hover relative cursor-pointer md:hidden flex justify-center items-center  "
