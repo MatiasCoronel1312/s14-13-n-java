@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import GoCar from "../../../assets/icons/GoCar.png";
 import { useEffect, useState } from "react";
-import { FaBars } from "react-icons/fa6";
+import bars from "../../../assets/bars.png";
 
 const navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -57,9 +57,10 @@ const navbar = () => {
               Log in
             </div>
           </Link>
-          <div className="w-[10%] relative cursor-pointer md:hidden flex justify-end text-accent hover:text-primary">
-            <FaBars className=" w-[35px] h-[30px]" onClick={handleClick}/>
-             
+          <div onClick={handleClick} className="w-[54px] h-[42px] rounded-lg Gradient-H_hover relative cursor-pointer md:hidden flex justify-center items-center  ">
+            <div className="w-[52px] h-[40px] bg-[#707070] flex justify-center items-center rounded-lg">
+             <img src={bars} alt="" className="w-[35px] h-[30px] "/>
+            </div>
           </div>
         </div>
          
