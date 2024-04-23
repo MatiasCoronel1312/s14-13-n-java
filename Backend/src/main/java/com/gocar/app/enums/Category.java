@@ -13,7 +13,8 @@ public enum Category {
     ECONOMIC("ECONOMIC"),
     MINIVAN("MINIVAN"),
     VAN("VAN"),
-    TRUCK("TRUCK");
+    TRUCK("TRUCK"),
+    COMPACT_HATCHBACK("COMPACT HATCHBACK");
 
     private final String description;
 
