@@ -15,7 +15,7 @@ function CardTur({lugar}:Prop){
         })
     }, []);
     const handleClick =(id:number)=>{
-        navigator(`/DestinationDetail/${id}`)
+        navigator(`/DestinationDetail/${id + 1}`)
         console.log(id);
     };
     return (

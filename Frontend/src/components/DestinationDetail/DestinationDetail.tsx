@@ -1,28 +1,28 @@
 
 // import { DestinationBestTime, DestinationInfo, DestinationTipExtra, DestinationUbication } from "./destination.interface";
-
-import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { FaArrowCircleLeft } from "react-icons/fa";
 import { useNavigate, useParams } from "react-router-dom";
-import lugares from "../DestinosCard/DataDestinos";
-
+import { DataDestination } from "../DestinosCard/DataDestination.interface";
+import { useAppSeletor } from "../../redux/store";
 
 const SummaryBooking = () => {
-
+  const todoLugares = useAppSeletor((state) => state.allDestinos.destinations) 
   const navigator = useNavigate();
-
+  const [lugar, setLugar] = useState<DataDestination>();
+  //const [todoLugares, setLugares] = useState<DataDestination[]>([]);
   const params = useParams();
-  // const indiceAleatorio1 = Math.floor(Math.random() * (lugares.length-1));
-  // const indiceAleatorio2 = Math.floor(Math.random() * (lugares.length-1));
-  // const lugar = lugares.find((obj) => obj.id == parseInt(params.id?? "0") )
-  // const lugar1 = lugares.find((obj) => obj.id == indiceAleatorio1?? "0" )
-  // const lugar2 = lugares.find((obj) => obj.id == indiceAleatorio2?? "0") 
-  const indiceAleatorio1 = Math.floor(Math.random() * (lugares.length));
-  const indiceAleatorio2 = Math.floor(Math.random() * (lugares.length));
-  const lugar = lugares.find((obj) => obj.id === parseInt(params.id ?? "0"));
-  const lugar1 = lugares[indiceAleatorio1];
-  const lugar2 = lugares[indiceAleatorio2];
+  const indiceAleatorio1 = Math.floor(Math.random() * (todoLugares.length));
+  const indiceAleatorio2 =  (indiceAleatorio1 < todoLugares.length -1  && indiceAleatorio1 > 1 ) ? indiceAleatorio1 + 1: indiceAleatorio1 - 1;
+  const lugar1 = todoLugares[indiceAleatorio1];
+  const lugar2 = todoLugares[indiceAleatorio2 < 0 ? 0 : indiceAleatorio2] ;
 
+  useEffect(() => {
+      const destinationD = todoLugares.find((lugares) => lugares.id == parseInt(params.id ?? "1"));
+      setLugar(destinationD);
+
+}, []);
 
   useEffect(() => {
 
@@ -50,7 +50,7 @@ const SummaryBooking = () => {
             <p className="text-primary text-[14px] fontFamily-mono ">Home/Tips De Viajes/{lugar?.city}</p>
           </div> */}
 
-          <p className="text-[#B81C00] text-[36px] fontFamily-mono font-bold text-center pt-12 pb-2"> Tips de Viajes</p>
+          <p className="text-primary text-[36px] fontFamily-mono font-bold text-center pt-12 pb-2"> Tips de Viajes</p>
           <p className="text-text text-[32px] fontFamily-mono text-center ">Vení a inspirarte para tu próximo destino</p>
           <p className="text-black text-[32px] fontFamily-mono text-center pb-8">{lugar?.city} </p>
 
@@ -124,10 +124,12 @@ const SummaryBooking = () => {
                    
                     <p className="pt-14 mt-6 text-[16px] fontFamily-mono w-[401px] h-[36px] ml-7">¡Aprovecha nuestras ofertas por tiempo limitado y vive experiencias increíbles!</p>
                   
-                    <div className="flex justify-center">
-
-                       <button className="w-[210px] h-[62px] Gradient-V mt-16  rounded-[8px] fontFamily-mono text-[20px] text-[#C26A00] ">RESERVA YA</button>
-
+                    <div className="flex justify-center   ">
+                        <Link to="/Login" className="flex mt-16 Gradient-V w-[210px] h-[62px] rounded-[8px] text-center cursor-pointer hover:bg-primary ">
+                              <div className="text-primary text-[20px] pt-[17px] z-10 bg-[#FFDDD7] m-auto w-[208px] h-[60px] Gradient-V_hover transition-all duration-300 ease-in-out  rounded-[8px] cursor-pointer hover:text-primary">
+                                  RESERVA YA
+                              </div>
+                      </Link>   
                     </div>
                  
                  </div>
