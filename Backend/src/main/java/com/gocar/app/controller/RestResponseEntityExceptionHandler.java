@@ -3,6 +3,8 @@ package com.gocar.app.controller;
 import com.gocar.app.dtos.exception.ErrorResponseDto;
 import com.gocar.app.exceptions.AgencyNotFoundException;
 import com.gocar.app.exceptions.EmailOrPasswordIncorrectException;
+import com.gocar.app.exceptions.NoVehicleInStockException;
+import com.gocar.app.exceptions.ReservationAlreadyInThatDatesException;
 import jakarta.persistence.EntityNotFoundException;
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.http.HttpStatus;
@@ -25,6 +27,18 @@ public class RestResponseEntityExceptionHandler {
     @ExceptionHandler(EmailOrPasswordIncorrectException.class)
     public ResponseEntity<Object> handlerResourceNotFoundException(EmailOrPasswordIncorrectException ex) {
         return new ResponseEntity<>(new ErrorResponseDto("Email or password", ex.getMessage()),
+                HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(ReservationAlreadyInThatDatesException.class)
+    public ResponseEntity<Object> handlerReservationAlreadyInThatDatesException(ReservationAlreadyInThatDatesException ex) {
+        return new ResponseEntity<>(ex.getMessage(),
+                HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(NoVehicleInStockException.class)
+    public ResponseEntity<Object> NoVehicleInStockException(NoVehicleInStockException ex) {
+        return new ResponseEntity<>(ex.getMessage(),
                 HttpStatus.BAD_REQUEST);
     }
 

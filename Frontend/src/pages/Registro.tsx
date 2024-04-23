@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import apiUrl from "../env/environment.prod";
+
+const apiBase = apiUrl;
 
 interface IFormData {
   nombre: string;
@@ -14,18 +17,92 @@ interface IFormData {
 }
 
 export default function Registro() {
-  const navigator = useNavigate();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState<IFormData>({
     nombre: "",
     apellido: "",
     email: "",
     nacionalidad: "",
-    tipoDocumento: "dni",
+    tipoDocumento: "DNI",
     numeroDocumento: "",
     numeroTelefono: "",
     contrasena: "",
     confirmarContrasena: "",
   });
+  const [formErrors, setFormErrors] = useState<Partial<IFormData>>({});
+
+  const validateForm = () => {
+    const errors: Partial<IFormData> = {};
+    if (!formData.nombre.trim()) {
+      errors.nombre = "Nombre es requerido";
+    }
+    if (!formData.apellido.trim()) {
+      errors.apellido = "Apellido es requerido";
+    }
+    if (!formData.email.trim()) {
+      errors.email = "Email es requerido";
+    } else if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
+      errors.email = "Ingrese un email válido";
+    }
+    if (!formData.nacionalidad.trim()) {
+      errors.nacionalidad = "Nacionalidad es requerida";
+    }
+    if (!formData.numeroDocumento.trim()) {
+      errors.numeroDocumento = "Número de Documento es requerido";
+    }
+    if (!formData.numeroTelefono.trim()) {
+      errors.numeroTelefono = "Número de Teléfono es requerido";
+    } else if (!/^\d+$/.test(formData.numeroTelefono)) {
+      errors.numeroTelefono = "Ingrese solo números";
+    }
+    if (!formData.contrasena.trim()) {
+      errors.contrasena = "Contraseña es requerida";
+    } else if (formData.contrasena.length < 6) {
+      errors.contrasena = "La contraseña debe tener al menos 6 caracteres";
+    }
+    if (formData.contrasena !== formData.confirmarContrasena) {
+      errors.confirmarContrasena = "Las contraseñas no coinciden";
+    }
+
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (validateForm()) {
+      try {
+        const response = await fetch(`${apiBase}/auth/register`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: formData.email,
+            password: formData.contrasena,
+            name: formData.nombre,
+            lastName: formData.apellido,
+            identification: formData.tipoDocumento,
+            identificationNumber: formData.numeroDocumento,
+            country: formData.nacionalidad,
+            phoneNumber: formData.numeroTelefono,
+          }),
+        });
+
+        const responseData = await response.json();
+
+        if (response.ok) {
+          console.log("Registro exitoso, token:", responseData.token);
+          navigate("/");
+        } else {
+          console.error("Error al registrar:", responseData.error);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    }
+  };
 
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -35,12 +112,6 @@ export default function Registro() {
   const handleChangeDropdown = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    navigator("/finalizar-pago");
-    console.log(formData);
   };
 
   return (
@@ -60,7 +131,7 @@ export default function Registro() {
         </div>
         <div className="flex gap-[67px]">
           <div className="flex flex-col w-[450px] gap-2">
-            <label htmlFor="nombre">Nombre</label>
+            <label htmlFor="nombre">Nombre *</label>
             <input
               className="py-4 pl-6 border border-black rounded bg-background"
               id="nombre"
@@ -68,9 +139,12 @@ export default function Registro() {
               value={formData.nombre}
               onChange={handleChangeInput}
             />
+            {formErrors.nombre && (
+              <span className="text-red-500">{formErrors.nombre}</span>
+            )}
           </div>
           <div className="flex flex-col w-[450px] gap-2">
-            <label htmlFor="apellido">Apellido</label>
+            <label htmlFor="apellido">Apellido *</label>
             <input
               className="py-4 pl-6 border border-black rounded bg-background"
               id="apellido"
@@ -78,11 +152,14 @@ export default function Registro() {
               value={formData.apellido}
               onChange={handleChangeInput}
             />
+            {formErrors.apellido && (
+              <span className="text-red-500">{formErrors.apellido}</span>
+            )}
           </div>
         </div>
         <div className="flex gap-[67px]">
           <div className="flex flex-col w-[450px] gap-2">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">Email *</label>
             <input
               className="py-4 pl-6 border border-black rounded bg-background"
               id="email"
@@ -91,9 +168,12 @@ export default function Registro() {
               value={formData.email}
               onChange={handleChangeInput}
             />
+            {formErrors.email && (
+              <span className="text-red-500">{formErrors.email}</span>
+            )}
           </div>
           <div className="flex flex-col w-[450px] gap-2">
-            <label htmlFor="nacionalidad">Nacionalidad</label>
+            <label htmlFor="nacionalidad">Nacionalidad *</label>
             <input
               className="py-4 pl-6 border border-black rounded bg-background"
               id="nacionalidad"
@@ -101,11 +181,14 @@ export default function Registro() {
               value={formData.nacionalidad}
               onChange={handleChangeInput}
             />
+            {formErrors.nacionalidad && (
+              <span className="text-red-500">{formErrors.nacionalidad}</span>
+            )}
           </div>
         </div>
         <div className=" flex gap-[67px]">
           <div className="flex flex-col w-[450px] gap-2">
-            <label htmlFor="tipoDocumento">Tipo de Documento</label>
+            <label htmlFor="tipoDocumento">Tipo de Documento *</label>
             <select
               className="py-4 pl-6 border border-black rounded bg-background"
               id="tipoDocumento"
@@ -113,13 +196,13 @@ export default function Registro() {
               value={formData.tipoDocumento}
               onChange={handleChangeDropdown}
             >
-              <option value="dni">DNI</option>
-              <option value="pasaporte">Pasaporte</option>
-              <option value="otros">Otros</option>
+              <option value="DNI">DNI</option>
+              <option value="PASSPORT">Pasaporte</option>
+              <option value="Otros">Otros</option>
             </select>
           </div>
           <div className="flex flex-col w-[450px] gap-2">
-            <label htmlFor="numeroDocumento">Número de Documento</label>
+            <label htmlFor="numeroDocumento">Número de Documento *</label>
             <input
               className="py-4 pl-6 border border-black rounded bg-background"
               id="numeroDocumento"
@@ -127,11 +210,14 @@ export default function Registro() {
               value={formData.numeroDocumento}
               onChange={handleChangeInput}
             />
+            {formErrors.numeroDocumento && (
+              <span className="text-red-500">{formErrors.numeroDocumento}</span>
+            )}
           </div>
         </div>
         <div className="flex gap-[67px]">
           <div className="flex flex-col w-[450px] gap-2">
-            <label htmlFor="numeroTelefono">Número de Teléfono</label>
+            <label htmlFor="numeroTelefono">Número de Teléfono *</label>
             <input
               className="py-4 pl-6 border border-black rounded bg-background"
               id="numeroTelefono"
@@ -139,10 +225,13 @@ export default function Registro() {
               value={formData.numeroTelefono}
               onChange={handleChangeInput}
             />
+            {formErrors.numeroTelefono && (
+              <span className="text-red-500">{formErrors.numeroTelefono}</span>
+            )}
           </div>
           <div className="flex flex-col gap-10">
             <div className="flex flex-col w-[450px] gap-2">
-              <label htmlFor="contrasena">Contraseña</label>
+              <label htmlFor="contrasena">Contraseña *</label>
               <input
                 className="py-4 pl-6 border border-black rounded bg-background"
                 id="contrasena"
@@ -151,9 +240,14 @@ export default function Registro() {
                 value={formData.contrasena}
                 onChange={handleChangeInput}
               />
+              {formErrors.contrasena && (
+                <span className="text-red-500">{formErrors.contrasena}</span>
+              )}
             </div>
             <div className="flex flex-col w-[450px] gap-2">
-              <label htmlFor="confirmarContrasena">Confirmar Contraseña</label>
+              <label htmlFor="confirmarContrasena">
+                Confirmar Contraseña *
+              </label>
               <input
                 className="py-4 pl-6 border border-black rounded bg-background"
                 id="confirmarContrasena"
@@ -162,6 +256,11 @@ export default function Registro() {
                 value={formData.confirmarContrasena}
                 onChange={handleChangeInput}
               />
+              {formErrors.confirmarContrasena && (
+                <span className="text-red-500">
+                  {formErrors.confirmarContrasena}
+                </span>
+              )}
             </div>
           </div>
         </div>

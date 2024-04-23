@@ -47,18 +47,18 @@ const Question = ({ question, answer }: Props) => {
     <div className="flex flex-col pb-4">
       {isExpanded ? (
         <div
-          className="bg-[#FADEBD] hover:bg-[#FCC584] flex justify-between cursor-pointer w-full text-center text-lg p-[18px]"
+          className="bg-[#FADEBD] hover:bg-[#FCC584] flex justify-between cursor-pointer w-full text-lg p-[18px]"
           {...getToggleProps()}
         >
-          <p>{question}</p>
+          <p className="pr-[18px]">{question}</p>
           <FaAngleUp className="w-[20px] h-[20px]" />
         </div>
       ) : (
         <div
-          className="bg-[#FADEBD] hover:bg-[#FCC584] flex justify-between cursor-pointer w-full text-center text-lg p-[18px] rounded-br-lg shadow-lg"
+          className="bg-[#FADEBD] hover:bg-[#FCC584] flex justify-between cursor-pointer w-full text-lg p-[18px] rounded-br-lg shadow-lg"
           {...getToggleProps()}
         >
-          <p>{question}</p>
+          <p className="pr-[18px]">{question}</p>
           <FaAngleDown className="w-[20px] h-[20px]" />
         </div>
       )}
@@ -73,8 +73,8 @@ const Question = ({ question, answer }: Props) => {
 
 const Dudas = () => {
   return (
-    <div className="w-full h-full bg-background flex justify-center">
-      <div className=" lg:w-[85%] md:w-[90%] h-full">
+    <div className='w-full h-full bg-background flex justify-center px-3'>
+      <div className="lg:w-[85%] md:w-[90%] w-full h-full flex flex-col items-center">
         <NuevaReservaPrueba/>
         <div className="w-full h-full rounded Gradient-H my-8 pb-3">
           <h1 className="text-[#F5F5F5] text-center text-xl py-2">
