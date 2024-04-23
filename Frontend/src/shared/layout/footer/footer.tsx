@@ -8,34 +8,34 @@ import { FaLinkedin } from "react-icons/fa6";
 // import { FaEnvelope } from 'react-icons/fa6'
 const Footer = () => {
   return (
-    <footer className="h-[550px] w-full bg-[#707070] flex justify-center items-center">
-      <div className="lg:w-[85%] md:w-[90%] h-[348px] flex flex-col text-[14px]">
-        <div className="flex justify-between w-full h-[328px]">
-          <div className="w-[180px] h-[40px]">
+    <footer className="h-[750px] md:h-[450px] w-full bg-[#707070] flex justify-center items-center">
+      <div className="lg:w-[85%] md:w-[90%] w-[95%] h-[90%] flex flex-col text-[14px] md:py-10 ">
+        <div className="flex flex-col md:flex-row items-start md:justify-between w-full h-[90%] md:gap-5">
+          <div className="md:w-[25%] h-[10%] md:h-[40px]">
             <Link to="/">
-              <img src={GoCar} alt="logo GoCar" />
+              <img src={GoCar} alt="logo GoCar" className="w-[120px] md:w-[180px] h-[30px] md:h-[40px]" />
             </Link>
           </div>
-          <div className="w-[117px] h-[195px] flex flex-col justify-between">
-            <h2 className="text-white font-semibold">SITEMAP</h2>
-            <ul className="text-background flex flex-col justify-around w-full h-[148px] ">
-              <Link className="py-0.5" to="/categoriasDeVehiculos/all">
+          <div className="w-full md:w-[25%] h-[195px] flex flex-col justify-between">
+            <h2 className="text-white font-semibold ms:h-1/2">SITEMAP</h2>
+            <ul className="text-background flex flex-col justify-around w-full h-[148px] ms:h-1/2">
+              <Link className="" to="/categoriasDeVehiculos/all">
                 CATEGORIAS DE VEHICULOS
               </Link>
-              <Link className="py-0.5" to="/redDeAgencias">
+              <Link className="" to="/redDeAgencias">
                 RED DE AGENCIAS
               </Link>
-              <Link className="py-0.5" to="/tipsTuristicos">
-                TIPS TURISTICOS
+              <Link className="" to="/tipsTuristicos">
+                TIPS DE VIAJES
               </Link>
-              <Link className="py-0.5" to="/dudas">
+              <Link className="" to="/dudas">
                 DUDAS
               </Link>
             </ul>
           </div>
-          <div className="w-[60px] h-[190px] flex flex-col justify-around ">
-            <h2 className="text-white font-semibold">SOCIALS</h2>
-            <ul className="text-white w-[24px] h-[144px] flex flex-col justify-around text-[24px]">
+          <div className="w-full md:w-[25%] h-[100px] md:h-[40%] py-5 md:py-0 flex flex-col md:justify-between ">
+            <h2 className="text-white font-semibold h-[50%]">SOCIALS</h2>
+            <ul className="text-white w-full h-[50%] flex md:flex-col gap-5 text-[24px]">
               <li>
                 <FaFacebook />
               </li>
@@ -50,17 +50,17 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div className="w-[325px] h-[200px] flex flex-col justify-between ">
-            <div className="w-[300px] h-[90px] flex flex-col justify-around ">
+          <div className="w-[25%] h-[200px] flex flex-col justify-between ">
+            <div className="w-full h-[90px] flex flex-col justify-around ">
               <h3 className="text-white font-semibold ">HEAD OFFICE</h3>
-              <p className="text-background w-[300px]">
+              <p className="text-background w-full">
                 Xilliams Corner Wine © 2017. 1112 A Market St # Ste B22,
                 Charlottesville, CA 45565
               </p>
             </div>
-            <div className="w-[325px] h-[90px] flex flex-col justify-between ">
+            <div className="w-[full] h-[60px] md:h-[90px] flex flex-col justify-between ">
               <h3 className="text-white font-semibold">NEWS LETTER</h3>
-              <div className="w-[325px] h-[30px] flex justify-between relative">
+              <div className="w-full h-[30px] flex justify-between relative">
                 <input
                   type="email"
                   placeholder="Enter Your Email Address"
@@ -78,7 +78,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="flex justify-around bottom-0 h-[20px] w-full text-background text-[14px]">
+        <div className="flex flex-col md:flex-row items-center md:justify-around bottom-0 h-[10%] md:h-[20px] w-full text-background text-[14px]">
 
           <div>
             <p>contact@gocar.com</p>
