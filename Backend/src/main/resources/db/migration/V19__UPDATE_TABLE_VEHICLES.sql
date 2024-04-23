@@ -8,4 +8,4 @@ MODIFY COLUMN category ENUM('SEDAN',
                             'MINIVAN',
                             'VAN',
                             'TRUCK',
-                            'COMPACT HATCHBACK');
+                            'COMPACT_HATCHBACK');
