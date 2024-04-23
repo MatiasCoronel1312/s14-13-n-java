@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-interface TUser {
-  id: number;
+export interface TUser {
+  id?: number;
   name?: string;
   lastName?: string;
   email?: string;
@@ -8,22 +8,39 @@ interface TUser {
   identificationNumber?: string;
   country?: string;
   phoneNumber?: string;
+  password?: string;
 }
 interface TInicial {
-  userData: TUser;
+  userData?: TUser;
 }
 
 const estadoInicial: TInicial = {
   userData: {
     id: 0,
-    name: undefined,
-    lastName: undefined,
-    email: undefined,
-    identification: undefined,
-    identificationNumber: undefined,
-    country: undefined,
-    phoneNumber: undefined,
+    email: "correo@gmail.com",
+    password: "123456",
+    name: "Dummy",
+    lastName: "Client",
+    identification: "DNI",
+    identificationNumber: "123456789",
+    country: "Argentina",
+    phoneNumber: "9780001111",
   },
+};
+const resetUser: TInicial = {
+  userData: undefined,
+
+  // {
+  //   id: undefined,
+  //   email: undefined,
+  //   password: undefined,
+  //   name: undefined,
+  //   lastName: undefined,
+  //   identification: undefined,
+  //   identificationNumber: undefined,
+  //   country: undefined,
+  //   phoneNumber: undefined,
+  // },
 };
 
 const userSlice = createSlice({
@@ -33,19 +50,11 @@ const userSlice = createSlice({
     postUser: (state, actions) => {
       state.userData = { ...state.userData, ...actions.payload };
     },
+    deleteUser: (state) => {
+      state.userData = resetUser.userData;
+    },
   },
 });
 
-export const { postUser } = userSlice.actions;
+export const { postUser, deleteUser } = userSlice.actions;
 export default userSlice.reducer;
-
-/**
- *   id: 0,
-  name: "string",
-  lastName: "string",
-  email: "string",
-  identification: "DNI",
-  identificationNumber: "string",
-  country: "string",
-  phoneNumber: "string",
- */
