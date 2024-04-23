@@ -69,6 +69,7 @@ function usePostReserve(isLogin: boolean) {
   };
 
   const completeReservationAction = () => {
+    console.log("dataCoberturasReduce ------", dataCoberturasReduce);
     console.log(postData);
     // if (!isLogin) {
     //   navigate(links);

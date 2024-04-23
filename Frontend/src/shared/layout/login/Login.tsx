@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { postUser } from "../../../redux/UserSlice";
 import { dataUser } from "../../../../data";
-import { useAppDispatch } from "../../../redux/store";
+import { useAppDispatch, useAppSeletor } from "../../../redux/store";
 
 interface LoginProps {
   onLogin: (email: string, password: string) => void;
@@ -16,6 +16,18 @@ export const Login: React.FC<LoginProps> = () => {
   const navigator = useNavigate();
 
   const dispatch = useAppDispatch(); //dispatch para mas adelante para guardar los datos del usuario
+  let path = "/";
+  // add check if is from reserva or not in the redux state
+  const dataReduces = useAppSeletor((state) => state);
+
+  const hasDataInsurance =
+    dataReduces.coberturas.cargos.seguridad.name.length > 3;
+
+  // si tiene los datos sera enviado ala pagina de finalizar reserva
+  if (hasDataInsurance) {
+    path = "/finalizar-pago";
+    //return <DatosDePagos />;
+  }
 
   const validateEmail = (email: string): boolean => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -75,7 +87,7 @@ export const Login: React.FC<LoginProps> = () => {
         // Redirect to protected page
         */
     isLoginSuccess();
-    navigator("/");
+    navigator(path);
     /*
       } else {
         // Handle error response

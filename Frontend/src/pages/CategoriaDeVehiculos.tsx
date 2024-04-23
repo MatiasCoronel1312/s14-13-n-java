@@ -1,18 +1,18 @@
 import SelectForCategory from "../components/SelectForCategory/SelectForCategory";
 import TimeLine from "../components/timeline/TimeLine";
 import NuevaReservaPrueba from "../components/NuevaReserva/NuevaReservaPrueba";
-import { useLocation } from "react-router-dom";
+
 import { useAppSeletor } from "../redux/store";
 
 //https://gocarapp.onrender.com/api/vehicles/all
 
 const CategoriaDeVehiculos = () => {
-  const location = useLocation();
-  const dataReserve = useAppSeletor((state) => state.dataReserve.dataReserve);
+  const dataReduces = useAppSeletor((state) => state);
 
-  // add check if is from reserva or not in the redux state
-  const isFromReserva =
-    location?.state?.isReserva || dataReserve.fechaRetiro !== undefined;
+  const dataReserve = dataReduces.dataReserve.dataReserve;
+  const isFromReserva = dataReserve.fechaRetiro !== undefined;
+
+  // navigate("/finalizar-pago");
 
   return (
     <div className="w-full bg-background flex justify-center">
