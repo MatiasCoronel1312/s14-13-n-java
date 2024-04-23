@@ -81,9 +81,8 @@ const allBookings: Booking[] = [
 const BookingHistory = () => {
 
   return (
-    <div className="w-full h-full bg-background flex justify-center">
-      <div className="lg:w-[85%] md:w-[90%] h-full flex flex-col items-center">
-        <div className="w-full flex items-center flex-col">
+    <div className="w-full h-full bg-background flex justify-center px-3">
+      <div className="lg:w-[85%] md:w-[90%] w-full h-full flex flex-col items-center">
           <div className="text-accent text-[32px] text-center font-semibold my-5">Historial de reservas</div>
           <div className="w-full my-8">
             {
@@ -122,7 +121,7 @@ const BookingHistory = () => {
               )
             }
           </div>
-        </div>
+
       </div>
     </div>
   );
