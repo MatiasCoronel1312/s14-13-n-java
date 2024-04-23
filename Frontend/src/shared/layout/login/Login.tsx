@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { postUser } from "../../../redux/UserSlice";
+import { dataUser } from "../../../../data";
+import { useAppDispatch } from "../../../redux/store";
 
 interface LoginProps {
   onLogin: (email: string, password: string) => void;
@@ -11,6 +14,8 @@ export const Login: React.FC<LoginProps> = () => {
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const navigator = useNavigate();
+
+  const dispatch = useAppDispatch(); //dispatch para mas adelante para guardar los datos del usuario
 
   const validateEmail = (email: string): boolean => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -31,9 +36,16 @@ export const Login: React.FC<LoginProps> = () => {
     setPassword(event.target.value);
   };
 
+  const isLoginSuccess = () => {
+    //extraer toda la logica para maner el stado
+
+    dispatch(postUser(dataUser));
+  };
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setErrorMessage("");
+    /*
 
     if (!validateEmail(email)) {
       setErrorMessage("Ingrese un email válido");
@@ -61,7 +73,10 @@ export const Login: React.FC<LoginProps> = () => {
 
         // Store authentication token or user data
         // Redirect to protected page
-        navigator("/");
+        */
+    isLoginSuccess();
+    navigator("/");
+    /*
       } else {
         // Handle error response
         const errorData = response.data;
@@ -79,6 +94,7 @@ export const Login: React.FC<LoginProps> = () => {
       setErrorMessage("Email o contraseña incorrectos");
       console.error(error);
     }
+    */
   };
 
   return (
