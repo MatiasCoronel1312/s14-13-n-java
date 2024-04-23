@@ -5,7 +5,7 @@ import { FaFacebook } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa6";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaLinkedin } from "react-icons/fa6";
-// import { FaEnvelope } from 'react-icons/fa6'
+import  mailIcon  from '../../../assets/icons/mailIcon.svg'
 const Footer = () => {
   return (
     <footer className="h-[750px] md:h-[450px] w-full bg-[#707070] flex justify-center items-center">
@@ -18,7 +18,7 @@ const Footer = () => {
           </div>
           <div className="w-full md:w-[25%] h-[195px] flex flex-col justify-between">
             <h2 className="text-white font-semibold ms:h-1/2">SITEMAP</h2>
-            <ul className="text-background flex flex-col justify-around w-full h-[148px] ms:h-1/2">
+            <ul className="text-background flex flex-col justify-around w-full h-[148px] md:pl-0 pl-3 ">
               <Link className="" to="/categoriasDeVehiculos/all">
                 CATEGORIAS DE VEHICULOS
               </Link>
@@ -35,7 +35,7 @@ const Footer = () => {
           </div>
           <div className="w-full md:w-[25%] h-[100px] md:h-[40%] py-5 md:py-0 flex flex-col md:justify-between ">
             <h2 className="text-white font-semibold h-[50%]">SOCIALS</h2>
-            <ul className="text-white w-full h-[50%] flex md:flex-col gap-5 text-[24px]">
+            <ul className="text-white w-full h-[50%] flex md:flex-col gap-5 text-[24px] md:pl-0 pl-3">
               <li>
                 <FaFacebook />
               </li>
@@ -50,29 +50,27 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div className="w-[25%] h-[200px] flex flex-col justify-between ">
+          <div className="w-[70%] md:w-[25%] md:h-[85%] h-[200px] flex flex-col justify-between ">
             <div className="w-full h-[90px] flex flex-col justify-around ">
-              <h3 className="text-white font-semibold ">HEAD OFFICE</h3>
-              <p className="text-background w-full">
+              <h3 className="text-white font-semibold md:pb-6 pb-3">HEAD OFFICE</h3>
+              <p className="text-background w-full md:pl-0 pl-3">
                 Xilliams Corner Wine © 2017. 1112 A Market St # Ste B22,
                 Charlottesville, CA 45565
               </p>
             </div>
-            <div className="w-[full] h-[60px] md:h-[90px] flex flex-col justify-between ">
+            <div className="w-[100%] h-[60px] md:h-[110px] flex flex-col justify-center ">
               <h3 className="text-white font-semibold">NEWS LETTER</h3>
-              <div className="w-full h-[30px] flex justify-between relative">
+              <div className="w-full h-[30px] flex justify-between relative md:pl-0 pl-3">
                 <input
                   type="email"
-                  placeholder="Enter Your Email Address"
+                  placeholder="Email Address"
                   className="flex justify-start w-full h-[40px] bg-[#707070] border-b-[0.75px] border-[#333333] px-2"
                 />
                 <img
-                  src="Mail icon.svg"
-                  alt=""
+                  src={mailIcon}
+                  alt="icono mail"
                   className="absolute right-1 bottom-1"
                 />
-                {/* <FaEnvelope className='text-primary text-[28px]'/> */}
-
               </div>
             </div>
           </div>
