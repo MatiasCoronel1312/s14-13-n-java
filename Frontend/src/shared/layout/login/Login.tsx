@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
-import { postUser } from "../../../redux/UserSlice";
-import { dataUser } from "../../../../data";
-import { useAppDispatch, useAppSeletor } from "../../../redux/store";
+
+import useAuthLogin from "./hooks/useAuthLogin";
 
 interface LoginProps {
   onLogin: (email: string, password: string) => void;
@@ -13,21 +12,7 @@ export const Login: React.FC<LoginProps> = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const navigator = useNavigate();
-
-  const dispatch = useAppDispatch(); //dispatch para mas adelante para guardar los datos del usuario
-  let path = "/";
-  // add check if is from reserva or not in the redux state
-  const dataReduces = useAppSeletor((state) => state);
-
-  const hasDataInsurance =
-    dataReduces.coberturas.cargos.seguridad.name.length > 3;
-
-  // si tiene los datos sera enviado ala pagina de finalizar reserva
-  if (hasDataInsurance) {
-    path = "/finalizar-pago";
-    //return <DatosDePagos />;
-  }
+  const { isLoginSuccess } = useAuthLogin();
 
   const validateEmail = (email: string): boolean => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -48,16 +33,29 @@ export const Login: React.FC<LoginProps> = () => {
     setPassword(event.target.value);
   };
 
-  const isLoginSuccess = () => {
-    //extraer toda la logica para maner el stado
+  // const isLoginSuccess = (token: string) => {
+  //   // Aqui se puede hacer algo con el token o el usuario
+  //   const urlDataUser = "https://gocarapp.onrender.com/api/user/profile";
 
-    dispatch(postUser(dataUser));
-  };
+  //   axios
+  //     .get(urlDataUser, {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     })
+  //     .then((response) => {
+  //       dispatch(postUser(response.data));
+  //       navigator(path);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error:", error);
+  //     });
+  // };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setErrorMessage("");
-    /*
 
     if (!validateEmail(email)) {
       setErrorMessage("Ingrese un email válido");
@@ -70,43 +68,28 @@ export const Login: React.FC<LoginProps> = () => {
     }
 
     try {
-      const response = await axios.post(
-        "https://gocarapp.onrender.com/api/auth/login",
-        {
+      await axios
+        .post("https://gocarapp.onrender.com/api/auth/login", {
           email,
           password,
-        }
-      );
+        })
+        .then((response) => {
+          console.log("Login successful!");
 
-      if (response.status === 200 && response.data.token) {
-        // Handle successful login
-        console.log("Login successful!");
-        console.log(response);
-
-        // Store authentication token or user data
-        // Redirect to protected page
-        */
-    isLoginSuccess();
-    navigator(path);
-    /*
-      } else {
-        // Handle error response
-        const errorData = response.data;
-        if (errorData && errorData.error) {
-          if (errorData.error === "Email or password incorrect") {
+          isLoginSuccess(response.data.token);
+        })
+        .catch((error) => {
+          console.log("error");
+          if (error.response.data) {
             setErrorMessage("Email o contraseña incorrecto");
           } else {
-            setErrorMessage(errorData.error);
+            setErrorMessage("An unknown error occurred.");
           }
-        } else {
-          setErrorMessage("An unknown error occurred.");
-        }
-      }
+        });
     } catch (error) {
       setErrorMessage("Email o contraseña incorrectos");
       console.error(error);
     }
-    */
   };
 
   return (
