@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import "./App.css";
 import MainRouter from "./router/mainRouter";
 import apiUrl from "./env/environment.prod";
 import axios from "axios";

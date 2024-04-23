@@ -126,7 +126,7 @@ export function FrontViewCard({
 
           <div className="flex flex-col justify-center items-center py-3 bg-[#FADEBD] w-[285px] h-[60px] rounded-[10px]   ">
             <p className="font-extralight text-sm ">Desde</p>
-            <h3 className="text-2xl font-extralight shadow-textd">
+            <h3 className="text-2xl font-extralight font-poppins shadow-textd">
               US$ {detailsCar.price} / dia
             </h3>
           </div>
@@ -137,8 +137,10 @@ export function FrontViewCard({
                 <ButtonMain title={"Seleccionar Auto"} />
               </div>
             ) : (
-              <div className="w-[211px] h-[64px] bg-[#8F8F8F] flex items-center justify-center rounded-[10px]">
-                <p className=" text-xl font-extralight">Sin Stock</p>
+              <div className="w-[211px] h-[64px] bg-[#333333] flex items-center justify-center rounded-[10px]">
+                <p className=" text-xl text-[#F5F5F5] font-extralight">
+                  Sin Stock
+                </p>
               </div>
             ))}
         </section>

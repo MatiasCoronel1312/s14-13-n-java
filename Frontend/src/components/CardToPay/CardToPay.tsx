@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ButtonMain from "../ButtonMain/ButtonMain";
 import { postTarifaMetodoPago } from "../../redux/coberturasSlice";
 import { useAppDispatch } from "../../redux/store";
@@ -69,7 +69,7 @@ export default function CardToPay({
       <div className="flex flex-col items-center ">
         <p className="font-extralight text-sm mb-2">Desde</p>
 
-        <p className="text-2xl  font-ligth shadow-text">
+        <p className="text-2xl font-poppins font-ligth shadow-text">
           US$ {realPrices} / dia
         </p>
       </div>
