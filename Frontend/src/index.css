@@ -17,6 +17,8 @@
   background-image: linear-gradient(90deg, #ff8c00, #b81c00);
 }
 
+
+
 .container {
   max-width: 500px;
   margin: 0 auto;
@@ -42,4 +44,7 @@
 .react-calendar__day--selected {
   background-color: #000;
   color: #fff;
+}
+.text-shadow {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Desplazamiento en x, desplazamiento en y, desenfoque, color */
 }
