@@ -43,7 +43,7 @@ export default function Carrusel() {
 
   const [isAutoplay, setIsAutoplay] = useState(true);
 
-  const autoplayInterval = 2000;
+  const autoplayInterval = 3000;
 
   useEffect(() => {
     let autoplayId: number;
@@ -60,25 +60,23 @@ export default function Carrusel() {
   return (
     <>
       {cars.length > 0 && (
-        <section className="h-full max-w-full">
-          <div className="mb-5">
+        <section className="h-[500px] w-full ">
+          <div className="py-9 h-[100px]">
             <h1 className="text-center font-sans font-bold text-text text-2xl">
               Conocé nuestra flota
             </h1>
           </div>
-
-          <div className="flex flex-col items-center w-full">
-            <div className="flex flex-row align-bottom">
-              <div className="flex flex-shrink-0 flex-col self-center">
+            <div className="flex justify-between w-full h-[300px]">
+              <div className="md:flex flex-col justify-end h-full w-[25%] opacity-75 hidden">
                 <img
-                  className="w-[297.44px] h-[202.91px] justify-center "
+                  className="w-[100%] h-[ 200px] object-cover"
                   src={sliceIzquierda.image}
                   alt="image"
                 />
-                <h2 className="font-sans text-3xl text-center max-w-72">
+                <h2 className="font-sans text-2xl text-center w-full">
                   {sliceIzquierda.model}
                 </h2>
-                <p className="font-sans text-center max-w-72 ">
+                <p className="font-sans text-center w-full ">
                   {sliceIzquierda.brand}
                 </p>
               </div>
@@ -97,16 +95,16 @@ export default function Carrusel() {
                   />
                 </svg>
               </button>
-              <div className="flex-shrink-0 flex flex-col align-middle justify-between">
+              <div className="flex flex-col w-[80%] md:w-[40%] justify-end items-center">
                 <img
-                  className="w-[445px] justify-center object-cover"
+                  className="w-[80%] md:w-[100%] justify-center object-cover max-h-[230px] "
                   src={slicePrincipal.image}
                   alt="image"
                 />
-                <h2 className="font-sans text-3xl text-center max-w-[445px] object-cover">
+                <h2 className="font-sans text-3xl text-center w-[100%]">
                   {slicePrincipal.model}
                 </h2>
-                <p className="font-sans text-center max-w-[445px] max-h-[31.05px] object-cover">
+                <p className="font-sans text-center w-[100%] ">
                   {slicePrincipal.brand}
                 </p>
               </div>
@@ -124,28 +122,27 @@ export default function Carrusel() {
                   />
                 </svg>
               </button>
-              <div className="flex flex-shrink-0 flex-col self-center">
+              <div className="md:flex flex-col justify-end h-full w-[25%] opacity-75 hidden">
                 <img
-                  className="w-[297.44px] h-[202.91px] justify-center "
+                  className="w-[100%] h-[ 200px] justify-center object-cover"
                   src={sliceDerecha.image}
                   alt="image"
                 />
-                <h2 className="font-sans text-3xl text-center max-w-72">
+                <h2 className="font-sans text-2xl text-center w-full">
                   {sliceDerecha.model}
                 </h2>
-                <p className="font-sans text-center max-w-72">
+                <p className="font-sans text-center w-full">
                   {sliceDerecha.brand}
                 </p>
               </div>
             </div>
-          </div>
-          <div className="flex justify-center align-bottom">
+          <div className="flex justify-center align-bottom h-[100px]">
             <button
               onClick={() => {
                 navigator("/categoriasDeVehiculos/all");
               }}
               type="button"
-              className=" border-2 bg-[#333333] text-background py-4 px-10 rounded-md mt-8"
+              className=" border-2 bg-[#333333]  text-background py-4 px-10 rounded-md mt-8"
             >
               Mirá todos los Autos
             </button>
