@@ -3,7 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 type Treserve = {
   userId?: number;
   lugarRetiro?: string;
+  idLugarRetiro?: number;
   lugarEntrega?: string;
+  idLugarEntrega?: number;
   fechaRetiro?: string;
   fechaEntrega?: string;
   horaEntrega?: string;

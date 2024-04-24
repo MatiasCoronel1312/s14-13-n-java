@@ -1,6 +1,6 @@
 
 import { useAppDispatch, useAppSeletor } from "../../redux/store";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaLocationDot } from "react-icons/fa6";
 import { postReserve } from "../../redux/reserveSlice";
@@ -10,21 +10,28 @@ export const NuevaReserva = () => {
     const [onFocusEntrega, setOnFocusEntrega] = useState(false)
     const [onFocusRetiro, setOnFocusRetiro] = useState(false)
     const [agenciaRetiro, setAgenciaRetiro] = useState<string>('');
+    //const [idAgenciaRetiro, setIdAgenciaRetiro] = useState<number>();
+    const idAgenciaRetiro = useRef<number>()
     const [fechaRetiro, setFechaRetiro] = useState<string>('');
     const [horaRetiro, setHoraRetiro] = useState<string>('');
     const [agenciaEntrega, setAgenciaEntrega] = useState<string>('');
+    //const [idAgenciaEntrega, setIdAgenciaEntrega] = useState<number>();
+    const idAgenciaEntrega = useRef<number>()
     const [fechaEntrega, setFechaEntrega] = useState<string>('');
     const [horaEntrega, setHoraEntrega] = useState<string>('');
     const [onFocus, setOnFocus] = useState(false);
     const [popup, setPopup] = useState(false);
+    const [errorAgence, setErrorAgence] = useState(false)
     const navigator = useNavigate();
     const dispatch = useAppDispatch(); //dispatch para mas adelante para guardar los datos de la reserva
     const dataReserve = useAppSeletor(state=>state.dataReserve.dataReserve)//useSelector para recibir los datos de la agencia en el caso de haber seleccionado en la lista de agencias
     const allAgencias = useAppSeletor(state=>state.allAgencias.agencias)
     
     useEffect(() => {
-    if(dataReserve.lugarRetiro){
-      handleChange(setAgenciaRetiro,'agenciaRetiro',dataReserve.lugarRetiro)
+    if(dataReserve.idLugarRetiro){
+      let agencia = allAgencias.find((agen)=>agen.id==dataReserve.idLugarRetiro)
+      idAgenciaRetiro.current = agencia?.id      
+      handleChange(setAgenciaRetiro,'agenciaRetiro',agencia?.name)
       focusInput('agenciaRetiro')
     }
     }, [dataReserve])
@@ -43,7 +50,7 @@ export const NuevaReserva = () => {
         }
       }
       const handleOnBlur = () =>{
-      if(agenciaRetiro !== '' && horaRetiro !== '' && fechaRetiro !== ''){
+      if(agenciaRetiro !== '' && horaRetiro !== '' && fechaRetiro !== ''){    
         setOnFocus(true)
       }else{  
         setOnFocus(false)
@@ -57,18 +64,30 @@ export const NuevaReserva = () => {
       );
     const handleSubmit = () => {
       if(agenciaRetiro !== '' && horaRetiro !== '' && fechaRetiro !== '' && agenciaEntrega !== '' && horaEntrega !== '' && fechaEntrega !== ''){
-         dispatch(postReserve({
-        lugarEntrega: agenciaEntrega,
-        lugarRetiro: agenciaRetiro,
-        fechaEntrega: fechaEntrega,
-        fechaRetiro: fechaRetiro,
-        horaEntrega: horaRetiro,
-        horaRetiro: horaEntrega,
-      }))
-      navigator("/categoriasDeVehiculos/seleciona")
+        let agenRetiro = allAgencias.find((agencia)=>agencia.name===agenciaRetiro);
+        let agenEntrega = allAgencias.find((agencia)=>agencia.name===agenciaEntrega);
+        if(agenRetiro && agenEntrega){
+          idAgenciaRetiro.current = agenRetiro.id
+          idAgenciaEntrega.current = agenEntrega.id
+          dispatch(postReserve({
+            lugarEntrega: agenciaEntrega,
+            idLugarEntrega: idAgenciaEntrega.current,
+            lugarRetiro: agenciaRetiro,
+            idLugarRetiro: idAgenciaRetiro.current,
+            fechaEntrega: fechaEntrega,
+            fechaRetiro: fechaRetiro,
+            horaEntrega: horaRetiro,
+            horaRetiro: horaEntrega,
+          }))
+          navigator("/categoriasDeVehiculos/seleciona")
+        }else{
+            setErrorAgence(true)
+            setTimeout(() => {
+              setErrorAgence(false)
+            }, 2000);
+        }
       }else{  
-        let id:string = '';
-        
+        let id:string = '';        
         if( agenciaRetiro == '' ){
            id ='agenciaRetiro';
         }else if ( horaRetiro == '' ){
@@ -81,12 +100,10 @@ export const NuevaReserva = () => {
            id= 'horaEntrega';
         }else if ( fechaEntrega == ''){
            id = 'fechaEntrega';
-        }
-        
+        }      
         focusInput(id)
- }      }
+      }}
      
-    
 
     const focusInput = (id: string) => {
       const inputElement = document.getElementById(id);
@@ -103,8 +120,8 @@ export const NuevaReserva = () => {
     <div className="w-full">
      
       <div className={` Gradient-V p-4 my-6 rounded-xl flex flex-col justify-center mx-auto transition-all duration-200 ease-linear ${onFocus?'h-[200px]':'h-[115px]'}`}>
-          <div className={`flex justify-between transition-all duration-300 ease-linear ${onFocus?'h-[45%]':'h-[85%]'}`}>
-            <p className="w-[16%] text-white text-[20px] font-semibold self-center text-center">Nueva Reserva</p>
+          <div className={`flex flex-col md:flex-row justify-between transition-all duration-300 ease-linear ${onFocus?'h-[45%]':'h-[85%]'}`}>
+            <p className="w-full md:w-[16%] text-white text-[16px] md:text-[20px] font-semibold md:self-center text-center">Nueva Reserva</p>
             <div className="w-[50%] h-full relative">
                 <div className="w-full h-full relative">
                     <input
@@ -217,7 +234,8 @@ export const NuevaReserva = () => {
 
           </div>}
       </div>
-      {popup&&<div className="absolute left-1/4 top-1/4 z-50 w- [50%] p-10 h- [90px] text-center text-2xl font- semibold border-[1px] border-text bg-[#F9D8B2] text-text shadow-lg">Completa los datos de tu reserva para seguir.</div>}
+      {popup&&<div className="absolute left-1/4 top-1/4 z-50 w- [40%] p-5 text-center text-xl font- semibold border-[1px] border-[#707070] bg-[#F9D8B2] text-text shadow-lg">Completa los datos de tu reserva para seguir.</div>}
+      {errorAgence&&<div className="absolute left-1/4 top-1/4 z-50 w- [40%] p-5 text-center text-xl font- semibold border-[1px] border-[#707070] bg-[#ffffff] text-accent shadow-lg">Nombre de agencia incorrecta.</div>}
     </div>
   );
 };

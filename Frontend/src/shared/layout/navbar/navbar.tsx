@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import bars from "../../../assets/bars.png";
 
 const navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   useEffect(() => {
     window.addEventListener("load", handleClick);
   }, [])
@@ -20,19 +20,19 @@ const navbar = () => {
 
   const menu = (
       <ul className="flex absolute md:relative flex-col bg-[#707070] md:justify-between md:w-full w-[100%] text-[12px] md:flex-row lg:text-[16px] gap-3 top-[80px] md:top-0 right-[0px]">
-          <Link onClick={handleClick}
+          <Link onClick={()=>{handleClick()}}
             to="/categoriasDeVehiculos/all"
             className="text-background text-center py-5 hover:bg-text md:py-0 hover:md:bg-[#707070]"
           >
             CATEGORIAS DE VEHICULOS
           </Link>
-          <Link onClick={handleClick} to="/redDeAgencias" className="text-background text-center py-5 hover:bg-text md:py-0 hover:md:bg-[#707070]">
+          <Link onClick={()=>{handleClick()}} to="/redDeAgencias" className="text-background text-center py-5 hover:bg-text md:py-0 hover:md:bg-[#707070]">
             RED DE AGENCIAS
           </Link>
-          <Link onClick={handleClick} to="/tipsTuristicos" className="text-background text-center py-5 hover:bg-text md:py-0 hover:md:bg-[#707070]">
+          <Link onClick={()=>{handleClick()}} to="/tipsTuristicos" className="text-background text-center py-5 hover:bg-text md:py-0 hover:md:bg-[#707070]">
             TIPS DE VIAJES
           </Link>
-          <Link onClick={handleClick} to="/dudas" className="text-background text-center py-5 hover:bg-text md:py-0 my-auto hover:md:bg-[#707070]">
+          <Link onClick={()=>{handleClick()}} to="/dudas" className="text-background text-center py-5 hover:bg-text md:py-0 my-auto hover:md:bg-[#707070]">
             DUDAS
           </Link>
       </ul>
@@ -42,7 +42,7 @@ const navbar = () => {
   return (
     <header className="w-full bg-[#707070] flex justify-center sticky top-0 z-[45]">
       <div className=" w-full flex justify-center  shadow-lg">
-        <div className="h-[80px] lg:w-[85%] md:w-[90%] sm:w-[95%] w-[97%] flex items-center justify-between ">
+        <div className="h-[80px] lg:w-[85%] w-[90%] flex items-center justify-between ">
           <Link to="/">
             <img src={GoCar} alt="GoCar logo" className="w-[129px] h-[25px] lg:w-[134px] lg:h-[30px]" />
           </Link>
