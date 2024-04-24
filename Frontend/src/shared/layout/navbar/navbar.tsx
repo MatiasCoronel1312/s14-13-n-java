@@ -11,9 +11,13 @@ const navbar = () => {
   }, []);
 
   const handleClick = () => {
+    console.log('aqui');
+    
     if (window.matchMedia("(max-width: 768px)").matches) {
+      console.log('aqui 700');
       setIsOpen(!isOpen);
     } else {
+      console.log('aqui 0');
       setIsOpen(false);
     }
   };
@@ -53,7 +57,7 @@ const navbar = () => {
           <div className="md:w-[60%] md:block hidden">{menu}</div>
           <LogInArea />
           <div
-            onClick={handleClick}
+            onClick={()=>{handleClick()}}
             className="w-[54px] h-[42px] rounded-lg Gradient-H_hover relative cursor-pointer md:hidden flex justify-center items-center  "
           >
             <div className="w-[52px] h-[40px] bg-[#707070] flex justify-center items-center rounded-lg">
