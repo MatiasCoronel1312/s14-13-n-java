@@ -15,7 +15,7 @@ export default function BackViewCard({
 }: Props) {
   return (
     <div
-      className={`w-[375px] ${
+      className={`w-[350px] ${
         isCategory ? "h-[556px]" : "h-[500px]"
       } border border-gray-300 bg-white rounded-xl flex flex-col items-center  py-6 shadow-card relative`}
     >

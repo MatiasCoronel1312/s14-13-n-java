@@ -14,7 +14,6 @@ const DatosDePagos = () => {
   if (dataReserve === undefined) {
     return <Home />;
   }
-  const isLogin = true; // useAppSeletor((state) => state.login.isLogin );
 
   return (
     <div className="w-full bg-background flex justify-center">
@@ -22,7 +21,7 @@ const DatosDePagos = () => {
         <div className="h-[210px] mt-6  flex justify-center items-center">
           <TimeLine posicion={4} />
         </div>
-        <CompletarPago isLogin={isLogin} />
+        <CompletarPago />
 
         <SummaryBooking />
       </div>

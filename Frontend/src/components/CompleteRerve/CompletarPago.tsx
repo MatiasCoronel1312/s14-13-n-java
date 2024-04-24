@@ -1,8 +1,11 @@
+import { useAppSeletor } from "../../redux/store";
 import usePostReserve from "./hooks/usePostReserve";
 
-export default function CompletarPago({ isLogin }: { isLogin: boolean }) {
+export default function CompletarPago() {
+  const userReduces = useAppSeletor((state) => state.user.userData);
+  const userIsLogin = userReduces != undefined;
   const { title, text, showReservation, completeReservationAction } =
-    usePostReserve(isLogin);
+    usePostReserve(userIsLogin);
 
   return (
     <section className="relative ">
@@ -18,7 +21,7 @@ export default function CompletarPago({ isLogin }: { isLogin: boolean }) {
         <div
           onClick={completeReservationAction}
           className={`text-[#F5F5F5] font-sl  rounded-lg   ${
-            isLogin ? "w-[236px]" : "w-[136px]"
+            userIsLogin ? "w-[236px]" : "w-[136px]"
           } h-[44px] bg-[#333333] flex  justify-center items-center cursor-pointer`}
         >
           {title}

@@ -1,6 +1,8 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import apiUrl from "../env/environment.prod";
+import useAuthLogin from "../shared/layout/login/hooks/useAuthLogin";
+import axios from "axios";
 
 const apiBase = apiUrl;
 
@@ -17,7 +19,6 @@ interface IFormData {
 }
 
 export default function Registro() {
-  const navigate = useNavigate();
   const [formData, setFormData] = useState<IFormData>({
     nombre: "",
     apellido: "",
@@ -30,6 +31,7 @@ export default function Registro() {
     confirmarContrasena: "",
   });
   const [formErrors, setFormErrors] = useState<Partial<IFormData>>({});
+  const { isLoginSuccess } = useAuthLogin();
 
   const validateForm = () => {
     const errors: Partial<IFormData> = {};
@@ -72,35 +74,25 @@ export default function Registro() {
     e.preventDefault();
 
     if (validateForm()) {
-      try {
-        const response = await fetch(`${apiBase}/auth/register`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email: formData.email,
-            password: formData.contrasena,
-            name: formData.nombre,
-            lastName: formData.apellido,
-            identification: formData.tipoDocumento,
-            identificationNumber: formData.numeroDocumento,
-            country: formData.nacionalidad,
-            phoneNumber: formData.numeroTelefono,
-          }),
+      const dataRegister = {
+        email: formData.email,
+        password: formData.contrasena,
+        name: formData.nombre,
+        lastName: formData.apellido,
+        identification: formData.tipoDocumento,
+        identificationNumber: formData.numeroDocumento,
+        country: formData.nacionalidad,
+        phoneNumber: formData.numeroTelefono,
+      };
+
+      axios
+        .post(`${apiBase}/auth/register`, dataRegister)
+        .then((response) => {
+          isLoginSuccess(response.data.token);
+        })
+        .catch((error) => {
+          console.error("Error al registrar:", error);
         });
-
-        const responseData = await response.json();
-
-        if (response.ok) {
-          console.log("Registro exitoso, token:", responseData.token);
-          navigate("/");
-        } else {
-          console.error("Error al registrar:", responseData.error);
-        }
-      } catch (error) {
-        console.error("Error:", error);
-      }
     }
   };
 
