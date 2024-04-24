@@ -21,11 +21,10 @@ const SummaryBooking = () => {
   console.log(lugar);
       
   useEffect(() => {
-
      scrollTop();
-
 }, []);
-   //console.log(lugar1,lugar2);
+ 
+   
    console.log(indiceAleatorio1,indiceAleatorio2);
    
   const handleClick = (id: number | undefined) => {
