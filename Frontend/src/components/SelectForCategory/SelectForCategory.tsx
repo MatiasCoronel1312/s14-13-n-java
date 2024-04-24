@@ -26,7 +26,7 @@ const SelectForCategory = () => {
     <div className="w-full h-full flex flex-wrap bg-background justify-center gap-x-7 gap-y-7 pb-7 ">
           {carrosCategory.map((categoría) => (
             // <p key={categoría}>{categoría}</p>
-            <div className="gap-y-1.5" key={categoría}>
+            <div className="" key={categoría}>
               <CardShowDetail
                 isCategory={true}
                 showCars={carrosInfo.filter(
