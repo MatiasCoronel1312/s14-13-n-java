@@ -4,16 +4,6 @@ import { useAppSeletor } from "../../redux/store";
 import axios from "axios";
 import { TSelectACard } from "../../redux/coberturasSlice";
 
-// const allCoberturas = [
-//   {
-//     title: "Protección Especial con Franquicia",
-//     price: 0.03,
-//   },
-//   {
-//     title: "Protección Premium",
-//     price: 20.0,
-//   },
-// ];
 export default function CoberturasSection() {
   const [coberturaSelected, setCoberturaSelected] = useState("");
   const dataSegueridad = useAppSeletor(
@@ -58,6 +48,7 @@ export default function CoberturasSection() {
         {insurance.map((cobertura) => (
           <CoberturasBanner
             key={cobertura.id}
+            id={cobertura.id}
             name={cobertura.name}
             price={cobertura.price}
             setCoberturaSelected={setCoberturaSelected}

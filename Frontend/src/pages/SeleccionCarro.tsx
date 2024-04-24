@@ -19,6 +19,8 @@ const SeleccionDeCarro = () => {
   const dataReserve = dataReduces.dataReserve.dataReserve.fechaEntrega;
   const dataMetodo = dataReduces.coberturas.cargos.metodoPago.name;
 
+  const hasInsurance = dataReduces.coberturas.cargos.seguridad.name.length > 3;
+
   if (dataReserve === undefined) {
     return <Home />;
   }
@@ -59,20 +61,20 @@ const SeleccionDeCarro = () => {
 
         <div
           onClick={() => {
-            if (selectACard.length > 5) {
+            if (selectACard.length > 5 && hasInsurance) {
               goToPagoPage();
             }
           }}
           className="flex w-full justify-center items-center  my-10"
         >
-          {selectACard.length > 5 ? (
+          {selectACard.length > 5 && hasInsurance ? (
             <ButtonMain title="Continuar a Pago" />
           ) : (
             <div
               onClick={() => handleScrollToBack(0)}
-              className="w-[293px] h-[64px] flex justify-center items-center bg-gray-300 cursor-pointer hover:shadow-xl hover:bg-slate-600 hover:text-white transition-all"
+              className="w-[330px] h-[64px] flex justify-center items-center bg-gray-300 cursor-pointer hover:shadow-xl hover:bg-slate-600 hover:text-white transition-all"
             >
-              <p>Selecciona Metodo de Pago.</p>
+              <p>Selecciona antes metodo de Pago y sefuro.</p>
             </div>
           )}
         </div>
