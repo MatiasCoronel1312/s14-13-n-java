@@ -17,7 +17,8 @@ CREATE TABLE vehicles (
         'ECONOMIC',
         'MINIVAN',
         'VAN',
-        'TRUCK'
+        'TRUCK',
+        'COMPACT_HATCHBACK'
     ) NOT NULL,
     deleted BOOLEAN NOT NULL DEFAULT FALSE
 );

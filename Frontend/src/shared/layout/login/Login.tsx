@@ -83,19 +83,22 @@ export const Login: React.FC<LoginProps> = () => {
 
   return (
     <form
-      className="my-[63px] w-[1062px] flex items-center justify-center flex-col Gradient-T rounded-2xl px-[30px] pb-[30px]"
+      className="my-[63px] w-[330px] xl:w-[1062px] flex items-center justify-center flex-col Gradient-T rounded-2xl px-[20px] pb-[30px]"
       onSubmit={handleSubmit}
     >
-      <h3 className="my-[30px] text-background text-[32px]">
+      <h3 className="my-[30px] text-background text-lg lg:text-[32px]">
         Inicio de sesión
       </h3>
-      <div className="flex flex-col items-center justify-center w-full gap-10 bg-background py-9">
-        <div className="flex flex-col w-[450px] gap-2">
+      <div className="flex flex-col items-center justify-center w-full gap-10 px-5 bg-background py-9">
+        <div className="flex w-full flex-col lg:w-[450px] gap-2">
+          <p className="text-sm text-center">
+            Los campos marcados con un asterisco (*) son obligatorios.
+          </p>
           <label className="text-sm font-bold uppercase" htmlFor="email">
-            Email
+            Email*
           </label>
           <input
-            className={`py-4 pl-6 border border-black rounded bg-background ${
+            className={`py-4 pl-6 border border-black rounded-tl-[10px] rounded-br-[10px] bg-background ${
               errorMessage && !validateEmail(email) ? "border-red-500" : ""
             }`}
             type="email"
@@ -108,12 +111,12 @@ export const Login: React.FC<LoginProps> = () => {
             <p className="text-sm text-red-500">Ingrese un email válido</p>
           )}
         </div>
-        <div className="flex flex-col w-[450px] gap-2">
+        <div className="flex w-full flex-col lg:w-[450px] gap-2">
           <label className="text-sm font-bold uppercase" htmlFor="password">
-            Contraseña
+            Contraseña*
           </label>
           <input
-            className={`py-4 pl-6 border border-black rounded bg-background ${
+            className={`py-4 pl-6 border border-black rounded-tl-[10px] rounded-br-[10px] bg-background ${
               errorMessage && !validatePassword(password)
                 ? "border-red-500"
                 : ""
@@ -131,13 +134,13 @@ export const Login: React.FC<LoginProps> = () => {
               Email o contraseña incorrecto
             </p>
           )}
-          <p>Olvidaste tu contraseña?</p>
+          <p className="text-sm lg:text-base">Olvidaste tu contraseña?</p>
         </div>
-        <p>
+        <p className="text-sm lg:text-base">
           Aun no tienes una cuenta? <Link to="/registro">Registrarme</Link>
         </p>
         <button
-          className="px-12 py-5 rounded-lg Gradient-T text-background"
+          className="w-full py-5 rounded-lg lg:px-12 lg:w-[252px] Gradient-T text-background"
           type="submit"
         >
           Iniciar sesión
