@@ -47,29 +47,29 @@ const CarouselTourism = ({ showSites }: Props) => {
       <div className="flex flex-col w-full">
         <div className="flex justify-around">
           <CardDestinoTurismo
-            id={showSites[indexSite].id}
-            imagen={showSites[indexSite].images[1]}
-            descripcion={showSites[indexSite].phase}
+            id={showSites[indexSite]?.id}
+            imagen={showSites[indexSite]?.images[1]}
+            descripcion={showSites[indexSite]?.phase}
           />
           <div className="hidden md:block">
             <CardDestinoTurismo
-              id={imagen1.id}
-              imagen={imagen1.images[1]}
-              descripcion={imagen1.phase}
+              id={imagen1?.id}
+              imagen={imagen1?.images[1]}
+              descripcion={imagen1?.phase}
             />
           </div>
           <div className="hidden lg:block">
             <CardDestinoTurismo
-              id={imagen2.id}
-              imagen={imagen2.images[1]}
-              descripcion={imagen2.phase}
+              id={imagen2?.id}
+              imagen={imagen2?.images[1]}
+              descripcion={imagen2?.phase}
             />
           </div>
           <div className="hidden xl:block">
             <CardDestinoTurismo
-              id={imagen3.id}
-              imagen={imagen3.images[1]}
-              descripcion={imagen3.phase}
+              id={imagen3?.id}
+              imagen={imagen3?.images[1]}
+              descripcion={imagen3?.phase}
             />
           </div>
         </div>
