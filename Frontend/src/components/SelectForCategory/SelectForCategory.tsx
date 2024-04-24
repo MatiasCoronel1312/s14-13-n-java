@@ -23,12 +23,10 @@ const SelectForCategory = () => {
   }, []);
 
   return (
-    <section className="w-[1200px] min-h-[707px] h-full bg-background  mx-auto  ml-[2px] ">
-      <div className="flex items-centerd justify-betdween">
-        <div className="grid grid-cols-3 grid-rows-3 w-full min-h-[1800px]  mb-8  ">
+    <div className="w-full h-full flex flex-wrap bg-background justify-center gap-x-7 gap-y-7 pb-7 ">
           {carrosCategory.map((categoría) => (
             // <p key={categoría}>{categoría}</p>
-            <div className="my-6" key={categoría}>
+            <div className="" key={categoría}>
               <CardShowDetail
                 isCategory={true}
                 showCars={carrosInfo.filter(
@@ -37,9 +35,7 @@ const SelectForCategory = () => {
               />
             </div>
           ))}
-        </div>
-      </div>
-    </section>
+    </div>
   );
 };
 

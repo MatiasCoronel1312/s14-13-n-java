@@ -15,20 +15,13 @@ const CategoriaDeVehiculos = () => {
     location?.state?.isReserva || dataReserve.fechaRetiro !== undefined;
 
   return (
-    <div className="w-full bg-background flex justify-center">
-      <div className="h-auto lg:w-[85%] md:w-[90%]  ">
-        <div className=" ">
-          {isFromReserva ? (
-            <div className="h-[210px] mt-6  flex justify-center items-center">
-              <TimeLine posicion={2} />
-            </div>
-          ) : (
-            <div className=" h-[210px]">
-              <NuevaReservaPrueba />
-            </div>
-          )}
-        </div>
-
+    <div className='w-full h-full bg-background flex justify-center px-3'>
+      <div className="lg:w-[85%] md:w-[90%] w-full h-full flex flex-col items-center">
+        {isFromReserva ? (
+          <TimeLine posicion={2} />
+        ) : (
+          <NuevaReservaPrueba />
+        )}
         <SelectForCategory />
       </div>
     </div>
