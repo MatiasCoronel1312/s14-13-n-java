@@ -5,7 +5,7 @@ import { postReserve } from "../../redux/reserveSlice";
 
 import { useForm } from "react-hook-form";
 import { Formulario } from "./Formulario.interface";
-import { Link } from "react-router-dom";
+
 export const NuevaReserva = () => {
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
@@ -14,7 +14,7 @@ export const NuevaReserva = () => {
 
   const dataReserve = useAppSeletor((state) => state.dataReserve.dataReserve); //useSelector para recibir los datos de la agencia en el caso de haber seleccionado en la lista de agencias
   useEffect(() => {
-    if (dataReserve.lugarRetiro) {
+    if (dataReserve?.lugarRetiro) {
       console.log(dataReserve.lugarRetiro);
     }
   }, [dataReserve]);

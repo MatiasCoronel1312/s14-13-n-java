@@ -28,7 +28,7 @@ export const NuevaReserva = () => {
     const allAgencias = useAppSeletor(state=>state.allAgencias.agencias)
     
     useEffect(() => {
-    if(dataReserve.idLugarRetiro){
+    if(dataReserve?.idLugarRetiro){
       let agencia = allAgencias.find((agen)=>agen.id==dataReserve.idLugarRetiro)
       idAgenciaRetiro.current = agencia?.id      
       handleChange(setAgenciaRetiro,'agenciaRetiro',agencia?.name)

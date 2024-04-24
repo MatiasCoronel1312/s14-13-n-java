@@ -12,7 +12,8 @@ const CategoriaDeVehiculos = () => {
 
   // add check if is from reserva or not in the redux state
   const isFromReserva =
-    location?.state?.isReserva || dataReserve.fechaRetiro !== undefined;
+    location?.state?.isReserva || dataReserve?.fechaRetiro !== undefined;
+console.log(dataReserve);
 
   return (
     <div className="w-full bg-background flex justify-center">
