@@ -17,14 +17,9 @@ const SummaryBooking = () => {
   const indiceAleatorio2 =  (indiceAleatorio1 < todoLugares.length -1  && indiceAleatorio1 > 1 ) ? indiceAleatorio1 + 1: indiceAleatorio1 - 1;
   const lugar1 = todoLugares[indiceAleatorio1];
   const lugar2 = todoLugares[indiceAleatorio2 < 0 ? 0 : indiceAleatorio2] ;
-
-  
-      const lugar = todoLugares.find((lugares) => lugares.id == parseInt(params.id ?? "1"));
-  
-      console.log(lugar);
+  const lugar = todoLugares.find((lugares) => lugares.id == parseInt(params.id ?? "1"));
+  console.log(lugar);
       
-
-
   useEffect(() => {
 
      scrollTop();
@@ -170,10 +165,6 @@ const SummaryBooking = () => {
 
     </div>
  
-    
-       
-    
-
   )
 }
 export default SummaryBooking;
