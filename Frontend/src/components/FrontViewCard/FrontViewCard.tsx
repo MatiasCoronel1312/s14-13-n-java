@@ -63,7 +63,7 @@ export function FrontViewCard({
         </div>
       )}
       <div
-        className={` ${hasStock ? "bg-white " : "bg-[#FFF6EC] "}  w-[375px] ${
+        className={` ${hasStock ? "bg-white " : "bg-[#FFF6EC] "}  w-[350px] ${
           isCategory ? "h-[556px]" : "h-[500px]"
         } border border-gray-300 rounded-xl flex flex-col items-center  py-6 shadow-card relative`}
       >
