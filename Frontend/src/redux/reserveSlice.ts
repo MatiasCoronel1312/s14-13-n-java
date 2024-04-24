@@ -13,7 +13,7 @@ type Treserve = {
   agenciaEntrega?: string;
 };
 interface reserve {
-  dataReserve: Treserve;
+  dataReserve?: Treserve;
 }
 
 const estadoInicial: reserve = {

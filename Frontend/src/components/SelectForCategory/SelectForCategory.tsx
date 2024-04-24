@@ -3,9 +3,6 @@ import { TCarro } from "../../assets/carsInfo";
 import CardShowDetail from "../CardShowDetail/CardShowDetail";
 import axios from "axios";
 
-// const carCategory = Array.from(new Set(carros.map((car) => car.categoría)));
-// console.log(carCategory);
-
 const SelectForCategory = () => {
   const [carrosInfo, setCarrosInfo] = useState<TCarro[]>([]);
   const [carrosCategory, setCarrosCategory] = useState<string[]>([]);
@@ -23,6 +20,7 @@ const SelectForCategory = () => {
   }, []);
 
   return (
+
     <div className="w-full h-full flex flex-wrap bg-background justify-center gap-x-7 gap-y-7 pb-7 ">
           {carrosCategory.map((categoría) => (
             // <p key={categoría}>{categoría}</p>
@@ -36,6 +34,7 @@ const SelectForCategory = () => {
             </div>
           ))}
     </div>
+
   );
 };
 
