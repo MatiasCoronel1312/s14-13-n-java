@@ -4,15 +4,11 @@ import NuevaReservaPrueba from "../components/NuevaReserva/NuevaReservaPrueba";
 
 import { useAppSeletor } from "../redux/store";
 
-//https://gocarapp.onrender.com/api/vehicles/all
-
 const CategoriaDeVehiculos = () => {
   const dataReduces = useAppSeletor((state) => state);
 
   const dataReserve = dataReduces.dataReserve.dataReserve;
-  const isFromReserva = dataReserve.fechaRetiro !== undefined;
-
-  // navigate("/finalizar-pago");
+  const isFromReserva = dataReserve?.fechaRetiro !== undefined;
 
   return (
     <div className="w-full bg-background flex justify-center">
@@ -24,7 +20,7 @@ const CategoriaDeVehiculos = () => {
             </div>
           ) : (
             <div className=" h-[210px]">
-              <NuevaReservaPrueba />
+              <NuevaReservaPrueba />{" "}
             </div>
           )}
         </div>
