@@ -4,6 +4,7 @@ import { CgEye } from "react-icons/cg";
 import { useAppDispatch } from "../../redux/store";
 import { postTarifaSeguridad } from "../../redux/coberturasSlice";
 interface Props {
+  id: number;
   name: string;
   price: number;
   coberturaSelected: string;
@@ -11,6 +12,7 @@ interface Props {
 }
 
 export default function CoberturasBanner({
+  id,
   name,
   price,
   coberturaSelected,
@@ -35,6 +37,7 @@ export default function CoberturasBanner({
   const addSeguridad = () => {
     dispatch(
       postTarifaSeguridad({
+        id,
         name,
         price,
       })

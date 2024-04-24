@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
+
+import useAuthLogin from "./hooks/useAuthLogin";
 
 interface LoginProps {
   onLogin: (email: string, password: string) => void;
@@ -10,7 +12,7 @@ export const Login: React.FC<LoginProps> = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const navigator = useNavigate();
+  const { isLoginSuccess } = useAuthLogin();
 
   const validateEmail = (email: string): boolean => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -31,6 +33,26 @@ export const Login: React.FC<LoginProps> = () => {
     setPassword(event.target.value);
   };
 
+  // const isLoginSuccess = (token: string) => {
+  //   // Aqui se puede hacer algo con el token o el usuario
+  //   const urlDataUser = "https://gocarapp.onrender.com/api/user/profile";
+
+  //   axios
+  //     .get(urlDataUser, {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     })
+  //     .then((response) => {
+  //       dispatch(postUser(response.data));
+  //       navigator(path);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error:", error);
+  //     });
+  // };
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setErrorMessage("");
@@ -46,35 +68,24 @@ export const Login: React.FC<LoginProps> = () => {
     }
 
     try {
-      const response = await axios.post(
-        "https://gocarapp.onrender.com/api/auth/login",
-        {
+      await axios
+        .post("https://gocarapp.onrender.com/api/auth/login", {
           email,
           password,
-        }
-      );
+        })
+        .then((response) => {
+          console.log("Login successful!");
 
-      if (response.status === 200 && response.data.token) {
-        // Handle successful login
-        console.log("Login successful!");
-        console.log(response);
-
-        // Store authentication token or user data
-        // Redirect to protected page
-        navigator("/");
-      } else {
-        // Handle error response
-        const errorData = response.data;
-        if (errorData && errorData.error) {
-          if (errorData.error === "Email or password incorrect") {
+          isLoginSuccess(response.data.token);
+        })
+        .catch((error) => {
+          console.log("error");
+          if (error.response.data) {
             setErrorMessage("Email o contraseña incorrecto");
           } else {
-            setErrorMessage(errorData.error);
+            setErrorMessage("An unknown error occurred.");
           }
-        } else {
-          setErrorMessage("An unknown error occurred.");
-        }
-      }
+        });
     } catch (error) {
       setErrorMessage("Email o contraseña incorrectos");
       console.error(error);
