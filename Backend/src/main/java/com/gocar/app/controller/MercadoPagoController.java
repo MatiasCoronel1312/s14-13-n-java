@@ -19,9 +19,9 @@ public class MercadoPagoController {
     @PostMapping("/pay")
     public String createAndRecirect(HttpServletRequest req, @RequestBody MpPaymentDto mpPaymentDto) throws MPException {
 
-        String FailureUrl = URLLocation.getBaseUrl(req) + "/api/v1/mercadopago/failure";
-        String PendingUrl = URLLocation.getBaseUrl(req) + "/api/v1/mercadopago/pending";
-        String SuccessUrl = URLLocation.getBaseUrl(req) + "/api/v1/mercadopago/success";
+        String FailureUrl = URLLocation.getBaseUrl(req) + "/api/mercadopago/failure";
+        String PendingUrl = URLLocation.getBaseUrl(req) + "/api/mercadopago/pending";
+        String SuccessUrl = URLLocation.getBaseUrl(req) + "/api/mercadopago/success";
 
         Preference preference = new Preference();
 
