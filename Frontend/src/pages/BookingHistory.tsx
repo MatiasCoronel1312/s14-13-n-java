@@ -2,6 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { TMyReserve } from "../interfaces/reservar";
 import { diferenciaEnDias } from "../components/SummaryBooking/const";
+import { useAppSeletor } from "../redux/store";
+import Home from "./Home";
 
 function convertDateTimeToString(inputDateTime: Date): string {
   // Convert string to Date object
@@ -17,9 +19,9 @@ function convertDateTimeToString(inputDateTime: Date): string {
 }
 const BookingHistory = () => {
   const [infoReservation, setInfoReservation] = useState<TMyReserve[]>([]);
-
+  const dataReduces = useAppSeletor((state) => state);
+  const token = dataReduces.token.tokenData;
   const getBookings = () => {
-    const token = window.localStorage.getItem("token");
     const urlReserve = "https://gocarapp.onrender.com/api/reservation/user";
 
     axios
@@ -40,7 +42,9 @@ const BookingHistory = () => {
   useEffect(() => {
     getBookings();
   }, []);
-
+  if (token === undefined) {
+    return <Home />;
+  }
   return (
     <div className="w-full h-full bg-background flex justify-center px-3">
       <div className="lg:w-[85%] md:w-[90%] w-full h-full flex flex-col items-center">
