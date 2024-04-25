@@ -11,8 +11,8 @@ import { resetReserve } from "../../../redux/reserveSlice";
 function usePostReserve(isLogin: boolean) {
   const dataReduces = useAppSeletor((state) => state);
   const navigate = useNavigate();
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [showError, setShowError] = useState("");
+  const [loading, setLoading] = useState(false);
   const url = "https://gocarapp.onrender.com/api";
   const dispatch = useAppDispatch();
 
@@ -64,8 +64,6 @@ function usePostReserve(isLogin: boolean) {
       const urlRespose = response.data.slice(9);
       setShowReservation(false);
       window.open(urlRespose, "_blank");
-
-      navigate("/");
     });
   };
 
@@ -73,7 +71,7 @@ function usePostReserve(isLogin: boolean) {
     const urlCreateReserve =
       "https://gocarapp.onrender.com/api/reservation/save";
 
-    const token = window.localStorage.getItem("token");
+    const token = dataReduces.token.tokenData;
 
     const postData = {
       vehicleId: dataAutoReduce.id,
@@ -98,23 +96,36 @@ function usePostReserve(isLogin: boolean) {
         },
       })
       .then(() => {
-        navigate("/");
+        setShowReservation(true);
+        //setLoading(true);
+
+        setTimeout(() => {
+          setLoading(false);
+          setShowReservation(false);
+
+          // clean all reducers after complete reservation
+          dispatch(clearCars());
+          dispatch(reseCoberturas());
+          dispatch(resetReserve());
+          navigate("/");
+        }, 2000);
       })
       .catch((error) => {
-        console.error("Error:", error);
-      });
+        setLoading(false);
 
-    // clean all reducers after complete reservation
-    dispatch(clearCars());
-    dispatch(reseCoberturas());
-    dispatch(resetReserve());
+        setShowReservation(true);
+        setShowError(error.response.data);
+        setTimeout(() => {
+          setShowReservation(false);
+          setShowError("");
+        }, 2000);
+      });
   };
 
   const completeReservationAction = () => {
     if (!isLogin) {
-      navigate(links);
+      // navigate(links);
     } else {
-      setShowReservation(true);
       setTimeout(() => {
         if (isLogin && pagarMercadopago) {
           externalLink();
@@ -131,9 +142,8 @@ function usePostReserve(isLogin: boolean) {
     links,
     title,
     text,
-    data,
     loading,
-
+    showError,
     pagarMercadopago,
     showReservation,
     completeReservationAction,

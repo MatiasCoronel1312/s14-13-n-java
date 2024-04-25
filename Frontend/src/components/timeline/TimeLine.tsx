@@ -59,14 +59,14 @@ const TimeLine = ({ posicion = 1 }: Props) => {
   const circulos: string =
     "rounded-full border-[4px] border-[#8F8F8F] w-[34px] transition-all duration-1000 ease-in-out h-[34px] flex justify-center items-center ";
   const lineas: string =
-    " border-[3px] border-[#8F8F8F] w-[80px] sm:w-[200px] h-0 transition-all duration-1000 ease-in-out";
+    " border-[3px] border-[#8F8F8F] w-[70px] sm:w-[200px] h-0 transition-all duration-1000 ease-in-out";
   const circulo_interno: string =
     "rounded-full border-[3px] bg-[#F8C381] w-[27px] h-[27px] transition-all duration-1000 ease-in-out";
   const circulo_activo: string =
     "rounded-full border-[4px] border-secondary Gradient-T ";
   // const linea_activa: string = " border-secondary";
   const title: string =
-    "text-center text-[20px] w-[25%] transition-all duration-1000 ease-in-out";
+    "text-center text-[12px] pl-2 sm:text-[20px] w-[25d%] transition-all duration-1000 ease-in-out";
   const stageUno = (path: string): void => {
     console.log("path", path);
     if (path === "/categoriasDeVehiculos/all") {
@@ -80,9 +80,9 @@ const TimeLine = ({ posicion = 1 }: Props) => {
   };
 
   return (
-    <section className="flex justify-center py-5">
+    <section className="flex justify-center p-5   w-screen ">
       {/* keep this for margin  */}
-      <section className="border-[1px] border-black w-screen  pt-3  md:w-[800px] lg:w-[900px] min-h-[134px] flex flex-col  gap-4  items-center justify-center">
+      <section className="border-[1px] border-black bg-white w-screen  pt-5  md:w-[800px] lg:w-[900px] min-h-[134px] flex flex-col  gap-4  items-center justify-center">
         <div className="flex">
           {pointDots.map((dot) => {
             const isSelected = posicion >= dot.id;
@@ -133,9 +133,7 @@ const TimeLine = ({ posicion = 1 }: Props) => {
                   }}
                   className={` ${
                     dotsToPress ? "cursor-pointer hover:text-[#c27100]" : ""
-                  }  w-full ${title} ${
-                    isSelected ? "text-[#C26A00]" : "text-text"
-                  }`}
+                  }   ${title} ${isSelected ? "text-[#C26A00]" : "text-text"}`}
                 >
                   {dot.detail}
                 </div>
