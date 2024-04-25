@@ -1,9 +1,12 @@
 import { useState } from "react";
 import axios from "axios";
-import { useAppSeletor } from "../../../redux/store";
+import { useAppDispatch, useAppSeletor } from "../../../redux/store";
 import { formatearFecha } from "./const";
 import { useNavigate } from "react-router-dom";
 import { diferenciaEnDias } from "../../SummaryBooking/const";
+import { clearCars } from "../../../redux/carsSlice";
+import { reseCoberturas } from "../../../redux/coberturasSlice";
+import { resetReserve } from "../../../redux/reserveSlice";
 
 function usePostReserve(isLogin: boolean) {
   const dataReduces = useAppSeletor((state) => state);
@@ -11,25 +14,12 @@ function usePostReserve(isLogin: boolean) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const url = "https://gocarapp.onrender.com/api";
+  const dispatch = useAppDispatch();
 
   const dataReservaReduce = dataReduces.dataReserve.dataReserve;
   const dataAutoReduce = dataReduces.carro.cars[0];
   const dataCoberturasReduce = dataReduces.coberturas.cargos;
 
-  const postData = {
-    vehicleId: dataAutoReduce.id,
-    retirementAgencyId: 0,
-    insuranceId: dataCoberturasReduce.seguridad.id,
-    retirementDate: formatearFecha(
-      dataReservaReduce?.fechaRetiro as string,
-      dataReservaReduce?.horaRetiro as string
-    ),
-    returnAgencyId: 0,
-    returnDate: formatearFecha(
-      dataReservaReduce?.fechaEntrega as string,
-      dataReservaReduce?.horaEntrega as string
-    ),
-  };
   const pagarMercadopago =
     dataCoberturasReduce.metodoPago.name === "PAGAR CON MERCADOPAGO";
 
@@ -49,18 +39,6 @@ function usePostReserve(isLogin: boolean) {
     title = "Completa tu reserva";
     text = "Su reserva se guardara con exito.";
   }
-
-  const sendData = async () => {
-    try {
-      const response = await axios.post(url, postData);
-      setData(response.data);
-      console.log("response", response);
-
-      setLoading(false);
-    } catch (error) {
-      setLoading(false);
-    }
-  };
 
   const [showReservation, setShowReservation] = useState(false);
 
@@ -86,8 +64,50 @@ function usePostReserve(isLogin: boolean) {
       const urlRespose = response.data.slice(9);
       setShowReservation(false);
       window.open(urlRespose, "_blank");
-      window.location.reload();
+
+      navigate("/");
     });
+  };
+
+  const createReservation = () => {
+    const urlCreateReserve =
+      "https://gocarapp.onrender.com/api/reservation/save";
+
+    const token = window.localStorage.getItem("token");
+
+    const postData = {
+      vehicleId: dataAutoReduce.id,
+      retirementAgencyId: dataReservaReduce?.idLugarRetiro,
+      insuranceId: dataCoberturasReduce.seguridad.id,
+      retirementDate: formatearFecha(
+        dataReservaReduce?.fechaRetiro as string,
+        dataReservaReduce?.horaRetiro as string
+      ),
+      returnAgencyId: dataReservaReduce?.idLugarEntrega,
+      returnDate: formatearFecha(
+        dataReservaReduce?.fechaEntrega as string,
+        dataReservaReduce?.horaEntrega as string
+      ),
+    };
+
+    axios
+      .post(urlCreateReserve, postData, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then(() => {
+        navigate("/");
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+
+    // clean all reducers after complete reservation
+    dispatch(clearCars());
+    dispatch(reseCoberturas());
+    dispatch(resetReserve());
   };
 
   const completeReservationAction = () => {
@@ -98,11 +118,11 @@ function usePostReserve(isLogin: boolean) {
       setTimeout(() => {
         if (isLogin && pagarMercadopago) {
           externalLink();
+          createReservation();
         } else if (isLogin && !pagarMercadopago) {
-          window.location.href = "/";
+          createReservation();
           setShowReservation(false);
         }
-        sendData();
       }, 1000);
     }
   };
@@ -113,7 +133,7 @@ function usePostReserve(isLogin: boolean) {
     text,
     data,
     loading,
-    sendData,
+
     pagarMercadopago,
     showReservation,
     completeReservationAction,

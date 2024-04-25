@@ -3,14 +3,9 @@ import { FaCheck } from "react-icons/fa6";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { useAppDispatch } from "../../redux/store";
-import { postReserve } from "../../redux/reserveSlice";
-import { TSelectACard, reseCoberturas } from "../../redux/coberturasSlice";
-import { idText } from "typescript";
+import { resetReserve } from "../../redux/reserveSlice";
+import { reseCoberturas } from "../../redux/coberturasSlice";
 
-interface TSresetSecured {
-  metodoPago: TSelectACard;
-  seguridad: TSelectACard;
-}
 interface Props {
   posicion?: number;
 }
@@ -52,30 +47,6 @@ const pointDots: PointDots[] = [
   },
 ];
 
-const dataReserve = {
-  userId: undefined,
-  nameUser: undefined,
-  lugarEntrega: undefined,
-  lugarRetiro: undefined,
-  fechaEntrega: undefined,
-  fechaRetiro: undefined,
-  horaEntrega: undefined,
-  horaRetiro: undefined,
-};
-
-const cargos: TSresetSecured = {
-  metodoPago: {
-    id: 0,
-    name: "",
-    price: 0,
-  },
-  seguridad: {
-    id: 0,
-    name: "",
-    price: 0,
-  },
-};
-
 const TimeLine = ({ posicion = 1 }: Props) => {
   const location = useLocation();
   const [addDotsTimeLine, setaAddDotsTimeLine] = useState("");
@@ -88,7 +59,7 @@ const TimeLine = ({ posicion = 1 }: Props) => {
   const circulos: string =
     "rounded-full border-[4px] border-[#8F8F8F] w-[34px] transition-all duration-1000 ease-in-out h-[34px] flex justify-center items-center ";
   const lineas: string =
-    " border-[3px] border-[#8F8F8F] w-[200px] h-0 transition-all duration-1000 ease-in-out";
+    " border-[3px] border-[#8F8F8F] w-[80px] sm:w-[200px] h-0 transition-all duration-1000 ease-in-out";
   const circulo_interno: string =
     "rounded-full border-[3px] bg-[#F8C381] w-[27px] h-[27px] transition-all duration-1000 ease-in-out";
   const circulo_activo: string =
@@ -101,59 +72,32 @@ const TimeLine = ({ posicion = 1 }: Props) => {
     if (path === "/categoriasDeVehiculos/all") {
       navigate(path);
 
-      dispatch(postReserve(dataReserve));
+      dispatch(resetReserve());
     } else {
-      dispatch(reseCoberturas(cargos));
+      dispatch(reseCoberturas());
       navigate(path);
     }
   };
 
   return (
-    <section>
-      <div className="flex justify-center py-5">
-        <div className="border-[1px] border-black md:w-[800px] lg:w-[900px] h-[134px] flex flex-col  gap-4  items-center justify-center">
-          <div className="flex">
-            {pointDots.map((dot) => {
-              const isSelected = posicion >= dot.id;
-              const dotsToPress = dot.pathHabile.includes(addDotsTimeLine);
+    <section className="flex justify-center py-5">
+      {/* keep this for margin  */}
+      <section className="border-[1px] border-black w-screen  pt-3  md:w-[800px] lg:w-[900px] min-h-[134px] flex flex-col  gap-4  items-center justify-center">
+        <div className="flex">
+          {pointDots.map((dot) => {
+            const isSelected = posicion >= dot.id;
+            const dotsToPress = dot.pathHabile.includes(addDotsTimeLine);
 
-              return (
-                <section key={dot.id} className="flex  items-center ">
-                  {dot.id != 1 && (
-                    <div
-                      className={` ${
-                        isSelected ? "border-secondary" : ""
-                      } ${lineas} `}
-                    ></div>
-                  )}
-                  <div className="   flex flex-col justify-center">
-                    <div
-                      onClick={() => {
-                        if (dotsToPress) {
-                          stageUno(dot.path);
-                        }
-                      }}
-                      className={` ${
-                        dotsToPress ? "cursor-pointer" : ""
-                      }  ${circulos} ${isSelected && circulo_activo}`}
-                    >
-                      {isSelected ? (
-                        <FaCheck className="text-[#F8C381]" />
-                      ) : (
-                        <div className={circulo_interno}></div>
-                      )}
-                    </div>
-                  </div>
-                </section>
-              );
-            })}
-          </div>
-          <div className="flex gap-5">
-            {pointDots.map((dot) => {
-              const isSelected = posicion == dot.id;
-              const dotsToPress = dot.pathHabile.includes(addDotsTimeLine);
-              return (
-                <div key={dot.id} className="flex  justify-between w-full ">
+            return (
+              <section key={dot.id} className="flex  items-center ">
+                {dot.id != 1 && (
+                  <div
+                    className={` ${
+                      isSelected ? "border-secondary" : ""
+                    } ${lineas} `}
+                  ></div>
+                )}
+                <div className="   flex flex-col justify-center">
                   <div
                     onClick={() => {
                       if (dotsToPress) {
@@ -161,19 +105,45 @@ const TimeLine = ({ posicion = 1 }: Props) => {
                       }
                     }}
                     className={` ${
-                      dotsToPress ? "cursor-pointer hover:text-[#c27100]" : ""
-                    }  w-full ${title} ${
-                      isSelected ? "text-[#C26A00]" : "text-text"
-                    }`}
+                      dotsToPress ? "cursor-pointer" : ""
+                    }  ${circulos} ${isSelected && circulo_activo}`}
                   >
-                    {dot.detail}
+                    {isSelected ? (
+                      <FaCheck className="text-[#F8C381]" />
+                    ) : (
+                      <div className={circulo_interno}></div>
+                    )}
                   </div>
                 </div>
-              );
-            })}
-          </div>
+              </section>
+            );
+          })}
         </div>
-      </div>
+        <div className="flex gap-5">
+          {pointDots.map((dot) => {
+            const isSelected = posicion == dot.id;
+            const dotsToPress = dot.pathHabile.includes(addDotsTimeLine);
+            return (
+              <div key={dot.id} className="flex  justify-between w-full ">
+                <div
+                  onClick={() => {
+                    if (dotsToPress) {
+                      stageUno(dot.path);
+                    }
+                  }}
+                  className={` ${
+                    dotsToPress ? "cursor-pointer hover:text-[#c27100]" : ""
+                  }  w-full ${title} ${
+                    isSelected ? "text-[#C26A00]" : "text-text"
+                  }`}
+                >
+                  {dot.detail}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
     </section>
   );
 };

@@ -16,8 +16,11 @@ const carsSlice = createSlice({
     postCars: (state, actions) => {
       state.cars = actions.payload;
     },
+    clearCars: (state) => {
+      state.cars = [];
+    },
   },
 });
 
-export const { postCars } = carsSlice.actions;
+export const { postCars, clearCars } = carsSlice.actions;
 export default carsSlice.reducer;
