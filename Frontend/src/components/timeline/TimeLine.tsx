@@ -110,8 +110,8 @@ const TimeLine = ({ posicion = 1 }: Props) => {
 
   return (
     <section>
-      <div className="flex justify-center pt-5">
-        <div className="border-[1px] border-black w-[900px] h-[134px] flex flex-col  gap-4  items-center justify-center">
+      <div className="flex justify-center py-5">
+        <div className="border-[1px] border-black md:w-[800px] lg:w-[900px] h-[134px] flex flex-col  gap-4  items-center justify-center">
           <div className="flex">
             {pointDots.map((dot) => {
               const isSelected = posicion >= dot.id;

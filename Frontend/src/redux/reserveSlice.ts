@@ -3,7 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 type Treserve = {
   userId?: number;
   lugarRetiro?: string;
+  idLugarRetiro?: number;
   lugarEntrega?: string;
+  idLugarEntrega?: number;
   fechaRetiro?: string;
   fechaEntrega?: string;
   horaEntrega?: string;
@@ -21,7 +23,9 @@ const estadoInicial: reserve = {
     userId: undefined,
     agenciaEntrega: undefined,
     agenciaRetiro: undefined,
+    idLugarEntrega: undefined,
     lugarEntrega: undefined,
+    idLugarRetiro: undefined,
     lugarRetiro: undefined,
     fechaEntrega: undefined,
     fechaRetiro: undefined,
