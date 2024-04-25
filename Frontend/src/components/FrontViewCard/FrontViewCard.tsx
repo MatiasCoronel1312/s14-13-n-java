@@ -58,7 +58,7 @@ export function FrontViewCard({
   return (
     <div className="relative">
       {alertReservation && (
-        <div className="absolute bottom-[60px] z-50 right-[45px] w-[340px] h-[100px] bg-white border border-black flex justify-center items-center shadow-xl">
+        <div className="absolute bottom-[60px] z-10 right-[45px] w-[340px] h-[100px] bg-white border border-black flex justify-center items-center shadow-xl">
           Has tu reserva antes de seleccioar carro!
         </div>
       )}

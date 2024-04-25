@@ -66,6 +66,7 @@ const navbar = () => {
           </div>
         </div>
       </div>
+      {isOpen&&menu}
     </header>
   );
 };
