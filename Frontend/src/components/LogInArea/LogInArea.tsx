@@ -2,6 +2,9 @@ import { useAppDispatch, useAppSeletor } from "../../redux/store";
 import { Link } from "react-router-dom";
 import { deleteUser } from "../../redux/UserSlice";
 import { useState } from "react";
+import { reseCoberturas } from "../../redux/coberturasSlice";
+import { clearCars } from "../../redux/carsSlice";
+import { deleteToken } from "../../redux/tokenSlice";
 
 export default function LogInArea() {
   const userReduces = useAppSeletor((state) => state.user.userData);
@@ -11,6 +14,9 @@ export default function LogInArea() {
   const handleLogOut = () => {
     setShowMenu(false);
     dispatch(deleteUser());
+    dispatch(reseCoberturas());
+    dispatch(clearCars());
+    dispatch(deleteToken());
   };
 
   const userIsLogin = userReduces != undefined;

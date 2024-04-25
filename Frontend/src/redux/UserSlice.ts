@@ -15,9 +15,7 @@ interface TInicial {
 }
 
 const estadoInicial: TInicial = {
-
   userData: undefined,
-
 };
 const resetUser: TInicial = {
   userData: undefined,

@@ -16,7 +16,7 @@ const SeleccionDeCarro = () => {
   const [selectACard, SetSelectACard] = useState(" <");
   const dataReduces = useAppSeletor((state) => state);
   const carroSeleccionado = dataReduces.carro.cars;
-  const dataReserve = dataReduces.dataReserve.dataReserve.fechaEntrega;
+  const dataReserve = dataReduces.dataReserve.dataReserve?.fechaEntrega;
   const dataMetodo = dataReduces.coberturas.cargos.metodoPago.name;
 
   const hasInsurance = dataReduces.coberturas.cargos.seguridad.name.length > 3;
@@ -45,7 +45,7 @@ const SeleccionDeCarro = () => {
   return (
     <div className="w-full bg-background flex justify-center">
       <div className="h-auto lg:w-[85%] md:w-[90%]  ">
-        <div className="h-[210px] mt-6  flex justify-center items-center">
+        <div className="h-[210px]   flex justify-center items-center">
           <TimeLine posicion={3} />
         </div>
 
