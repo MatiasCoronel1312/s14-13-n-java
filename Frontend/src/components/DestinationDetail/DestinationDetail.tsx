@@ -17,20 +17,14 @@ const SummaryBooking = () => {
   const indiceAleatorio2 =  (indiceAleatorio1 < todoLugares.length -1  && indiceAleatorio1 > 1 ) ? indiceAleatorio1 + 1: indiceAleatorio1 - 1;
   const lugar1 = todoLugares[indiceAleatorio1];
   const lugar2 = todoLugares[indiceAleatorio2 < 0 ? 0 : indiceAleatorio2] ;
-
-  
-      const lugar = todoLugares.find((lugares) => lugares.id == parseInt(params.id ?? "1"));
-  
-      console.log(lugar);
+  const lugar = todoLugares.find((lugares) => lugares.id == parseInt(params.id ?? "1"));
+  console.log(lugar);
       
-
-
   useEffect(() => {
-
      scrollTop();
-
 }, []);
-   //console.log(lugar1,lugar2);
+ 
+   
    console.log(indiceAleatorio1,indiceAleatorio2);
    
   const handleClick = (id: number | undefined) => {
@@ -48,7 +42,6 @@ const SummaryBooking = () => {
     <div className="lg:w-[85%] md:w-[90%] flex flex-col justify-center">
         <div className="w-full h-[308px] ">
             <NuevaReservaPrueba/>
-
           <p className="text-primary text-[36px] fontFamily-mono font-bold text-center pt-8 pb-2"> Tips de Viajes</p>
           <p className="text-text text-[32px] fontFamily-mono text-center ">Vení a inspirarte para tu próximo destino</p>
           <p className="text-black text-[32px] fontFamily-mono text-center pb-8">{lugar?.city} </p>
@@ -59,8 +52,6 @@ const SummaryBooking = () => {
         <div className="pt-28">
           <img src={lugar?.images[0]}  className=" w-[1440px] h-[392px] "/>
         </div>
-        
-        
 
         <div className="w-full h-[1010px]">
             <div className="flex ">
@@ -135,7 +126,6 @@ const SummaryBooking = () => {
                  
                  </div>
                  <div className="w-[455px] h-[339px] bg-[#FFDDD7] mt-12 ">
-
               
                     <p className="pt-9 text-[16px] fontFamily-mono font-bold w-[401px] h-[36px] text-center">Consulta también otros destinos</p>
         
@@ -170,10 +160,6 @@ const SummaryBooking = () => {
 
     </div>
  
-    
-       
-    
-
   )
 }
 export default SummaryBooking;

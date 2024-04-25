@@ -10,38 +10,46 @@ const navbar = () => {
     window.addEventListener("load", handleClick);
   }, []);
 
-  const handleClick = () => {
-    console.log('aqui');
-    
+  const handleClick = () => {    
     if (window.matchMedia("(max-width: 768px)").matches) {
-      console.log('aqui 700');
       setIsOpen(!isOpen);
     } else {
-      console.log('aqui 0');
       setIsOpen(false);
     }
   };
 
   const menu = (
-      <ul className="flex absolute md:relative flex-col bg-[#707070] md:justify-between md:w-full w-[100%] text-[12px] md:flex-row lg:text-[16px] gap-3 top-[80px] md:top-0 right-[0px]">
-          <Link onClick={handleClick}
-            to="/categoriasDeVehiculos/all"
-            className="text-background text-center py-5 hover:bg-text md:py-0 hover:md:bg-[#707070]"
-          >
-            CATEGORIAS DE VEHICULOS
-          </Link>
-          <Link onClick={handleClick} to="/redDeAgencias" className="text-background text-center py-5 hover:bg-text md:py-0 hover:md:bg-[#707070]">
-            RED DE AGENCIAS
-          </Link>
-          <Link onClick={handleClick} to="/tipsTuristicos" className="text-background text-center py-5 hover:bg-text md:py-0 hover:md:bg-[#707070]">
-            TIPS DE VIAJES
-          </Link>
-          <Link onClick={handleClick} to="/dudas" className="text-background text-center py-5 hover:bg-text md:py-0 my-auto hover:md:bg-[#707070]">
-            DUDAS
-          </Link>
-      </ul>
-)
-
+    <ul className="flex absolute md:relative flex-col bg-[#707070] md:justify-between md:w-full w-[100%] text-[12px] md:flex-row lg:text-[16px] gap-3 top-[80px] md:top-0 right-[0px]">
+      <Link
+        onClick={handleClick}
+        to="/categoriasDeVehiculos/all"
+        className="text-background text-center py-5 hover:bg-text md:py-0 hover:md:bg-[#707070]"
+      >
+        CATEGORIAS DE VEHICULOS
+      </Link>
+      <Link
+        onClick={handleClick}
+        to="/redDeAgencias"
+        className="text-background text-center py-5 hover:bg-text md:py-0 hover:md:bg-[#707070]"
+      >
+        RED DE AGENCIAS
+      </Link>
+      <Link
+        onClick={handleClick}
+        to="/tipsTuristicos"
+        className="text-background text-center py-5 hover:bg-text md:py-0 hover:md:bg-[#707070]"
+      >
+        TIPS DE VIAJES
+      </Link>
+      <Link
+        onClick={handleClick}
+        to="/dudas"
+        className="text-background text-center py-5 hover:bg-text md:py-0 my-auto hover:md:bg-[#707070]"
+      >
+        DUDAS
+      </Link>
+    </ul>
+  );
 
   return (
     <header className="w-full bg-[#707070] flex justify-center sticky top-0 z-[45]">
@@ -66,7 +74,6 @@ const navbar = () => {
           </div>
         </div>
       </div>
-      {isOpen&&menu}
     </header>
   );
 };

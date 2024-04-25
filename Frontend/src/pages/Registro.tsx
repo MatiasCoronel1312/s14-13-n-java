@@ -107,22 +107,25 @@ export default function Registro() {
   };
 
   return (
-    <section className="my-[63px] w-[1062px] flex items-center justify-center flex-col Gradient-T rounded-2xl px-[30px] pb-[30px]">
-      <h3 className=" my-[30px] text-background text-[32px]">
-        Formulario de Registro
+    <section className="my-[63px] w-[330px] lg:w-[1062px] flex items-center justify-center flex-col Gradient-T rounded-2xl px-[20px] pb-[30px]">
+      <h3 className=" my-[20px] text-background text-[32px] text-xl">
+        Registro
       </h3>
       <form
-        className="flex flex-col items-center justify-center w-full gap-10 bg-background py-9"
+        className="flex flex-col items-center justify-center w-full gap-4 lg:gap-10 bg-background py-9"
         onSubmit={handleSubmit}
       >
         <div className="flex flex-col gap-4 text-center">
-          <p className="text-2xl ">
+          <p className="lg:text-2xl ">
             Entre su información para crear una cuenta
           </p>
-          <p> Los campos marcados con un asterisco (*) son obligatorios.</p>
+          <p className="text-xs ">
+            {" "}
+            Los campos marcados con un asterisco (*) son obligatorios.
+          </p>
         </div>
-        <div className="flex gap-[67px]">
-          <div className="flex flex-col w-[450px] gap-2">
+        <div className="flex flex-col lg:flex-row gap-4 lg:gap-[67px] w-[243px]">
+          <div className="flex flex-col w-full lg:w-[450px] gap-2">
             <label htmlFor="nombre">Nombre *</label>
             <input
               className="py-4 pl-6 border border-black rounded bg-background"
@@ -130,12 +133,13 @@ export default function Registro() {
               name="nombre"
               value={formData.nombre}
               onChange={handleChangeInput}
+              placeholder="Juan"
             />
             {formErrors.nombre && (
               <span className="text-red-500">{formErrors.nombre}</span>
             )}
           </div>
-          <div className="flex flex-col w-[450px] gap-2">
+          <div className="flex flex-col w-full lg:w-[450px] gap-2">
             <label htmlFor="apellido">Apellido *</label>
             <input
               className="py-4 pl-6 border border-black rounded bg-background"
@@ -143,14 +147,15 @@ export default function Registro() {
               name="apellido"
               value={formData.apellido}
               onChange={handleChangeInput}
+              placeholder="Perez"
             />
             {formErrors.apellido && (
               <span className="text-red-500">{formErrors.apellido}</span>
             )}
           </div>
         </div>
-        <div className="flex gap-[67px]">
-          <div className="flex flex-col w-[450px] gap-2">
+        <div className="flex flex-col lg:flex-row gap-4 lg:gap-[67px] w-[243px]">
+          <div className="flex flex-col w-full lg:w-[450px] gap-2">
             <label htmlFor="email">Email *</label>
             <input
               className="py-4 pl-6 border border-black rounded bg-background"
@@ -159,12 +164,13 @@ export default function Registro() {
               type="email"
               value={formData.email}
               onChange={handleChangeInput}
+              placeholder="example@example.com"
             />
             {formErrors.email && (
               <span className="text-red-500">{formErrors.email}</span>
             )}
           </div>
-          <div className="flex flex-col w-[450px] gap-2">
+          <div className="flex flex-col w-full lg:w-[450px] gap-2">
             <label htmlFor="nacionalidad">Nacionalidad *</label>
             <input
               className="py-4 pl-6 border border-black rounded bg-background"
@@ -172,14 +178,15 @@ export default function Registro() {
               name="nacionalidad"
               value={formData.nacionalidad}
               onChange={handleChangeInput}
+              placeholder="Argentino"
             />
             {formErrors.nacionalidad && (
               <span className="text-red-500">{formErrors.nacionalidad}</span>
             )}
           </div>
         </div>
-        <div className=" flex gap-[67px]">
-          <div className="flex flex-col w-[450px] gap-2">
+        <div className="flex flex-col lg:flex-row gap-4 lg:gap-[67px] w-[243px]">
+          <div className="flex flex-col w-full lg:w-[450px] gap-2">
             <label htmlFor="tipoDocumento">Tipo de Documento *</label>
             <select
               className="py-4 pl-6 border border-black rounded bg-background"
@@ -193,7 +200,7 @@ export default function Registro() {
               <option value="Otros">Otros</option>
             </select>
           </div>
-          <div className="flex flex-col w-[450px] gap-2">
+          <div className="flex flex-col w-full lg:w-[450px] gap-2">
             <label htmlFor="numeroDocumento">Número de Documento *</label>
             <input
               className="py-4 pl-6 border border-black rounded bg-background"
@@ -207,8 +214,8 @@ export default function Registro() {
             )}
           </div>
         </div>
-        <div className="flex gap-[67px]">
-          <div className="flex flex-col w-[450px] gap-2">
+        <div className="flex flex-col lg:flex-row gap-4 lg:gap-[67px] w-[243px]">
+          <div className="flex flex-col w-full lg:w-[450px] gap-2">
             <label htmlFor="numeroTelefono">Número de Teléfono *</label>
             <input
               className="py-4 pl-6 border border-black rounded bg-background"
@@ -221,8 +228,8 @@ export default function Registro() {
               <span className="text-red-500">{formErrors.numeroTelefono}</span>
             )}
           </div>
-          <div className="flex flex-col gap-10">
-            <div className="flex flex-col w-[450px] gap-2">
+          <div className="flex flex-col gap-4 lg:gap-10">
+            <div className="flex flex-col w-full lg:w-[450px] gap-2">
               <label htmlFor="contrasena">Contraseña *</label>
               <input
                 className="py-4 pl-6 border border-black rounded bg-background"
@@ -236,7 +243,7 @@ export default function Registro() {
                 <span className="text-red-500">{formErrors.contrasena}</span>
               )}
             </div>
-            <div className="flex flex-col w-[450px] gap-2">
+            <div className="flex flex-col w-full lg:w-[450px] gap-2">
               <label htmlFor="confirmarContrasena">
                 Confirmar Contraseña *
               </label>
@@ -261,8 +268,8 @@ export default function Registro() {
             Ya tienes una cuenta? <Link to="/login">Iniciar sesión</Link>
           </p>
 
-          <button className=" w-[252px] p-1 rounded-md bg-gradient-to-r from-[#ff8c00] to-[#b81c00]">
-            <div className="flex items-center justify-center px-12 py-5 bg-background text-[#C26A00] text-xl">
+          <button className=" w-[252px] p-1 rounded-md Gradient-T">
+            <div className="flex items-center justify-center px-12 py-5 text-xl text-background">
               Registrarme
             </div>
           </button>

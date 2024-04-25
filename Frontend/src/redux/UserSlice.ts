@@ -15,6 +15,7 @@ interface TInicial {
 }
 
 const estadoInicial: TInicial = {
+
   userData: {
     id: 0,
     email: "correo@gmail.com",
@@ -26,6 +27,7 @@ const estadoInicial: TInicial = {
     country: "Argentina",
     phoneNumber: "9780001111",
   },
+
 };
 const resetUser: TInicial = {
   userData: undefined,
