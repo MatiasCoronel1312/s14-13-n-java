@@ -268,9 +268,8 @@ Nuestra interfaz sencilla te permite buscar y comparar precios y característica
 ## 🎬 Video Promocional
 
 <a href="" target="_blank">
-   <img  src="https://img.shields.io/badge/VER_DEMO-000000?style=for-the-badge&logo=vercel&logoColor=white"/>
-<img src="https://github.com/No-Country/s14-13-n-java/assets/108808330/bedcec3e-42e7-41fc-817b-6f590c54f475"/>
 ## Video GoCar Promotional Video
+   <img src="https://github.com/No-Country/s14-13-n-java/assets/108808330/bedcec3e-42e7-41fc-817b-6f590c54f475"/>
 
 [YouTube video](https://www.youtube.com/watch?v=C59p6DxYxqQ)
 
