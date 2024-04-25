@@ -268,7 +268,9 @@ Nuestra interfaz sencilla te permite buscar y comparar precios y característica
 ## 🎬 Video Promocional
 
 <a href="" target="_blank">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/C59p6DxYxqQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  ## Video Demo
+
+[YouTube video](https://www.youtube.com/watch?v=C59p6DxYxqQ)
 
 </a>
 <br>
