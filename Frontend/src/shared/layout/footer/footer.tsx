@@ -9,7 +9,7 @@ import  mailIcon  from '../../../assets/icons/mailIcon.svg'
 const Footer = () => {
   return (
     <footer className="h-[750px] md:h-[450px] w-full bg-[#707070] flex justify-center items-center">
-      <div className="lg:w-[85%] md:w-[90%] w-[95%] h-[90%] flex flex-col text-[14px] md:py-10 ">
+      <div className="lg:w-[85%] w-[90%]  h-[90%] flex flex-col text-[14px] md:py-10 ">
         <div className="flex flex-col md:flex-row items-start md:justify-between w-full h-[90%] md:gap-5">
           <div className="md:w-[25%] h-[10%] md:h-[40px]">
             <Link to="/">
