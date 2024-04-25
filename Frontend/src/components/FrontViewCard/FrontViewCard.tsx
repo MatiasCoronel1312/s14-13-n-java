@@ -30,9 +30,7 @@ export function FrontViewCard({
   const isMoreCar = showCars.length > 1;
   const dispatch = useAppDispatch();
   const [alertReservation, setAlertReservation] = useState(false);
-  const dataReserve = useAppSeletor(
-    (state) => state.dataReserve.dataReserve
-  ).fechaEntrega;
+  const dataReserve = useAppSeletor((state) => state.dataReserve.dataReserve)?.fechaEntrega;
 
   const goToSelectCar = () => {
     if (dataReserve === undefined) {
@@ -58,7 +56,7 @@ export function FrontViewCard({
   return (
     <div className="relative">
       {alertReservation && (
-        <div className="absolute bottom-[60px] z-50 right-[45px] w-[340px] h-[100px] bg-white border border-black flex justify-center items-center shadow-xl">
+        <div className="absolute bottom-[60px] z-10 right-[45px] w-[340px] h-[100px] bg-white border border-black flex justify-center items-center shadow-xl">
           Has tu reserva antes de seleccioar carro!
         </div>
       )}
@@ -76,7 +74,7 @@ export function FrontViewCard({
             }    shadow-sm p-6 `}
           >
             {isMoreCar && (
-              <div className="absolute flex z-20 w-[285px] top-20 left-0 justify-between px-3 text-gray-600 font-bold text-xl">
+              <div className="absolute flex z-10 w-[285px] top-20 left-0 justify-between px-3 text-gray-600 font-bold text-xl">
                 <p className="hover:cursor-pointer " onClick={lessIndex}>
                   {"<"}
                 </p>

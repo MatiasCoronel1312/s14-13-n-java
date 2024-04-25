@@ -6,7 +6,7 @@ import Carrusel from "./../components/CarCarousel/Carrusel";
 const Home = () => {
   return (
     <div className="w-full flex justify-center ">
-      <div className="lg:w-[85%] md:w-[90%] w-[95%] h-full flex flex-col item-center">
+      <div className="lg:w-[85%] w-[90%] h-full flex flex-col item-center">
         <Carrusel />
         <NuevaReservaPrueba />
         <TurismoHome />

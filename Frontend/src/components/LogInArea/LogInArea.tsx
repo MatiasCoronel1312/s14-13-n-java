@@ -39,7 +39,7 @@ export default function LogInArea() {
             >
               <div className="flex flex-col justify-between items-start gap-2  ">
                 <Link
-                  to="#"
+                  to="/history"
                   className=" hover:bg-gray-400 w-[140px] h-[44px] transition-all flex justify-center items-center  rounded-2xl  text-[#333333] "
                 >
                   Mis Reservas
