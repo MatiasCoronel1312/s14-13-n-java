@@ -42,8 +42,14 @@ const reserveSlice = createSlice({
     postReserve: (state, actions) => {
       state.dataReserve = { ...state.dataReserve, ...actions.payload };
     },
+    resetReserve: (state) => {
+      state.dataReserve = {
+        ...state.dataReserve,
+        ...estadoInicial.dataReserve,
+      };
+    },
   },
 });
 
-export const { postReserve } = reserveSlice.actions;
+export const { postReserve, resetReserve } = reserveSlice.actions;
 export default reserveSlice.reducer;

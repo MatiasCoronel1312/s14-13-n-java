@@ -31,10 +31,10 @@ const coberturasSlice = createSlice({
   name: "tarifas",
   initialState: estadoInicial,
   reducers: {
-    reseCoberturas: (state, actions) => {
+    reseCoberturas: (state) => {
       state.cargos = {
         ...state.cargos,
-        ...actions.payload,
+        ...estadoInicial.cargos,
       };
     },
     postTarifaMetodoPago: (state, actions) => {

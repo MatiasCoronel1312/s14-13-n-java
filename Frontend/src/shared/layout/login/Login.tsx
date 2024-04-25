@@ -33,26 +33,6 @@ export const Login: React.FC<LoginProps> = () => {
     setPassword(event.target.value);
   };
 
-  // const isLoginSuccess = (token: string) => {
-  //   // Aqui se puede hacer algo con el token o el usuario
-  //   const urlDataUser = "https://gocarapp.onrender.com/api/user/profile";
-
-  //   axios
-  //     .get(urlDataUser, {
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     })
-  //     .then((response) => {
-  //       dispatch(postUser(response.data));
-  //       navigator(path);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error:", error);
-  //     });
-  // };
-
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setErrorMessage("");
