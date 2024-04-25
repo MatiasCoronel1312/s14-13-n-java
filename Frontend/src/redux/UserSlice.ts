@@ -15,22 +15,12 @@ interface TInicial {
 }
 
 const estadoInicial: TInicial = {
+
   userData: undefined,
+
 };
 const resetUser: TInicial = {
   userData: undefined,
-
-  // {
-  //   id: undefined,
-  //   email: undefined,
-  //   password: undefined,
-  //   name: undefined,
-  //   lastName: undefined,
-  //   identification: undefined,
-  //   identificationNumber: undefined,
-  //   country: undefined,
-  //   phoneNumber: undefined,
-  // },
 };
 
 const userSlice = createSlice({

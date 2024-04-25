@@ -7,8 +7,8 @@ const RedDeAgencias = () => {
   const dispatch = useAppDispatch();
   const allAgencias = useAppSeletor((state) => state.allAgencias.agencias);
 
-  const handleReserve = (name:string) =>{
-    dispatch(postReserve({lugarRetiro: name}))
+  const handleReserve = (id:number) =>{
+    dispatch(postReserve({idLugarRetiro: id}))
 
     window.scrollTo({
       top: 0,
@@ -57,7 +57,7 @@ const RedDeAgencias = () => {
                       <div className="text-[14px]">{agencia.phone}</div>
                     </div>
                     <div>
-                      <button onClick={()=>{handleReserve(agencia.name)}} className="Gradient-H_hover border-2 border-accent text-accent hover:text-black hover:border-none w-3/4 h-10 rounded-lg ">Seleccionar agencia</button>
+                      <button onClick={()=>{handleReserve(agencia.id)}} className="Gradient-H_hover border-2 border-accent text-accent hover:text-black hover:border-none w-3/4 h-10 rounded-lg ">Seleccionar agencia</button>
                     </div>
                   </div>
                 </div>
