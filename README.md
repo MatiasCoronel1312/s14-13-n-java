@@ -268,8 +268,8 @@ Nuestra interfaz sencilla te permite buscar y comparar precios y característica
 ## 🎬 Video Promocional
 
 <a href="" target="_blank">
-## Video GoCar Promotional Video
 <img src="![imagen](https://github.com/No-Country/s14-13-n-java/assets/108808330/bedcec3e-42e7-41fc-817b-6f590c54f475)"/>
+## Video GoCar Promotional Video
 
 [YouTube video](https://www.youtube.com/watch?v=C59p6DxYxqQ)
 
