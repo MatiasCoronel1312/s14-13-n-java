@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { postUser } from "../../../../redux/UserSlice";
 import { useAppDispatch, useAppSeletor } from "../../../../redux/store";
+import { saveToken } from "../../../../redux/tokenSlice";
 
 export default function useAuthLogin() {
   const navigator = useNavigate();
@@ -25,7 +26,8 @@ export default function useAuthLogin() {
     // Aqui se puede hacer algo con el token o el usuario
     const urlDataUser = "https://gocarapp.onrender.com/api/user/profile";
 
-    window.localStorage.setItem("token", token);
+    // Aqui se guarda el token
+    dispatch(saveToken(token));
 
     axios
       .get(urlDataUser, {
