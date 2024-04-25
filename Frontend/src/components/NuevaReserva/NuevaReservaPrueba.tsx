@@ -174,7 +174,7 @@ export const NuevaReserva = () => {
               />
             </div>
           </div>
-          {onFocus&&<div className={`flex flex-col md:flex-row w-full md:justify-between items-center  transition-all duration-500 ease-linear mt-4 ${onFocus?'scale-y-100 md:h-[70px]':'scale-y-0 h-0'}`}>
+          {onFocus&&<div className={`flex z-20 flex-col md:flex-row w-full md:justify-between items-center  transition-all duration-500 ease-linear mt-4 ${onFocus?'scale-y-100 md:h-[70px]':'scale-y-0 h-0'}`}>
             <button
               onClick={()=>{handleSubmit()}}
               className={`bg-text self-center w-[90%] md:w-[16%] text-white text-[20px] font-semibold rounded-md h-[70%] order-3 md:order-none`}

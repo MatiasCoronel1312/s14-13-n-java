@@ -16,33 +16,11 @@ interface TInicial {
 
 const estadoInicial: TInicial = {
 
-  userData: {
-    id: 0,
-    email: "correo@gmail.com",
-    password: "123456",
-    name: "Dummy",
-    lastName: "Client",
-    identification: "DNI",
-    identificationNumber: "123456789",
-    country: "Argentina",
-    phoneNumber: "9780001111",
-  },
+  userData: undefined,
 
 };
 const resetUser: TInicial = {
   userData: undefined,
-
-  // {
-  //   id: undefined,
-  //   email: undefined,
-  //   password: undefined,
-  //   name: undefined,
-  //   lastName: undefined,
-  //   identification: undefined,
-  //   identificationNumber: undefined,
-  //   country: undefined,
-  //   phoneNumber: undefined,
-  // },
 };
 
 const userSlice = createSlice({

@@ -21,7 +21,7 @@ const SelectForCategory = () => {
 
   return (
 
-    <div className="w-full h-full flex flex-wrap bg-background justify-center gap-x-7 gap-y-7 pb-7 ">
+    <div className="w-full h-full flex flex-wrap bg-background justify-center gap-x-7 gap-y-7 pb-7 z-0">
           {carrosCategory.map((categoría) => (
             // <p key={categoría}>{categoría}</p>
             <div className="" key={categoría}>

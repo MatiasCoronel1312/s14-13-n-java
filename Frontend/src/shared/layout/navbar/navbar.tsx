@@ -19,32 +19,32 @@ const navbar = () => {
   };
 
   const menu = (
-    <ul className="flex absolute md:relative flex-col bg-[#707070] md:justify-between md:w-full w-[100%] text-[12px] md:flex-row lg:text-[16px] gap-3 top-[80px] md:top-0 right-[0px]">
+    <ul onMouseLeave={() => setIsOpen(false)} className="flex absolute md:relative flex-col bg-[#707070] md:justify-between  w-[50%] md:w-full text-[12px] md:flex-row lg:text-[16px] gap-3 top-[80px] md:top-0 right-[0px]">
       <Link
         onClick={handleClick}
         to="/categoriasDeVehiculos/all"
-        className="text-background text-center py-5 hover:bg-text md:py-0 hover:md:bg-[#707070]"
+        className="text-background text-right md:text-center pr-3 md:pr-0 py-3 hover:bg-text md:py-0 hover:md:bg-[#707070]"
       >
         CATEGORIAS DE VEHICULOS
       </Link>
       <Link
         onClick={handleClick}
         to="/redDeAgencias"
-        className="text-background text-center py-5 hover:bg-text md:py-0 hover:md:bg-[#707070]"
+        className="text-background  text-right md:text-center pr-3 md:pr-0 py-3 hover:bg-text md:py-0 hover:md:bg-[#707070]"
       >
         RED DE AGENCIAS
       </Link>
       <Link
         onClick={handleClick}
         to="/tipsTuristicos"
-        className="text-background text-center py-5 hover:bg-text md:py-0 hover:md:bg-[#707070]"
+        className="text-background text-right md:text-center pr-3 md:pr-0 py-3 hover:bg-text md:py-0 hover:md:bg-[#707070]"
       >
         TIPS DE VIAJES
       </Link>
       <Link
         onClick={handleClick}
         to="/dudas"
-        className="text-background text-center py-5 hover:bg-text md:py-0 my-auto hover:md:bg-[#707070]"
+        className="text-background text-right md:text-center pr-3 md:pr-0 py-3 hover:bg-text md:py-0 my-auto hover:md:bg-[#707070]"
       >
         DUDAS
       </Link>
@@ -74,6 +74,7 @@ const navbar = () => {
           </div>
         </div>
       </div>
+      {isOpen&&menu}
     </header>
   );
 };
