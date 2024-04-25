@@ -20,20 +20,6 @@ function usePostReserve(isLogin: boolean) {
   const dataAutoReduce = dataReduces.carro.cars[0];
   const dataCoberturasReduce = dataReduces.coberturas.cargos;
 
-  const postData = {
-    vehicleId: dataAutoReduce.id,
-    retirementAgencyId: 0,
-    insuranceId: dataCoberturasReduce.seguridad.id,
-    retirementDate: formatearFecha(
-      dataReservaReduce?.fechaRetiro as string,
-      dataReservaReduce?.horaRetiro as string
-    ),
-    returnAgencyId: 0,
-    returnDate: formatearFecha(
-      dataReservaReduce?.fechaEntrega as string,
-      dataReservaReduce?.horaEntrega as string
-    ),
-  };
   const pagarMercadopago =
     dataCoberturasReduce.metodoPago.name === "PAGAR CON MERCADOPAGO";
 
@@ -118,7 +104,7 @@ function usePostReserve(isLogin: boolean) {
         console.error("Error:", error);
       });
 
-    // clearCars reseCoberturas resetReserve
+    // clean all reducers after complete reservation
     dispatch(clearCars());
     dispatch(reseCoberturas());
     dispatch(resetReserve());
