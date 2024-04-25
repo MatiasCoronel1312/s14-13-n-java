@@ -50,18 +50,6 @@ function usePostReserve(isLogin: boolean) {
     text = "Su reserva se guardara con exito.";
   }
 
-  const sendData = async () => {
-    try {
-      const response = await axios.post(url, postData);
-      setData(response.data);
-      console.log("response", response);
-
-      setLoading(false);
-    } catch (error) {
-      setLoading(false);
-    }
-  };
-
   const [showReservation, setShowReservation] = useState(false);
 
   const externalLink = () => {
@@ -86,8 +74,45 @@ function usePostReserve(isLogin: boolean) {
       const urlRespose = response.data.slice(9);
       setShowReservation(false);
       window.open(urlRespose, "_blank");
-      window.location.reload();
+
+      navigate("/");
     });
+  };
+
+  const createReservation = () => {
+    const urlCreateReserve =
+      "https://gocarapp.onrender.com/api/reservation/save";
+
+    const token = window.localStorage.getItem("token");
+
+    const postData = {
+      vehicleId: dataAutoReduce.id,
+      retirementAgencyId: dataReservaReduce?.idLugarRetiro,
+      insuranceId: dataCoberturasReduce.seguridad.id,
+      retirementDate: formatearFecha(
+        dataReservaReduce?.fechaRetiro as string,
+        dataReservaReduce?.horaRetiro as string
+      ),
+      returnAgencyId: dataReservaReduce?.idLugarEntrega,
+      returnDate: formatearFecha(
+        dataReservaReduce?.fechaEntrega as string,
+        dataReservaReduce?.horaEntrega as string
+      ),
+    };
+
+    axios
+      .post(urlCreateReserve, postData, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then(() => {
+        navigate("/");
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
 
   const completeReservationAction = () => {
@@ -98,11 +123,11 @@ function usePostReserve(isLogin: boolean) {
       setTimeout(() => {
         if (isLogin && pagarMercadopago) {
           externalLink();
+          createReservation();
         } else if (isLogin && !pagarMercadopago) {
-          window.location.href = "/";
+          createReservation();
           setShowReservation(false);
         }
-        sendData();
       }, 1000);
     }
   };
@@ -113,7 +138,7 @@ function usePostReserve(isLogin: boolean) {
     text,
     data,
     loading,
-    sendData,
+
     pagarMercadopago,
     showReservation,
     completeReservationAction,

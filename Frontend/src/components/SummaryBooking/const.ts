@@ -27,7 +27,7 @@ export function convertirFecha(fechaString: string) {
   return fechaFormateada;
 }
 
-export function diferenciaEnDias(fecha1: string, fecha2: string) {
+export function diferenciaEnDias(fecha1: string | Date, fecha2: string | Date) {
   // Convertir las cadenas de fecha en objetos Date
   const date1 = new Date(fecha1);
   const date2 = new Date(fecha2);
