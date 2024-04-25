@@ -25,6 +25,8 @@ export default function useAuthLogin() {
     // Aqui se puede hacer algo con el token o el usuario
     const urlDataUser = "https://gocarapp.onrender.com/api/user/profile";
 
+    window.localStorage.setItem("token", token);
+
     axios
       .get(urlDataUser, {
         headers: {
