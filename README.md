@@ -268,10 +268,7 @@ Nuestra interfaz sencilla te permite buscar y comparar precios y característica
 ## 🎬 Video Promocional
 
 <a href="" target="_blank">
-  ## Video Demo
-
 [YouTube video](https://www.youtube.com/watch?v=C59p6DxYxqQ)
-
 </a>
 <br>
 
