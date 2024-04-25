@@ -1,9 +1,12 @@
 import { useState } from "react";
 import axios from "axios";
-import { useAppSeletor } from "../../../redux/store";
+import { useAppDispatch, useAppSeletor } from "../../../redux/store";
 import { formatearFecha } from "./const";
 import { useNavigate } from "react-router-dom";
 import { diferenciaEnDias } from "../../SummaryBooking/const";
+import { clearCars } from "../../../redux/carsSlice";
+import { reseCoberturas } from "../../../redux/coberturasSlice";
+import { resetReserve } from "../../../redux/reserveSlice";
 
 function usePostReserve(isLogin: boolean) {
   const dataReduces = useAppSeletor((state) => state);
@@ -11,6 +14,7 @@ function usePostReserve(isLogin: boolean) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const url = "https://gocarapp.onrender.com/api";
+  const dispatch = useAppDispatch();
 
   const dataReservaReduce = dataReduces.dataReserve.dataReserve;
   const dataAutoReduce = dataReduces.carro.cars[0];
@@ -113,6 +117,11 @@ function usePostReserve(isLogin: boolean) {
       .catch((error) => {
         console.error("Error:", error);
       });
+
+    // clearCars reseCoberturas resetReserve
+    dispatch(clearCars());
+    dispatch(reseCoberturas());
+    dispatch(resetReserve());
   };
 
   const completeReservationAction = () => {

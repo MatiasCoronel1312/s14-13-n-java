@@ -3,14 +3,9 @@ import { FaCheck } from "react-icons/fa6";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { useAppDispatch } from "../../redux/store";
-import { postReserve } from "../../redux/reserveSlice";
-import { TSelectACard, reseCoberturas } from "../../redux/coberturasSlice";
-import { idText } from "typescript";
+import { resetReserve } from "../../redux/reserveSlice";
+import { reseCoberturas } from "../../redux/coberturasSlice";
 
-interface TSresetSecured {
-  metodoPago: TSelectACard;
-  seguridad: TSelectACard;
-}
 interface Props {
   posicion?: number;
 }
@@ -52,30 +47,6 @@ const pointDots: PointDots[] = [
   },
 ];
 
-const dataReserve = {
-  userId: undefined,
-  nameUser: undefined,
-  lugarEntrega: undefined,
-  lugarRetiro: undefined,
-  fechaEntrega: undefined,
-  fechaRetiro: undefined,
-  horaEntrega: undefined,
-  horaRetiro: undefined,
-};
-
-const cargos: TSresetSecured = {
-  metodoPago: {
-    id: 0,
-    name: "",
-    price: 0,
-  },
-  seguridad: {
-    id: 0,
-    name: "",
-    price: 0,
-  },
-};
-
 const TimeLine = ({ posicion = 1 }: Props) => {
   const location = useLocation();
   const [addDotsTimeLine, setaAddDotsTimeLine] = useState("");
@@ -101,9 +72,9 @@ const TimeLine = ({ posicion = 1 }: Props) => {
     if (path === "/categoriasDeVehiculos/all") {
       navigate(path);
 
-      dispatch(postReserve(dataReserve));
+      dispatch(resetReserve());
     } else {
-      dispatch(reseCoberturas(cargos));
+      dispatch(reseCoberturas());
       navigate(path);
     }
   };
