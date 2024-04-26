@@ -128,7 +128,7 @@ Nuestra interfaz sencilla te permite buscar y comparar precios y característica
     <td>
       <div align="center">
         <a href="https://github.com/sofi-24soto" target="_blank" rel="author">
-          <img width="110" src="https://media.licdn.com/dms/image/D4D35AQFrGe9yGST8dQ/profile-framedphoto-shrink_200_200/0/1693576864721?e=1714143600&v=beta&t=TfOv28x4mAeIzUeKYlc6tUBdeyBL2RPdM7_WN_8fZLE"/>
+          <img width="110" src="https://media.licdn.com/dms/image/D4D35AQFrGe9yGST8dQ/profile-framedphoto-shrink_800_800/0/1693576864721?e=1714773600&v=beta&t=dAEkXCLYvK3dS0QNezF4ayS2XNhfueStmBM_Om2r79Y"/>
         </a>
           <h4 style="margin-top: 1rem;">Sofia Soto</h4>
           <h5 style="margin-top: 1rem;">Front End</h5>
