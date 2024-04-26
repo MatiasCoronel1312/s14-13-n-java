@@ -1,6 +1,6 @@
 <div align="center">
   <a href="" target="_blank">
-    <img src=""/>
+    <img src="https://github.com/No-Country/s14-13-n-java/blob/main/Frontend/public/readmeLogo.png"/>
   </a>
 </div>
 
