@@ -189,7 +189,7 @@ Nuestra interfaz sencilla te permite buscar y comparar precios y característica
   <td>
       <div align="center">
         <a href="https://github.com/Raul1978x" target="_blank" rel="author">
-          <img width="110" src="https://media.licdn.com/dms/image/D4D35AQFGT_SZnG1wrw/profile-framedphoto-shrink_800_800/0/1704245565339?e=1714147200&v=beta&t=A_Q6-iNaEbSMFa4DLzlP27xBn8EPu33LpOH5qaUEWyw"/>
+          <img width="110" src="https://media.licdn.com/dms/image/D4D35AQFGT_SZnG1wrw/profile-framedphoto-shrink_800_800/0/1704245565339?e=1714773600&v=beta&t=85yN1KWc08p4L6BjhIYRBgYb1O0J0B5O-X3SUtUDLy8"/>
         </a>
           <h4 style="margin-top: 1rem;">Raúl Gómez</h4>
           <h5 style="margin-top: 1rem;">Front End | UX/UI | Github Manager</h5>
